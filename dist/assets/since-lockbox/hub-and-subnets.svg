@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="390" height="1586" viewBox="0 0 390 1586" role="img" aria-labelledby="title description">
+<title id="title">Hub and subnet roles</title>
+<desc id="description">Hub charter and proposed anchor relationships, with deployment states distinguished.</desc>
+<style>text{font-family:system-ui,sans-serif;fill:#17212b}</style>
+<rect width="390" height="1586" rx="12" fill="#f8fafc"/>
+<text x="24" y="38" font-size="24" font-weight="bold" text-anchor="start">Hub and subnet roles</text>
+<text x="24" y="68" font-size="16" font-weight="normal" text-anchor="start">Relationships and reported state at</text>
+<text x="24" y="90" font-size="16" font-weight="normal" text-anchor="start">the supplied snapshot.</text>
+<rect x="24" y="124" width="342" height="125" rx="8" fill="#eef1f4" stroke="#74808b"/>
+<text x="40" y="155" font-size="21" font-weight="bold" text-anchor="start">traderswift-1 · hub</text>
+<text x="40" y="182" font-size="17" font-weight="normal" text-anchor="start">Charters, provider registration</text>
+<text x="40" y="205" font-size="17" font-weight="normal" text-anchor="start">and anchors.</text>
+<text x="40" y="228" font-size="17" font-weight="normal" text-anchor="start">Four validators after 17 Nov.</text>
+<text x="24" y="279" font-size="16" font-weight="normal" text-anchor="start">Below: charter or planned anchor</text>
+<text x="24" y="301" font-size="16" font-weight="normal" text-anchor="start">relationships, not network wiring.</text>
+<line x1="12" y1="376" x2="24" y2="376" stroke="#74808b"/>
+<rect x="24" y="338" width="342" height="171" rx="8" fill="#eef1f4" stroke="#74808b"/>
+<text x="40" y="369" font-size="21" font-weight="bold" text-anchor="start">Signer · signer-1</text>
+<text x="40" y="396" font-size="17" font-weight="normal" text-anchor="start">Live launch 14 Nov; rotated 17</text>
+<text x="40" y="419" font-size="17" font-weight="normal" text-anchor="start">Nov.</text>
+<text x="40" y="442" font-size="17" font-weight="normal" text-anchor="start">Charter in final genesis plan.</text>
+<text x="40" y="465" font-size="17" font-weight="normal" text-anchor="start">Live hub anchor not proved</text>
+<text x="40" y="488" font-size="17" font-weight="normal" text-anchor="start">here.</text>
+<line x1="12" y1="567" x2="24" y2="567" stroke="#74808b"/>
+<rect x="24" y="529" width="342" height="125" rx="8" fill="#eef1f4" stroke="#74808b"/>
+<text x="40" y="560" font-size="21" font-weight="bold" text-anchor="start">Timeseries</text>
+<text x="40" y="587" font-size="17" font-weight="normal" text-anchor="start">Charter in final genesis plan.</text>
+<text x="40" y="610" font-size="17" font-weight="normal" text-anchor="start">Provider entries prepared; this</text>
+<text x="40" y="633" font-size="17" font-weight="normal" text-anchor="start">is not a separate launch claim.</text>
+<line x1="12" y1="712" x2="24" y2="712" stroke="#74808b" stroke-dasharray="6 4"/>
+<rect x="24" y="674" width="342" height="148" rx="8" fill="#eef1f4" stroke="#74808b" stroke-dasharray="6 4"/>
+<text x="40" y="705" font-size="21" font-weight="bold" text-anchor="start">Storage · storage-1</text>
+<text x="40" y="732" font-size="17" font-weight="normal" text-anchor="start">Built and tested; providers</text>
+<text x="40" y="755" font-size="17" font-weight="normal" text-anchor="start">pending.</text>
+<text x="40" y="778" font-size="17" font-weight="normal" text-anchor="start">Epoch roots and summaries to</text>
+<text x="40" y="801" font-size="17" font-weight="normal" text-anchor="start">hub; files outside blocks.</text>
+<line x1="12" y1="880" x2="24" y2="880" stroke="#74808b" stroke-dasharray="6 4"/>
+<rect x="24" y="842" width="342" height="148" rx="8" fill="#eef1f4" stroke="#74808b" stroke-dasharray="6 4"/>
+<text x="40" y="873" font-size="21" font-weight="bold" text-anchor="start">Bus · Nostr messaging</text>
+<text x="40" y="900" font-size="17" font-weight="normal" text-anchor="start">Design: hub-anchored audit.</text>
+<text x="40" y="923" font-size="17" font-weight="normal" text-anchor="start">Relay core selection</text>
+<text x="40" y="946" font-size="17" font-weight="normal" text-anchor="start">unverified.</text>
+<text x="40" y="969" font-size="17" font-weight="normal" text-anchor="start">Orders do not use the Bus.</text>
+<line x1="12" y1="1048" x2="24" y2="1048" stroke="#74808b" stroke-dasharray="6 4"/>
+<rect x="24" y="1010" width="342" height="125" rx="8" fill="#eef1f4" stroke="#74808b" stroke-dasharray="6 4"/>
+<text x="40" y="1041" font-size="21" font-weight="bold" text-anchor="start">Frontend manifests</text>
+<text x="40" y="1068" font-size="17" font-weight="normal" text-anchor="start">Planned hub charter for x402.</text>
+<text x="40" y="1091" font-size="17" font-weight="normal" text-anchor="start">Payment path is on Base;</text>
+<text x="40" y="1114" font-size="17" font-weight="normal" text-anchor="start">not a new hub subnet chain.</text>
+<line x1="12" y1="1193" x2="24" y2="1193" stroke="#74808b" stroke-dasharray="6 4"/>
+<rect x="24" y="1155" width="342" height="125" rx="8" fill="#eef1f4" stroke="#74808b" stroke-dasharray="6 4"/>
+<text x="40" y="1186" font-size="21" font-weight="bold" text-anchor="start">Gate and DNS</text>
+<text x="40" y="1213" font-size="17" font-weight="normal" text-anchor="start">Proposed member infrastructure.</text>
+<text x="40" y="1236" font-size="17" font-weight="normal" text-anchor="start">No live subnet established</text>
+<text x="40" y="1259" font-size="17" font-weight="normal" text-anchor="start">here.</text>
+<path d="M195 249 V257 H12 V1193" fill="none" stroke="#74808b"/>
+<text x="24" y="1310" font-size="16" font-weight="normal" text-anchor="start">Dashed border: proposed relationship</text>
+<text x="24" y="1332" font-size="16" font-weight="normal" text-anchor="start">or deployment still pending.</text>
+<text x="24" y="1364" font-size="16" font-weight="normal" text-anchor="start">Source: TraderSwift build and chain records.</text>
+</svg>

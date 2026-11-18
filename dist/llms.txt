@@ -1,0 +1,24 @@
+# TraderSwift
+
+TraderSwift is the infrastructure layer for agentic trading. Guides and build notes.
+
+Site: https://blog.traderswift.io
+
+Static HTML and Markdown.
+
+## Pages
+
+- [Blog](index.html) | Markdown: index.md | TraderSwift is the infrastructure layer for agentic trading. Guides and build notes.
+- [What happened to Lockbox?](since-lockbox/01-what-happened-to-lockbox.html) | Markdown: since-lockbox/01-what-happened-to-lockbox.md | Halting and archiving our first chain, and settling on a new name.
+- [What is signer-1, and what did it do this week?](since-lockbox/02-what-is-signer-1-and-what-did-it-do-this-week.html) | Markdown: since-lockbox/02-what-is-signer-1-and-what-did-it-do-this-week.md | The live launch with real money, and the move to new machines.
+- [What is the hub, traderswift-1?](since-lockbox/03-what-is-the-hub-traderswift-1.html) | Markdown: since-lockbox/03-what-is-the-hub-traderswift-1.md | The chain at the centre of TraderSwift, and its validator rotation.
+- [How did Codex become our main builder?](since-lockbox/04-how-did-codex-become-our-main-builder.html) | Markdown: since-lockbox/04-how-did-codex-become-our-main-builder.md | How a job moves from spec to merge, and what the review panel found.
+- [What is the wallet, and why does it have no seed phrase?](since-lockbox/05-what-is-the-wallet-and-why-does-it-have-no-seed.html) | Markdown: since-lockbox/05-what-is-the-wallet-and-why-does-it-have-no-seed.md | One core, three skins, and a device ring instead of a seed phrase.
+- [Why did we build our own sign-in?](since-lockbox/06-why-did-we-build-our-own-sign-in.html) | Markdown: since-lockbox/06-why-did-we-build-our-own-sign-in.md | Passkey and wallet sign-in, and a gate we own.
+- [What are Signals and the desk?](since-lockbox/07-what-are-signals-and-the-desk.html) | Markdown: since-lockbox/07-what-are-signals-and-the-desk.md | From a published idea to an executed trade, through Signer.
+- [What else did we start? Storage, the Bus, payments and more](since-lockbox/08-what-else-did-we-start-storage-the-bus-payments.html) | Markdown: since-lockbox/08-what-else-did-we-start-storage-the-bus-payments.md | Storage-1, the Bus, payments on Base, Goose and our own DNS.
+- [What did we move onto our own servers?](since-lockbox/09-what-did-we-move-onto-our-own-servers.html) | Markdown: since-lockbox/09-what-did-we-move-onto-our-own-servers.md | Our own rack servers, Proxmox, and a reboot that tested the hub.
+- [What went wrong, and what did we change?](since-lockbox/10-what-went-wrong-and-what-did-we-change.html) | Markdown: since-lockbox/10-what-went-wrong-and-what-did-we-change.md | The faults we found this week, and the rules we changed.
+- [What is next?](since-lockbox/11-what-is-next.html) | Markdown: since-lockbox/11-what-is-next.md | What each part of the system needs next.
+- [Final thoughts](since-lockbox/12-final-thoughts.html) | Markdown: since-lockbox/12-final-thoughts.md | What the week adds up to.
+- [Since Lockbox – A Week of Building Signer and TraderSwift](since-lockbox/index.html) | Markdown: since-lockbox/index.md | What we built between 11 and 18 November 2026, what broke, and what we changed.
