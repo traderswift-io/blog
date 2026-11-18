@@ -122,12 +122,13 @@ def render_markdown(source, destination):
         if not line.strip():
             position += 1
             continue
-        if line.startswith('```') or line.strip() == '::: prompt':
+        if line.startswith('```') or line.strip() in ('::: prompt', '::: notice'):
             prompt = line.strip() == '::: prompt'
-            language = line[3:].strip() if not prompt else ''
+            notice = line.strip() == '::: notice'
+            language = '' if prompt or notice else line[3:].strip()
             if language and not re.fullmatch(r'[a-zA-Z0-9_+-]+', language):
                 raise ValueError('Invalid code language')
-            closing_fence = ':::' if prompt else '```'
+            closing_fence = ':::' if prompt or notice else '```'
             collected = []
             position += 1
             while position < len(lines) and lines[position].strip() != closing_fence:
@@ -136,7 +137,9 @@ def render_markdown(source, destination):
             if position == len(lines):
                 raise ValueError('Unclosed Markdown fence')
             text = '\n'.join(collected)
-            if prompt:
+            if notice:
+                fragments.append('<aside class="notice" role="note"><div class="notice-label">Announcement</div>' + render_markdown(text, destination) + '</aside>')
+            elif prompt:
                 prompt_count += 1
                 prompt_path = destination.with_name(f'{destination.stem}-prompt-{prompt_count}.txt')
                 prompt_path.write_text(text + '\n', encoding='utf-8')

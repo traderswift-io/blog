@@ -54,4 +54,19 @@ Keep the example local.
 
 A prompt becomes a labelled figure, visually distinct from code. Its link opens an adjacent plain-text file so readers can select and copy it without JavaScript. Prompt text is literal, not Markdown.
 
+Use a notice fence for an announcement. Its body supports paragraphs, links and flat bullet lists:
+
+```
+::: notice
+The guide has been updated. [Read the chapter](01-your-chapter.html).
+
+Check the changes before continuing.
+
+- Review the examples.
+- Follow the updated steps.
+:::
+```
+
+A notice becomes `<aside class="notice" role="note">` with a small uppercase “Announcement” label, a yellow background and a left border. It uses the prompt box's padding and 32px outer rhythm. Dedicated light and dark notice tokens keep body text, label and underlined links at WCAG AA contrast in both skins, including the control theme switch. Close the fence on its own line; an unclosed notice fails like an unclosed prompt, with one error line and no changes to `dist/`. Markdown copies keep the notice block as written; `llms.txt` continues linking to those copies.
+
 Run `python3 build.py` after editing. The builder validates inputs and generates the complete site in a temporary folder before replacing `dist/`, copying assets and Markdown, and regenerating navigation and discovery indexes. Invalid input leaves the existing `dist/` untouched. If `content/` is missing, add `content/<guide>/index.md`; the builder exits with one error line and creates no output. Keep generated output with the sources. Set `base_url` in `site.json` to an absolute HTTP(S) site root, including any project subdirectory. `--base-url` overrides this setting. With neither supplied, the default is `https://example.com`, a placeholder for the sitemap and discovery indexes.
