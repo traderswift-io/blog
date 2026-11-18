@@ -1,0 +1,1 @@
+Read the repository at https://github.com/traderswift-io/signer. Tell me, in plain words, what the code does with a trading key. Check whether any code path could send a key, a key share or funds anywhere other than where the documentation says. List anything that looks unsafe, with the file and line. Do not run any of the code.

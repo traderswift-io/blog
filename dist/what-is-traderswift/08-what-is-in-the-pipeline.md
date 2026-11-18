@@ -1,7 +1,7 @@
 ---
 title: What is in the pipeline?
 description: The marketplace, signal providers, Ledger, Vault and Storage.
-order: 3
+order: 8
 ---
 
 These parts are being built or planned. None of them is live yet.

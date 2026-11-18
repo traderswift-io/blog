@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en" data-skin="control" data-page="reading">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="What makes TraderSwift different. You check what happened, instead of taking anyone&#x27;s word for it.">
+<meta name="color-scheme" content="light dark">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; script-src 'self'; img-src 'self'; font-src 'self'; base-uri 'none'; form-action 'none'">
+<title>Where is trust not required? · TraderSwift</title>
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/style.css">
+<script src="../assets/reading.js" blocking="render"></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><a class="wordmark" href="../index.html" aria-label="TraderSwift home">TraderSwift</a><nav aria-label="Site"><a href="../index.html#updates">Updates</a><a href="../index.html#guides">Guides</a><a href="../index.html#case-studies">Case studies</a><a class="source-link" href="../llms.txt">For agents ↗</a><button class="theme-switch" type="button" aria-label="Switch to dark mode" hidden><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><g class="theme-sun"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></g><path class="theme-moon" d="M20 15.5A9 9 0 0 1 8.5 4 9 9 0 1 0 20 15.5Z"/></svg></button></nav></header>
+<main id="main"><div class="reading-layout"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="../index.html">Home</a><span aria-hidden="true">/</span><a href="index.html">What Is TraderSwift?</a></nav>
+<div class="reading-topline"><p class="eyebrow">Chapter 02 <span>/ 10</span></p><nav class="chapter-progress" aria-label="Chapters"><a href="01-what-is-traderswift.html" aria-label="Chapter 1: What is TraderSwift?">01</a><a href="02-where-is-trust-not-required.html" aria-label="Chapter 2: Where is trust not required?" aria-current="page">02</a><a href="03-why-is-it-open-source.html" aria-label="Chapter 3: Why is TraderSwift open source?">03</a><a href="04-who-is-it-for.html" aria-label="Chapter 4: Who is TraderSwift for?">04</a><a href="05-how-are-trading-keys-held-today.html" aria-label="Chapter 5: How are trading keys held today, and what goes wrong?">05</a><a href="06-how-does-signer-work.html" aria-label="Chapter 6: How does Signer work?">06</a><a href="07-what-is-running-today.html" aria-label="Chapter 7: What is running today?">07</a><a href="08-what-is-in-the-pipeline.html" aria-label="Chapter 8: What is in the pipeline?">08</a><a href="09-how-will-we-teach-it.html" aria-label="Chapter 9: How will we teach it?">09</a><a href="10-final-thoughts.html" aria-label="Chapter 10: Final thoughts">10</a></nav></div>
+<article><header class="article-header"><h1>Where is trust not required?</h1><p class="standfirst">What makes TraderSwift different. You check what happened, instead of taking anyone&#x27;s word for it.</p><div class="article-meta"><span>TraderSwift update</span><span>3 min read</span><a href="02-where-is-trust-not-required.md">Read Markdown ↗</a></div></header><div class="prose"><p>This is what makes TraderSwift different.</p>
+<p>Most trading today runs on trust.</p>
+<p>You trust the bot that holds your key not to lose it.</p>
+<p>You trust a signal seller&#x27;s track record.</p>
+<p>You trust that a data feed is honest, and that a payment reached the person who earned it.</p>
+<p>On TraderSwift, the aim is simple: where something can be checked, you check it, instead of taking anyone&#x27;s word for it.</p>
+<h2 id="what-can-you-check">What can you check?</h2>
+<p><strong>Your key.</strong> With Signer, no single machine holds your key. Each order is checked against limits you wrote, and every yes or no is recorded on a public blockchain.</p>
+<p>This is live today.</p>
+<p><strong>Your limits.</strong> The limits, called a policy, are kept on that blockchain. Anyone who runs a node can read them.</p>
+<p>This is live today.</p>
+<p><strong>The data.</strong> Each charts data node publishes a daily hash of its candles. Anyone can recompute it, and compare one node against another.</p>
+<p>This is live from our own node. Posting the hashes to the hub is being built.</p>
+<p><strong>Signals.</strong> Many people claim they offer good signals. Here, each signal is fingerprinted and timestamped before the outcome.</p>
+<p>That part is built, off chain. Putting the fingerprints on a Signals chain is planned. Once it is live and a signal is revealed, anyone will be able to match the two.</p>
+<p><strong>Agents.</strong> An agent that trades through Signer has every order request it makes, signed or refused, recorded on a public chain.</p>
+<p>A marketplace where those records can be found and compared is planned.</p>
+<p><strong>Payments.</strong> A builder is paid directly over x402. We never hold the money.</p>
+<p>The design is accepted. The first real payment has not been made yet.</p>
+<p><strong>The code.</strong> Every part is open source. You can read it, or have your own AI agent read it for you.</p>
+<p>The next chapter explains why that matters.</p>
+<h2 id="why-does-this-matter">Why does this matter?</h2>
+<p>A promise costs nothing. A record you can check is worth more.</p>
+<p>When the record is public, a good agent, a good signal provider or an honest data node can prove it.</p>
+<p>A bad one has nowhere to hide.</p>
+<h2 id="is-all-of-it-live">Is all of it live?</h2>
+<p>Not yet.</p>
+<p>Signer and the data hashes are live today. The rest is being built, and the chapters below say exactly where each part stands.</p>
+<p>This update will be revised as each part goes live.</p></div></article>
+<nav class="chapter-navigation" aria-label="Chapter navigation"><a rel="prev" href="01-what-is-traderswift.html"><span>← Previous chapter</span><strong>What is TraderSwift?</strong></a><a rel="next" href="03-why-is-it-open-source.html"><span>Next chapter →</span><strong>Why is TraderSwift open source?</strong></a></nav><p class="reading-hint">One chapter at a time. Use the links to keep reading, or swipe on touch screens.</p></div></main>
+<footer class="site-footer"><span>TraderSwift</span><nav aria-label="Resources"><a href="../index.json">Index</a><a href="../llms.txt">Plain text</a><a href="../sitemap.xml">Sitemap</a></nav></footer>
+</body>
+</html>

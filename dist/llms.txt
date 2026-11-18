@@ -10,12 +10,17 @@ Static HTML and Markdown.
 
 ## Updates
 
-- [What is TraderSwift?](what-is-traderswift/01-what-is-traderswift.html) | Markdown: what-is-traderswift/01-what-is-traderswift.md | An open infrastructure layer for agentic and hybrid trading.
-- [What is running today?](what-is-traderswift/02-what-is-running-today.html) | Markdown: what-is-traderswift/02-what-is-running-today.md | Signer, the hub chain and the charts data node.
-- [What is in the pipeline?](what-is-traderswift/03-what-is-in-the-pipeline.html) | Markdown: what-is-traderswift/03-what-is-in-the-pipeline.md | The marketplace, signal providers, Ledger, Vault and Storage.
-- [How will we teach it?](what-is-traderswift/04-how-will-we-teach-it.html) | Markdown: what-is-traderswift/04-how-will-we-teach-it.md | An educational blog on each site, with how-to guides and prompts for your own AI.
-- [Final thoughts](what-is-traderswift/05-final-thoughts.html) | Markdown: what-is-traderswift/05-final-thoughts.md | What to read next.
-- [What Is TraderSwift – The Infrastructure Layer for Agentic Trading](what-is-traderswift/index.html) | Markdown: what-is-traderswift/index.md | What TraderSwift is, who it is for, what is running today and what is in the pipeline.
+- [What is TraderSwift?](what-is-traderswift/01-what-is-traderswift.html) | Markdown: what-is-traderswift/01-what-is-traderswift.md | What a trading agent needs, and the open-source parts TraderSwift provides for it.
+- [Where is trust not required?](what-is-traderswift/02-where-is-trust-not-required.html) | Markdown: what-is-traderswift/02-where-is-trust-not-required.md | What makes TraderSwift different. You check what happened, instead of taking anyone's word for it.
+- [Why is TraderSwift open source?](what-is-traderswift/03-why-is-it-open-source.html) | Markdown: what-is-traderswift/03-why-is-it-open-source.md | If someone else's code manages your keys and your money, reading that code is the bare minimum.
+- [Who is TraderSwift for?](what-is-traderswift/04-who-is-it-for.html) | Markdown: what-is-traderswift/04-who-is-it-for.md | Traders, builders and network participants, and how builders get paid.
+- [How are trading keys held today, and what goes wrong?](what-is-traderswift/05-how-are-trading-keys-held-today.html) | Markdown: what-is-traderswift/05-how-are-trading-keys-held-today.md | Where a bot's key usually lives, the ways it leaks, and a live example.
+- [How does Signer work?](what-is-traderswift/06-how-does-signer-work.html) | Markdown: what-is-traderswift/06-how-does-signer-work.md | Where the key comes from, how it is split, how an order is signed, and how you stop it.
+- [What is running today?](what-is-traderswift/07-what-is-running-today.html) | Markdown: what-is-traderswift/07-what-is-running-today.md | Signer, the hub chain and the charts data node.
+- [What is in the pipeline?](what-is-traderswift/08-what-is-in-the-pipeline.html) | Markdown: what-is-traderswift/08-what-is-in-the-pipeline.md | The marketplace, signal providers, Ledger, Vault and Storage.
+- [How will we teach it?](what-is-traderswift/09-how-will-we-teach-it.html) | Markdown: what-is-traderswift/09-how-will-we-teach-it.md | An educational blog on each site, with how-to guides and prompts for your own AI.
+- [Final thoughts](what-is-traderswift/10-final-thoughts.html) | Markdown: what-is-traderswift/10-final-thoughts.md | What TraderSwift is for, and what to read next.
+- [What Is TraderSwift?](what-is-traderswift/index.html) | Markdown: what-is-traderswift/index.md | What TraderSwift is, who it is for, what is running today, and what is in the pipeline.
 - [What happened to Lockbox?](since-lockbox/01-what-happened-to-lockbox.html) | Markdown: since-lockbox/01-what-happened-to-lockbox.md | Halting and archiving our first chain, and settling on a new name.
 - [What is signer-1, and what did it do this week?](since-lockbox/02-what-is-signer-1-and-what-did-it-do-this-week.html) | Markdown: since-lockbox/02-what-is-signer-1-and-what-did-it-do-this-week.md | The live launch with real money, and the move to new machines.
 - [What is the hub, traderswift-1?](since-lockbox/03-what-is-the-hub-traderswift-1.html) | Markdown: since-lockbox/03-what-is-the-hub-traderswift-1.md | The chain at the centre of TraderSwift, and its validator rotation.

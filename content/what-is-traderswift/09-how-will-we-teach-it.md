@@ -1,7 +1,7 @@
 ---
 title: How will we teach it?
 description: An educational blog on each site, with how-to guides and prompts for your own AI.
-order: 4
+order: 9
 ---
 
 Each of our sites will have a blog like this one.

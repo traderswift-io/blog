@@ -11,37 +11,67 @@
     },
     {
       "title": "What is TraderSwift?",
-      "description": "An open infrastructure layer for agentic and hybrid trading.",
+      "description": "What a trading agent needs, and the open-source parts TraderSwift provides for it.",
       "url": "what-is-traderswift/01-what-is-traderswift.html",
       "markdown": "what-is-traderswift/01-what-is-traderswift.md"
     },
     {
+      "title": "Where is trust not required?",
+      "description": "What makes TraderSwift different. You check what happened, instead of taking anyone's word for it.",
+      "url": "what-is-traderswift/02-where-is-trust-not-required.html",
+      "markdown": "what-is-traderswift/02-where-is-trust-not-required.md"
+    },
+    {
+      "title": "Why is TraderSwift open source?",
+      "description": "If someone else's code manages your keys and your money, reading that code is the bare minimum.",
+      "url": "what-is-traderswift/03-why-is-it-open-source.html",
+      "markdown": "what-is-traderswift/03-why-is-it-open-source.md"
+    },
+    {
+      "title": "Who is TraderSwift for?",
+      "description": "Traders, builders and network participants, and how builders get paid.",
+      "url": "what-is-traderswift/04-who-is-it-for.html",
+      "markdown": "what-is-traderswift/04-who-is-it-for.md"
+    },
+    {
+      "title": "How are trading keys held today, and what goes wrong?",
+      "description": "Where a bot's key usually lives, the ways it leaks, and a live example.",
+      "url": "what-is-traderswift/05-how-are-trading-keys-held-today.html",
+      "markdown": "what-is-traderswift/05-how-are-trading-keys-held-today.md"
+    },
+    {
+      "title": "How does Signer work?",
+      "description": "Where the key comes from, how it is split, how an order is signed, and how you stop it.",
+      "url": "what-is-traderswift/06-how-does-signer-work.html",
+      "markdown": "what-is-traderswift/06-how-does-signer-work.md"
+    },
+    {
       "title": "What is running today?",
       "description": "Signer, the hub chain and the charts data node.",
-      "url": "what-is-traderswift/02-what-is-running-today.html",
-      "markdown": "what-is-traderswift/02-what-is-running-today.md"
+      "url": "what-is-traderswift/07-what-is-running-today.html",
+      "markdown": "what-is-traderswift/07-what-is-running-today.md"
     },
     {
       "title": "What is in the pipeline?",
       "description": "The marketplace, signal providers, Ledger, Vault and Storage.",
-      "url": "what-is-traderswift/03-what-is-in-the-pipeline.html",
-      "markdown": "what-is-traderswift/03-what-is-in-the-pipeline.md"
+      "url": "what-is-traderswift/08-what-is-in-the-pipeline.html",
+      "markdown": "what-is-traderswift/08-what-is-in-the-pipeline.md"
     },
     {
       "title": "How will we teach it?",
       "description": "An educational blog on each site, with how-to guides and prompts for your own AI.",
-      "url": "what-is-traderswift/04-how-will-we-teach-it.html",
-      "markdown": "what-is-traderswift/04-how-will-we-teach-it.md"
+      "url": "what-is-traderswift/09-how-will-we-teach-it.html",
+      "markdown": "what-is-traderswift/09-how-will-we-teach-it.md"
     },
     {
       "title": "Final thoughts",
-      "description": "What to read next.",
-      "url": "what-is-traderswift/05-final-thoughts.html",
-      "markdown": "what-is-traderswift/05-final-thoughts.md"
+      "description": "What TraderSwift is for, and what to read next.",
+      "url": "what-is-traderswift/10-final-thoughts.html",
+      "markdown": "what-is-traderswift/10-final-thoughts.md"
     },
     {
-      "title": "What Is TraderSwift \u2013 The Infrastructure Layer for Agentic Trading",
-      "description": "What TraderSwift is, who it is for, what is running today and what is in the pipeline.",
+      "title": "What Is TraderSwift?",
+      "description": "What TraderSwift is, who it is for, what is running today, and what is in the pipeline.",
       "url": "what-is-traderswift/index.html",
       "markdown": "what-is-traderswift/index.md"
     },
