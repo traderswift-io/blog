@@ -64,7 +64,7 @@ Signer never signs a transfer or a withdrawal. Moving funds stays with the owner
 
 The owner signs one message that revokes the policy.
 
-At our launch on 14 November 2026, the next order after a revoke was refused three blocks later.
+At our launch on 14 November 2026, the policy was revoked on chain, and the next order was refused and recorded three blocks later.
 
 ## Where do I learn more?
 

@@ -34,7 +34,7 @@ There is more than this. A full guide on each risk is planned, and this chapter 
 
 ## What does a leak look like?
 
-On 16 November 2026, a leaked trading key let an attacker take about $10.4 million from one trader's account on Lighter, a perpetuals exchange.
+On 16 November 2026, a leaked trading key let an attacker take about $10.4 million from a trader's accounts on Lighter, a perpetuals exchange, and try for $5.1 million more.
 
 The key did exactly what it was allowed to do.
 
