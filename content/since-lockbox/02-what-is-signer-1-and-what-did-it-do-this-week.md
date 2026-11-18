@@ -24,4 +24,4 @@ The launch key had existed whole before we split it, because it was an exchange 
 
 **17 November: the rotation.** We moved Signer to a new set of machines. The new set passed the same live gate: a refusal, an entry and a close. When the old set was removed, it left four validators and a 3-of-4 signing threshold.
 
-The rotation also found a fault. The new signers had no chain accounts, so their decision records piled up in a local outbox, safely, but off the chain. Once the accounts existed, 22 records went on chain at height 353,836. The rotation checklist now requires a decision record from each new signer before the old set is removed.
+The rotation also found a fault. The new signers had no chain accounts, so their decision records piled up in a local outbox, safely, but off the chain. Once the accounts existed, 22 records went on chain at height 353,836. The next rotation's checklist will check for a decision record from each new signer before the old set is removed.
