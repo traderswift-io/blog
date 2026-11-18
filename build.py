@@ -236,15 +236,9 @@ def build(base_url):
     print(f'Built {page_count} pages in dist/')
 
 
-def render_site(base_url, output_directory):
-    output_directory.mkdir()
-    shutil.copytree(site_directory / 'assets', output_directory / 'assets')
-    favicon_path = output_directory / 'assets' / 'favicon.svg'
-    favicon_initial = f'<text x="20" y="29" text-anchor="middle" fill="#345c46" font-family="Georgia,serif" font-size="30">{escape(site_name[0])}</text>'
-    favicon_path.write_text(favicon_path.read_text(encoding='utf-8').replace('</svg>', favicon_initial + '</svg>'), encoding='utf-8')
-    indexed_pages = []
-    tutorial_cards = []
-    home_markdown = f'# {site_name}\n\n## Guides\n\n'
+def read_guides():
+    guides = []
+    guide_orders = set()
     for tutorial_directory in sorted((site_directory / 'content').iterdir()):
         if not tutorial_directory.is_dir():
             continue
@@ -254,7 +248,29 @@ def render_site(base_url, output_directory):
         if not re.fullmatch(r'[a-z0-9]+(?:-[a-z0-9]+)*', tutorial_slug):
             raise ValueError('Tutorial folder names must be lowercase slugs: ' + tutorial_slug)
         tutorial_metadata, tutorial_body, tutorial_source = read_source(tutorial_directory / 'index.md')
-        guide_number = len(tutorial_cards) + 1
+        guide_order = tutorial_metadata.get('order', '')
+        if not re.fullmatch(r'[0-9]+', guide_order) or int(guide_order) < 1:
+            raise ValueError('Guide order must be a positive integer: ' + tutorial_slug)
+        guide_number = int(guide_order)
+        if guide_number in guide_orders:
+            raise ValueError(f'Duplicate guide order {guide_number}: {tutorial_slug}')
+        guide_orders.add(guide_number)
+        tutorial_source = re.sub(r'^order:[^\r\n]*\r?\n', '', tutorial_source, count=1, flags=re.MULTILINE)
+        guides.append((guide_number, tutorial_directory, tutorial_metadata, tutorial_body, tutorial_source))
+    return sorted(guides, key=lambda guide: guide[0])
+
+
+def render_site(base_url, output_directory):
+    output_directory.mkdir()
+    shutil.copytree(site_directory / 'assets', output_directory / 'assets')
+    favicon_path = output_directory / 'assets' / 'favicon.svg'
+    favicon_initial = f'<text x="20" y="29" text-anchor="middle" fill="#345c46" font-family="Georgia,serif" font-size="30">{escape(site_name[0])}</text>'
+    favicon_path.write_text(favicon_path.read_text(encoding='utf-8').replace('</svg>', favicon_initial + '</svg>'), encoding='utf-8')
+    indexed_pages = []
+    tutorial_cards = []
+    home_markdown = f'# {site_name}\n\n## Guides\n\n'
+    for guide_number, tutorial_directory, tutorial_metadata, tutorial_body, tutorial_source in read_guides():
+        tutorial_slug = tutorial_directory.name
         series = tutorial_metadata.get('series', '')
         series_breadcrumb = f'<span>{escape(series)}</span><span aria-hidden="true">/</span>' if series else ''
         card_eyebrow = f'{escape(series)} <span>/ Guide {guide_number:02}</span>' if series else f'Guide {guide_number:02}'
