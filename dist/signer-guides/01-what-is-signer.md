@@ -8,15 +8,17 @@ After this page you will know what Signer does, whether it fits your trading, an
 
 ## What is Signer?
 
-Signer is threshold signing for agents that trade. A venue key is held in shares by a group of signer machines.
+Signer lets a trading agent place orders without holding the key to the account.
 
-A quorum of them must agree before an order is signed.
+A key is what signs an order at an exchange, which we call a venue. Whoever holds the key can trade the account.
 
-Each signer checks the order against a policy before it signs.
+With Signer, the key is cut into pieces, called shares. Each share sits on a different machine, called a signer.
 
-The policy is written by the owner on a small chain called `signer-1`.
+Enough of the signers must agree before an order is signed. This is called threshold signing.
 
-Every decision, signed or refused, is recorded on that chain.
+Each signer first checks the order against limits the owner writes down, called a policy.
+
+The policy is kept on a small public blockchain called `signer-1`. Every decision, signed or refused, is recorded there too.
 
 Signer is open source under the Apache License 2.0 at github.com/traderswift-io/signer. It is one part of TraderSwift, which we describe as a blockchain infra layer for agentic and hybrid trading.
 
@@ -60,7 +62,7 @@ You can run it as your own chain with your own signers, or follow the guide to r
 Be honest with yourself on this one. Signer is in development, and these limits are real today.
 
 - **In development.** The chain started on 12 November 2026 and the first live orders were on 14 November. That is a short record.
-- **No key for your own account yet.** Outsiders cannot get a key for their own account until the next rotation. Another rotation comes before signers we do not run can join.
+- **No key for your own account yet.** Other people's accounts open after the next rotation of the signers. Another rotation comes before signers we do not run can join.
 - **One venue live.** Hyperliquid is the only venue live today. The code also has Aster and Base, but neither is live.
 - **Fewer rules than you may want.** The policy bounds sizes per market. It has no price band yet. Policy v2 plans one, and we explain it in the policy article.
 - **Interactive signing.** Signing is interactive today, so each order needs several signers online.

@@ -8,9 +8,19 @@ Three parts are running today.
 
 ## Signer
 
-Signer lets an agent trade from a key it cannot hold.
+Signer lets an agent trade from a key it never holds.
 
-The key exists only as shares, held by separate signers that generated it together. Each one checks the owner's written policy before it signs, and every decision goes on a public chain, `signer-1`.
+An agent should not hold its trading key itself. If the agent's machine is broken into, the key goes with it.
+
+Signer can take a key the owner already has, or make a new one.
+
+Either way, the key ends up in pieces, called shares, each on a separate machine. A key Signer makes never exists whole: it is made in pieces, and nobody ever sees the whole key. A key the owner passes in existed whole once, before it was split.
+
+Today there are four shares, on four separate machines. At launch there were three.
+
+To sign an order, any three of the four machines must agree. Each one first checks the order against the owner's written limits.
+
+Those limits, called a policy, are kept on a public blockchain, `signer-1`. Anyone who runs a node can check them, and every yes or no is recorded there.
 
 It has signed live orders since 14 November 2026. Our [Signer guides](../signer-guides/index.html) show how to use it.
 

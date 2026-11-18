@@ -4,9 +4,9 @@ description: What a rotation is, and the three reasons we did one.
 order: 1
 ---
 
-Signer holds a trading key in shares.
+Signer keeps a trading key cut into pieces, called shares. Each share sits on a different machine, called a signer.
 
-Each share sits on a different machine, and a quorum of them must agree before an order is signed. Each one checks the order against the owner's policy on the chain first.
+Enough of the signers must agree before an order is signed. Each one first checks the order against the owner's written limits, called a policy, which are kept on a public blockchain.
 
 A rotation moves that job to a new set of machines.
 

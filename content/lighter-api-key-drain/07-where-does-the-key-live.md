@@ -16,4 +16,4 @@ Each one checks every request against the policy on the chain before it signs.
 
 There is no whole key to leak the way this one leaked.
 
-An attacker would need a quorum of signers, or a delegate key, and a delegate key only reaches as far as its policy.
+An attacker would need enough signers to agree, or a delegate key, and a delegate key only reaches as far as its policy.

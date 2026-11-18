@@ -245,7 +245,7 @@
     },
     {
       "title": "How do I get a Signer key for my own account?",
-      "description": "Outsiders can't get a key yet. What it will take, and the milestones to get there. Planned.",
+      "description": "Keys for your own account aren't open yet. What it will take, and the milestones to get there. Planned.",
       "url": "signer-guides/10-how-do-i-get-a-signer-key-for-my-own-account.html",
       "markdown": "signer-guides/10-how-do-i-get-a-signer-key-for-my-own-account.md"
     },

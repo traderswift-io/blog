@@ -4,9 +4,9 @@ description: The live launch with real money, and the move to new machines.
 order: 2
 ---
 
-Signer holds a trading key in shares across several machines.
+Signer keeps a trading key cut into pieces, called shares, each on a different machine.
 
-A quorum of them must agree to sign, and each one checks the order against the policy on the chain first.
+Enough of those machines must agree to sign an order. Each one first checks the order against the owner's written limits, called a policy, which are kept on the chain.
 
 Every decision, signed or refused, is recorded on the chain.
 

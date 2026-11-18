@@ -1,6 +1,6 @@
 ---
 title: How do I get a Signer key for my own account?
-description: Outsiders can't get a key yet. What it will take, and the milestones to get there. Planned.
+description: Keys for your own account aren't open yet. What it will take, and the milestones to get there. Planned.
 order: 10
 ---
 
@@ -10,7 +10,7 @@ This page is half written on purpose. Today, Signer signs only for accounts we r
 
 The first half explains why. The second half is the milestones.
 
-When outsiders can get a key, this page will be updated with the full steps.
+When keys for your own account open, this page will be updated with the full steps.
 
 Once it opens, you will be able to have Signer hold a trading key for your own exchange account, under a policy you write and sign yourself.
 
@@ -18,7 +18,7 @@ Once it opens, you will be able to have Signer hold a trading key for your own e
 
 No. Signer is live, but only for our own accounts.
 
-Outsiders can't get a key until the next signer rotation.
+Keys for other people's accounts open after the next rotation of the signers.
 
 That is a choice, not a missing feature. The signers running today are sealed: no one can log in to them, including us.
 
@@ -54,7 +54,7 @@ Keep the answer. It is the first draft of the policy you will sign.
 2. **Owner binding.** An owner binds their own account and key with their own wallet.
 3. **Owner policy.** The owner writes and signs a policy with caps.
 4. **A gated live test.** On a small account with real money, the same refusal, entry and close we ran for our own key.
-5. **Open to outsiders.** This page gets the full steps.
+5. **Open to your account.** This page gets the full steps.
 
 ## Final thoughts
 
