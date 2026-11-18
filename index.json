@@ -1,0 +1,91 @@
+{
+  "name": "TraderSwift",
+  "description": "TraderSwift is the infrastructure layer for agentic trading. Guides and build notes.",
+  "base_url": "https://blog.traderswift.io",
+  "pages": [
+    {
+      "title": "Blog",
+      "description": "TraderSwift is the infrastructure layer for agentic trading. Guides and build notes.",
+      "url": "index.html",
+      "markdown": "index.md"
+    },
+    {
+      "title": "What happened to Lockbox?",
+      "description": "Halting and archiving our first chain, and settling on a new name.",
+      "url": "since-lockbox/01-what-happened-to-lockbox.html",
+      "markdown": "since-lockbox/01-what-happened-to-lockbox.md"
+    },
+    {
+      "title": "What is signer-1, and what did it do this week?",
+      "description": "The live launch with real money, and the move to new machines.",
+      "url": "since-lockbox/02-what-is-signer-1-and-what-did-it-do-this-week.html",
+      "markdown": "since-lockbox/02-what-is-signer-1-and-what-did-it-do-this-week.md"
+    },
+    {
+      "title": "What is the hub, traderswift-1?",
+      "description": "The chain at the centre of TraderSwift, and its validator rotation.",
+      "url": "since-lockbox/03-what-is-the-hub-traderswift-1.html",
+      "markdown": "since-lockbox/03-what-is-the-hub-traderswift-1.md"
+    },
+    {
+      "title": "How did Codex become our main builder?",
+      "description": "How a job moves from spec to merge, and what the review panel found.",
+      "url": "since-lockbox/04-how-did-codex-become-our-main-builder.html",
+      "markdown": "since-lockbox/04-how-did-codex-become-our-main-builder.md"
+    },
+    {
+      "title": "What is the wallet, and why does it have no seed phrase?",
+      "description": "One core, three skins, and a device ring instead of a seed phrase.",
+      "url": "since-lockbox/05-what-is-the-wallet-and-why-does-it-have-no-seed.html",
+      "markdown": "since-lockbox/05-what-is-the-wallet-and-why-does-it-have-no-seed.md"
+    },
+    {
+      "title": "Why did we build our own sign-in?",
+      "description": "Passkey and wallet sign-in, and a gate we own.",
+      "url": "since-lockbox/06-why-did-we-build-our-own-sign-in.html",
+      "markdown": "since-lockbox/06-why-did-we-build-our-own-sign-in.md"
+    },
+    {
+      "title": "What are Signals and the desk?",
+      "description": "From a published idea to an executed trade, through Signer.",
+      "url": "since-lockbox/07-what-are-signals-and-the-desk.html",
+      "markdown": "since-lockbox/07-what-are-signals-and-the-desk.md"
+    },
+    {
+      "title": "What else did we start? Storage, the Bus, payments and more",
+      "description": "Storage-1, the Bus, payments on Base, Goose and our own DNS.",
+      "url": "since-lockbox/08-what-else-did-we-start-storage-the-bus-payments.html",
+      "markdown": "since-lockbox/08-what-else-did-we-start-storage-the-bus-payments.md"
+    },
+    {
+      "title": "What did we move onto our own servers?",
+      "description": "Our own rack servers, Proxmox, and a reboot that tested the hub.",
+      "url": "since-lockbox/09-what-did-we-move-onto-our-own-servers.html",
+      "markdown": "since-lockbox/09-what-did-we-move-onto-our-own-servers.md"
+    },
+    {
+      "title": "What went wrong, and what did we change?",
+      "description": "The faults we found this week, and the rules we changed.",
+      "url": "since-lockbox/10-what-went-wrong-and-what-did-we-change.html",
+      "markdown": "since-lockbox/10-what-went-wrong-and-what-did-we-change.md"
+    },
+    {
+      "title": "What is next?",
+      "description": "What each part of the system needs next.",
+      "url": "since-lockbox/11-what-is-next.html",
+      "markdown": "since-lockbox/11-what-is-next.md"
+    },
+    {
+      "title": "Final thoughts",
+      "description": "What the week adds up to.",
+      "url": "since-lockbox/12-final-thoughts.html",
+      "markdown": "since-lockbox/12-final-thoughts.md"
+    },
+    {
+      "title": "Since Lockbox \u2013 A Week of Building Signer and TraderSwift",
+      "description": "What we built between 11 and 18 November 2026, what broke, and what we changed.",
+      "url": "since-lockbox/index.html",
+      "markdown": "since-lockbox/index.md"
+    }
+  ]
+}

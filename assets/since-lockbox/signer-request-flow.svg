@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="390" height="1208" viewBox="0 0 390 1208" role="img" aria-labelledby="title description">
+<title id="title">Signer request flow</title>
+<desc id="description">Delegate to coordinator to policy-checking signers, chain records and venue submission.</desc>
+<style>text{font-family:system-ui,sans-serif;fill:#17212b}</style>
+<rect width="390" height="1208" rx="12" fill="#f8fafc"/>
+<text x="24" y="38" font-size="24" font-weight="bold" text-anchor="start">Signer request flow</text>
+<text x="24" y="68" font-size="16" font-weight="normal" text-anchor="start">Logical flow; deployment details</text>
+<text x="24" y="90" font-size="16" font-weight="normal" text-anchor="start">omitted.</text>
+<rect x="24" y="124" width="342" height="102" rx="8" fill="#eef1f4" stroke="#74808b"/>
+<text x="40" y="155" font-size="21" font-weight="bold" text-anchor="start">Delegate</text>
+<text x="40" y="182" font-size="17" font-weight="normal" text-anchor="start">Signs an intent for an allowed</text>
+<text x="40" y="205" font-size="17" font-weight="normal" text-anchor="start">action.</text>
+<line x1="195" y1="230" x2="195" y2="274" stroke="#34424f" stroke-width="2"/>
+<path d="M 190 272 L 195 281 L 200 272" fill="none" stroke="#34424f" stroke-width="2"/>
+<text x="210" y="260" font-size="16" font-weight="normal" text-anchor="start">intent</text>
+<rect x="24" y="291" width="342" height="102" rx="8" fill="#eef1f4" stroke="#74808b"/>
+<text x="40" y="322" font-size="21" font-weight="bold" text-anchor="start">Coordinator</text>
+<text x="40" y="349" font-size="17" font-weight="normal" text-anchor="start">Routes the request to the</text>
+<text x="40" y="372" font-size="17" font-weight="normal" text-anchor="start">signing committee.</text>
+<line x1="195" y1="397" x2="195" y2="441" stroke="#34424f" stroke-width="2"/>
+<path d="M 190 439 L 195 448 L 200 439" fill="none" stroke="#34424f" stroke-width="2"/>
+<text x="210" y="427" font-size="16" font-weight="normal" text-anchor="start">request</text>
+<rect x="24" y="458" width="342" height="194" rx="8" fill="#eef1f4" stroke="#74808b"/>
+<text x="40" y="489" font-size="21" font-weight="bold" text-anchor="start">Signers ↔ signer-1</text>
+<text x="40" y="516" font-size="17" font-weight="normal" text-anchor="start">Each signer checks</text>
+<text x="40" y="539" font-size="17" font-weight="normal" text-anchor="start">authorization, policy and</text>
+<text x="40" y="562" font-size="17" font-weight="normal" text-anchor="start">expiry.</text>
+<text x="40" y="585" font-size="17" font-weight="normal" text-anchor="start">Chain: policy and decision</text>
+<text x="40" y="608" font-size="17" font-weight="normal" text-anchor="start">records.</text>
+<text x="40" y="631" font-size="17" font-weight="normal" text-anchor="start">Refusals stop here.</text>
+<line x1="195" y1="656" x2="195" y2="700" stroke="#34424f" stroke-width="2"/>
+<path d="M 190 698 L 195 707 L 200 698" fill="none" stroke="#34424f" stroke-width="2"/>
+<text x="210" y="686" font-size="16" font-weight="normal" text-anchor="start">if allowed</text>
+<rect x="24" y="717" width="342" height="102" rx="8" fill="#eef1f4" stroke="#74808b"/>
+<text x="40" y="748" font-size="21" font-weight="bold" text-anchor="start">Threshold signing</text>
+<text x="40" y="775" font-size="17" font-weight="normal" text-anchor="start">Launch: 2-of-3.</text>
+<text x="40" y="798" font-size="17" font-weight="normal" text-anchor="start">After 17 Nov: 3-of-4.</text>
+<line x1="195" y1="823" x2="195" y2="867" stroke="#34424f" stroke-width="2"/>
+<path d="M 190 865 L 195 874 L 200 865" fill="none" stroke="#34424f" stroke-width="2"/>
+<text x="210" y="853" font-size="16" font-weight="normal" text-anchor="start">signature</text>
+<rect x="24" y="884" width="342" height="102" rx="8" fill="#eef1f4" stroke="#74808b"/>
+<text x="40" y="915" font-size="21" font-weight="bold" text-anchor="start">Coordinator → venue</text>
+<text x="40" y="942" font-size="17" font-weight="normal" text-anchor="start">Posts the signed action.</text>
+<text x="40" y="965" font-size="17" font-weight="normal" text-anchor="start">Venue accepts or refuses it.</text>
+<text x="24" y="1018" font-size="16" font-weight="normal" text-anchor="start">The chain is an authority and audit</text>
+<text x="24" y="1040" font-size="16" font-weight="normal" text-anchor="start">record, not the venue. Posting is a</text>
+<text x="24" y="1062" font-size="16" font-weight="normal" text-anchor="start">separate step.</text>
+<text x="24" y="1094" font-size="16" font-weight="normal" text-anchor="start">Source: TraderSwift build and chain records.</text>
+</svg>

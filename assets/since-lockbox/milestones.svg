@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="390" height="1669" viewBox="0 0 390 1669" role="img" aria-labelledby="title description">
+<title id="title">Since Lockbox milestones</title>
+<desc id="description">Thirteen dated milestones, with design, test and unverified events labelled.</desc>
+<style>text{font-family:system-ui,sans-serif;fill:#17212b}</style>
+<rect width="390" height="1669" rx="12" fill="#f8fafc"/>
+<text x="24" y="38" font-size="24" font-weight="bold" text-anchor="start">Since Lockbox</text>
+<text x="24" y="68" font-size="16" font-weight="normal" text-anchor="start">Dated milestones · 11–18 Nov 2026</text>
+<rect x="24" y="102" width="342" height="93" rx="8" fill="#eef1f4" stroke="#74808b"/>
+<text x="38" y="128" font-size="17" font-weight="normal" text-anchor="start">11 Nov · Reported</text>
+<text x="38" y="158" font-size="19" font-weight="bold" text-anchor="start">Lockbox halted</text>
+<rect x="24" y="207" width="342" height="93" rx="8" fill="#eef1f4" stroke="#74808b"/>
+<text x="38" y="233" font-size="17" font-weight="normal" text-anchor="start">12 Nov · Reported</text>
+<text x="38" y="263" font-size="19" font-weight="bold" text-anchor="start">Signer name settled</text>
+<rect x="24" y="312" width="342" height="93" rx="8" fill="#eef1f4" stroke="#74808b"/>
+<text x="38" y="338" font-size="17" font-weight="normal" text-anchor="start">12 Nov · Reported</text>
+<text x="38" y="368" font-size="19" font-weight="bold" text-anchor="start">Signer-1 started</text>
+<rect x="24" y="417" width="342" height="93" rx="8" fill="#eef1f4" stroke="#74808b"/>
+<text x="38" y="443" font-size="17" font-weight="normal" text-anchor="start">14 Nov · Reported</text>
+<text x="38" y="473" font-size="19" font-weight="bold" text-anchor="start">Signer launch published</text>
+<rect x="24" y="522" width="342" height="93" rx="8" fill="#eef1f4" stroke="#74808b"/>
+<text x="38" y="548" font-size="17" font-weight="normal" text-anchor="start">14 Nov · Reported</text>
+<text x="38" y="578" font-size="19" font-weight="bold" text-anchor="start">Hub live: block 1</text>
+<rect x="24" y="627" width="342" height="93" rx="8" fill="#eef1f4" stroke="#74808b"/>
+<text x="38" y="653" font-size="17" font-weight="normal" text-anchor="start">15 Nov · Reported</text>
+<text x="38" y="683" font-size="19" font-weight="bold" text-anchor="start">Second Codex ready</text>
+<rect x="24" y="732" width="342" height="93" rx="8" fill="#eef1f4" stroke="#74808b"/>
+<text x="38" y="758" font-size="17" font-weight="normal" text-anchor="start">15 Nov · Reported</text>
+<text x="38" y="788" font-size="19" font-weight="bold" text-anchor="start">Signals Desk published</text>
+<rect x="24" y="837" width="342" height="93" rx="8" fill="#eef1f4" stroke="#74808b"/>
+<text x="38" y="863" font-size="17" font-weight="normal" text-anchor="start">16 Nov · Design accepted</text>
+<text x="38" y="893" font-size="19" font-weight="bold" text-anchor="start">Gate and Bus designs</text>
+<rect x="24" y="942" width="342" height="93" rx="8" fill="#eef1f4" stroke="#74808b"/>
+<text x="38" y="968" font-size="17" font-weight="normal" text-anchor="start">16 Nov · Reported</text>
+<text x="38" y="998" font-size="19" font-weight="bold" text-anchor="start">Pathiel published</text>
+<rect x="24" y="1047" width="342" height="93" rx="8" fill="#eef1f4" stroke="#74808b"/>
+<text x="38" y="1073" font-size="17" font-weight="normal" text-anchor="start">17 Nov · Reported</text>
+<text x="38" y="1103" font-size="19" font-weight="bold" text-anchor="start">Hub set rotated</text>
+<rect x="24" y="1152" width="342" height="93" rx="8" fill="#eef1f4" stroke="#74808b"/>
+<text x="38" y="1178" font-size="17" font-weight="normal" text-anchor="start">17 Nov · Reported</text>
+<text x="38" y="1208" font-size="19" font-weight="bold" text-anchor="start">Signer set rotated</text>
+<rect x="24" y="1257" width="342" height="93" rx="8" fill="#eef1f4" stroke="#74808b"/>
+<text x="38" y="1283" font-size="17" font-weight="normal" text-anchor="start">17 Nov · Review</text>
+<text x="38" y="1313" font-size="19" font-weight="bold" text-anchor="start">Crypto panel reported</text>
+<rect x="24" y="1362" width="342" height="93" rx="8" fill="#eef1f4" stroke="#74808b"/>
+<text x="38" y="1388" font-size="17" font-weight="normal" text-anchor="start">18 Nov · Test passed</text>
+<text x="38" y="1418" font-size="19" font-weight="bold" text-anchor="start">Storage launch test</text>
+<text x="24" y="1479" font-size="16" font-weight="normal" text-anchor="start">Dates are documentary milestones,</text>
+<text x="24" y="1501" font-size="16" font-weight="normal" text-anchor="start">not a continuous deployment log.</text>
+<text x="24" y="1533" font-size="16" font-weight="normal" text-anchor="start">Source: TraderSwift build and chain records.</text>
+</svg>
