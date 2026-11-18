@@ -323,7 +323,7 @@
     },
     {
       "title": "Defined Trading Policy \u2013 What the Lighter API-Key Drain Shows",
-      "description": "A leaked trading key drained about $15.5 million from a market maker's accounts on Lighter. What a defined policy at the key would have stopped.",
+      "description": "A leaked trading key took about $10.4 million from a market maker's account on Lighter. What a defined policy at the key would have stopped.",
       "url": "lighter-api-key-drain/index.html",
       "markdown": "lighter-api-key-drain/index.md"
     }

@@ -16,7 +16,7 @@ A close-only order is exempt from the size caps, so a trader can always get out.
 
 The attacker uses that: they rest their own order at an absurd price, then send a close-only order from the victim's key that fills against it. A victim short 1,000 contracts at $10 can be made to buy them back at $10,000.
 
-| Policy fields in force | Largest tested value moved to the attacker | Share of the $15.49M drained |
+| Policy fields in force | Largest tested value moved to the attacker | Share of the $15.49M the attacker went for |
 |---|---|---|
 | Live today: markets, size caps, owner revoke | About $15.49M | About 100% |
 | Plus the planned fields: post-only, notional caps | $34,000 to $911,000 | 0.7% to 8.8% |

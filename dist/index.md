@@ -12,4 +12,4 @@
 
 ## Case studies
 
-- [Defined Trading Policy – What the Lighter API-Key Drain Shows](lighter-api-key-drain/index.md): A leaked trading key drained about $15.5 million from a market maker's accounts on Lighter. What a defined policy at the key would have stopped.
+- [Defined Trading Policy – What the Lighter API-Key Drain Shows](lighter-api-key-drain/index.md): A leaked trading key took about $10.4 million from a market maker's account on Lighter. What a defined policy at the key would have stopped.

@@ -68,4 +68,4 @@ Static HTML and Markdown.
 - [Where does the key live?](lighter-api-key-drain/07-where-does-the-key-live.html) | Markdown: lighter-api-key-drain/07-where-does-the-key-live.md | Nowhere, whole.
 - [Where is Signer today?](lighter-api-key-drain/08-where-is-signer-today.html) | Markdown: lighter-api-key-drain/08-where-is-signer-today.md | Live on Hyperliquid since 14 November 2026, on a small live account with real money.
 - [Final thoughts](lighter-api-key-drain/09-final-thoughts.html) | Markdown: lighter-api-key-drain/09-final-thoughts.md | A defined policy around every trading key.
-- [Defined Trading Policy – What the Lighter API-Key Drain Shows](lighter-api-key-drain/index.html) | Markdown: lighter-api-key-drain/index.md | A leaked trading key drained about $15.5 million from a market maker's accounts on Lighter. What a defined policy at the key would have stopped.
+- [Defined Trading Policy – What the Lighter API-Key Drain Shows](lighter-api-key-drain/index.html) | Markdown: lighter-api-key-drain/index.md | A leaked trading key took about $10.4 million from a market maker's account on Lighter. What a defined policy at the key would have stopped.
