@@ -6,9 +6,10 @@ Site: https://blog.traderswift.io
 
 Static HTML and Markdown.
 
-## Pages
+[Home](index.html) | Markdown: index.md
 
-- [Blog](index.html) | Markdown: index.md | TraderSwift is the infrastructure layer for agentic trading. Guides and build notes.
+## Updates
+
 - [What happened to Lockbox?](since-lockbox/01-what-happened-to-lockbox.html) | Markdown: since-lockbox/01-what-happened-to-lockbox.md | Halting and archiving our first chain, and settling on a new name.
 - [What is signer-1, and what did it do this week?](since-lockbox/02-what-is-signer-1-and-what-did-it-do-this-week.html) | Markdown: since-lockbox/02-what-is-signer-1-and-what-did-it-do-this-week.md | The live launch with real money, and the move to new machines.
 - [What is the hub, traderswift-1?](since-lockbox/03-what-is-the-hub-traderswift-1.html) | Markdown: since-lockbox/03-what-is-the-hub-traderswift-1.md | The chain at the centre of TraderSwift, and its validator rotation.

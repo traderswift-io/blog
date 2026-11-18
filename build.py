@@ -98,7 +98,7 @@ def read_source(source_path):
     metadata = {}
     for line in lines[1:closing_line]:
         name, separator, value = line.partition(':')
-        if not separator or name not in ('title', 'description', 'order', 'series', 'level') or name in metadata:
+        if not separator or name not in ('title', 'description', 'order', 'series', 'level', 'kind') or name in metadata:
             raise ValueError('Invalid front matter: ' + source_path.name)
         metadata[name] = value.strip()
     if not metadata.get('title') or not metadata.get('description'):
@@ -205,7 +205,7 @@ def page_shell(title, description, body, depth=0):
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
-<header class="site-header"><a class="wordmark" href="{prefix}index.html" aria-label="{escape(site_name)} home">{escape(site_name)}</a><nav aria-label="Site"><a href="{prefix}index.html#guides">The guides</a><a class="source-link" href="{prefix}llms.txt">For agents ↗</a>{theme_switch}</nav></header>
+<header class="site-header"><a class="wordmark" href="{prefix}index.html" aria-label="{escape(site_name)} home">{escape(site_name)}</a><nav aria-label="Site"><a href="{prefix}index.html#updates">Updates</a><a href="{prefix}index.html#guides">Guides</a><a class="source-link" href="{prefix}llms.txt">For agents ↗</a>{theme_switch}</nav></header>
 <main id="main">{body}</main>
 <footer class="site-footer"><span>{escape(site_name)}</span><nav aria-label="Resources"><a href="{prefix}index.json">Index</a><a href="{prefix}llms.txt">Plain text</a><a href="{prefix}sitemap.xml">Sitemap</a></nav></footer>
 </body>
@@ -248,16 +248,19 @@ def read_guides():
         if not re.fullmatch(r'[a-z0-9]+(?:-[a-z0-9]+)*', tutorial_slug):
             raise ValueError('Tutorial folder names must be lowercase slugs: ' + tutorial_slug)
         tutorial_metadata, tutorial_body, tutorial_source = read_source(tutorial_directory / 'index.md')
+        kind = tutorial_metadata.get('kind')
+        if kind not in ('update', 'guide'):
+            raise ValueError('Kind must be update or guide: ' + tutorial_slug)
         guide_order = tutorial_metadata.get('order', '')
         if not re.fullmatch(r'[0-9]+', guide_order) or int(guide_order) < 1:
-            raise ValueError('Guide order must be a positive integer: ' + tutorial_slug)
+            raise ValueError('Content order must be a positive integer: ' + tutorial_slug)
         guide_number = int(guide_order)
-        if guide_number in guide_orders:
-            raise ValueError(f'Duplicate guide order {guide_number}: {tutorial_slug}')
-        guide_orders.add(guide_number)
+        if (kind, guide_number) in guide_orders:
+            raise ValueError(f'Duplicate {kind} order {guide_number}: {tutorial_slug}')
+        guide_orders.add((kind, guide_number))
         tutorial_source = re.sub(r'^order:[^\r\n]*\r?\n', '', tutorial_source, count=1, flags=re.MULTILINE)
         guides.append((guide_number, tutorial_directory, tutorial_metadata, tutorial_body, tutorial_source))
-    return sorted(guides, key=lambda guide: guide[0])
+    return sorted(guides, key=lambda guide: (guide[2]['kind'] != 'update', guide[0]))
 
 
 def render_site(base_url, output_directory):
@@ -267,13 +270,20 @@ def render_site(base_url, output_directory):
     favicon_initial = f'<text x="20" y="29" text-anchor="middle" fill="#345c46" font-family="Georgia,serif" font-size="30">{escape(site_name[0])}</text>'
     favicon_path.write_text(favicon_path.read_text(encoding='utf-8').replace('</svg>', favicon_initial + '</svg>'), encoding='utf-8')
     indexed_pages = []
-    tutorial_cards = []
-    home_markdown = f'# {site_name}\n\n## Guides\n\n'
+    tutorial_cards = {'update': [], 'guide': []}
+    grouped_markdown = {'update': [], 'guide': []}
+    grouped_pages = {'update': [], 'guide': []}
     for guide_number, tutorial_directory, tutorial_metadata, tutorial_body, tutorial_source in read_guides():
         tutorial_slug = tutorial_directory.name
+        kind = tutorial_metadata['kind']
+        first_page = len(indexed_pages)
         series = tutorial_metadata.get('series', '')
         series_breadcrumb = f'<span>{escape(series)}</span><span aria-hidden="true">/</span>' if series else ''
-        card_eyebrow = f'{escape(series)} <span>/ Guide {guide_number:02}</span>' if series else f'Guide {guide_number:02}'
+        contents_eyebrow = f'<p class="eyebrow">Update {guide_number:02}</p>' if kind == 'update' else ''
+        card_eyebrow = contents_eyebrow
+        if series:
+            card_eyebrow += f'<p class="eyebrow">{escape(series)}</p>'
+        card_link = 'Read the update' if kind == 'update' else 'Explore the guide'
         level = tutorial_metadata.get('level', '')
         level_label = f'<span>{escape(level)}</span>' if level else ''
         chapters = []
@@ -304,30 +314,43 @@ def render_site(base_url, output_directory):
                 next_chapter = chapters[chapter_index + 1]
                 navigation += f'<a rel="next" href="{escape(next_chapter[1].with_suffix(".html").name)}"><span>Next chapter →</span><strong>{escape(next_chapter[2]["title"])}</strong></a>'
             else:
-                navigation += '<a href="index.html"><span>Guide complete ✓</span><strong>Return to the contents</strong></a>'
+                navigation += f'<a href="index.html"><span>{kind.capitalize()} complete ✓</span><strong>Return to the contents</strong></a>'
             progress_links = ''.join(f'<a href="{escape(chapter[1].with_suffix(".html").name)}" aria-label="Chapter {index + 1}: {escape(chapter[2]["title"])}"' + (' aria-current="page"' if index == chapter_index else '') + f'>{index + 1:02}</a>' for index, chapter in enumerate(chapters))
             rendered_body = render_markdown(markdown_body, output_directory / tutorial_slug / filename)
-            body = f'''<div class="reading-layout"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="../index.html">The guides</a><span aria-hidden="true">/</span><a href="index.html">{escape(tutorial_metadata['title'])}</a></nav>
+            body = f'''<div class="reading-layout"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="../index.html">Home</a><span aria-hidden="true">/</span><a href="index.html">{escape(tutorial_metadata['title'])}</a></nav>
 <div class="reading-topline"><p class="eyebrow">Chapter {chapter_index + 1:02} <span>/ {len(chapters):02}</span></p><nav class="chapter-progress" aria-label="Chapters">{progress_links}</nav></div>
-<article><header class="article-header"><h1>{escape(metadata['title'])}</h1><p class="standfirst">{escape(metadata['description'])}</p><div class="article-meta"><span>{escape(site_name)} guide</span><span>{minutes} min read</span><a href="{escape(source_path.name)}">Read Markdown ↗</a></div></header><div class="prose">{rendered_body}</div></article>
+<article><header class="article-header"><h1>{escape(metadata['title'])}</h1><p class="standfirst">{escape(metadata['description'])}</p><div class="article-meta"><span>{escape(site_name)} {kind}</span><span>{minutes} min read</span><a href="{escape(source_path.name)}">Read Markdown ↗</a></div></header><div class="prose">{rendered_body}</div></article>
 <nav class="chapter-navigation" aria-label="Chapter navigation">{navigation}</nav><p class="reading-hint">One chapter at a time. Use the links to keep reading, or swipe on touch screens.</p></div>'''
             indexed_pages.append(write_page(output_directory, f'{tutorial_slug}/{filename}', metadata['title'], metadata['description'], body, source, 1))
         contents_markdown = tutorial_source + '\n\n## Chapters\n\n' + '\n'.join(f'{index + 1}. [{chapter[2]["title"]}]({chapter[1].name})' for index, chapter in enumerate(chapters)) + '\n'
         contents_intro = render_markdown(tutorial_body, output_directory / tutorial_slug / 'index.html')
         chapter_count = f'<span class="chapter-count">{len(chapters)}</span>' if site_skin == 'control' else str(len(chapters))
-        contents_body = f'''<div class="contents-layout"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="../index.html">The guides</a><span aria-hidden="true">/</span>{series_breadcrumb}<span>{escape(tutorial_metadata['title'])}</span></nav><p class="eyebrow">Guide {guide_number:02}</p><h1>{escape(tutorial_metadata['title'])}</h1><p class="standfirst">{escape(tutorial_metadata['description'])}</p><div class="guide-meta"><span>{chapter_count} chapters</span><span>{total_minutes} min read</span>{level_label}</div><a class="button" rel="next" href="{escape(chapters[0][1].with_suffix('.html').name)}">Start with chapter 01 <span aria-hidden="true">→</span></a><div class="contents-intro prose">{contents_intro}</div><div class="section-heading"><h2>Table of contents</h2><a href="index.md">Markdown ↗</a></div><ol class="chapter-list">{''.join(chapter_rows)}</ol><a class="text-link" href="{escape(chapters[0][1].with_suffix('.html').name)}">Start with chapter 01 <span aria-hidden="true">→</span></a></div>'''
+        contents_body = f'''<div class="contents-layout"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="../index.html">Home</a><span aria-hidden="true">/</span>{series_breadcrumb}<span>{escape(tutorial_metadata['title'])}</span></nav>{contents_eyebrow}<h1>{escape(tutorial_metadata['title'])}</h1><p class="standfirst">{escape(tutorial_metadata['description'])}</p><div class="guide-meta"><span>{chapter_count} chapters</span><span>{total_minutes} min read</span>{level_label}</div><a class="button" rel="next" href="{escape(chapters[0][1].with_suffix('.html').name)}">Start with chapter 01 <span aria-hidden="true">→</span></a><div class="contents-intro prose">{contents_intro}</div><div class="section-heading"><h2>Table of contents</h2><a href="index.md">Markdown ↗</a></div><ol class="chapter-list">{''.join(chapter_rows)}</ol><a class="text-link" href="{escape(chapters[0][1].with_suffix('.html').name)}">Start with chapter 01 <span aria-hidden="true">→</span></a></div>'''
         indexed_pages.append(write_page(output_directory, f'{tutorial_slug}/index.html', tutorial_metadata['title'], tutorial_metadata['description'], contents_body, contents_markdown, 1))
-        tutorial_cards.append(f'<article class="guide-card"><div class="card-copy"><p class="eyebrow">{card_eyebrow}</p><h3><a href="{escape(tutorial_slug)}/index.html">{escape(tutorial_metadata["title"])}</a></h3><p>{escape(tutorial_metadata["description"])}</p><div class="card-bottom"><span>{chapter_count} chapters <span aria-hidden="true">·</span> {total_minutes} min read</span><a href="{escape(tutorial_slug)}/index.html">Explore the guide <span aria-hidden="true">↗</span></a></div></div></article>')
-        home_markdown += f'- [{tutorial_metadata["title"]}]({tutorial_slug}/index.md): {tutorial_metadata["description"]}\n'
+        tutorial_cards[kind].append(f'<article class="guide-card"><div class="card-copy">{card_eyebrow}<h3><a href="{escape(tutorial_slug)}/index.html">{escape(tutorial_metadata["title"])}</a></h3><p>{escape(tutorial_metadata["description"])}</p><div class="card-bottom"><span>{chapter_count} chapters <span aria-hidden="true">·</span> {total_minutes} min read</span><a href="{escape(tutorial_slug)}/index.html">{card_link} <span aria-hidden="true">↗</span></a></div></div></article>')
+        grouped_markdown[kind].append(f'- [{tutorial_metadata["title"]}]({tutorial_slug}/index.md): {tutorial_metadata["description"]}')
+        grouped_pages[kind].extend(indexed_pages[first_page:])
     home_heading = f'<h1>{escape(site_name)}</h1>' if site_skin == 'light' else ''
     tagline = f'<p class="tagline">{escape(site_tagline)}</p>' if site_tagline else ''
-    guides_heading = 'h1' if site_skin == 'control' else 'h2'
-    home_body = f'''<div class="home-layout"><section class="home-hero">{home_heading}{tagline}</section><section id="guides" aria-labelledby="guides-heading"><div class="section-heading"><{guides_heading} id="guides-heading">The guides</{guides_heading}><span>{len(tutorial_cards)} {"guide" if len(tutorial_cards) == 1 else "guides"}</span></div>{''.join(tutorial_cards)}</section></div>'''
+    sections = []
+    home_markdown = f'# {site_name}\n'
+    for kind, title in (('update', 'Updates'), ('guide', 'Guides')):
+        cards = tutorial_cards[kind]
+        if not cards:
+            continue
+        heading = 'h1' if site_skin == 'control' and not sections else 'h2'
+        section_id = kind + 's'
+        count_label = kind if len(cards) == 1 else section_id
+        sections.append(f'<section id="{section_id}" aria-labelledby="{section_id}-heading"><div class="section-heading"><{heading} id="{section_id}-heading">{title}</{heading}><span>{len(cards)} {count_label}</span></div>{"".join(cards)}</section>')
+        home_markdown += f'\n## {title}\n\n' + '\n'.join(grouped_markdown[kind]) + '\n'
+    home_body = f'<div class="home-layout"><section class="home-hero">{home_heading}{tagline}</section>{"".join(sections)}</div>'
     indexed_pages.insert(0, write_page(output_directory, 'index.html', 'Blog', site_description, home_body, home_markdown))
     (output_directory / 'index.json').write_text(json.dumps({'name': site_name, 'description': site_description, 'base_url': base_url.rstrip('/'), 'pages': indexed_pages}, indent=2) + '\n', encoding='utf-8')
-    plain_index = f'# {site_name}\n\n{site_description}\n\nSite: {base_url}\n\nStatic HTML and Markdown.\n\n## Pages\n\n'
-    plain_index += '\n'.join(f'- [{page["title"]}]({page["url"]}) | Markdown: {page["markdown"]} | {page["description"]}' for page in indexed_pages)
-    (output_directory / 'llms.txt').write_text(plain_index + '\n', encoding='utf-8')
+    plain_index = f'# {site_name}\n\n{site_description}\n\nSite: {base_url}\n\nStatic HTML and Markdown.\n\n[Home](index.html) | Markdown: index.md\n'
+    for kind, title in (('update', 'Updates'), ('guide', 'Guides')):
+        if grouped_pages[kind]:
+            plain_index += f'\n## {title}\n\n' + '\n'.join(f'- [{page["title"]}]({page["url"]}) | Markdown: {page["markdown"]} | {page["description"]}' for page in grouped_pages[kind]) + '\n'
+    (output_directory / 'llms.txt').write_text(plain_index.rstrip() + '\n', encoding='utf-8')
     locations = ''.join(f'<url><loc>{escape(base_url.rstrip("/") + "/" + page["url"])}</loc></url>' for page in indexed_pages)
     (output_directory / 'sitemap.xml').write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' + locations + '</urlset>\n', encoding='utf-8')
     return len(indexed_pages)

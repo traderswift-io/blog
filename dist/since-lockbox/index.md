@@ -1,6 +1,7 @@
 ---
 title: Since Lockbox – A Week of Building Signer and TraderSwift
 description: What we built between 11 and 18 November 2026, what broke, and what we changed.
+kind: update
 ---
 
 On 11 November we halted our first chain, Lockbox, and archived it. Seven days later, we have a new signing chain with live orders behind it, a hub chain, a wallet design, our own sign-in, a storage chain that passed its first launch test, and a build line where most of the code is written by Codex.
