@@ -266,6 +266,66 @@
       "description": "Twelve how-tos for people interested in Signer, each with steps and prompts for your own agent. Some are planned, and say so.",
       "url": "signer-guides/index.html",
       "markdown": "signer-guides/index.md"
+    },
+    {
+      "title": "What happened?",
+      "description": "The timeline of 16 November 2026, from Lighter's public data.",
+      "url": "lighter-api-key-drain/01-what-happened.html",
+      "markdown": "lighter-api-key-drain/01-what-happened.md"
+    },
+    {
+      "title": "Who else paid for it?",
+      "description": "One account's key leaked, and every trader on the exchange was locked in.",
+      "url": "lighter-api-key-drain/02-who-else-paid-for-it.html",
+      "markdown": "lighter-api-key-drain/02-who-else-paid-for-it.md"
+    },
+    {
+      "title": "How did the money leave?",
+      "description": "Five steps, with nothing but a trading key.",
+      "url": "lighter-api-key-drain/03-how-did-the-money-leave.html",
+      "markdown": "lighter-api-key-drain/03-how-did-the-money-leave.md"
+    },
+    {
+      "title": "What would the attacker try next?",
+      "description": "With only a trading key, the attacker has to move value by trading.",
+      "url": "lighter-api-key-drain/04-what-would-the-attacker-try-next.html",
+      "markdown": "lighter-api-key-drain/04-what-would-the-attacker-try-next.md"
+    },
+    {
+      "title": "What policy would this market maker have set?",
+      "description": "Two delegate keys, and what two AI models set blind.",
+      "url": "lighter-api-key-drain/05-what-policy-would-this-market-maker-have-set.html",
+      "markdown": "lighter-api-key-drain/05-what-policy-would-this-market-maker-have-set.md"
+    },
+    {
+      "title": "How far would the attacker have got?",
+      "description": "A replay of the attacker against each policy, and the gap it found.",
+      "url": "lighter-api-key-drain/06-how-far-would-the-attacker-have-got.html",
+      "markdown": "lighter-api-key-drain/06-how-far-would-the-attacker-have-got.md"
+    },
+    {
+      "title": "Where does the key live?",
+      "description": "Nowhere, whole.",
+      "url": "lighter-api-key-drain/07-where-does-the-key-live.html",
+      "markdown": "lighter-api-key-drain/07-where-does-the-key-live.md"
+    },
+    {
+      "title": "Where is Signer today?",
+      "description": "Live on Hyperliquid since 14 November 2026, on a small live account with real money.",
+      "url": "lighter-api-key-drain/08-where-is-signer-today.html",
+      "markdown": "lighter-api-key-drain/08-where-is-signer-today.md"
+    },
+    {
+      "title": "Final thoughts",
+      "description": "A defined policy around every trading key.",
+      "url": "lighter-api-key-drain/09-final-thoughts.html",
+      "markdown": "lighter-api-key-drain/09-final-thoughts.md"
+    },
+    {
+      "title": "Defined Trading Policy \u2013 What the Lighter API-Key Drain Shows",
+      "description": "A leaked trading key drained about $15.5 million from a market maker's accounts on Lighter. What a defined policy at the key would have stopped.",
+      "url": "lighter-api-key-drain/index.html",
+      "markdown": "lighter-api-key-drain/index.md"
     }
   ]
 }

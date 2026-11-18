@@ -9,3 +9,7 @@
 ## Guides
 
 - [Signer – How to Run, Test and Trade with It](signer-guides/index.md): Twelve how-tos for people interested in Signer, each with steps and prompts for your own agent. Some are planned, and say so.
+
+## Case studies
+
+- [Defined Trading Policy – What the Lighter API-Key Drain Shows](lighter-api-key-drain/index.md): A leaked trading key drained about $15.5 million from a market maker's accounts on Lighter. What a defined policy at the key would have stopped.
