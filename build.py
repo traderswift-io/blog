@@ -26,6 +26,11 @@ if not isinstance(site_tagline, str):
     raise ValueError('site.json tagline must be a string')
 link_pattern = r'!?\[([^\]]*)\]\(([^\s)]+)(?: "([^"\n]*)")?\)'
 token_pattern = re.compile(r'(`[^`]+`|!?\[[^\]]*\]\([^\s)]+(?: "[^"\n]*")?\)|\*\*[^*]+\*\*|\*[^*]+\*|_[^_]+_)')
+content_kinds = {
+    'update': ('Updates', 'updates', 'update', 'Read the update'),
+    'guide': ('Guides', 'guides', 'guide', 'Explore the guide'),
+    'case-study': ('Case studies', 'case-studies', 'case study', 'Read the case study'),
+}
 
 
 def escape(value):
@@ -189,7 +194,7 @@ def render_markdown(source, destination):
 
 def page_shell(title, description, body, section_kinds, depth=0):
     prefix = '../' * depth
-    section_links = ''.join(f'<a href="{prefix}index.html#{kind}s">{kind.capitalize()}s</a>' for kind in section_kinds)
+    section_links = ''.join(f'<a href="{prefix}index.html#{content_kinds[kind][1]}">{content_kinds[kind][0]}</a>' for kind in section_kinds)
     theme_switch = '''<button class="theme-switch" type="button" aria-label="Switch to dark mode" hidden><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><g class="theme-sun"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></g><path class="theme-moon" d="M20 15.5A9 9 0 0 1 8.5 4 9 9 0 1 0 20 15.5Z"/></svg></button>''' if site_skin == 'control' else ''
     return f'''<!doctype html>
 <html lang="en" data-skin="{site_skin}" data-page="{"home" if depth == 0 else "reading"}">
@@ -250,8 +255,8 @@ def read_guides():
             raise ValueError('Tutorial folder names must be lowercase slugs: ' + tutorial_slug)
         tutorial_metadata, tutorial_body, tutorial_source = read_source(tutorial_directory / 'index.md')
         kind = tutorial_metadata.get('kind')
-        if kind not in ('update', 'guide'):
-            raise ValueError('Kind must be update or guide: ' + tutorial_slug)
+        if kind not in content_kinds:
+            raise ValueError('Kind must be update, guide or case-study: ' + tutorial_slug)
         guide_order = tutorial_metadata.get('order', '')
         if not re.fullmatch(r'[0-9]+', guide_order) or int(guide_order) < 1:
             raise ValueError('Content order must be a positive integer: ' + tutorial_slug)
@@ -261,32 +266,33 @@ def read_guides():
         guide_orders.add((kind, guide_number))
         tutorial_source = re.sub(r'^order:[^\r\n]*\r?\n', '', tutorial_source, count=1, flags=re.MULTILINE)
         guides.append((guide_number, tutorial_directory, tutorial_metadata, tutorial_body, tutorial_source))
-    return sorted(guides, key=lambda guide: (guide[2]['kind'] != 'update', guide[0]))
+    return sorted(guides, key=lambda guide: (tuple(content_kinds).index(guide[2]['kind']), guide[0]))
 
 
 def render_site(base_url, output_directory):
     guides = read_guides()
-    section_kinds = tuple(kind for kind in ('update', 'guide') if any(guide[2]['kind'] == kind for guide in guides))
+    section_kinds = tuple(kind for kind in content_kinds if any(guide[2]['kind'] == kind for guide in guides))
     output_directory.mkdir()
     shutil.copytree(site_directory / 'assets', output_directory / 'assets')
     favicon_path = output_directory / 'assets' / 'favicon.svg'
     favicon_initial = f'<text x="20" y="29" text-anchor="middle" fill="#345c46" font-family="Georgia,serif" font-size="30">{escape(site_name[0])}</text>'
     favicon_path.write_text(favicon_path.read_text(encoding='utf-8').replace('</svg>', favicon_initial + '</svg>'), encoding='utf-8')
     indexed_pages = []
-    tutorial_cards = {'update': [], 'guide': []}
-    grouped_markdown = {'update': [], 'guide': []}
-    grouped_pages = {'update': [], 'guide': []}
+    tutorial_cards = {kind: [] for kind in content_kinds}
+    grouped_markdown = {kind: [] for kind in content_kinds}
+    grouped_pages = {kind: [] for kind in content_kinds}
     for guide_number, tutorial_directory, tutorial_metadata, tutorial_body, tutorial_source in guides:
         tutorial_slug = tutorial_directory.name
         kind = tutorial_metadata['kind']
+        kind_label = content_kinds[kind][2]
         first_page = len(indexed_pages)
         series = tutorial_metadata.get('series', '')
         series_breadcrumb = f'<span>{escape(series)}</span><span aria-hidden="true">/</span>' if series else ''
-        contents_eyebrow = f'<p class="eyebrow">Update {guide_number:02}</p>' if kind == 'update' else ''
+        contents_eyebrow = f'<p class="eyebrow">{kind_label.capitalize()} {guide_number:02}</p>' if kind != 'guide' else ''
         card_eyebrow = contents_eyebrow
         if series:
             card_eyebrow += f'<p class="eyebrow">{escape(series)}</p>'
-        card_link = 'Read the update' if kind == 'update' else 'Explore the guide'
+        card_link = content_kinds[kind][3]
         level = tutorial_metadata.get('level', '')
         level_label = f'<span>{escape(level)}</span>' if level else ''
         chapters = []
@@ -317,12 +323,12 @@ def render_site(base_url, output_directory):
                 next_chapter = chapters[chapter_index + 1]
                 navigation += f'<a rel="next" href="{escape(next_chapter[1].with_suffix(".html").name)}"><span>Next chapter →</span><strong>{escape(next_chapter[2]["title"])}</strong></a>'
             else:
-                navigation += f'<a href="index.html"><span>{kind.capitalize()} complete ✓</span><strong>Return to the contents</strong></a>'
+                navigation += f'<a href="index.html"><span>{kind_label.capitalize()} complete ✓</span><strong>Return to the contents</strong></a>'
             progress_links = ''.join(f'<a href="{escape(chapter[1].with_suffix(".html").name)}" aria-label="Chapter {index + 1}: {escape(chapter[2]["title"])}"' + (' aria-current="page"' if index == chapter_index else '') + f'>{index + 1:02}</a>' for index, chapter in enumerate(chapters))
             rendered_body = render_markdown(markdown_body, output_directory / tutorial_slug / filename)
             body = f'''<div class="reading-layout"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="../index.html">Home</a><span aria-hidden="true">/</span><a href="index.html">{escape(tutorial_metadata['title'])}</a></nav>
 <div class="reading-topline"><p class="eyebrow">Chapter {chapter_index + 1:02} <span>/ {len(chapters):02}</span></p><nav class="chapter-progress" aria-label="Chapters">{progress_links}</nav></div>
-<article><header class="article-header"><h1>{escape(metadata['title'])}</h1><p class="standfirst">{escape(metadata['description'])}</p><div class="article-meta"><span>{escape(site_name)} {kind}</span><span>{minutes} min read</span><a href="{escape(source_path.name)}">Read Markdown ↗</a></div></header><div class="prose">{rendered_body}</div></article>
+<article><header class="article-header"><h1>{escape(metadata['title'])}</h1><p class="standfirst">{escape(metadata['description'])}</p><div class="article-meta"><span>{escape(site_name)} {kind_label}</span><span>{minutes} min read</span><a href="{escape(source_path.name)}">Read Markdown ↗</a></div></header><div class="prose">{rendered_body}</div></article>
 <nav class="chapter-navigation" aria-label="Chapter navigation">{navigation}</nav><p class="reading-hint">One chapter at a time. Use the links to keep reading, or swipe on touch screens.</p></div>'''
             indexed_pages.append(write_page(output_directory, f'{tutorial_slug}/{filename}', metadata['title'], metadata['description'], body, source, section_kinds, 1))
         contents_markdown = tutorial_source + '\n\n## Chapters\n\n' + '\n'.join(f'{index + 1}. [{chapter[2]["title"]}]({chapter[1].name})' for index, chapter in enumerate(chapters)) + '\n'
@@ -337,19 +343,18 @@ def render_site(base_url, output_directory):
     tagline = f'<p class="tagline">{escape(site_tagline)}</p>' if site_tagline else ''
     sections = []
     home_markdown = f'# {site_name}\n'
-    for kind, title in (('update', 'Updates'), ('guide', 'Guides')):
+    for kind, (title, section_id, kind_label, card_link) in content_kinds.items():
         cards = tutorial_cards[kind]
         if not cards:
             continue
-        section_id = kind + 's'
-        count_label = kind if len(cards) == 1 else section_id
+        count_label = kind_label if len(cards) == 1 else title.lower()
         sections.append(f'<section id="{section_id}" aria-labelledby="{section_id}-heading"><div class="section-heading"><h2 id="{section_id}-heading">{title}</h2><span>{len(cards)} {count_label}</span></div>{"".join(cards)}</section>')
         home_markdown += f'\n## {title}\n\n' + '\n'.join(grouped_markdown[kind]) + '\n'
     home_body = f'<div class="home-layout"><section class="home-hero">{home_heading}{tagline}</section>{"".join(sections)}</div>'
     indexed_pages.insert(0, write_page(output_directory, 'index.html', 'Blog', site_description, home_body, home_markdown, section_kinds))
     (output_directory / 'index.json').write_text(json.dumps({'name': site_name, 'description': site_description, 'base_url': base_url.rstrip('/'), 'pages': indexed_pages}, indent=2) + '\n', encoding='utf-8')
     plain_index = f'# {site_name}\n\n{site_description}\n\nSite: {base_url}\n\nStatic HTML and Markdown.\n\n[Home](index.html) | Markdown: index.md\n'
-    for kind, title in (('update', 'Updates'), ('guide', 'Guides')):
+    for kind, (title, section_id, kind_label, card_link) in content_kinds.items():
         if grouped_pages[kind]:
             plain_index += f'\n## {title}\n\n' + '\n'.join(f'- [{page["title"]}]({page["url"]}) | Markdown: {page["markdown"]} | {page["description"]}' for page in grouped_pages[kind]) + '\n'
     (output_directory / 'llms.txt').write_text(plain_index.rstrip() + '\n', encoding='utf-8')
