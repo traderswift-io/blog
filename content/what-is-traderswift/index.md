@@ -3,9 +3,8 @@ title: What Is TraderSwift?
 description: What TraderSwift is, who it is for, what is running today, and what is in the pipeline.
 kind: update
 order: 1
+logo: assets/what-is-traderswift/traderswift-wordmark-500.png
 ---
-
-![TraderSwift](../assets/what-is-traderswift/traderswift-wordmark-500.png)
 
 TraderSwift is the infrastructure layer for agentic trading.
 

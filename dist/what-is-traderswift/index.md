@@ -4,8 +4,6 @@ description: What TraderSwift is, who it is for, what is running today, and what
 kind: update
 ---
 
-![TraderSwift](../assets/what-is-traderswift/traderswift-wordmark-500.png)
-
 TraderSwift is the infrastructure layer for agentic trading.
 
 It is a set of open-source blockchains and services that trading agents, and the people who run them, can build on.

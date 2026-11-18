@@ -4,12 +4,12 @@ import json
 import re
 import shutil
 import sys
+from itertools import groupby
 from pathlib import Path
 from tempfile import TemporaryDirectory
 from urllib.parse import urlsplit
 
 from image_metadata import image_dimensions
-
 
 site_directory = Path(__file__).resolve().parent
 output_directory = site_directory / 'dist'
@@ -32,16 +32,13 @@ content_kinds = {
     'case-study': ('Case studies', 'case-studies', 'case study', 'Read the case study'),
 }
 
-
 def escape(value):
     return html.escape(str(value), quote=True)
-
 
 def safe_link(address):
     if urlsplit(address).scheme not in ('', 'https', 'http', 'mailto') or address.startswith('//'):
         raise ValueError('Unsupported link: ' + address)
     return escape(address)
-
 
 def inline_markdown(text):
     fragments = []
@@ -66,15 +63,10 @@ def inline_markdown(text):
             fragments.append(escape(token))
     return ''.join(fragments)
 
-
 def table_cells(line):
     return [cell.strip() for cell in line.strip().removeprefix('|').removesuffix('|').split('|')]
-
-
 def table_start(lines, position):
     return position + 1 < len(lines) and '|' in lines[position] and all(re.fullmatch(r':?-{3,}:?', cell) for cell in table_cells(lines[position + 1]))
-
-
 def render_table(lines, position):
     headers = table_cells(lines[position])
     separators = table_cells(lines[position + 1])
@@ -92,8 +84,6 @@ def render_table(lines, position):
         rows.append(row(table_cells(lines[position]), 'td'))
         position += 1
     return '<div class="table-scroll" tabindex="0" role="region" aria-label="Scrollable table"><table><thead>' + heading + '</thead><tbody>' + ''.join(rows) + '</tbody></table></div>', position
-
-
 def read_source(source_path):
     source = source_path.read_text(encoding='utf-8')
     lines = source.splitlines()
@@ -103,13 +93,12 @@ def read_source(source_path):
     metadata = {}
     for line in lines[1:closing_line]:
         name, separator, value = line.partition(':')
-        if not separator or name not in ('title', 'description', 'order', 'series', 'level', 'kind') or name in metadata:
+        if not separator or name not in ('title', 'description', 'order', 'series', 'level', 'kind', 'logo', 'part') or name in metadata or (name == 'logo' and source_path.name != 'index.md') or (name == 'part' and source_path.name == 'index.md'):
             raise ValueError('Invalid front matter: ' + source_path.name)
         metadata[name] = value.strip()
     if not metadata.get('title') or not metadata.get('description'):
         raise ValueError('Title and description required: ' + source_path.name)
     return metadata, '\n'.join(lines[closing_line + 1:]).strip('\n'), source
-
 
 def render_markdown(source, destination):
     lines = source.splitlines()
@@ -193,8 +182,6 @@ def render_markdown(source, destination):
             continue
         position += 1
     return '\n'.join(fragments)
-
-
 def page_shell(title, description, body, section_kinds, depth=0):
     prefix = '../' * depth
     section_links = ''.join(f'<a href="{prefix}index.html#{content_kinds[kind][1]}">{content_kinds[kind][0]}</a>' for kind in section_kinds)
@@ -221,14 +208,12 @@ def page_shell(title, description, body, section_kinds, depth=0):
 </html>
 '''
 
-
 def write_page(output_directory, relative_path, title, description, body, markdown, section_kinds, depth=0):
     destination = output_directory / relative_path
     destination.parent.mkdir(parents=True, exist_ok=True)
     destination.write_text(page_shell(title, description, body, section_kinds, depth), encoding='utf-8')
     destination.with_suffix('.md').write_text(markdown, encoding='utf-8')
     return {'title': title, 'description': description, 'url': relative_path, 'markdown': str(Path(relative_path).with_suffix('.md'))}
-
 
 def build(base_url):
     if not isinstance(base_url, str) or urlsplit(base_url).scheme not in ('https', 'http') or not urlsplit(base_url).netloc or urlsplit(base_url).query or urlsplit(base_url).fragment:
@@ -243,7 +228,6 @@ def build(base_url):
             shutil.rmtree(output_directory)
         shutil.move(staged_output, output_directory)
     print(f'Built {page_count} pages in dist/')
-
 
 def read_guides():
     guides = []
@@ -267,10 +251,45 @@ def read_guides():
         if (kind, guide_number) in guide_orders:
             raise ValueError(f'Duplicate {kind} order {guide_number}: {tutorial_slug}')
         guide_orders.add((kind, guide_number))
-        tutorial_source = re.sub(r'^order:[^\r\n]*\r?\n', '', tutorial_source, count=1, flags=re.MULTILINE)
+        tutorial_front_matter, separator, tutorial_body_source = tutorial_source.partition('\n---\n')
+        tutorial_source = re.sub(r'^(?:order|logo):[^\r\n]*(?:\r?\n|$)', '', tutorial_front_matter, flags=re.MULTILINE).rstrip('\n') + separator + tutorial_body_source
         guides.append((guide_number, tutorial_directory, tutorial_metadata, tutorial_body, tutorial_source))
     return sorted(guides, key=lambda guide: (tuple(content_kinds).index(guide[2]['kind']), guide[0]))
 
+def contents_logo(metadata):
+    if 'logo' not in metadata:
+        return ''
+    address = metadata['logo']
+    asset_path = (site_directory / address).resolve()
+    if metadata['kind'] != 'update' or not address.startswith('assets/') or not asset_path.is_relative_to(site_directory / 'assets'):
+        raise ValueError('Logo must be a local assets/ image on an update index')
+    width, height = image_dimensions(asset_path)
+    return f'<img class="contents-logo" src="../{safe_link(address)}" alt="{escape(site_name)}" width="{width}" height="{height}" decoding="async">'
+
+def contents_list(chapters, rows):
+    fragments, seen_parts = [], set()
+    chapter_number = 1
+    for part, group in groupby(zip(chapters, rows), key=lambda item: item[0][2].get('part', '')):
+        if part and part in seen_parts:
+            raise ValueError('Returning chapter part: ' + part)
+        if part:
+            seen_parts.add(part)
+            fragments.append(f'<h3 class="part-heading">{escape(part)}</h3>')
+        start = f' start="{chapter_number}"' if chapter_number > 1 else ''
+        grouped_rows = [row for chapter, row in group]
+        fragments.append(f'<ol class="chapter-list"{start}>' + ''.join(grouped_rows) + '</ol>')
+        chapter_number += len(grouped_rows)
+    return ''.join(fragments)
+
+def home_about():
+    about_path = site_directory / 'content' / 'about.md'
+    if not about_path.exists():
+        return '', ''
+    metadata, body, source = read_source(about_path)
+    if set(metadata) != {'title', 'description'} or '![' in body or any(re.match(r'^(?:#{1,6}\s|```|:::|> |!\[|[-*]\s|\d+\.\s)', line.strip()) or table_start(body.splitlines(), index) for index, line in enumerate(body.splitlines())):
+        raise ValueError('About requires title and description only, and plain paragraphs')
+    paragraphs = '\n'.join('<p>' + inline_markdown(' '.join(paragraph.splitlines())) + '</p>' for paragraph in re.split(r'\n\s*\n', body) if paragraph.strip())
+    return f'<section id="about" aria-labelledby="about-heading"><div class="section-heading"><h2 id="about-heading">{escape(metadata["title"])}</h2></div><div class="about-copy prose">{paragraphs}</div></section>', f'\n## {metadata["title"]}\n\n{body}\n'
 
 def render_site(base_url, output_directory):
     guides = read_guides()
@@ -335,9 +354,11 @@ def render_site(base_url, output_directory):
 <nav class="chapter-navigation" aria-label="Chapter navigation">{navigation}</nav><p class="reading-hint">One chapter at a time. Use the links to keep reading, or swipe on touch screens.</p></div>'''
             indexed_pages.append(write_page(output_directory, f'{tutorial_slug}/{filename}', metadata['title'], metadata['description'], body, source, section_kinds, 1))
         contents_markdown = tutorial_source + '\n\n## Chapters\n\n' + '\n'.join(f'{index + 1}. [{chapter[2]["title"]}]({chapter[1].name})' for index, chapter in enumerate(chapters)) + '\n'
+        logo = contents_logo(tutorial_metadata)
+        grouped_contents = contents_list(chapters, chapter_rows)
         contents_intro = render_markdown(tutorial_body, output_directory / tutorial_slug / 'index.html')
         chapter_count = f'<span class="chapter-count">{len(chapters)}</span>' if site_skin == 'control' else str(len(chapters))
-        contents_body = f'''<div class="contents-layout"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="../index.html">Home</a><span aria-hidden="true">/</span>{series_breadcrumb}<span>{escape(tutorial_metadata['title'])}</span></nav>{contents_eyebrow}<h1>{escape(tutorial_metadata['title'])}</h1><p class="standfirst">{escape(tutorial_metadata['description'])}</p><div class="guide-meta"><span>{chapter_count} chapters</span><span>{total_minutes} min read</span>{level_label}</div><a class="button" rel="next" href="{escape(chapters[0][1].with_suffix('.html').name)}">Start with chapter 01 <span aria-hidden="true">→</span></a><div class="contents-intro prose">{contents_intro}</div><div class="section-heading"><h2>Table of contents</h2><a href="index.md">Markdown ↗</a></div><ol class="chapter-list">{''.join(chapter_rows)}</ol><a class="text-link" href="{escape(chapters[0][1].with_suffix('.html').name)}">Start with chapter 01 <span aria-hidden="true">→</span></a></div>'''
+        contents_body = f'''<div class="contents-layout"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="../index.html">Home</a><span aria-hidden="true">/</span>{series_breadcrumb}<span>{escape(tutorial_metadata['title'])}</span></nav>{logo}{contents_eyebrow}<h1>{escape(tutorial_metadata['title'])}</h1><p class="standfirst">{escape(tutorial_metadata['description'])}</p><div class="guide-meta"><span>{chapter_count} chapters</span><span>{total_minutes} min read</span>{level_label}</div><a class="button" rel="next" href="{escape(chapters[0][1].with_suffix('.html').name)}">Start with chapter 01 <span aria-hidden="true">→</span></a>{logo}<div class="contents-intro prose">{contents_intro}</div><div class="section-heading"><h2>Table of contents</h2><a href="index.md">Markdown ↗</a></div>{grouped_contents}<a class="text-link" href="{escape(chapters[0][1].with_suffix('.html').name)}">Start with chapter 01 <span aria-hidden="true">→</span></a></div>'''
         indexed_pages.append(write_page(output_directory, f'{tutorial_slug}/index.html', tutorial_metadata['title'], tutorial_metadata['description'], contents_body, contents_markdown, section_kinds, 1))
         tutorial_cards[kind].append(f'<article class="guide-card"><div class="card-copy">{card_eyebrow}<h3><a href="{escape(tutorial_slug)}/index.html">{escape(tutorial_metadata["title"])}</a></h3><p>{escape(tutorial_metadata["description"])}</p><div class="card-bottom"><span>{chapter_count} chapters <span aria-hidden="true">·</span> {total_minutes} min read</span><a href="{escape(tutorial_slug)}/index.html">{card_link} <span aria-hidden="true">↗</span></a></div></div></article>')
         grouped_markdown[kind].append(f'- [{tutorial_metadata["title"]}]({tutorial_slug}/index.md): {tutorial_metadata["description"]}')
@@ -353,7 +374,9 @@ def render_site(base_url, output_directory):
         count_label = kind_label if len(cards) == 1 else title.lower()
         sections.append(f'<section id="{section_id}" aria-labelledby="{section_id}-heading"><div class="section-heading"><h2 id="{section_id}-heading">{title}</h2><span>{len(cards)} {count_label}</span></div>{"".join(cards)}</section>')
         home_markdown += f'\n## {title}\n\n' + '\n'.join(grouped_markdown[kind]) + '\n'
-    home_body = f'<div class="home-layout"><section class="home-hero">{home_heading}{tagline}</section>{"".join(sections)}</div>'
+    about_html, about_markdown = home_about()
+    home_markdown += about_markdown
+    home_body = f'<div class="home-layout"><section class="home-hero">{home_heading}{tagline}</section>{"".join(sections)}{about_html}</div>'
     indexed_pages.insert(0, write_page(output_directory, 'index.html', 'Blog', site_description, home_body, home_markdown, section_kinds))
     (output_directory / 'index.json').write_text(json.dumps({'name': site_name, 'description': site_description, 'base_url': base_url.rstrip('/'), 'pages': indexed_pages}, indent=2) + '\n', encoding='utf-8')
     plain_index = f'# {site_name}\n\n{site_description}\n\nSite: {base_url}\n\nStatic HTML and Markdown.\n\n[Home](index.html) | Markdown: index.md\n'
@@ -364,7 +387,6 @@ def render_site(base_url, output_directory):
     locations = ''.join(f'<url><loc>{escape(base_url.rstrip("/") + "/" + page["url"])}</loc></url>' for page in indexed_pages)
     (output_directory / 'sitemap.xml').write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' + locations + '</urlset>\n', encoding='utf-8')
     return len(indexed_pages)
-
 
 if __name__ == '__main__':
     argument_parser = argparse.ArgumentParser(description=f'Build {site_name} from local Markdown.')
