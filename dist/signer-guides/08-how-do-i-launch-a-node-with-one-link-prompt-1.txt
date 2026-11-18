@@ -1,0 +1,1 @@
+Read https://github.com/traderswift-io/launch/blob/main/AGENTS.md and follow it to launch a TraderSwift validator on my cloud account. Show me the plan and the monthly cost, and ask me "Go?" before you create anything. When you're done, remove your own access and revoke the token.

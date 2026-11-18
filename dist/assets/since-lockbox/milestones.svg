@@ -1,50 +1,103 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="390" height="1669" viewBox="0 0 390 1669" role="img" aria-labelledby="title description">
 <title id="title">Since Lockbox milestones</title>
-<desc id="description">Thirteen dated milestones, with design, test and unverified events labelled.</desc>
+<desc id="description">Thirteen dated milestones. Tags name chains; branches label code forks. Blank tags mean no chain listed.</desc>
 <style>text{font-family:system-ui,sans-serif;fill:#17212b}</style>
-<rect width="390" height="1669" rx="12" fill="#f8fafc"/>
+<rect class="chart-paper" width="390" height="1669" rx="12" fill="#f8fafc"/>
+<style>.chart-paper{fill:#f8fafc}.milestone-row rect{fill:#eef1f4;stroke:#74808b}.milestone-row .chain-tag rect{fill:#dceae3;stroke:#486653}.fork-text{font-family:ui-monospace,monospace}.fork-marker{fill:none;stroke:#345c46;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}@media(prefers-color-scheme:dark){text{fill:#edf1f0}.chart-paper{fill:#101315}.milestone-row rect{fill:#171b1e;stroke:#74808b}.milestone-row .chain-tag rect{fill:#243c31;stroke:#a2e3c4}.fork-marker{stroke:#a2e3c4}}</style>
 <text x="24" y="38" font-size="24" font-weight="bold" text-anchor="start">Since Lockbox</text>
 <text x="24" y="68" font-size="16" font-weight="normal" text-anchor="start">Dated milestones · 11–18 Nov 2026</text>
-<rect x="24" y="102" width="342" height="93" rx="8" fill="#eef1f4" stroke="#74808b"/>
-<text x="38" y="128" font-size="17" font-weight="normal" text-anchor="start">11 Nov · Reported</text>
-<text x="38" y="158" font-size="19" font-weight="bold" text-anchor="start">Lockbox halted</text>
-<rect x="24" y="207" width="342" height="93" rx="8" fill="#eef1f4" stroke="#74808b"/>
-<text x="38" y="233" font-size="17" font-weight="normal" text-anchor="start">12 Nov · Reported</text>
-<text x="38" y="263" font-size="19" font-weight="bold" text-anchor="start">Signer name settled</text>
-<rect x="24" y="312" width="342" height="93" rx="8" fill="#eef1f4" stroke="#74808b"/>
-<text x="38" y="338" font-size="17" font-weight="normal" text-anchor="start">12 Nov · Reported</text>
-<text x="38" y="368" font-size="19" font-weight="bold" text-anchor="start">Signer-1 started</text>
-<rect x="24" y="417" width="342" height="93" rx="8" fill="#eef1f4" stroke="#74808b"/>
-<text x="38" y="443" font-size="17" font-weight="normal" text-anchor="start">14 Nov · Reported</text>
-<text x="38" y="473" font-size="19" font-weight="bold" text-anchor="start">Signer launch published</text>
-<rect x="24" y="522" width="342" height="93" rx="8" fill="#eef1f4" stroke="#74808b"/>
-<text x="38" y="548" font-size="17" font-weight="normal" text-anchor="start">14 Nov · Reported</text>
-<text x="38" y="578" font-size="19" font-weight="bold" text-anchor="start">Hub live: block 1</text>
-<rect x="24" y="627" width="342" height="93" rx="8" fill="#eef1f4" stroke="#74808b"/>
-<text x="38" y="653" font-size="17" font-weight="normal" text-anchor="start">15 Nov · Reported</text>
-<text x="38" y="683" font-size="19" font-weight="bold" text-anchor="start">Second Codex ready</text>
-<rect x="24" y="732" width="342" height="93" rx="8" fill="#eef1f4" stroke="#74808b"/>
-<text x="38" y="758" font-size="17" font-weight="normal" text-anchor="start">15 Nov · Reported</text>
-<text x="38" y="788" font-size="19" font-weight="bold" text-anchor="start">Our Signals Desk fork public</text>
-<rect x="24" y="837" width="342" height="93" rx="8" fill="#eef1f4" stroke="#74808b"/>
-<text x="38" y="863" font-size="17" font-weight="normal" text-anchor="start">16 Nov · Design accepted</text>
-<text x="38" y="893" font-size="19" font-weight="bold" text-anchor="start">Gate and Bus designs</text>
-<rect x="24" y="942" width="342" height="93" rx="8" fill="#eef1f4" stroke="#74808b"/>
-<text x="38" y="968" font-size="17" font-weight="normal" text-anchor="start">16 Nov · Reported</text>
-<text x="38" y="998" font-size="19" font-weight="bold" text-anchor="start">Our Pathiel fork public</text>
-<rect x="24" y="1047" width="342" height="93" rx="8" fill="#eef1f4" stroke="#74808b"/>
-<text x="38" y="1073" font-size="17" font-weight="normal" text-anchor="start">17 Nov · Reported</text>
-<text x="38" y="1103" font-size="19" font-weight="bold" text-anchor="start">Hub set rotated</text>
-<rect x="24" y="1152" width="342" height="93" rx="8" fill="#eef1f4" stroke="#74808b"/>
-<text x="38" y="1178" font-size="17" font-weight="normal" text-anchor="start">17 Nov · Reported</text>
-<text x="38" y="1208" font-size="19" font-weight="bold" text-anchor="start">Signer set rotated</text>
-<rect x="24" y="1257" width="342" height="93" rx="8" fill="#eef1f4" stroke="#74808b"/>
-<text x="38" y="1283" font-size="17" font-weight="normal" text-anchor="start">17 Nov · Review</text>
-<text x="38" y="1313" font-size="19" font-weight="bold" text-anchor="start">Crypto panel reported</text>
-<rect x="24" y="1362" width="342" height="93" rx="8" fill="#eef1f4" stroke="#74808b"/>
-<text x="38" y="1388" font-size="17" font-weight="normal" text-anchor="start">18 Nov · Test passed</text>
-<text x="38" y="1418" font-size="19" font-weight="bold" text-anchor="start">Storage launch test</text>
-<text x="24" y="1479" font-size="16" font-weight="normal" text-anchor="start">Dates are documentary milestones,</text>
-<text x="24" y="1501" font-size="16" font-weight="normal" text-anchor="start">not a continuous deployment log.</text>
-<text x="24" y="1533" font-size="16" font-weight="normal" text-anchor="start">Source: TraderSwift build and chain records.</text>
+<g class="legend"><text x="24" y="90" font-size="12" font-weight="normal" text-anchor="start">Tag = chain · blank = none listed · branch = code fork</text></g>
+<g class="milestone-row" data-chain="" data-milestone="Lockbox halted">
+<rect x="24" y="106" width="342" height="93" rx="8" fill="#eef1f4" stroke="#74808b"/>
+<text x="38" y="128" font-size="13" font-weight="normal" text-anchor="start">11 Nov · Reported</text>
+<text x="38" y="153" font-size="18" font-weight="bold" text-anchor="start">Lockbox halted</text>
+</g>
+<g class="milestone-row" data-chain="" data-milestone="Signer name settled">
+<rect x="24" y="211" width="342" height="93" rx="8" fill="#eef1f4" stroke="#74808b"/>
+<text x="38" y="233" font-size="13" font-weight="normal" text-anchor="start">12 Nov · Reported</text>
+<text x="38" y="258" font-size="18" font-weight="bold" text-anchor="start">Signer name settled</text>
+</g>
+<g class="milestone-row" data-chain="signer-1" data-milestone="Signer-1 started">
+<rect x="24" y="316" width="342" height="93" rx="8" fill="#eef1f4" stroke="#74808b"/>
+<text x="38" y="338" font-size="13" font-weight="normal" text-anchor="start">12 Nov · Reported</text>
+<g class="chain-tag"><rect x="252" y="323" width="102" height="22" rx="8" fill="#d4d9df" stroke="#74808b"/>
+<text x="303" y="338" font-size="12" font-weight="normal" text-anchor="middle">signer-1</text></g>
+<text x="38" y="363" font-size="18" font-weight="bold" text-anchor="start">Signer-1 started</text>
+<path class="fork-marker" d="M40 398 V373 M40 388 Q40 379 51 379 M47 375 L51 379 L47 383"/>
+<text class="fork-text" font-size="12">
+<tspan x="60" y="382">Fork of the Lockbox code, fresh genesis</tspan>
+</text>
+</g>
+<g class="milestone-row" data-chain="" data-milestone="Signer launch published">
+<rect x="24" y="421" width="342" height="93" rx="8" fill="#eef1f4" stroke="#74808b"/>
+<text x="38" y="443" font-size="13" font-weight="normal" text-anchor="start">14 Nov · Reported</text>
+<text x="38" y="468" font-size="18" font-weight="bold" text-anchor="start">Signer launch published</text>
+</g>
+<g class="milestone-row" data-chain="traderswift-1" data-milestone="Hub live: block 1">
+<rect x="24" y="526" width="342" height="93" rx="8" fill="#eef1f4" stroke="#74808b"/>
+<text x="38" y="548" font-size="13" font-weight="normal" text-anchor="start">14 Nov · Reported</text>
+<g class="chain-tag"><rect x="252" y="533" width="102" height="22" rx="8" fill="#d4d9df" stroke="#74808b"/>
+<text x="303" y="548" font-size="12" font-weight="normal" text-anchor="middle">traderswift-1</text></g>
+<text x="38" y="573" font-size="18" font-weight="bold" text-anchor="start">Hub live: block 1</text>
+</g>
+<g class="milestone-row" data-chain="" data-milestone="Second Codex ready">
+<rect x="24" y="631" width="342" height="93" rx="8" fill="#eef1f4" stroke="#74808b"/>
+<text x="38" y="653" font-size="13" font-weight="normal" text-anchor="start">15 Nov · Reported</text>
+<text x="38" y="678" font-size="18" font-weight="bold" text-anchor="start">Second Codex ready</text>
+</g>
+<g class="milestone-row" data-chain="" data-milestone="Our Signals Desk fork public">
+<rect x="24" y="736" width="342" height="93" rx="8" fill="#eef1f4" stroke="#74808b"/>
+<text x="38" y="758" font-size="13" font-weight="normal" text-anchor="start">15 Nov · Reported</text>
+<text x="38" y="783" font-size="18" font-weight="bold" text-anchor="start">Our Signals Desk fork public</text>
+<path class="fork-marker" d="M40 818 V793 M40 808 Q40 799 51 799 M47 795 L51 799 L47 803"/>
+<text class="fork-text" font-size="12">
+<tspan x="60" y="802">Fork of</tspan>
+<tspan x="60" y="818">galleonlabs/hypergrok-trading-desk (MIT)</tspan>
+</text>
+</g>
+<g class="milestone-row" data-chain="" data-milestone="Gate and Bus designs">
+<rect x="24" y="841" width="342" height="93" rx="8" fill="#eef1f4" stroke="#74808b"/>
+<text x="38" y="863" font-size="13" font-weight="normal" text-anchor="start">16 Nov · Design accepted</text>
+<text x="38" y="888" font-size="18" font-weight="bold" text-anchor="start">Gate and Bus designs</text>
+</g>
+<g class="milestone-row" data-chain="" data-milestone="Our Pathiel fork public">
+<rect x="24" y="946" width="342" height="93" rx="8" fill="#eef1f4" stroke="#74808b"/>
+<text x="38" y="968" font-size="13" font-weight="normal" text-anchor="start">16 Nov · Reported</text>
+<text x="38" y="993" font-size="18" font-weight="bold" text-anchor="start">Our Pathiel fork public</text>
+<path class="fork-marker" d="M40 1028 V1003 M40 1018 Q40 1009 51 1009 M47 1005 L51 1009 L47 1013"/>
+<text class="fork-text" font-size="12">
+<tspan x="60" y="1012">Fork of Julian-dev28/pathiel (MIT)</tspan>
+</text>
+</g>
+<g class="milestone-row" data-chain="traderswift-1" data-milestone="Hub set rotated">
+<rect x="24" y="1051" width="342" height="93" rx="8" fill="#eef1f4" stroke="#74808b"/>
+<text x="38" y="1073" font-size="13" font-weight="normal" text-anchor="start">17 Nov · Reported</text>
+<g class="chain-tag"><rect x="252" y="1058" width="102" height="22" rx="8" fill="#d4d9df" stroke="#74808b"/>
+<text x="303" y="1073" font-size="12" font-weight="normal" text-anchor="middle">traderswift-1</text></g>
+<text x="38" y="1098" font-size="18" font-weight="bold" text-anchor="start">Hub set rotated</text>
+</g>
+<g class="milestone-row" data-chain="signer-1" data-milestone="Signer set rotated">
+<rect x="24" y="1156" width="342" height="93" rx="8" fill="#eef1f4" stroke="#74808b"/>
+<text x="38" y="1178" font-size="13" font-weight="normal" text-anchor="start">17 Nov · Reported</text>
+<g class="chain-tag"><rect x="252" y="1163" width="102" height="22" rx="8" fill="#d4d9df" stroke="#74808b"/>
+<text x="303" y="1178" font-size="12" font-weight="normal" text-anchor="middle">signer-1</text></g>
+<text x="38" y="1203" font-size="18" font-weight="bold" text-anchor="start">Signer set rotated</text>
+</g>
+<g class="milestone-row" data-chain="" data-milestone="Crypto panel reported">
+<rect x="24" y="1261" width="342" height="93" rx="8" fill="#eef1f4" stroke="#74808b"/>
+<text x="38" y="1283" font-size="13" font-weight="normal" text-anchor="start">17 Nov · Review</text>
+<text x="38" y="1308" font-size="18" font-weight="bold" text-anchor="start">Crypto panel reported</text>
+</g>
+<g class="milestone-row" data-chain="" data-milestone="Storage launch test">
+<rect x="24" y="1366" width="342" height="93" rx="8" fill="#eef1f4" stroke="#74808b"/>
+<text x="38" y="1388" font-size="13" font-weight="normal" text-anchor="start">18 Nov · Test passed</text>
+<text x="38" y="1413" font-size="18" font-weight="bold" text-anchor="start">Storage launch test</text>
+</g>
+<text x="24" y="1483" font-size="16" font-weight="normal" text-anchor="start">Dates are documentary milestones,</text>
+<text x="24" y="1505" font-size="16" font-weight="normal" text-anchor="start">not a continuous deployment log.</text>
+<text x="24" y="1537" font-size="16" font-weight="normal" text-anchor="start">Source: supplied boards and launch</text>
+<text x="24" y="1559" font-size="16" font-weight="normal" text-anchor="start">release; exact references in</text>
+<text x="24" y="1581" font-size="16" font-weight="normal" text-anchor="start">milestones.csv.</text>
+<text x="24" y="1613" font-size="16" font-weight="normal" text-anchor="start">Chain tags follow source records;</text>
+<text x="24" y="1635" font-size="16" font-weight="normal" text-anchor="start">blank means no chain was specified.</text>
 </svg>

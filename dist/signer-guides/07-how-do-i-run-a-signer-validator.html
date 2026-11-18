@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en" data-skin="control" data-page="reading">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Build the chain binary, sync a node and join the validator set by rule, yourself or with your own agent following SKILL.md.">
+<meta name="color-scheme" content="light dark">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; script-src 'self'; img-src 'self'; font-src 'self'; base-uri 'none'; form-action 'none'">
+<title>How do I run a Signer validator? · TraderSwift</title>
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/style.css">
+<script src="../assets/reading.js" blocking="render"></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><a class="wordmark" href="../index.html" aria-label="TraderSwift home">TraderSwift</a><nav aria-label="Site"><a href="../index.html#updates">Updates</a><a href="../index.html#guides">Guides</a><a class="source-link" href="../llms.txt">For agents ↗</a><button class="theme-switch" type="button" aria-label="Switch to dark mode" hidden><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><g class="theme-sun"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></g><path class="theme-moon" d="M20 15.5A9 9 0 0 1 8.5 4 9 9 0 1 0 20 15.5Z"/></svg></button></nav></header>
+<main id="main"><div class="reading-layout"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="../index.html">Home</a><span aria-hidden="true">/</span><a href="index.html">Signer – How to Run, Test and Trade with It</a></nav>
+<div class="reading-topline"><p class="eyebrow">Chapter 07 <span>/ 12</span></p><nav class="chapter-progress" aria-label="Chapters"><a href="01-what-is-signer.html" aria-label="Chapter 1: What is Signer, and who is it for?">01</a><a href="02-how-does-an-order-get-signed.html" aria-label="Chapter 2: How does an order get signed?">02</a><a href="03-how-do-i-try-signer-on-my-own-computer.html" aria-label="Chapter 3: How do I try Signer on my own computer?">03</a><a href="04-how-do-i-write-a-trading-policy.html" aria-label="Chapter 4: How do I write a trading policy?">04</a><a href="05-how-do-i-stop-an-agent-fast.html" aria-label="Chapter 5: How do I stop an agent fast?">05</a><a href="06-how-do-i-read-signers-record.html" aria-label="Chapter 6: How do I read Signer&#x27;s record?">06</a><a href="07-how-do-i-run-a-signer-validator.html" aria-label="Chapter 7: How do I run a Signer validator?" aria-current="page">07</a><a href="08-how-do-i-launch-a-node-with-one-link.html" aria-label="Chapter 8: How do I launch a node with one link?">08</a><a href="09-how-do-i-run-my-own-signer-chain.html" aria-label="Chapter 9: How do I run my own Signer chain?">09</a><a href="10-how-do-i-get-a-signer-key-for-my-own-account.html" aria-label="Chapter 10: How do I get a Signer key for my own account?">10</a><a href="11-how-do-i-hold-my-own-key-shares.html" aria-label="Chapter 11: How do I hold my own key shares?">11</a><a href="12-how-do-i-run-a-private-signer-network-on-esp32s.html" aria-label="Chapter 12: How do I run a private Signer network on ESP32s?">12</a></nav></div>
+<article><header class="article-header"><h1>How do I run a Signer validator?</h1><p class="standfirst">Build the chain binary, sync a node and join the validator set by rule, yourself or with your own agent following SKILL.md.</p><div class="article-meta"><span>TraderSwift guide</span><span>7 min read</span><a href="07-how-do-i-run-a-signer-validator.md">Read Markdown ↗</a></div></header><div class="prose"><p>By the end of this page you will be able to run a node on the Signer chain, <code>signer-1</code>, and join its validator set without asking anyone.</p>
+<p>You can do it by hand, or hand the job to your own agent.</p>
+<h2 id="what-is-a-signer-validator">What is a Signer validator?</h2>
+<p>A validator is a node that helps produce blocks. It checks transactions, puts them in order and keeps a full copy of the chain.</p>
+<p>A signer is a different thing: it holds a share of a trading key and signs orders.</p>
+<p>Your node is never a signer. It signs blocks with its own key and does nothing else. &lt;!-- source: docs/VALIDATOR_JOIN.md:9-15 --&gt;</p>
+<h2 id="why-should-i-run-one">Why should I run one?</h2>
+<ul><li><strong>A full copy.</strong> You hold every policy and every decision record, signed or refused, on your own disk.</li><li><strong>A vote in block production.</strong> Every joiner gets the same small, fixed power.</li><li><strong>No gatekeeper.</strong> Your node asks the chain to add it. The chain decides by rule, in the same block.</li></ul>
+<h2 id="why-shouldn-t-i-run-one">Why shouldn&#x27;t I run one?</h2>
+<p>There is nothing to earn. The chain has no coin and a validator is not paid.</p>
+<p>You also get no say over keys, policies, signers or releases. Only an owner wallet changes a policy.</p>
+<p>If you want to read the record, a node that never joins is enough. See <a href="06-how-do-i-read-signers-record.md">How do I read Signer&#x27;s record?</a>.</p>
+<p>Two things cost you. A copy of your block-signing key running twice counts as double signing.</p>
+<p>And a joiner that misses 300 blocks in a row is removed, and can ask again after one day. So run it only where it can stay up. &lt;!-- source: docs/VALIDATOR_JOIN.md:69,193 --&gt;</p>
+<h2 id="what-do-i-need">What do I need?</h2>
+<ul><li><strong>A Linux x86_64 machine</strong> with 1 vCPU, 2 GB of RAM and 20 GB of disk.</li><li><strong>A public IP</strong>, fixed if you can, and a clock kept by NTP.</li><li><strong>Go 1.26.5.</strong> Use exactly this version. A newer Go prints a warning on every command, and the warning breaks cosmovisor.</li><li><strong>Outgoing access on port 26656.</strong> An open incoming port is better but not required.</li></ul>
+<p>&lt;!-- source: docs/VALIDATOR_JOIN.md:32-34 --&gt;</p>
+<p>Check the machine first.</p>
+<figure class="code-block"><figcaption>Code</figcaption><pre tabindex="0"><code class="language-text">nproc; free -h; df -h .; go version</code></pre></figure>
+<p>&lt;!-- source: SKILL.md:24 --&gt;</p>
+<h2 id="can-i-join-right-now">Can I join right now?</h2>
+<p>Usually, yes. The open-join route is on from block 1.</p>
+<p>But the chain refuses a join when the outside seats are full, so check before you spend the time.</p>
+<figure class="code-block"><figcaption>Code</figcaption><pre tabindex="0"><code class="language-text">signerd query validatorset open-join --node tcp://127.0.0.1:26657</code></pre></figure>
+<p>&lt;!-- source: docs/VALIDATOR_JOIN.md:189 --&gt;</p>
+<p>It shows the outside power and its limit. You need a synced node to ask it, so treat it as the first check once you are caught up.</p>
+<h2 id="how-do-i-build-and-set-up-the-node">How do I build and set up the node?</h2>
+<p>There is no published binary yet, so you build from source.</p>
+<figure class="code-block"><figcaption>Code</figcaption><pre tabindex="0"><code class="language-text">git clone https://github.com/traderswift-io/signer.git signer
+cd signer/chain
+GOTOOLCHAIN=go1.26.5 go build -trimpath -o signerd .
+sha256sum signerd</code></pre></figure>
+<p>&lt;!-- source: docs/VALIDATOR_JOIN.md:42-45 --&gt;</p>
+<p>The checksum only names the file you built. There is no published value to compare it with.</p>
+<p>Make the node&#x27;s keys on the machine. Keep <code>priv_validator_key.json</code> offline and never send it to anyone, us included.</p>
+<p>Your moniker is a public nickname, so keep secrets and account names out of it.</p>
+<figure class="code-block"><figcaption>Code</figcaption><pre tabindex="0"><code class="language-text">sudo -u signer /opt/signer/bin/signerd init &lt;your moniker&gt; --chain-id signer-1 --home /var/lib/signer/chain</code></pre></figure>
+<p>&lt;!-- source: docs/VALIDATOR_JOIN.md:61 --&gt;</p>
+<p>Then check the genesis file against its hash. A failed check means stop.</p>
+<figure class="code-block"><figcaption>Code</figcaption><pre tabindex="0"><code class="language-text">cd signer/networks/signer-1
+sha256sum -c genesis.sha256                     # must print: genesis.json: OK
+sudo -u signer cp genesis.json /var/lib/signer/chain/config/genesis.json
+paste -sd, peers.txt                            # your persistent_peers value</code></pre></figure>
+<p>&lt;!-- source: docs/VALIDATOR_JOIN.md:80-83 --&gt;</p>
+<p>Put that peer list in <code>config.toml</code>, set <code>minimum-gas-prices = &quot;0usigner&quot;</code> in <code>app.toml</code>, and start the node under cosmovisor.</p>
+<p>The guide has the full lines and a service file. &lt;!-- source: docs/VALIDATOR_JOIN.md:86-99,128-153 --&gt;</p>
+<h2 id="how-do-i-know-it-has-caught-up">How do I know it has caught up?</h2>
+<p>A first sync replays every block from block 1, so it takes several hours.</p>
+<p>Wait until <code>catching_up</code> is <code>false</code> and the height keeps moving. Until you join you are a full node.</p>
+<p>You follow the chain and sign nothing.</p>
+<figure class="code-block"><figcaption>Code</figcaption><pre tabindex="0"><code class="language-text">curl -s http://127.0.0.1:26657/status | jq .result.sync_info</code></pre></figure>
+<p>&lt;!-- source: docs/VALIDATOR_JOIN.md:154 --&gt;</p>
+<h2 id="how-do-i-join-the-validator-set">How do I join the validator set?</h2>
+<p>Make an account key on the machine. It holds no coins and needs none, because transactions are free.</p>
+<p>Then ask to join.</p>
+<figure class="code-block"><figcaption>Code</figcaption><pre tabindex="0"><code class="language-text">sudo -u signer /opt/signer/bin/signerd keys add joiner --keyring-backend test --home /var/lib/signer/chain
+sudo -u signer /opt/signer/bin/signerd tx validatorset request-join \
+  --moniker &lt;your moniker&gt; --endpoint-ip &lt;your public ip&gt; [--contact &lt;optional, shown publicly&gt;] \
+  --from joiner --keyring-backend test --home /var/lib/signer/chain \
+  --chain-id signer-1 --node tcp://127.0.0.1:26657 --yes</code></pre></figure>
+<p>&lt;!-- source: docs/VALIDATOR_JOIN.md:166-170 --&gt;</p>
+<p>The chain answers by rule. A refusal is a successful transaction that carries a reason, and nothing is queued, so send again when the reason has gone.</p>
+<p>A bad proof fails and stores nothing.</p>
+<p>Common reasons are <code>endpoint_ip_already_has_a_validator</code>, <code>rejoin_cooldown_until_&lt;unix time&gt;</code> and <code>outsider_count_cap_&lt;n&gt;_reached</code>. The chain takes one validator per IP and one per account. &lt;!-- source: docs/VALIDATOR_JOIN.md:177-185 --&gt;</p>
+<p>Check the result.</p>
+<figure class="code-block"><figcaption>Code</figcaption><pre tabindex="0"><code class="language-text">signerd query validatorset joiners --node tcp://127.0.0.1:26657</code></pre></figure>
+<p>&lt;!-- source: docs/VALIDATOR_JOIN.md:188 --&gt;</p>
+<h2 id="can-my-agent-do-this-for-me">Can my agent do this for me?</h2>
+<p>Yes. The repository has a file written for agents, <code>SKILL.md</code>, at its root.</p>
+<p>It tells your agent, in order, to check the machine, build, make keys, check genesis, start under cosmovisor, wait for sync and ask to join. It runs as an ordinary user, with no sudo.</p>
+<p>It makes your agent say one thing first: it will run a node, it will ask to join once caught up, and the node holds its own key and nothing else. If you say &quot;full node only&quot;, it skips the join. &lt;!-- source: SKILL.md:5 --&gt;</p>
+<figure class="prompt"><figcaption><span>Try this prompt</span><a href="07-how-do-i-run-a-signer-validator-prompt-1.txt" aria-label="Open plain prompt text to copy">Open text to copy ↗</a></figcaption><blockquote><p>Read SKILL.md at the root of github.com/traderswift-io/signer and follow it in order, as an ordinary user on this machine, in one folder of your own. Before anything else, tell me what you will do, in the words SKILL.md gives. Wait for my answer. I want to join the validator set once the node has caught up. Never print, copy or upload the two key files the node makes, and never run a second copy of the node. If a step fails, stop and show me the last 30 lines of the log. When you finish, tell me how to check that the node is healthy and that it must stay online.</p></blockquote></figure>
+<p>The stopping point is the join. After that you own the machine: keep it up, keep the clock right and watch the height.</p>
+<p><strong>Coming soon.</strong> We are building a one-link launcher, <code>traderswift-io/launch</code>, so your agent can set up a node on your own cloud account.</p>
+<p>This page will link it when it is ready.</p>
+<h2 id="final-thoughts">Final thoughts</h2>
+<p>A validator is a small job with one real duty: stay online and keep a full copy of the chain.</p>
+<p>A validator holds no share of any trading key. The chain handles the rest by rule.</p>
+<p>If the guide and this page ever disagree, the guide in the repository wins. Questions go to the issues page at https://github.com/traderswift-io/signer/issues.</p></div></article>
+<nav class="chapter-navigation" aria-label="Chapter navigation"><a rel="prev" href="06-how-do-i-read-signers-record.html"><span>← Previous chapter</span><strong>How do I read Signer&#x27;s record?</strong></a><a rel="next" href="08-how-do-i-launch-a-node-with-one-link.html"><span>Next chapter →</span><strong>How do I launch a node with one link?</strong></a></nav><p class="reading-hint">One chapter at a time. Use the links to keep reading, or swipe on touch screens.</p></div></main>
+<footer class="site-footer"><span>TraderSwift</span><nav aria-label="Resources"><a href="../index.json">Index</a><a href="../llms.txt">Plain text</a><a href="../sitemap.xml">Sitemap</a></nav></footer>
+</body>
+</html>

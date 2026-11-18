@@ -10,6 +10,42 @@
       "markdown": "index.md"
     },
     {
+      "title": "What is TraderSwift?",
+      "description": "An open infrastructure layer for agentic and hybrid trading.",
+      "url": "what-is-traderswift/01-what-is-traderswift.html",
+      "markdown": "what-is-traderswift/01-what-is-traderswift.md"
+    },
+    {
+      "title": "What is running today?",
+      "description": "Signer, the hub chain and the charts data node.",
+      "url": "what-is-traderswift/02-what-is-running-today.html",
+      "markdown": "what-is-traderswift/02-what-is-running-today.md"
+    },
+    {
+      "title": "What is in the pipeline?",
+      "description": "The marketplace, signal providers, Ledger, Vault and Storage.",
+      "url": "what-is-traderswift/03-what-is-in-the-pipeline.html",
+      "markdown": "what-is-traderswift/03-what-is-in-the-pipeline.md"
+    },
+    {
+      "title": "How will we teach it?",
+      "description": "An educational blog on each site, with how-to guides and prompts for your own AI.",
+      "url": "what-is-traderswift/04-how-will-we-teach-it.html",
+      "markdown": "what-is-traderswift/04-how-will-we-teach-it.md"
+    },
+    {
+      "title": "Final thoughts",
+      "description": "What to read next.",
+      "url": "what-is-traderswift/05-final-thoughts.html",
+      "markdown": "what-is-traderswift/05-final-thoughts.md"
+    },
+    {
+      "title": "What Is TraderSwift \u2013 The Infrastructure Layer for Agentic Trading",
+      "description": "What TraderSwift is, who it is for, what is running today and what is in the pipeline.",
+      "url": "what-is-traderswift/index.html",
+      "markdown": "what-is-traderswift/index.md"
+    },
+    {
       "title": "What happened to Lockbox?",
       "description": "Halting and archiving our first chain, and settling on a new name.",
       "url": "since-lockbox/01-what-happened-to-lockbox.html",
@@ -86,6 +122,150 @@
       "description": "What we built between 11 and 18 November 2026, what broke, and what we changed.",
       "url": "since-lockbox/index.html",
       "markdown": "since-lockbox/index.md"
+    },
+    {
+      "title": "What is a key rotation, and why do one?",
+      "description": "What a rotation is, and the three reasons we did one.",
+      "url": "trading-key-rotation/01-what-is-a-key-rotation-and-why-do-one.html",
+      "markdown": "trading-key-rotation/01-what-is-a-key-rotation-and-why-do-one.md"
+    },
+    {
+      "title": "Why not just copy the shares across?",
+      "description": "Why a copied share is still the old key.",
+      "url": "trading-key-rotation/02-why-not-just-copy-the-shares-across.html",
+      "markdown": "trading-key-rotation/02-why-not-just-copy-the-shares-across.md"
+    },
+    {
+      "title": "How were the new machines prepared?",
+      "description": "Synced from the first block, sealed, and no backups.",
+      "url": "trading-key-rotation/03-how-were-the-new-machines-prepared.html",
+      "markdown": "trading-key-rotation/03-how-were-the-new-machines-prepared.md"
+    },
+    {
+      "title": "How was the new key made?",
+      "description": "Four machines make one key that never exists whole.",
+      "url": "trading-key-rotation/04-how-was-the-new-key-made.html",
+      "markdown": "trading-key-rotation/04-how-was-the-new-key-made.md"
+    },
+    {
+      "title": "How did we prove the new key works?",
+      "description": "A refusal, an entry and a close, with real money.",
+      "url": "trading-key-rotation/05-how-did-we-prove-the-new-key-works.html",
+      "markdown": "trading-key-rotation/05-how-did-we-prove-the-new-key-works.md"
+    },
+    {
+      "title": "What went wrong?",
+      "description": "Decision records that waited in an outbox.",
+      "url": "trading-key-rotation/06-what-went-wrong.html",
+      "markdown": "trading-key-rotation/06-what-went-wrong.md"
+    },
+    {
+      "title": "How did the old set leave?",
+      "description": "Removing the old set, and revoking the old key.",
+      "url": "trading-key-rotation/07-how-did-the-old-set-leave.html",
+      "markdown": "trading-key-rotation/07-how-did-the-old-set-leave.md"
+    },
+    {
+      "title": "Who approves each step?",
+      "description": "The owner signs every change to who signs.",
+      "url": "trading-key-rotation/08-who-approves-each-step.html",
+      "markdown": "trading-key-rotation/08-who-approves-each-step.md"
+    },
+    {
+      "title": "What is next?",
+      "description": "Fixes, Policy v2 and outside signers.",
+      "url": "trading-key-rotation/09-what-is-next.html",
+      "markdown": "trading-key-rotation/09-what-is-next.md"
+    },
+    {
+      "title": "Final thoughts",
+      "description": "What the rotation proved.",
+      "url": "trading-key-rotation/10-final-thoughts.html",
+      "markdown": "trading-key-rotation/10-final-thoughts.md"
+    },
+    {
+      "title": "Signer\u2019s First Rotation \u2013 What Happened on 17 November",
+      "description": "Signer moved to new machines on 17 November 2026. The old key did not move with it. We made a new one.",
+      "url": "trading-key-rotation/index.html",
+      "markdown": "trading-key-rotation/index.md"
+    },
+    {
+      "title": "What is Signer, and who is it for?",
+      "description": "Signer lets an agent trade from a key that no one holds whole, under a policy the owner writes on a chain.",
+      "url": "signer-guides/01-what-is-signer.html",
+      "markdown": "signer-guides/01-what-is-signer.md"
+    },
+    {
+      "title": "How does an order get signed?",
+      "description": "The path of one order from an agent's request to the venue, and the decision record it leaves on the chain.",
+      "url": "signer-guides/02-how-does-an-order-get-signed.html",
+      "markdown": "signer-guides/02-how-does-an-order-get-signed.md"
+    },
+    {
+      "title": "How do I try Signer on my own computer?",
+      "description": "Build the chain and the signer node on your own machine and start a throwaway local network, with no venue and no real key.",
+      "url": "signer-guides/03-how-do-i-try-signer-on-my-own-computer.html",
+      "markdown": "signer-guides/03-how-do-i-try-signer-on-my-own-computer.md"
+    },
+    {
+      "title": "How do I write a trading policy?",
+      "description": "The fields a Signer policy has today, what Policy v2 plans to add, what stays with you, and a prompt to draft one from your own history.",
+      "url": "signer-guides/04-how-do-i-write-a-trading-policy.html",
+      "markdown": "signer-guides/04-how-do-i-write-a-trading-policy.md"
+    },
+    {
+      "title": "How do I stop an agent fast?",
+      "description": "Revoke the policy on the Signer chain and every later order from that delegate is refused.",
+      "url": "signer-guides/05-how-do-i-stop-an-agent-fast.html",
+      "markdown": "signer-guides/05-how-do-i-stop-an-agent-fast.md"
+    },
+    {
+      "title": "How do I read Signer's record?",
+      "description": "Run a read-only node from the public genesis file and look at policies and decision records, signed and refused.",
+      "url": "signer-guides/06-how-do-i-read-signers-record.html",
+      "markdown": "signer-guides/06-how-do-i-read-signers-record.md"
+    },
+    {
+      "title": "How do I run a Signer validator?",
+      "description": "Build the chain binary, sync a node and join the validator set by rule, yourself or with your own agent following SKILL.md.",
+      "url": "signer-guides/07-how-do-i-run-a-signer-validator.html",
+      "markdown": "signer-guides/07-how-do-i-run-a-signer-validator.md"
+    },
+    {
+      "title": "How do I launch a node with one link?",
+      "description": "Give your own agent one link, say \"Go\" once, and it launches, seals and leaves. Planned.",
+      "url": "signer-guides/08-how-do-i-launch-a-node-with-one-link.html",
+      "markdown": "signer-guides/08-how-do-i-launch-a-node-with-one-link.md"
+    },
+    {
+      "title": "How do I run my own Signer chain?",
+      "description": "Build the Signer chain from the public code and run your own network, with your own admin. Anchoring to the hub is planned.",
+      "url": "signer-guides/09-how-do-i-run-my-own-signer-chain.html",
+      "markdown": "signer-guides/09-how-do-i-run-my-own-signer-chain.md"
+    },
+    {
+      "title": "How do I get a Signer key for my own account?",
+      "description": "Outsiders can't get a key yet. What it will take, and the milestones to get there. Planned.",
+      "url": "signer-guides/10-how-do-i-get-a-signer-key-for-my-own-account.html",
+      "markdown": "signer-guides/10-how-do-i-get-a-signer-key-for-my-own-account.md"
+    },
+    {
+      "title": "How do I hold my own key shares?",
+      "description": "Two shares on your machines, one on the network, so the network alone can never sign. Planned.",
+      "url": "signer-guides/11-how-do-i-hold-my-own-key-shares.html",
+      "markdown": "signer-guides/11-how-do-i-hold-my-own-key-shares.md"
+    },
+    {
+      "title": "How do I run a private Signer network on ESP32s?",
+      "description": "A household quorum: ESP32s approve each order, two Raspberry Pis hold the shares. Planned.",
+      "url": "signer-guides/12-how-do-i-run-a-private-signer-network-on-esp32s.html",
+      "markdown": "signer-guides/12-how-do-i-run-a-private-signer-network-on-esp32s.md"
+    },
+    {
+      "title": "Signer \u2013 How to Run, Test and Trade with It",
+      "description": "Twelve how-tos for people interested in Signer, each with steps and prompts for your own agent. Some are planned, and say so.",
+      "url": "signer-guides/index.html",
+      "markdown": "signer-guides/index.md"
     }
   ]
 }

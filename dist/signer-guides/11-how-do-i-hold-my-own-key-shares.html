@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en" data-skin="control" data-page="reading">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Two shares on your machines, one on the network, so the network alone can never sign. Planned.">
+<meta name="color-scheme" content="light dark">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; script-src 'self'; img-src 'self'; font-src 'self'; base-uri 'none'; form-action 'none'">
+<title>How do I hold my own key shares? · TraderSwift</title>
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/style.css">
+<script src="../assets/reading.js" blocking="render"></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><a class="wordmark" href="../index.html" aria-label="TraderSwift home">TraderSwift</a><nav aria-label="Site"><a href="../index.html#updates">Updates</a><a href="../index.html#guides">Guides</a><a class="source-link" href="../llms.txt">For agents ↗</a><button class="theme-switch" type="button" aria-label="Switch to dark mode" hidden><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><g class="theme-sun"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></g><path class="theme-moon" d="M20 15.5A9 9 0 0 1 8.5 4 9 9 0 1 0 20 15.5Z"/></svg></button></nav></header>
+<main id="main"><div class="reading-layout"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="../index.html">Home</a><span aria-hidden="true">/</span><a href="index.html">Signer – How to Run, Test and Trade with It</a></nav>
+<div class="reading-topline"><p class="eyebrow">Chapter 11 <span>/ 12</span></p><nav class="chapter-progress" aria-label="Chapters"><a href="01-what-is-signer.html" aria-label="Chapter 1: What is Signer, and who is it for?">01</a><a href="02-how-does-an-order-get-signed.html" aria-label="Chapter 2: How does an order get signed?">02</a><a href="03-how-do-i-try-signer-on-my-own-computer.html" aria-label="Chapter 3: How do I try Signer on my own computer?">03</a><a href="04-how-do-i-write-a-trading-policy.html" aria-label="Chapter 4: How do I write a trading policy?">04</a><a href="05-how-do-i-stop-an-agent-fast.html" aria-label="Chapter 5: How do I stop an agent fast?">05</a><a href="06-how-do-i-read-signers-record.html" aria-label="Chapter 6: How do I read Signer&#x27;s record?">06</a><a href="07-how-do-i-run-a-signer-validator.html" aria-label="Chapter 7: How do I run a Signer validator?">07</a><a href="08-how-do-i-launch-a-node-with-one-link.html" aria-label="Chapter 8: How do I launch a node with one link?">08</a><a href="09-how-do-i-run-my-own-signer-chain.html" aria-label="Chapter 9: How do I run my own Signer chain?">09</a><a href="10-how-do-i-get-a-signer-key-for-my-own-account.html" aria-label="Chapter 10: How do I get a Signer key for my own account?">10</a><a href="11-how-do-i-hold-my-own-key-shares.html" aria-label="Chapter 11: How do I hold my own key shares?" aria-current="page">11</a><a href="12-how-do-i-run-a-private-signer-network-on-esp32s.html" aria-label="Chapter 12: How do I run a private Signer network on ESP32s?">12</a></nav></div>
+<article><header class="article-header"><h1>How do I hold my own key shares?</h1><p class="standfirst">Two shares on your machines, one on the network, so the network alone can never sign. Planned.</p><div class="article-meta"><span>TraderSwift guide</span><span>4 min read</span><a href="11-how-do-i-hold-my-own-key-shares.md">Read Markdown ↗</a></div></header><div class="prose"><p><strong>Planned.</strong></p>
+<p>This page is half written on purpose. The first half explains the design and why it matters.</p>
+<p>The second half is the milestones. When it is built, this page will be updated with the full steps.</p>
+<p>Once it is built, you will be able to keep most of your own trading key on your own machines, so the network can never sign for you on its own.</p>
+<h2 id="why-hold-your-own-shares">Why hold your own shares?</h2>
+<p>With Signer today, the network&#x27;s signers hold every share of a key. They check your policy before signing, and every decision goes on the chain.</p>
+<p>But you are still trusting them not to work together against you.</p>
+<p>Holding your own shares removes that trust.</p>
+<h2 id="how-does-it-work">How does it work?</h2>
+<p>The key is split 2-of-3:</p>
+<ul><li><strong>Two shares on your machines.</strong> For example, two small computers at home. Together they can sign without the network.</li><li><strong>One share on the network.</strong> On its own it can never sign. It is your backup if one of your machines is lost, and it is how your key joins the network.</li></ul>
+<p>This works because of one rule: the network must hold fewer shares than it takes to sign. With 2-of-3 and one network share, it does.</p>
+<h2 id="how-is-that-different-from-approving-on-my-phone">How is that different from approving on my phone?</h2>
+<p>There is a lighter option: your devices approve each order, while the network holds the shares. That protects you against a stolen agent key, because nothing signs without your approval.</p>
+<p>But it still trusts the network signers. If they worked together, they could sign without you.</p>
+<p>Only shares on your own machines remove that trust. We describe the two options that way everywhere, and we never say approvals alone remove trust.</p>
+<h2 id="what-will-it-ask-of-me">What will it ask of me?</h2>
+<ul><li><strong>Two machines you control.</strong> They must be sealed before they take part in making the key: no remote login, not even for you.</li><li><strong>A recovery plan.</strong> What happens if you travel, lose a device, or lose everything. This is specified before anyone uses it with real money.</li></ul>
+<h2 id="what-can-i-do-now">What can I do now?</h2>
+<p>Think through your recovery before your machines. This prompt helps:</p>
+<figure class="prompt"><figcaption><span>Try this prompt</span><a href="11-how-do-i-hold-my-own-key-shares-prompt-1.txt" aria-label="Open plain prompt text to copy">Open text to copy ↗</a></figcaption><blockquote><p>I plan to hold two of three shares of a trading key on two small computers at home, with the third share held by a network as a backup. Walk me through what happens if: I travel for a month, one computer dies, both die, or someone steals one. For each case, tell me whether I can still trade, whether I can recover, and what I should set up now.</p></blockquote></figure>
+<h2 id="what-are-the-milestones">What are the milestones?</h2>
+<ol><li><strong>Recovery spec.</strong> Travel, a lost device, total loss, and a malicious recovery attempt.</li><li><strong>The 2-of-3.</strong> Two shares on your machines and one network share, so the network alone can never sign.</li><li><strong>Sealed or refused.</strong> The signer software refuses to make a key unless your node is sealed.</li><li><strong>Your node, launched for you.</strong> Your share node launched by the <a href="08-how-do-i-launch-a-node-with-one-link.html">one-link launcher</a>.</li><li><strong>A gated test.</strong> With a throwaway key.</li><li><strong>First real account.</strong> This page gets the full steps.</li></ol>
+<h2 id="final-thoughts">Final thoughts</h2>
+<p>This is the version of Signer where the network can&#x27;t sign for you at all. It needs two machines of yours and a recovery plan you have thought through.</p>
+<p>The design is set. The milestones above are what stands between it and your account.</p></div></article>
+<nav class="chapter-navigation" aria-label="Chapter navigation"><a rel="prev" href="10-how-do-i-get-a-signer-key-for-my-own-account.html"><span>← Previous chapter</span><strong>How do I get a Signer key for my own account?</strong></a><a rel="next" href="12-how-do-i-run-a-private-signer-network-on-esp32s.html"><span>Next chapter →</span><strong>How do I run a private Signer network on ESP32s?</strong></a></nav><p class="reading-hint">One chapter at a time. Use the links to keep reading, or swipe on touch screens.</p></div></main>
+<footer class="site-footer"><span>TraderSwift</span><nav aria-label="Resources"><a href="../index.json">Index</a><a href="../llms.txt">Plain text</a><a href="../sitemap.xml">Sitemap</a></nav></footer>
+</body>
+</html>

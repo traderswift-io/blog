@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en" data-skin="control" data-page="reading">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Build the chain and the signer node on your own machine and start a throwaway local network, with no venue and no real key.">
+<meta name="color-scheme" content="light dark">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; script-src 'self'; img-src 'self'; font-src 'self'; base-uri 'none'; form-action 'none'">
+<title>How do I try Signer on my own computer? · TraderSwift</title>
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/style.css">
+<script src="../assets/reading.js" blocking="render"></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><a class="wordmark" href="../index.html" aria-label="TraderSwift home">TraderSwift</a><nav aria-label="Site"><a href="../index.html#updates">Updates</a><a href="../index.html#guides">Guides</a><a class="source-link" href="../llms.txt">For agents ↗</a><button class="theme-switch" type="button" aria-label="Switch to dark mode" hidden><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><g class="theme-sun"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></g><path class="theme-moon" d="M20 15.5A9 9 0 0 1 8.5 4 9 9 0 1 0 20 15.5Z"/></svg></button></nav></header>
+<main id="main"><div class="reading-layout"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="../index.html">Home</a><span aria-hidden="true">/</span><a href="index.html">Signer – How to Run, Test and Trade with It</a></nav>
+<div class="reading-topline"><p class="eyebrow">Chapter 03 <span>/ 12</span></p><nav class="chapter-progress" aria-label="Chapters"><a href="01-what-is-signer.html" aria-label="Chapter 1: What is Signer, and who is it for?">01</a><a href="02-how-does-an-order-get-signed.html" aria-label="Chapter 2: How does an order get signed?">02</a><a href="03-how-do-i-try-signer-on-my-own-computer.html" aria-label="Chapter 3: How do I try Signer on my own computer?" aria-current="page">03</a><a href="04-how-do-i-write-a-trading-policy.html" aria-label="Chapter 4: How do I write a trading policy?">04</a><a href="05-how-do-i-stop-an-agent-fast.html" aria-label="Chapter 5: How do I stop an agent fast?">05</a><a href="06-how-do-i-read-signers-record.html" aria-label="Chapter 6: How do I read Signer&#x27;s record?">06</a><a href="07-how-do-i-run-a-signer-validator.html" aria-label="Chapter 7: How do I run a Signer validator?">07</a><a href="08-how-do-i-launch-a-node-with-one-link.html" aria-label="Chapter 8: How do I launch a node with one link?">08</a><a href="09-how-do-i-run-my-own-signer-chain.html" aria-label="Chapter 9: How do I run my own Signer chain?">09</a><a href="10-how-do-i-get-a-signer-key-for-my-own-account.html" aria-label="Chapter 10: How do I get a Signer key for my own account?">10</a><a href="11-how-do-i-hold-my-own-key-shares.html" aria-label="Chapter 11: How do I hold my own key shares?">11</a><a href="12-how-do-i-run-a-private-signer-network-on-esp32s.html" aria-label="Chapter 12: How do I run a private Signer network on ESP32s?">12</a></nav></div>
+<article><header class="article-header"><h1>How do I try Signer on my own computer?</h1><p class="standfirst">Build the chain and the signer node on your own machine and start a throwaway local network, with no venue and no real key.</p><div class="article-meta"><span>TraderSwift guide</span><span>5 min read</span><a href="03-how-do-i-try-signer-on-my-own-computer.md">Read Markdown ↗</a></div></header><div class="prose"><p>By the end of this page you will be able to build the Signer pieces on your own computer and run a small local chain.</p>
+<p>Nothing on this page sends an order to a venue or uses a real key.</p>
+<h2 id="what-do-i-need">What do I need?</h2>
+<ul><li><strong>A Linux machine.</strong> Any ordinary computer will do. The chain script is a bash script and the build steps assume Linux.</li><li><strong>Go.</strong> The chain is written in Go. The public guide pins one exact version, <code>1.26.5</code>, and we use it here too.</li><li><strong>Rust and `m4`.</strong> The signer node is written in Rust. It builds a math library from source, and that step needs <code>m4</code> on your path. You do not need root.</li><li><strong>Python 3.</strong> The coordinator is plain Python.</li><li><strong>`jq`.</strong> The local script uses it to write the chain&#x27;s start file.</li></ul>
+<h2 id="what-are-the-pieces">What are the pieces?</h2>
+<p>Signer has three programs. Each one has its own folder in the public repository.</p>
+<ul><li><strong>The chain, `signerd`.</strong> It stores policies and decision records. It is a Cosmos SDK chain written in Go.</li><li><strong>The signer node, `signer-node`.</strong> It checks an order against the policy and signs. It is written in Rust.</li><li><strong>The coordinator.</strong> It takes an order request, collects the signature and sends it on. It holds no key share.</li></ul>
+<p>We start with the chain, because it is the part you can run end to end today.</p>
+<h2 id="how-do-i-run-a-local-chain">How do I run a local chain?</h2>
+<p>Clone the repository, then build <code>signerd</code> from the <code>chain</code> folder. The build script expects the binary at <code>build/signerd</code>.</p>
+<figure class="code-block"><figcaption>Code</figcaption><pre tabindex="0"><code class="language-text">go build -o build/signerd .</code></pre></figure>
+<p>&lt;!-- source: chain/README.md:49 --&gt;</p>
+<p>The same folder has a script that starts several validators on your own machine.</p>
+<figure class="code-block"><figcaption>Code</figcaption><pre tabindex="0"><code class="language-text">./run_local_network.sh [--directory path] up 4
+./run_local_network.sh status</code></pre></figure>
+<p>&lt;!-- source: chain/README.md:50-51 (<code>up 4</code> fills the validator_count slot) --&gt;</p>
+<p>We use four validators. A chain commits only with more than two thirds of the voting power.</p>
+<p>With three equal validators, stopping one halts the chain. Four tolerate one down.</p>
+<p>The keys in this network are throwaway. The chain id is <code>signer-local-1</code>, the keyring uses the <code>test</code> backend, and everything stays on <code>127.0.0.1</code>.</p>
+<h2 id="how-do-i-break-it-on-purpose">How do I break it on purpose?</h2>
+<p>The script can stop and start single nodes. This is the fastest way to see why four validators behave differently from three.</p>
+<figure class="code-block"><figcaption>Code</figcaption><pre tabindex="0"><code class="language-text">./run_local_network.sh stop 2
+./run_local_network.sh start 2
+./run_local_network.sh down
+./run_local_network.sh wipe</code></pre></figure>
+<p>&lt;!-- source: chain/README.md:52-55 --&gt;</p>
+<p><code>down</code> stops the whole network. <code>wipe</code> removes it, so the next <code>up</code> starts from block 1.</p>
+<h2 id="how-do-i-build-the-signer-node-and-the-coordinator">How do I build the signer node and the coordinator?</h2>
+<p>The signer node builds with Cargo from the <code>signer</code> folder.</p>
+<figure class="code-block"><figcaption>Code</figcaption><pre tabindex="0"><code class="language-text">cargo build --release
+signer-node signer-config.json</code></pre></figure>
+<p>&lt;!-- source: signer/README.md:10-11 --&gt;</p>
+<p>The config fields are listed in <code>src/signer_config.rs</code>. The node speaks plain HTTP, so it listens on loopback only and refuses any peer address that is not loopback.</p>
+<p>That is a safety feature on your own computer.</p>
+<p>The coordinator is started from the repository root.</p>
+<figure class="code-block"><figcaption>Code</figcaption><pre tabindex="0"><code class="language-text">python3 -m coordinator.coordinator_service coordinator-config.json</code></pre></figure>
+<p>&lt;!-- source: coordinator/README.md:9 --&gt;</p>
+<p>Live venues are off by default. The coordinator refuses any venue address except plain HTTP on loopback, unless the operator turns a live setting on.</p>
+<p>So pointing it at a small program of your own on <code>127.0.0.1</code> is the safe way to play.</p>
+<h2 id="can-i-run-a-full-order-against-a-fake-venue">Can I run a full order against a fake venue?</h2>
+<p><strong>Planned.</strong> The end-to-end order round against a fake venue is not public yet, so this page promises nothing about it.</p>
+<p>Today you can run the chain end to end and build the signer node.</p>
+<p>The coordinator&#x27;s loopback rule is in the public tree, but the wiring of all three is not.</p>
+<h2 id="can-my-agent-help">Can my agent help?</h2>
+<p>Yes. This is a good job to hand over, because everything on this page runs on your own machine and nothing is spent.</p>
+<figure class="prompt"><figcaption><span>Try this prompt</span><a href="03-how-do-i-try-signer-on-my-own-computer-prompt-1.txt" aria-label="Open plain prompt text to copy">Open text to copy ↗</a></figcaption><blockquote><p>Read the README files in the folders chain, signer and coordinator of github.com/traderswift-io/signer. On this machine only, build signerd with the exact Go version the repository names, then start the local network with chain/run_local_network.sh using four validators. Show me the output of its status command. Then build signer-node with cargo build --release. Do not connect to any venue, do not use any real key, and do not change anything outside one new folder. If a step fails, stop and show me the last 30 lines of the log.</p></blockquote></figure>
+<h2 id="why-should-i-try-it-locally-first">Why should I try it locally first?</h2>
+<p>You see the rules without risk. You can stop a validator and watch the chain keep going.</p>
+<p>You can stop two and watch it halt.</p>
+<p>You also learn the shape of the code before you read the policy rules in <code>docs/INTERFACES.md</code>. That file is the contract between the three programs.</p>
+<h2 id="final-thoughts">Final thoughts</h2>
+<p>The local chain is real and runs today. The full loop with a fake venue is planned, and we will update this page when it is public.</p>
+<p>Next, read how to look at what the chain records in <a href="06-how-do-i-read-signers-record.md">How do I read Signer&#x27;s record?</a>. If you want to run a node on the real chain, read <a href="07-how-do-i-run-a-signer-validator.md">How do I run a Signer validator?</a>.</p></div></article>
+<nav class="chapter-navigation" aria-label="Chapter navigation"><a rel="prev" href="02-how-does-an-order-get-signed.html"><span>← Previous chapter</span><strong>How does an order get signed?</strong></a><a rel="next" href="04-how-do-i-write-a-trading-policy.html"><span>Next chapter →</span><strong>How do I write a trading policy?</strong></a></nav><p class="reading-hint">One chapter at a time. Use the links to keep reading, or swipe on touch screens.</p></div></main>
+<footer class="site-footer"><span>TraderSwift</span><nav aria-label="Resources"><a href="../index.json">Index</a><a href="../llms.txt">Plain text</a><a href="../sitemap.xml">Sitemap</a></nav></footer>
+</body>
+</html>

@@ -1,0 +1,8 @@
+You are helping me write a trading policy for an agent that trades from a key it cannot hold. Below is an anonymised summary of my past trading: markets, order sizes, daily volume, maker and taker share, and order types. It has no venue, no dates and no account details.
+
+The policy has these live fields per delegate: the list of allowed markets; a maximum order size per market; a maximum daily size per market; an expiry. Reduce-only orders are exempt from the size caps. Position limits and a daily loss limit are checked by me outside the policy.
+
+For each field, propose a value taken from my history, and say which part of the history supports it. Say whether I should use one delegate key or two, for example one that only posts orders and one that takes liquidity. Tell me which of my limits you would put on the owner side, and how fast my revoke should react. List what the history cannot tell you.
+
+My history:
+[paste your anonymised summary here]

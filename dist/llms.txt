@@ -10,6 +10,12 @@ Static HTML and Markdown.
 
 ## Updates
 
+- [What is TraderSwift?](what-is-traderswift/01-what-is-traderswift.html) | Markdown: what-is-traderswift/01-what-is-traderswift.md | An open infrastructure layer for agentic and hybrid trading.
+- [What is running today?](what-is-traderswift/02-what-is-running-today.html) | Markdown: what-is-traderswift/02-what-is-running-today.md | Signer, the hub chain and the charts data node.
+- [What is in the pipeline?](what-is-traderswift/03-what-is-in-the-pipeline.html) | Markdown: what-is-traderswift/03-what-is-in-the-pipeline.md | The marketplace, signal providers, Ledger, Vault and Storage.
+- [How will we teach it?](what-is-traderswift/04-how-will-we-teach-it.html) | Markdown: what-is-traderswift/04-how-will-we-teach-it.md | An educational blog on each site, with how-to guides and prompts for your own AI.
+- [Final thoughts](what-is-traderswift/05-final-thoughts.html) | Markdown: what-is-traderswift/05-final-thoughts.md | What to read next.
+- [What Is TraderSwift – The Infrastructure Layer for Agentic Trading](what-is-traderswift/index.html) | Markdown: what-is-traderswift/index.md | What TraderSwift is, who it is for, what is running today and what is in the pipeline.
 - [What happened to Lockbox?](since-lockbox/01-what-happened-to-lockbox.html) | Markdown: since-lockbox/01-what-happened-to-lockbox.md | Halting and archiving our first chain, and settling on a new name.
 - [What is signer-1, and what did it do this week?](since-lockbox/02-what-is-signer-1-and-what-did-it-do-this-week.html) | Markdown: since-lockbox/02-what-is-signer-1-and-what-did-it-do-this-week.md | The live launch with real money, and the move to new machines.
 - [What is the hub, traderswift-1?](since-lockbox/03-what-is-the-hub-traderswift-1.html) | Markdown: since-lockbox/03-what-is-the-hub-traderswift-1.md | The chain at the centre of TraderSwift, and its validator rotation.
@@ -23,3 +29,30 @@ Static HTML and Markdown.
 - [What is next?](since-lockbox/11-what-is-next.html) | Markdown: since-lockbox/11-what-is-next.md | What each part of the system needs next.
 - [Final thoughts](since-lockbox/12-final-thoughts.html) | Markdown: since-lockbox/12-final-thoughts.md | What the week adds up to.
 - [Since Lockbox – A Week of Building Signer and TraderSwift](since-lockbox/index.html) | Markdown: since-lockbox/index.md | What we built between 11 and 18 November 2026, what broke, and what we changed.
+- [What is a key rotation, and why do one?](trading-key-rotation/01-what-is-a-key-rotation-and-why-do-one.html) | Markdown: trading-key-rotation/01-what-is-a-key-rotation-and-why-do-one.md | What a rotation is, and the three reasons we did one.
+- [Why not just copy the shares across?](trading-key-rotation/02-why-not-just-copy-the-shares-across.html) | Markdown: trading-key-rotation/02-why-not-just-copy-the-shares-across.md | Why a copied share is still the old key.
+- [How were the new machines prepared?](trading-key-rotation/03-how-were-the-new-machines-prepared.html) | Markdown: trading-key-rotation/03-how-were-the-new-machines-prepared.md | Synced from the first block, sealed, and no backups.
+- [How was the new key made?](trading-key-rotation/04-how-was-the-new-key-made.html) | Markdown: trading-key-rotation/04-how-was-the-new-key-made.md | Four machines make one key that never exists whole.
+- [How did we prove the new key works?](trading-key-rotation/05-how-did-we-prove-the-new-key-works.html) | Markdown: trading-key-rotation/05-how-did-we-prove-the-new-key-works.md | A refusal, an entry and a close, with real money.
+- [What went wrong?](trading-key-rotation/06-what-went-wrong.html) | Markdown: trading-key-rotation/06-what-went-wrong.md | Decision records that waited in an outbox.
+- [How did the old set leave?](trading-key-rotation/07-how-did-the-old-set-leave.html) | Markdown: trading-key-rotation/07-how-did-the-old-set-leave.md | Removing the old set, and revoking the old key.
+- [Who approves each step?](trading-key-rotation/08-who-approves-each-step.html) | Markdown: trading-key-rotation/08-who-approves-each-step.md | The owner signs every change to who signs.
+- [What is next?](trading-key-rotation/09-what-is-next.html) | Markdown: trading-key-rotation/09-what-is-next.md | Fixes, Policy v2 and outside signers.
+- [Final thoughts](trading-key-rotation/10-final-thoughts.html) | Markdown: trading-key-rotation/10-final-thoughts.md | What the rotation proved.
+- [Signer’s First Rotation – What Happened on 17 November](trading-key-rotation/index.html) | Markdown: trading-key-rotation/index.md | Signer moved to new machines on 17 November 2026. The old key did not move with it. We made a new one.
+
+## Guides
+
+- [What is Signer, and who is it for?](signer-guides/01-what-is-signer.html) | Markdown: signer-guides/01-what-is-signer.md | Signer lets an agent trade from a key that no one holds whole, under a policy the owner writes on a chain.
+- [How does an order get signed?](signer-guides/02-how-does-an-order-get-signed.html) | Markdown: signer-guides/02-how-does-an-order-get-signed.md | The path of one order from an agent's request to the venue, and the decision record it leaves on the chain.
+- [How do I try Signer on my own computer?](signer-guides/03-how-do-i-try-signer-on-my-own-computer.html) | Markdown: signer-guides/03-how-do-i-try-signer-on-my-own-computer.md | Build the chain and the signer node on your own machine and start a throwaway local network, with no venue and no real key.
+- [How do I write a trading policy?](signer-guides/04-how-do-i-write-a-trading-policy.html) | Markdown: signer-guides/04-how-do-i-write-a-trading-policy.md | The fields a Signer policy has today, what Policy v2 plans to add, what stays with you, and a prompt to draft one from your own history.
+- [How do I stop an agent fast?](signer-guides/05-how-do-i-stop-an-agent-fast.html) | Markdown: signer-guides/05-how-do-i-stop-an-agent-fast.md | Revoke the policy on the Signer chain and every later order from that delegate is refused.
+- [How do I read Signer's record?](signer-guides/06-how-do-i-read-signers-record.html) | Markdown: signer-guides/06-how-do-i-read-signers-record.md | Run a read-only node from the public genesis file and look at policies and decision records, signed and refused.
+- [How do I run a Signer validator?](signer-guides/07-how-do-i-run-a-signer-validator.html) | Markdown: signer-guides/07-how-do-i-run-a-signer-validator.md | Build the chain binary, sync a node and join the validator set by rule, yourself or with your own agent following SKILL.md.
+- [How do I launch a node with one link?](signer-guides/08-how-do-i-launch-a-node-with-one-link.html) | Markdown: signer-guides/08-how-do-i-launch-a-node-with-one-link.md | Give your own agent one link, say "Go" once, and it launches, seals and leaves. Planned.
+- [How do I run my own Signer chain?](signer-guides/09-how-do-i-run-my-own-signer-chain.html) | Markdown: signer-guides/09-how-do-i-run-my-own-signer-chain.md | Build the Signer chain from the public code and run your own network, with your own admin. Anchoring to the hub is planned.
+- [How do I get a Signer key for my own account?](signer-guides/10-how-do-i-get-a-signer-key-for-my-own-account.html) | Markdown: signer-guides/10-how-do-i-get-a-signer-key-for-my-own-account.md | Outsiders can't get a key yet. What it will take, and the milestones to get there. Planned.
+- [How do I hold my own key shares?](signer-guides/11-how-do-i-hold-my-own-key-shares.html) | Markdown: signer-guides/11-how-do-i-hold-my-own-key-shares.md | Two shares on your machines, one on the network, so the network alone can never sign. Planned.
+- [How do I run a private Signer network on ESP32s?](signer-guides/12-how-do-i-run-a-private-signer-network-on-esp32s.html) | Markdown: signer-guides/12-how-do-i-run-a-private-signer-network-on-esp32s.md | A household quorum: ESP32s approve each order, two Raspberry Pis hold the shares. Planned.
+- [Signer – How to Run, Test and Trade with It](signer-guides/index.html) | Markdown: signer-guides/index.md | Twelve how-tos for people interested in Signer, each with steps and prompts for your own agent. Some are planned, and say so.
