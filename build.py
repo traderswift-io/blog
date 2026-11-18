@@ -143,7 +143,7 @@ def render_markdown(source, destination):
                 prompt_count += 1
                 prompt_path = destination.with_name(f'{destination.stem}-prompt-{prompt_count}.txt')
                 prompt_path.write_text(text + '\n', encoding='utf-8')
-                fragments.append(f'<figure class="prompt"><figcaption><span>Try this prompt</span><a href="{escape(prompt_path.name)}" aria-label="Open plain prompt text to copy">Open text to copy ↗</a></figcaption><blockquote><p>{escape(text)}</p></blockquote></figure>')
+                fragments.append(f'<figure class="prompt"><figcaption><span>Try this prompt</span><button class="prompt-copy" type="button" aria-label="Copy prompt" hidden>Copy</button><a href="{escape(prompt_path.name)}" aria-label="Open plain prompt text to copy">Open text to copy ↗</a><span class="prompt-status" role="status" aria-live="polite" aria-atomic="true"></span></figcaption><blockquote><p>{escape(text)}</p></blockquote></figure>')
             else:
                 fragments.append(f'<figure class="code-block"><figcaption>{escape(language or "Code")}</figcaption><pre tabindex="0"><code class="language-{escape(language or "text")}">{escape(text)}</code></pre></figure>')
         elif table_start(lines, position):

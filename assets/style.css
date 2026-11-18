@@ -140,9 +140,13 @@ h1 { font-family: var(--serif); font-size: clamp(2.5rem, 5vw, 4rem); line-height
 .prose .notice > :last-child { margin-bottom: 0; }
 .prose .notice a { color: var(--notice-link); }
 .prose .notice a:focus-visible { outline-color: var(--notice-link); }
-.prompt figcaption { display: flex; justify-content: space-between; gap: 15px; font-family: var(--sans); font-size: 10px; margin-bottom: 17px; }
-.prompt figcaption span { text-transform: uppercase; letter-spacing: .12em; font-weight: 600; color: var(--accent); }
+.prompt figcaption { display: flex; align-items: center; justify-content: space-between; gap: 15px; font-family: var(--sans); font-size: 10px; margin-bottom: 17px; }
+.prompt figcaption > span:first-child { text-transform: uppercase; letter-spacing: .12em; font-weight: 600; color: var(--accent); }
 .prompt figcaption a { color: var(--muted); white-space: nowrap; }
+.prompt-copy { min-width: 70px; min-height: 44px; flex-shrink: 0; padding: 8px 12px; border: 1px solid var(--accent); border-radius: 3px; background: var(--prompt); color: var(--ink); font: 600 12px var(--sans); cursor: pointer; }
+.prompt-copy:hover { color: var(--accent); }
+.prompt-copy:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.prompt-status { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 .prompt blockquote { border: 0; padding: 0; color: var(--ink); font-style: normal; font-size: 17px; margin: 0; white-space: pre-wrap; }
 .chapter-navigation { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; border-top: 1px solid var(--line); margin-top: 42px; padding-top: 25px; }
 .chapter-navigation a { display: flex; flex-direction: column; gap: 10px; text-decoration: none; }

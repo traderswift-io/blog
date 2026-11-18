@@ -52,7 +52,9 @@ Keep the example local.
 :::
 ```
 
-A prompt becomes a labelled figure, visually distinct from code. Its link opens an adjacent plain-text file so readers can select and copy it without JavaScript. Prompt text is literal, not Markdown.
+A prompt becomes a labelled figure, visually distinct from code. Its Copy button copies the literal prompt text, including the final newline written to the adjacent `-prompt-N.txt` file. Each prompt has its own button, a keyboard focus indicator, an accessible “Copy prompt” label and a polite live region. Successful copying shows and announces “Copied” for two seconds. If clipboard access is unavailable or denied, the text is selected for manual copying, the button shows “Selected”, and the live region explains what to do. Without JavaScript, the plain-text link remains available. Prompt text is literal, not Markdown.
+
+Copy controls use the existing same-origin `assets/reading.js`, loaded once per page; the Content-Security-Policy stays unchanged and no inline script is needed. The script reveals each button and hides its text link only after attaching the handler. Buttons use the prompt palette in both skins and themes, with AA text contrast and a minimum 44px tap target. A single timeout after each click resets that button's feedback after two seconds; there is no polling.
 
 Use a notice fence for an announcement. Its body supports paragraphs, links and flat bullet lists:
 

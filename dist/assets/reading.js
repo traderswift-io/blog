@@ -1,4 +1,40 @@
 (() => {
+addEventListener('DOMContentLoaded', () => {
+for (const prompt of document.querySelectorAll('.prompt')) {
+const button = prompt.querySelector('.prompt-copy');
+const status = prompt.querySelector('.prompt-status');
+const text = prompt.querySelector('blockquote p');
+let reset;
+let copying = false;
+button.addEventListener('click', async () => {
+if (copying) return;
+copying = true;
+clearTimeout(reset);
+status.textContent = '';
+try {
+await navigator.clipboard.writeText(text.textContent + '\n');
+button.textContent = 'Copied';
+status.textContent = 'Copied';
+} catch {
+const selection = getSelection();
+const range = document.createRange();
+range.selectNodeContents(text);
+selection.removeAllRanges();
+selection.addRange(range);
+button.textContent = 'Selected';
+status.textContent = 'Text selected. Use your browser to copy it.';
+} finally {
+copying = false;
+reset = setTimeout(() => {
+button.textContent = 'Copy';
+status.textContent = '';
+}, 2000);
+}
+});
+button.hidden = false;
+prompt.querySelector('figcaption a').hidden = true;
+}
+});
 const root = document.documentElement;
 if (root.dataset.skin === 'control') {
 const preference = matchMedia('(prefers-color-scheme: dark)');
