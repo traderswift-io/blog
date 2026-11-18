@@ -187,8 +187,9 @@ def render_markdown(source, destination):
     return '\n'.join(fragments)
 
 
-def page_shell(title, description, body, depth=0):
+def page_shell(title, description, body, section_kinds, depth=0):
     prefix = '../' * depth
+    section_links = ''.join(f'<a href="{prefix}index.html#{kind}s">{kind.capitalize()}s</a>' for kind in section_kinds)
     theme_switch = '''<button class="theme-switch" type="button" aria-label="Switch to dark mode" hidden><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><g class="theme-sun"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></g><path class="theme-moon" d="M20 15.5A9 9 0 0 1 8.5 4 9 9 0 1 0 20 15.5Z"/></svg></button>''' if site_skin == 'control' else ''
     return f'''<!doctype html>
 <html lang="en" data-skin="{site_skin}" data-page="{"home" if depth == 0 else "reading"}">
@@ -205,7 +206,7 @@ def page_shell(title, description, body, depth=0):
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
-<header class="site-header"><a class="wordmark" href="{prefix}index.html" aria-label="{escape(site_name)} home">{escape(site_name)}</a><nav aria-label="Site"><a href="{prefix}index.html#updates">Updates</a><a href="{prefix}index.html#guides">Guides</a><a class="source-link" href="{prefix}llms.txt">For agents ↗</a>{theme_switch}</nav></header>
+<header class="site-header"><a class="wordmark" href="{prefix}index.html" aria-label="{escape(site_name)} home">{escape(site_name)}</a><nav aria-label="Site">{section_links}<a class="source-link" href="{prefix}llms.txt">For agents ↗</a>{theme_switch}</nav></header>
 <main id="main">{body}</main>
 <footer class="site-footer"><span>{escape(site_name)}</span><nav aria-label="Resources"><a href="{prefix}index.json">Index</a><a href="{prefix}llms.txt">Plain text</a><a href="{prefix}sitemap.xml">Sitemap</a></nav></footer>
 </body>
@@ -213,10 +214,10 @@ def page_shell(title, description, body, depth=0):
 '''
 
 
-def write_page(output_directory, relative_path, title, description, body, markdown, depth=0):
+def write_page(output_directory, relative_path, title, description, body, markdown, section_kinds, depth=0):
     destination = output_directory / relative_path
     destination.parent.mkdir(parents=True, exist_ok=True)
-    destination.write_text(page_shell(title, description, body, depth), encoding='utf-8')
+    destination.write_text(page_shell(title, description, body, section_kinds, depth), encoding='utf-8')
     destination.with_suffix('.md').write_text(markdown, encoding='utf-8')
     return {'title': title, 'description': description, 'url': relative_path, 'markdown': str(Path(relative_path).with_suffix('.md'))}
 
@@ -264,6 +265,8 @@ def read_guides():
 
 
 def render_site(base_url, output_directory):
+    guides = read_guides()
+    section_kinds = tuple(kind for kind in ('update', 'guide') if any(guide[2]['kind'] == kind for guide in guides))
     output_directory.mkdir()
     shutil.copytree(site_directory / 'assets', output_directory / 'assets')
     favicon_path = output_directory / 'assets' / 'favicon.svg'
@@ -273,7 +276,7 @@ def render_site(base_url, output_directory):
     tutorial_cards = {'update': [], 'guide': []}
     grouped_markdown = {'update': [], 'guide': []}
     grouped_pages = {'update': [], 'guide': []}
-    for guide_number, tutorial_directory, tutorial_metadata, tutorial_body, tutorial_source in read_guides():
+    for guide_number, tutorial_directory, tutorial_metadata, tutorial_body, tutorial_source in guides:
         tutorial_slug = tutorial_directory.name
         kind = tutorial_metadata['kind']
         first_page = len(indexed_pages)
@@ -321,16 +324,16 @@ def render_site(base_url, output_directory):
 <div class="reading-topline"><p class="eyebrow">Chapter {chapter_index + 1:02} <span>/ {len(chapters):02}</span></p><nav class="chapter-progress" aria-label="Chapters">{progress_links}</nav></div>
 <article><header class="article-header"><h1>{escape(metadata['title'])}</h1><p class="standfirst">{escape(metadata['description'])}</p><div class="article-meta"><span>{escape(site_name)} {kind}</span><span>{minutes} min read</span><a href="{escape(source_path.name)}">Read Markdown ↗</a></div></header><div class="prose">{rendered_body}</div></article>
 <nav class="chapter-navigation" aria-label="Chapter navigation">{navigation}</nav><p class="reading-hint">One chapter at a time. Use the links to keep reading, or swipe on touch screens.</p></div>'''
-            indexed_pages.append(write_page(output_directory, f'{tutorial_slug}/{filename}', metadata['title'], metadata['description'], body, source, 1))
+            indexed_pages.append(write_page(output_directory, f'{tutorial_slug}/{filename}', metadata['title'], metadata['description'], body, source, section_kinds, 1))
         contents_markdown = tutorial_source + '\n\n## Chapters\n\n' + '\n'.join(f'{index + 1}. [{chapter[2]["title"]}]({chapter[1].name})' for index, chapter in enumerate(chapters)) + '\n'
         contents_intro = render_markdown(tutorial_body, output_directory / tutorial_slug / 'index.html')
         chapter_count = f'<span class="chapter-count">{len(chapters)}</span>' if site_skin == 'control' else str(len(chapters))
         contents_body = f'''<div class="contents-layout"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="../index.html">Home</a><span aria-hidden="true">/</span>{series_breadcrumb}<span>{escape(tutorial_metadata['title'])}</span></nav>{contents_eyebrow}<h1>{escape(tutorial_metadata['title'])}</h1><p class="standfirst">{escape(tutorial_metadata['description'])}</p><div class="guide-meta"><span>{chapter_count} chapters</span><span>{total_minutes} min read</span>{level_label}</div><a class="button" rel="next" href="{escape(chapters[0][1].with_suffix('.html').name)}">Start with chapter 01 <span aria-hidden="true">→</span></a><div class="contents-intro prose">{contents_intro}</div><div class="section-heading"><h2>Table of contents</h2><a href="index.md">Markdown ↗</a></div><ol class="chapter-list">{''.join(chapter_rows)}</ol><a class="text-link" href="{escape(chapters[0][1].with_suffix('.html').name)}">Start with chapter 01 <span aria-hidden="true">→</span></a></div>'''
-        indexed_pages.append(write_page(output_directory, f'{tutorial_slug}/index.html', tutorial_metadata['title'], tutorial_metadata['description'], contents_body, contents_markdown, 1))
+        indexed_pages.append(write_page(output_directory, f'{tutorial_slug}/index.html', tutorial_metadata['title'], tutorial_metadata['description'], contents_body, contents_markdown, section_kinds, 1))
         tutorial_cards[kind].append(f'<article class="guide-card"><div class="card-copy">{card_eyebrow}<h3><a href="{escape(tutorial_slug)}/index.html">{escape(tutorial_metadata["title"])}</a></h3><p>{escape(tutorial_metadata["description"])}</p><div class="card-bottom"><span>{chapter_count} chapters <span aria-hidden="true">·</span> {total_minutes} min read</span><a href="{escape(tutorial_slug)}/index.html">{card_link} <span aria-hidden="true">↗</span></a></div></div></article>')
         grouped_markdown[kind].append(f'- [{tutorial_metadata["title"]}]({tutorial_slug}/index.md): {tutorial_metadata["description"]}')
         grouped_pages[kind].extend(indexed_pages[first_page:])
-    home_heading = f'<h1>{escape(site_name)}</h1>' if site_skin == 'light' else ''
+    home_heading = f'<h1>{escape(site_name)}</h1>'
     tagline = f'<p class="tagline">{escape(site_tagline)}</p>' if site_tagline else ''
     sections = []
     home_markdown = f'# {site_name}\n'
@@ -338,13 +341,12 @@ def render_site(base_url, output_directory):
         cards = tutorial_cards[kind]
         if not cards:
             continue
-        heading = 'h1' if site_skin == 'control' and not sections else 'h2'
         section_id = kind + 's'
         count_label = kind if len(cards) == 1 else section_id
-        sections.append(f'<section id="{section_id}" aria-labelledby="{section_id}-heading"><div class="section-heading"><{heading} id="{section_id}-heading">{title}</{heading}><span>{len(cards)} {count_label}</span></div>{"".join(cards)}</section>')
+        sections.append(f'<section id="{section_id}" aria-labelledby="{section_id}-heading"><div class="section-heading"><h2 id="{section_id}-heading">{title}</h2><span>{len(cards)} {count_label}</span></div>{"".join(cards)}</section>')
         home_markdown += f'\n## {title}\n\n' + '\n'.join(grouped_markdown[kind]) + '\n'
     home_body = f'<div class="home-layout"><section class="home-hero">{home_heading}{tagline}</section>{"".join(sections)}</div>'
-    indexed_pages.insert(0, write_page(output_directory, 'index.html', 'Blog', site_description, home_body, home_markdown))
+    indexed_pages.insert(0, write_page(output_directory, 'index.html', 'Blog', site_description, home_body, home_markdown, section_kinds))
     (output_directory / 'index.json').write_text(json.dumps({'name': site_name, 'description': site_description, 'base_url': base_url.rstrip('/'), 'pages': indexed_pages}, indent=2) + '\n', encoding='utf-8')
     plain_index = f'# {site_name}\n\n{site_description}\n\nSite: {base_url}\n\nStatic HTML and Markdown.\n\n[Home](index.html) | Markdown: index.md\n'
     for kind, title in (('update', 'Updates'), ('guide', 'Guides')):
