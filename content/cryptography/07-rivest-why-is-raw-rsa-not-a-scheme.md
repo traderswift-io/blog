@@ -52,11 +52,11 @@ For raw signatures, selecting any number s and defining `m = s^e mod n` produces
 
 This is not necessarily a forgery of a meaningful, chosen application message, but it demonstrates why arbitrary representatives and a verification equation do not constitute a complete signature scheme.
 
-Here is the lab. Press Run to try it in your browser.
+Here is the lab. It is also in [the labs file](../assets/cryptography/Cryptography_Practical_Labs.py), so you can run it on your own computer.
 
 Its last check is the shared-prime failure from [chapter 9](09-adleman-how-do-we-check-the-arithmetic.html).
 
-```python run
+```python
 from math import gcd, lcm
 
 

@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en" data-skin="control" data-page="reading">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Which mathematical problem an attacker must solve, and why the exact numbers chosen matter.">
+<meta name="color-scheme" content="light dark">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; script-src 'self'; img-src 'self'; font-src 'self'; base-uri 'none'; form-action 'none'">
+<title>Hellman: what makes the problem hard? · TraderSwift</title>
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/style.css">
+<script src="../assets/reading.js" blocking="render"></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><a class="wordmark" href="../index.html" aria-label="TraderSwift home">TraderSwift</a><nav aria-label="Site"><a href="../index.html#updates">Updates</a><a href="../index.html#guides">Guides</a><a href="../index.html#case-studies">Case studies</a><a class="source-link" href="../llms.txt">For agents ↗</a><button class="theme-switch" type="button" aria-label="Switch to dark mode" hidden><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><g class="theme-sun"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></g><path class="theme-moon" d="M20 15.5A9 9 0 0 1 8.5 4 9 9 0 1 0 20 15.5Z"/></svg></button></nav></header>
+<main id="main"><div class="reading-layout"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="../index.html">Home</a><span aria-hidden="true">/</span><a href="index.html">Cryptography – How to Understand and Review Cryptographic Systems</a></nav>
+<div class="reading-topline"><p class="eyebrow">Chapter 05 <span>/ 15</span></p><nav class="chapter-progress" aria-label="Chapters"><a href="01-what-do-we-need-to-know-before-starting.html" aria-label="Chapter 1: What do we need to know before starting?">01</a><a href="02-shannon-what-does-ciphertext-reveal.html" aria-label="Chapter 2: Shannon: what does ciphertext reveal?">02</a><a href="03-turing-how-is-the-system-operated.html" aria-label="Chapter 3: Turing: how is the system operated?">03</a><a href="04-diffie-who-owns-the-public-key.html" aria-label="Chapter 4: Diffie: who owns the public key?">04</a><a href="05-hellman-what-makes-the-problem-hard.html" aria-label="Chapter 5: Hellman: what makes the problem hard?" aria-current="page">05</a><a href="06-merkle-what-does-a-hash-actually-prove.html" aria-label="Chapter 6: Merkle: what does a hash actually prove?">06</a><a href="07-rivest-why-is-raw-rsa-not-a-scheme.html" aria-label="Chapter 7: Rivest: why is raw RSA not a scheme?">07</a><a href="08-shamir-which-threshold-really-applies.html" aria-label="Chapter 8: Shamir: which threshold really applies?">08</a><a href="09-adleman-how-do-we-check-the-arithmetic.html" aria-label="Chapter 9: Adleman: how do we check the arithmetic?">09</a><a href="10-schneier-what-is-the-system-around-the-algorithm.html" aria-label="Chapter 10: Schneier: what is the system around the algorithm?">10</a><a href="11-what-does-a-complete-review-look-like.html" aria-label="Chapter 11: What does a complete review look like?">11</a><a href="12-what-goes-on-a-review-worksheet.html" aria-label="Chapter 12: What goes on a review worksheet?">12</a><a href="13-what-are-the-exercises-and-answers.html" aria-label="Chapter 13: What are the exercises and answers?">13</a><a href="14-how-do-i-keep-learning.html" aria-label="Chapter 14: How do I keep learning?">14</a><a href="15-sources.html" aria-label="Chapter 15: Sources">15</a></nav></div>
+<article><header class="article-header"><h1>Hellman: what makes the problem hard?</h1><p class="standfirst">Which mathematical problem an attacker must solve, and why the exact numbers chosen matter.</p><div class="article-meta"><span>TraderSwift guide</span><span>5 min read</span><a href="05-hellman-what-makes-the-problem-hard.md">Read Markdown ↗</a></div></header><div class="prose"><p><strong>The question:</strong> Which mathematical problem must an attacker solve, under which assumptions, using these exact parameters?</p>
+<h2 id="what-is-a-one-way-function">What is a one way function?</h2>
+<p>A one-way function is efficient to compute but hard for an efficient attacker to invert on appropriately sampled inputs.</p>
+<p>The sampling condition matters. A function does not become useful cryptography because we found a few inputs that look difficult.</p>
+<p>For familiar practical constructions, hardness rests on assumptions and analysis rather than an unconditional proof that every possible attack is impossible. [6]</p>
+<p>For the previous example, calculating <code>5^6 mod 23</code> is easy. Recovering an exponent from its public result is a discrete-logarithm problem.</p>
+<p>At this size it is also easy. We need to inspect the problem size and structure, not just its name.</p>
+<h2 id="are-the-assumptions-interchangeable">Are the assumptions interchangeable?</h2>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Scrollable table"><table><thead><tr><th class="align-left" scope="col">Problem</th><th class="align-left" scope="col">Given</th><th class="align-left" scope="col">Asked to find or decide</th></tr></thead><tbody><tr><td class="align-left">Discrete logarithm, DLP</td><td class="align-left">g and g^a</td><td class="align-left">a</td></tr><tr><td class="align-left">Computational Diffie-Hellman, CDH</td><td class="align-left">g, g^a and g^b</td><td class="align-left">g^(ab)</td></tr><tr><td class="align-left">Decisional Diffie-Hellman, DDH</td><td class="align-left">g, g^a, g^b and Z</td><td class="align-left">Whether Z equals g^(ab), against an appropriate random alternative</td></tr><tr><td class="align-left">RSA inversion</td><td class="align-left">n, e and y</td><td class="align-left">x such that x^e mod n = y</td></tr><tr><td class="align-left">Integer factorization</td><td class="align-left">Composite n</td><td class="align-left">Its prime factors</td></tr></tbody></table></div>
+<p>These are different tasks.</p>
+<p>A DLP solver gives a route to CDH, and a CDH solver gives a route to DDH. The reverse implications are not generally available.</p>
+<p>Factoring an RSA modulus lets us derive its private exponent, but general RSA inversion is not known to be equivalent to factoring in all cases. [2, 15]</p>
+<p>When a design says “based on discrete logarithms,” ask for the actual scheme and its security argument.</p>
+<p>That description alone does not establish authentication, chosen-ciphertext security or correct handling of malicious inputs.</p>
+<h2 id="what-can-go-wrong-with-the-parameters">What can go wrong with the parameters?</h2>
+<p>Take a very large prime p and choose <code>g = p - 1</code>. That generator only produces two results: 1 and p - 1.</p>
+<p>The prime can be huge while the useful search space is tiny.</p>
+<p>With p = 23, repeated powers of 22 alternate between 22 and 1. A 4,096-bit representation would not fix the fact that there are only two possibilities.</p>
+<p>In finite-field protocols, inspect these, as required by the chosen scheme:</p>
+<ul><li>the group;</li><li>subgroup order;</li><li>generator;</li><li>private-exponent generation;</li><li>public-value validation.</li></ul>
+<p>Standardized finite-field groups and validation rules exist; RFC 7919 gives one concrete TLS profile. [9, 10]</p>
+<p>Validation is algorithm-specific. X25519 has different input-processing rules from a conventional finite-field DH implementation.</p>
+<p>RFC 7748 discusses small-order inputs and an all-zero shared result; protocols using it may impose additional rejection requirements. Do not copy one algorithm&#x27;s validation checklist into another. [11]</p>
+<h2 id="how-do-bits-of-security-differ-from-key-size">How do bits of security differ from key size?</h2>
+<p>Here is a classical-security comparison, not a promise that every implementation reaches these levels.</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Scrollable table"><table><thead><tr><th class="align-left" scope="col">Construction or parameter</th><th class="align-left" scope="col">Approximate strength under conventional assumptions</th></tr></thead><tbody><tr><td class="align-left">AES with a uniformly random 128-bit key</td><td class="align-left">128 bits against generic key search</td></tr><tr><td class="align-left">RSA with a 3,072-bit modulus</td><td class="align-left">128-bit security category</td></tr><tr><td class="align-left">A suitable elliptic curve with roughly 256-bit group order</td><td class="align-left">Roughly 128 bits against generic discrete-log attacks</td></tr><tr><td class="align-left">An ideal 256-bit hash output</td><td class="align-left">Roughly 128 bits for collisions; 256 for preimages</td></tr></tbody></table></div>
+<p>RSA modulus length is not RSA security strength.</p>
+<p>NIST&#x27;s key-management guidance provides comparisons for asymmetric and symmetric systems; hash strength also depends on which attack is being considered. [12, 13]</p>
+<p>If a system combines a strong cipher with a weak password, weak key exchange or leaked key, increasing the cipher&#x27;s key size does not repair that other weakness.</p>
+<p>Quantum attacks change this comparison. RSA and conventional DH or elliptic-curve systems are not post-quantum designs.</p>
+<p>NIST&#x27;s ML-KEM standard is one established post-quantum key-establishment building block, not a drop-in claim that an entire application is quantum-safe. [29]</p>
+<h2 id="what-should-a-defensible-claim-look-like">What should a defensible claim look like?</h2>
+<p>Write:</p>
+<ul><li>the scheme;</li><li>parameter set;</li><li>randomness source;</li><li>input validation;</li><li>attack model;</li><li>security target.</li></ul>
+<p>Then connect each requirement to a configuration or implementation location.</p>
+<p><strong>Try it:</strong> A developer chooses a 4,096-bit prime and the generator <code>p - 1</code>. What is the largest number of distinct public values this generator can produce?</p></div></article>
+<nav class="chapter-navigation" aria-label="Chapter navigation"><a rel="prev" href="04-diffie-who-owns-the-public-key.html"><span>← Previous chapter</span><strong>Diffie: who owns the public key?</strong></a><a rel="next" href="06-merkle-what-does-a-hash-actually-prove.html"><span>Next chapter →</span><strong>Merkle: what does a hash actually prove?</strong></a></nav><p class="reading-hint">One chapter at a time. Use the links to keep reading, or swipe on touch screens.</p></div></main>
+<footer class="site-footer"><span>TraderSwift</span><nav aria-label="Resources"><a href="../index.json">Index</a><a href="../llms.txt">Plain text</a><a href="../sitemap.xml">Sitemap</a></nav></footer>
+</body>
+</html>

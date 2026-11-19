@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="The path of one order from an agent&#x27;s request to the venue, and the decision record it leaves on the chain.">
+<meta name="description" content="The path of one order from your agent&#x27;s request to the exchange, and the record it leaves behind.">
 <meta name="color-scheme" content="light dark">
 <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; script-src 'self'; img-src 'self'; font-src 'self'; base-uri 'none'; form-action 'none'">
 <title>How does an order get signed? · TraderSwift</title>
@@ -16,31 +16,39 @@
 <header class="site-header"><a class="wordmark" href="../index.html" aria-label="TraderSwift home">TraderSwift</a><nav aria-label="Site"><a href="../index.html#updates">Updates</a><a href="../index.html#guides">Guides</a><a href="../index.html#case-studies">Case studies</a><a class="source-link" href="../llms.txt">For agents ↗</a><button class="theme-switch" type="button" aria-label="Switch to dark mode" hidden><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><g class="theme-sun"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></g><path class="theme-moon" d="M20 15.5A9 9 0 0 1 8.5 4 9 9 0 1 0 20 15.5Z"/></svg></button></nav></header>
 <main id="main"><div class="reading-layout"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="../index.html">Home</a><span aria-hidden="true">/</span><a href="index.html">Signer – How to Run, Test and Trade with It</a></nav>
 <div class="reading-topline"><p class="eyebrow">Chapter 02 <span>/ 12</span></p><nav class="chapter-progress" aria-label="Chapters"><a href="01-what-is-signer.html" aria-label="Chapter 1: What is Signer, and who is it for?">01</a><a href="02-how-does-an-order-get-signed.html" aria-label="Chapter 2: How does an order get signed?" aria-current="page">02</a><a href="03-how-do-i-try-signer-on-my-own-computer.html" aria-label="Chapter 3: How do I try Signer on my own computer?">03</a><a href="04-how-do-i-write-a-trading-policy.html" aria-label="Chapter 4: How do I write a trading policy?">04</a><a href="05-how-do-i-stop-an-agent-fast.html" aria-label="Chapter 5: How do I stop an agent fast?">05</a><a href="06-how-do-i-read-signers-record.html" aria-label="Chapter 6: How do I read Signer&#x27;s record?">06</a><a href="07-how-do-i-run-a-signer-validator.html" aria-label="Chapter 7: How do I run a Signer validator?">07</a><a href="08-how-do-i-launch-a-node-with-one-link.html" aria-label="Chapter 8: How do I launch a node with one link?">08</a><a href="09-how-do-i-run-my-own-signer-chain.html" aria-label="Chapter 9: How do I run my own Signer chain?">09</a><a href="10-how-do-i-get-a-signer-key-for-my-own-account.html" aria-label="Chapter 10: How do I get a Signer key for my own account?">10</a><a href="11-how-do-i-hold-my-own-key-shares.html" aria-label="Chapter 11: How do I hold my own key shares?">11</a><a href="12-how-do-i-run-a-private-signer-network-on-esp32s.html" aria-label="Chapter 12: How do I run a private Signer network on ESP32s?">12</a></nav></div>
-<article><header class="article-header"><h1>How does an order get signed?</h1><p class="standfirst">The path of one order from an agent&#x27;s request to the venue, and the decision record it leaves on the chain.</p><div class="article-meta"><span>TraderSwift guide</span><span>5 min read</span><a href="02-how-does-an-order-get-signed.md">Read Markdown ↗</a></div></header><div class="prose"><p>After this page you will be able to follow one order through Signer, step by step, and say where each check happens.</p>
+<article><header class="article-header"><h1>How does an order get signed?</h1><p class="standfirst">The path of one order from your agent&#x27;s request to the exchange, and the record it leaves behind.</p><div class="article-meta"><span>TraderSwift guide</span><span>6 min read</span><a href="02-how-does-an-order-get-signed.md">Read Markdown ↗</a></div></header><div class="prose"><p>After this page you will be able to follow one order through Signer, step by step, and say where each check happens.</p>
 <h2 id="who-takes-part-in-an-order">Who takes part in an order?</h2>
-<p>Four parts do the work. Your agent is the <strong>delegate</strong>: it holds a delegate key and signs its own order requests.</p>
-<p>The <strong>coordinator</strong> is a small service, one per key, that passes requests along and sends the result to the venue.</p>
-<p>The <strong>signers</strong> hold the key shares. The <strong>chain</strong>, <code>signer-1</code>, holds the owner&#x27;s policy and the decision records.</p>
-<p>The coordinator holds no key share and no delegate key. It cannot sign an order and it cannot forge one.</p>
-<p>This is the design on purpose.</p>
+<p>Four parts do the work. Each has one job.</p>
+<p><strong>Your agent, the delegate.</strong> The owner delegates trading to it, which means the owner lets it trade inside set limits. It holds its own delegate key, which signs its order requests and nothing else.</p>
+<p><strong>The coordinator.</strong> A small service, one per key, that passes requests along and sends the result to the venue. It holds no key share and no delegate key, so it cannot sign an order or forge one.</p>
+<p><strong>The signers.</strong> The machines that hold the key shares. Each one checks the order before it takes part.</p>
+<p><strong>The chain, `signer-1`.</strong> It holds the owner&#x27;s policy and the record of every decision.</p>
 <h2 id="what-does-the-agent-send">What does the agent send?</h2>
-<p>The agent sends an order intent: the venue, the asset, buy or sell, limit price, size, whether it is reduce-only, and an expiry. The intent is signed with the delegate key.</p>
+<p>The agent sends an order request, which we call an intent.</p>
+<p>An intent says what to trade:</p>
+<ul><li>the venue and the asset;</li><li>buy or sell;</li><li>the limit price and the size;</li><li>whether it is reduce-only, meaning it can only make a position smaller;</li><li>an expiry.</li></ul>
+<p>The agent signs the intent with its delegate key.</p>
 <p>An intent expires fast. Signers refuse an expiry more than 120 seconds ahead.</p>
-<p>Each intent also carries a rising venue nonce, so an old intent cannot be replayed.</p>
+<p>Each intent also carries a nonce, a number that goes up by one with every order. An old intent has an old number, so it cannot be sent again.</p>
 <p>The agent works in two calls to the coordinator. First it asks for the next nonce, then it signs the intent and sends it.</p>
 <h2 id="what-does-the-coordinator-do">What does the coordinator do?</h2>
-<p>The coordinator asks one signer to start a round, and it runs rounds on a key one at a time. If that signer is down, or refuses for a local reason, it asks the next.</p>
-<p>A refusal on policy grounds is final.</p>
-<p>It also rebuilds the venue message and its digest on its own. When a signature comes back, it checks that the signature recovers to the key&#x27;s venue address.</p>
+<p>The coordinator asks one signer to start a signing round. It runs rounds on a key one at a time.</p>
+<p>If that signer is down, or refuses for a local reason, it asks the next. A refusal on policy grounds is final.</p>
+<p>It also rebuilds the venue message on its own. When a signature comes back, it checks that the signature matches the key&#x27;s address at the venue.</p>
 <p>If it does not, nothing is posted.</p>
 <h2 id="what-does-each-signer-check">What does each signer check?</h2>
-<p>The signer never accepts a hash. It builds the venue message itself from the intent, and then it checks, from its own copy of the chain:</p>
-<ul><li><strong>The delegate.</strong> The signature is valid and the intent has not expired.</li><li><strong>The policy.</strong> The venue is allowed, the policy is not revoked or expired, and its epoch matches.</li><li><strong>The asset.</strong> The asset is on the policy&#x27;s list.</li><li><strong>The size.</strong> The order is within the per-order cap and the daily cap.</li><li><strong>The nonce.</strong> The nonce is above the highest this signer has signed for the key.</li></ul>
-<p>Transfers, withdrawals and any request that is not a trade are refused by kind, before any policy field is read. If the chain looks stale to a signer, it signs only cancels and reduce-only orders.</p>
+<p>The signer never accepts a hash, a short fingerprint of a message. It builds the venue message itself from the intent.</p>
+<p>Then it checks, from its own copy of the chain:</p>
+<ul><li><strong>The delegate.</strong> The signature is valid and the intent has not expired.</li><li><strong>The policy.</strong> The venue is allowed, and the policy is not revoked or expired. Its epoch, a counter that goes up with every policy change, must match.</li><li><strong>The asset.</strong> The asset is on the policy&#x27;s list.</li><li><strong>The size.</strong> The order is within the per-order cap and the daily cap.</li><li><strong>The nonce.</strong> The nonce is above the highest this signer has signed for the key.</li></ul>
+<p>Transfers, withdrawals and any request that is not a trade are refused by kind, before any policy field is read.</p>
+<p>If the chain looks out of date to a signer, it signs only cancels and reduce-only orders.</p>
 <h2 id="how-do-they-sign-without-building-the-key">How do they sign without building the key?</h2>
-<p>The signers run a threshold signing protocol with each other. Each uses its own share and no share leaves its machine.</p>
-<p>The result is one ordinary signature, made by any three of the four signers, that the venue accepts as if one key had signed.</p>
-<p>No signer ever sees the whole key, and the coordinator never sees a share. It is a full interactive protocol with no presignatures.</p>
+<p>The signers run a threshold signing protocol with each other. Each uses its own share, and no share leaves its machine.</p>
+<p>The result is one ordinary signature, made by any three of the four signers. The venue accepts it as if one key had signed.</p>
+<p>Sharing a secret and signing with shares are not the same thing. Our cryptography guide explains the difference in <a href="../cryptography/08-shamir-which-threshold-really-applies.html">Shamir: which threshold really applies?</a>.</p>
+<p>No signer ever sees the whole key, and the coordinator never sees a share.</p>
+<p>All signers in a round work live, at the moment of the order.</p>
+<p>Some systems prepare part of the work in advance, called presignatures. Signer does not use them.</p>
 <h2 id="how-does-the-order-reach-the-venue">How does the order reach the venue?</h2>
 <p>When the signature is back and checked, the coordinator posts the order to the venue.</p>
 <p>On Hyperliquid, it is the venue&#x27;s own order message with the signature attached.</p>
@@ -49,15 +57,15 @@
 <h2 id="what-gets-recorded">What gets recorded?</h2>
 <p>Every request goes to the chain as a decision record, signed or refused, with the reason. Each signer writes its own.</p>
 <p>For a normal order on a three-of-four set you see four lines. Three signers record <code>signed</code>.</p>
-<p>The one not chosen records <code>refused</code> with the reason <code>quorum_met_without_this_signer</code>.</p>
+<p>The one not chosen records <code>refused</code> with the reason <code>quorum_met_without_this_signer</code>. That means enough signers had already agreed without it.</p>
 <p>So a refusal on the chain does not always mean a refused order. Read the reason.</p>
 <p>Signers write to a local outbox first, so a record can arrive a little after the order. The order never waits for it.</p>
 <h2 id="what-happens-when-something-is-wrong">What happens when something is wrong?</h2>
-<ul><li><strong>Over the cap.</strong> The signer refuses with a reason such as <code>over_max_order_size</code>, and the order never reaches the venue.</li><li><strong>Revoked policy.</strong> Orders are refused. Cancels still sign, so you can pull resting orders.</li><li><strong>Chain stale or signer restarted.</strong> A restarted signer refuses everything until enough peers answer. Cancels wait too.</li></ul>
+<ul><li><strong>Over the cap.</strong> The signer refuses with a reason such as <code>over_max_order_size</code>, and the order never reaches the venue.</li><li><strong>Revoked policy.</strong> Nothing new is signed. <a href="05-how-do-i-stop-an-agent-fast.html">How do I stop an agent fast?</a> says what still works for 600 seconds.</li><li><strong>Chain out of date or signer restarted.</strong> A restarted signer refuses everything until enough peers answer. Cancels wait too.</li></ul>
 <p>&lt;!-- source: signer/src/policy<em>rules.rs (over</em>max<em>order</em>size); chain/policy/msg<em>server</em>policy.go (policy_revoked) --&gt;</p>
 <h2 id="final-thoughts">Final thoughts</h2>
-<p>An order passes three gates before the venue sees it: the delegate&#x27;s signature, each signer&#x27;s own policy check, and the coordinator&#x27;s recovery check. No single machine can sign alone.</p>
-<p>Next, read how to write the policy those signers check.</p></div></article>
+<p>An order passes three gates before the venue sees it: the delegate&#x27;s signature, each signer&#x27;s own policy check, and the coordinator&#x27;s check of the signature.</p>
+<p>No single machine can sign alone. Next, read <a href="04-how-do-i-write-a-trading-policy.html">how to write the policy</a> those signers check.</p></div></article>
 <nav class="chapter-navigation" aria-label="Chapter navigation"><a rel="prev" href="01-what-is-signer.html"><span>← Previous chapter</span><strong>What is Signer, and who is it for?</strong></a><a rel="next" href="03-how-do-i-try-signer-on-my-own-computer.html"><span>Next chapter →</span><strong>How do I try Signer on my own computer?</strong></a></nav><p class="reading-hint">One chapter at a time. Use the links to keep reading, or swipe on touch screens.</p></div></main>
 <footer class="site-footer"><span>TraderSwift</span><nav aria-label="Resources"><a href="../index.json">Index</a><a href="../llms.txt">Plain text</a><a href="../sitemap.xml">Sitemap</a></nav></footer>
 </body>

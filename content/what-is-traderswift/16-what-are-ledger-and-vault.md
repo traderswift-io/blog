@@ -86,6 +86,6 @@ That means no company holds the master list of who may read what, including us. 
 
 ## What is live?
 
-- **Built, not live** – the two chains. Each passed a full round trip on one test machine on Wed 18 Nov 2026, and neither is on a public network yet.
+- **Live** – the two chains, as `ledger-1` and `vault-1`, since Thu 19 Nov 2026. They run, but nothing writes to them yet.
 - **Built, not live** – the encrypted store on your phone, and the screen where you choose where your data is kept. Both were merged on Wed 18 Nov 2026, and neither has been used on a real phone yet.
 - **Planned** – recovery if you lose your phone. Until it is built, losing your phone loses the items saved on it.

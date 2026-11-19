@@ -70,6 +70,6 @@ Until recovery is built, do not keep anything in the phone store that you cannot
 ## What is live?
 
 - **Built, not live** – the encrypted store on your phone, and the choice screen. Both were merged on Wed 18 Nov 2026, and neither has been used on a real phone yet.
-- **Built, not live** – grants and daily fingerprints, as part of the two chains in [chapter 16](16-what-are-ledger-and-vault.html). [CHECK: build whether grants and the daily fingerprint are in the merged ledger-chain and vault-chain, and whether the phone app writes them yet]
+- **Built, not live** – grants and daily fingerprints, part of the two chains in [chapter 16](16-what-are-ledger-and-vault.html) that run since Thu 19 Nov 2026. Nothing writes them yet, and writing daily fingerprints has a target of Sat 21 Nov 2026.
 - **Planned** – Phone + Base, and Phone + TraderSwift Storage.
 - **Planned** – recovery by printed code and spare device.

@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Signer lets an agent trade from a key that no one holds whole, under a policy the owner writes on a chain.">
+<meta name="description" content="Signer lets a trading agent place orders without holding the key to the account, inside limits the owner sets.">
 <meta name="color-scheme" content="light dark">
 <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; script-src 'self'; img-src 'self'; font-src 'self'; base-uri 'none'; form-action 'none'">
 <title>What is Signer, and who is it for? · TraderSwift</title>
@@ -16,47 +16,50 @@
 <header class="site-header"><a class="wordmark" href="../index.html" aria-label="TraderSwift home">TraderSwift</a><nav aria-label="Site"><a href="../index.html#updates">Updates</a><a href="../index.html#guides">Guides</a><a href="../index.html#case-studies">Case studies</a><a class="source-link" href="../llms.txt">For agents ↗</a><button class="theme-switch" type="button" aria-label="Switch to dark mode" hidden><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><g class="theme-sun"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></g><path class="theme-moon" d="M20 15.5A9 9 0 0 1 8.5 4 9 9 0 1 0 20 15.5Z"/></svg></button></nav></header>
 <main id="main"><div class="reading-layout"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="../index.html">Home</a><span aria-hidden="true">/</span><a href="index.html">Signer – How to Run, Test and Trade with It</a></nav>
 <div class="reading-topline"><p class="eyebrow">Chapter 01 <span>/ 12</span></p><nav class="chapter-progress" aria-label="Chapters"><a href="01-what-is-signer.html" aria-label="Chapter 1: What is Signer, and who is it for?" aria-current="page">01</a><a href="02-how-does-an-order-get-signed.html" aria-label="Chapter 2: How does an order get signed?">02</a><a href="03-how-do-i-try-signer-on-my-own-computer.html" aria-label="Chapter 3: How do I try Signer on my own computer?">03</a><a href="04-how-do-i-write-a-trading-policy.html" aria-label="Chapter 4: How do I write a trading policy?">04</a><a href="05-how-do-i-stop-an-agent-fast.html" aria-label="Chapter 5: How do I stop an agent fast?">05</a><a href="06-how-do-i-read-signers-record.html" aria-label="Chapter 6: How do I read Signer&#x27;s record?">06</a><a href="07-how-do-i-run-a-signer-validator.html" aria-label="Chapter 7: How do I run a Signer validator?">07</a><a href="08-how-do-i-launch-a-node-with-one-link.html" aria-label="Chapter 8: How do I launch a node with one link?">08</a><a href="09-how-do-i-run-my-own-signer-chain.html" aria-label="Chapter 9: How do I run my own Signer chain?">09</a><a href="10-how-do-i-get-a-signer-key-for-my-own-account.html" aria-label="Chapter 10: How do I get a Signer key for my own account?">10</a><a href="11-how-do-i-hold-my-own-key-shares.html" aria-label="Chapter 11: How do I hold my own key shares?">11</a><a href="12-how-do-i-run-a-private-signer-network-on-esp32s.html" aria-label="Chapter 12: How do I run a private Signer network on ESP32s?">12</a></nav></div>
-<article><header class="article-header"><h1>What is Signer, and who is it for?</h1><p class="standfirst">Signer lets an agent trade from a key that no one holds whole, under a policy the owner writes on a chain.</p><div class="article-meta"><span>TraderSwift guide</span><span>5 min read</span><a href="01-what-is-signer.md">Read Markdown ↗</a></div></header><div class="prose"><p>After this page you will know what Signer does, whether it fits your trading, and why you might wait before using it.</p>
+<article><header class="article-header"><h1>What is Signer, and who is it for?</h1><p class="standfirst">Signer lets a trading agent place orders without holding the key to the account, inside limits the owner sets.</p><div class="article-meta"><span>TraderSwift guide</span><span>6 min read</span><a href="01-what-is-signer.md">Read Markdown ↗</a></div></header><div class="prose"><p>After this page you will know what Signer does, whether it fits your trading, and why you might wait before using it.</p>
 <h2 id="what-is-signer">What is Signer?</h2>
 <p>Signer lets a trading agent place orders without holding the key to the account.</p>
 <p>A key is what signs an order at an exchange, which we call a venue. Whoever holds the key can trade the account.</p>
 <p>With Signer, the key is cut into pieces, called shares. Each share sits on a different machine, called a signer.</p>
 <p>Enough of the signers must agree before an order is signed. This is called threshold signing.</p>
+<p>To see the mathematics behind it with small numbers, read <a href="../cryptography/08-shamir-which-threshold-really-applies.html">Shamir: which threshold really applies?</a> in our cryptography guide.</p>
 <p>Each signer first checks the order against limits the owner writes down, called a policy.</p>
 <p>The policy is kept on a small public blockchain called <code>signer-1</code>. Every decision, signed or refused, is recorded there too.</p>
-<p>Signer is open source under the Apache License 2.0 at github.com/traderswift-io/signer. It is one part of TraderSwift, which we describe as a blockchain infra layer for agentic and hybrid trading.</p>
-<h2 id="how-does-a-key-that-nobody-holds-work">How does a key that nobody holds work?</h2>
+<p>Signer is open source under the Apache License 2.0 at github.com/traderswift-io/signer.</p>
+<p>It is one part of TraderSwift, the infrastructure layer for agentic trading.</p>
+<h2 id="how-does-a-split-key-work">How does a split key work?</h2>
 <p>The key is split into shares, and each share sits on a different signer machine.</p>
 <p>Since 17 November 2026 there are four signers, and any three can sign together. Two cannot.</p>
 <p>At launch the setup was two of three.</p>
 <p>When the signers generate a key together, it never exists whole on any machine. That is not true of our live key.</p>
-<p>It existed whole once, because it was an exchange agent the owner had already approved. We then split it into shares.</p>
+<p>It existed whole once, because it was a key the owner had already approved at the venue to trade the account. We then split it into shares.</p>
 <h2 id="why-would-i-use-signer">Why would I use Signer?</h2>
 <p>A trading bot usually holds a full key. If the bot leaks it, whoever has it can do everything the key allows.</p>
 <p>Signer changes what the bot holds.</p>
-<ul><li><strong>No key in the bot.</strong> The agent sends an order request and never holds the venue key.</li><li><strong>Limits at the key.</strong> The policy bounds which markets, how big and for how long, before anything reaches the venue.</li><li><strong>A hard stop.</strong> The owner can revoke the policy on chain, and later orders are refused.</li><li><strong>A public record.</strong> Every decision is on the chain, so you can read what was signed and what was refused.</li></ul>
-<p>Each signer also builds the venue message itself from the order request. It never signs a hash someone hands it.</p>
+<ul><li><strong>No key in the bot.</strong> The agent sends an order request and never holds the venue key.</li><li><strong>Limits at the key.</strong> The policy bounds which markets, how big and for how long, before anything reaches the venue.</li><li><strong>A hard stop.</strong> The owner can revoke the policy on the chain, and later orders are refused.</li><li><strong>A public record.</strong> Every decision is on the chain, so you can see what was signed and what was refused. A refused order tells you someone tried something your policy does not allow.</li></ul>
+<p>Each signer also builds the venue message itself from the order request. It never signs a hash, a short fingerprint of a message, that someone hands it.</p>
 <p>Transfers and withdrawals are always refused, whatever the policy says.</p>
 <h2 id="who-is-signer-for">Who is Signer for?</h2>
-<p>Signer is for someone who runs an agent or a bot with real money behind it. It suits an owner who wants to say, in writing and on chain, what that agent may do.</p>
+<p>Signer is for someone who runs an agent or a bot with real money behind it.</p>
+<p>It suits an owner who wants to say, in writing, what that agent may do, and have every machine that signs check it.</p>
 <p>It is also for people who build trading software and want a signing layer that is open to read.</p>
-<p>You can run it as your own chain with your own signers, or follow the guide to run a validator.</p>
+<p>You can run it as your own chain with your own signers, or help run ours as a validator.</p>
 <h2 id="why-shouldn-t-i-use-signer">Why shouldn&#x27;t I use Signer?</h2>
 <p>Be honest with yourself on this one. Signer is in development, and these limits are real today.</p>
-<ul><li><strong>In development.</strong> The chain started on 12 November 2026 and the first live orders were on 14 November. That is a short record.</li><li><strong>No key for your own account yet.</strong> Other people&#x27;s accounts open after the next rotation of the signers. Another rotation comes before signers we do not run can join.</li><li><strong>One venue live.</strong> Hyperliquid is the only venue live today. The code also has Aster and Base, but neither is live.</li><li><strong>Fewer rules than you may want.</strong> The policy bounds sizes per market. It has no price band yet. Policy v2 plans one, and we explain it in the policy article.</li><li><strong>Interactive signing.</strong> Signing is interactive today, so each order needs several signers online.</li></ul>
-<p>If you need a key for your own account this week, Signer is not ready for you. If you want to read the code and the record, it is.</p>
+<ul><li><strong>In development.</strong> The chain started on 12 November 2026 and the first live orders were on 14 November. That is a short record.</li><li><strong>Your own account is not open yet.</strong> Our target is Saturday 21 November 2026. The <a href="index.html">Signer index</a> says what it waits on.</li><li><strong>One venue live.</strong> Hyperliquid is the only venue live today. Aster and Base (Avantis) have a target of Friday 20 November 2026.</li><li><strong>No price limit yet.</strong> Today the policy bounds sizes per market, not prices. Policy v2 adds a price band, and we explain it in the <a href="04-how-do-i-write-a-trading-policy.html">policy article</a>.</li><li><strong>Interactive signing.</strong> Each order needs several signers online at the same time.</li></ul>
+<p>If you need a key for your own account this week, wait for Saturday. If you want to read the code and the record, it is ready now.</p>
 <h2 id="what-has-signer-done-so-far">What has Signer done so far?</h2>
 <p>The launch was on a small live account with real money, on Hyperliquid mainnet.</p>
 <p>The record is public in the <code>signer-1-launch</code> release of the repository.</p>
-<ul><li><strong>Fills.</strong> A buy filled and a close-only sell closed it.</li><li><strong>Refusal.</strong> A buy at twice the order cap was refused before it reached the venue.</li><li><strong>Revoke.</strong> We revoked the policy at height 161,327. The next order was refused at height 161,330.</li><li><strong>Transfers.</strong> Every transfer and withdrawal request was refused, and the refusal was logged.</li></ul>
+<ul><li><strong>Fills.</strong> A buy filled and a close-only sell closed it.</li><li><strong>Refusal.</strong> A buy at twice the order cap was refused before it reached the venue.</li><li><strong>Revoke.</strong> We revoked the policy in block 161,327. The next order was refused in block 161,330.</li><li><strong>Transfers.</strong> Every transfer and withdrawal request was refused, and the refusal was logged.</li></ul>
 <p>On 17 November we moved Signer to a new set of machines and a new key.</p>
 <p>The new set passed the same live gate: a refusal, an entry and a close.</p>
 <h2 id="where-do-i-go-from-here">Where do I go from here?</h2>
 <p>Read the next articles in this order. They are short.</p>
-<ol><li><strong>How does an order get signed?</strong> The path from your agent&#x27;s request to the venue.</li><li><strong>How do I write a trading policy?</strong> The fields you set, and what stays with you.</li><li><strong>How do I stop an agent fast?</strong> The on-chain revoke.</li></ol>
+<ol><li><strong>[How does an order get signed?](02-how-does-an-order-get-signed.html)</strong> The path from your agent&#x27;s request to the venue.</li><li><strong>[How do I write a trading policy?](04-how-do-i-write-a-trading-policy.html)</strong> The fields you set, and what stays with you.</li><li><strong>[How do I stop an agent fast?](05-how-do-i-stop-an-agent-fast.html)</strong> The revoke.</li></ol>
 <h2 id="final-thoughts">Final thoughts</h2>
-<p>Signer takes the venue key out of the agent&#x27;s hands and puts a written policy in front of it. It is early, it is open, and we say plainly where it stops.</p>
-<p>Start with the article on how an order gets signed. If you run a validator or read the chain, you can check our claims yourself.</p></div></article>
+<p>Signer takes the venue key out of the agent&#x27;s hands and puts a written policy in front of it.</p>
+<p>It is early, it is open, and we say plainly where it stops. If you run a validator or read the chain, you can check our claims yourself.</p></div></article>
 <nav class="chapter-navigation" aria-label="Chapter navigation"><a rel="prev" href="index.html"><span>← Back to contents</span><strong>Table of contents</strong></a><a rel="next" href="02-how-does-an-order-get-signed.html"><span>Next chapter →</span><strong>How does an order get signed?</strong></a></nav><p class="reading-hint">One chapter at a time. Use the links to keep reading, or swipe on touch screens.</p></div></main>
 <footer class="site-footer"><span>TraderSwift</span><nav aria-label="Resources"><a href="../index.json">Index</a><a href="../llms.txt">Plain text</a><a href="../sitemap.xml">Sitemap</a></nav></footer>
 </body>

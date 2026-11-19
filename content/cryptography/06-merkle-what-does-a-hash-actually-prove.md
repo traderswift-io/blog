@@ -47,9 +47,9 @@ This is the leaf and node separation used in Certificate Transparency's Merkle c
 
 An inclusion proof establishes membership relative to a root; a consistency proof addresses whether one tree extends another. [16]
 
-Here is the lab. Press Run to try it in your browser.
+Here is the lab. It is also in [the labs file](../assets/cryptography/Cryptography_Practical_Labs.py), so you can run it on your own computer.
 
-```python run
+```python
 from hashlib import sha256
 
 

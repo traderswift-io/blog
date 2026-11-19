@@ -1,6 +1,6 @@
 ---
 title: How do I try Signer on my own computer?
-description: Build the chain and the signer node on your own machine and start a throwaway local network, with no venue and no real key.
+description: Build Signer on your own machine and start a small throwaway network, with no exchange and no real key.
 order: 3
 ---
 
@@ -10,9 +10,9 @@ Nothing on this page sends an order to a venue or uses a real key.
 
 ## What do I need?
 
-- **A Linux machine.** Any ordinary computer will do. The chain script is a bash script and the build steps assume Linux.
-- **Go.** The chain is written in Go. The public guide pins one exact version, `1.26.5`, and we use it here too.
-- **Rust and `m4`.** The signer node is written in Rust. It builds a math library from source, and that step needs `m4` on your path. You do not need root.
+- **A Linux machine.** Any ordinary computer will do, because the scripts assume Linux.
+- **Go.** The chain is written in Go, and the public guide pins one exact version, `1.26.5`.
+- **Rust and `m4`.** The signer node is written in Rust, and its math library build needs `m4` on your path. You do not need root.
 - **Python 3.** The coordinator is plain Python.
 - **`jq`.** The local script uses it to write the chain's start file.
 
@@ -35,7 +35,7 @@ go build -o build/signerd .
 ```
 <!-- source: chain/README.md:49 -->
 
-The same folder has a script that starts several validators on your own machine.
+The same folder has a script that starts several validators on your own machine. A validator is a node, one copy of the chain, that helps make new blocks.
 
 ```
 ./run_local_network.sh [--directory path] up 4
@@ -43,11 +43,11 @@ The same folder has a script that starts several validators on your own machine.
 ```
 <!-- source: chain/README.md:50-51 (`up 4` fills the validator_count slot) -->
 
-We use four validators. A chain commits only with more than two thirds of the voting power.
+We use four validators. A chain adds a block only when validators with more than two thirds of the votes agree.
 
-With three equal validators, stopping one halts the chain. Four tolerate one down.
+With three equal validators, stopping one halts the chain. Four keep going with one down.
 
-The keys in this network are throwaway. The chain id is `signer-local-1`, the keyring uses the `test` backend, and everything stays on `127.0.0.1`.
+The keys in this network are throwaway. The chain id is `signer-local-1`, the keyring uses the `test` backend, and everything stays on your own machine.
 
 ## How do I break it on purpose?
 
@@ -73,9 +73,9 @@ signer-node signer-config.json
 ```
 <!-- source: signer/README.md:10-11 -->
 
-The config fields are listed in `src/signer_config.rs`. The node speaks plain HTTP, so it listens on loopback only and refuses any peer address that is not loopback.
+The config fields are listed in `src/signer_config.rs`.
 
-That is a safety feature on your own computer.
+The node speaks plain HTTP, so it listens only on your own machine and refuses any peer that is not. That keeps a test node from talking to the outside world by mistake.
 
 The coordinator is started from the repository root.
 
@@ -84,17 +84,19 @@ python3 -m coordinator.coordinator_service coordinator-config.json
 ```
 <!-- source: coordinator/README.md:9 -->
 
-Live venues are off by default. The coordinator refuses any venue address except plain HTTP on loopback, unless the operator turns a live setting on.
+Live venues are off by default. The coordinator refuses any venue address that is not on your own machine, unless the operator turns a live setting on.
 
-So pointing it at a small program of your own on `127.0.0.1` is the safe way to play.
+So pointing it at a small program of your own is the safe way to play.
 
 ## Can I run a full order against a fake venue?
 
-**Planned.** The end-to-end order round against a fake venue is not public yet, so this page promises nothing about it.
+**Planned.** There is no date yet.
+
+A full order run needs two things in the public repository: the local end-to-end test suite, and the fake venue it trades against.
 
 Today you can run the chain end to end and build the signer node.
 
-The coordinator's loopback rule is in the public tree, but the wiring of all three is not.
+The coordinator's local-only rule is public, but the wiring of all three is not.
 
 ## Can my agent help?
 
@@ -116,4 +118,4 @@ You also learn the shape of the code before you read the policy rules in `docs/I
 
 The local chain is real and runs today. The full loop with a fake venue is planned, and we will update this page when it is public.
 
-Next, read how to look at what the chain records in [How do I read Signer's record?](06-how-do-i-read-signers-record.md). If you want to run a node on the real chain, read [How do I run a Signer validator?](07-how-do-i-run-a-signer-validator.md).
+Next, read [How do I read Signer's record?](06-how-do-i-read-signers-record.html). If you want to run a node on the real chain, read [How do I run a Signer validator?](07-how-do-i-run-a-signer-validator.html).

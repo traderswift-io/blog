@@ -11,7 +11,7 @@
     },
     {
       "title": "What is TraderSwift?",
-      "description": "What a trading agent needs, and the open-source parts TraderSwift provides for it.",
+      "description": "The whole platform in two minutes: what a trading agent needs, the parts TraderSwift provides, and where each one stands.",
       "url": "what-is-traderswift/01-what-is-traderswift.html",
       "markdown": "what-is-traderswift/01-what-is-traderswift.md"
     },
@@ -24,53 +24,161 @@
     {
       "title": "Why is TraderSwift open source?",
       "description": "If someone else's code manages your keys and your money, reading that code is the bare minimum.",
-      "url": "what-is-traderswift/03-why-is-it-open-source.html",
-      "markdown": "what-is-traderswift/03-why-is-it-open-source.md"
+      "url": "what-is-traderswift/03-why-is-traderswift-open-source.html",
+      "markdown": "what-is-traderswift/03-why-is-traderswift-open-source.md"
     },
     {
       "title": "Who is TraderSwift for?",
-      "description": "Traders, builders and network participants, and how builders get paid.",
-      "url": "what-is-traderswift/04-who-is-it-for.html",
-      "markdown": "what-is-traderswift/04-who-is-it-for.md"
+      "description": "The four kinds of people TraderSwift serves: traders, builders, network participants and founders.",
+      "url": "what-is-traderswift/04-who-is-traderswift-for.html",
+      "markdown": "what-is-traderswift/04-who-is-traderswift-for.md"
     },
     {
-      "title": "How are trading keys held today, and what goes wrong?",
-      "description": "Where a bot's key usually lives, the ways it leaks, and a live example.",
-      "url": "what-is-traderswift/05-how-are-trading-keys-held-today.html",
-      "markdown": "what-is-traderswift/05-how-are-trading-keys-held-today.md"
+      "title": "What does security mean for a trading agent?",
+      "description": "Security is more than the key. The channel your agents talk on and your trade logs need protecting too.",
+      "url": "what-is-traderswift/05-what-does-security-mean-for-a-trading-agent.html",
+      "markdown": "what-is-traderswift/05-what-does-security-mean-for-a-trading-agent.md"
     },
     {
-      "title": "How does Signer work?",
-      "description": "Where the key comes from, how it is split, how an order is signed, and how you stop it.",
-      "url": "what-is-traderswift/06-how-does-signer-work.html",
-      "markdown": "what-is-traderswift/06-how-does-signer-work.md"
+      "title": "How are trading keys held today?",
+      "description": "Where a trading bot's key usually lives, and the main problem with keeping it there.",
+      "url": "what-is-traderswift/06-how-are-trading-keys-held-today.html",
+      "markdown": "what-is-traderswift/06-how-are-trading-keys-held-today.md"
     },
     {
-      "title": "What is running today?",
-      "description": "Signer, the hub chain and the charts data node.",
-      "url": "what-is-traderswift/07-what-is-running-today.html",
-      "markdown": "what-is-traderswift/07-what-is-running-today.md"
+      "title": "What goes wrong with keys today?",
+      "description": "Each common way a trading key leaks, one at a time, ending with a real example.",
+      "url": "what-is-traderswift/07-what-goes-wrong-with-keys-today.html",
+      "markdown": "what-is-traderswift/07-what-goes-wrong-with-keys-today.md"
     },
     {
-      "title": "What is in the pipeline?",
-      "description": "The marketplace, signal providers, Ledger, Vault and Storage.",
-      "url": "what-is-traderswift/08-what-is-in-the-pipeline.html",
-      "markdown": "what-is-traderswift/08-what-is-in-the-pipeline.md"
+      "title": "How does Signer hold a key?",
+      "description": "Where the key comes from, how it is split into pieces, and where those pieces sit.",
+      "url": "what-is-traderswift/08-how-does-signer-hold-a-key.html",
+      "markdown": "what-is-traderswift/08-how-does-signer-hold-a-key.md"
     },
     {
-      "title": "How will we teach it?",
-      "description": "An educational blog on each site, with how-to guides and prompts for your own AI.",
-      "url": "what-is-traderswift/09-how-will-we-teach-it.html",
-      "markdown": "what-is-traderswift/09-how-will-we-teach-it.md"
+      "title": "How does an order get signed, and how do I stop it?",
+      "description": "The limits you write, how each order is checked and signed, and the one message that stops your agent.",
+      "url": "what-is-traderswift/09-how-does-an-order-get-signed-and-how-do-i-stop-it.html",
+      "markdown": "what-is-traderswift/09-how-does-an-order-get-signed-and-how-do-i-stop-it.md"
+    },
+    {
+      "title": "How would I know if someone tried to break in?",
+      "description": "Every order request is recorded, signed or refused. A refused order tells you someone tried something outside your limits.",
+      "url": "what-is-traderswift/10-how-would-i-know-if-someone-tried-to-break-in.html",
+      "markdown": "what-is-traderswift/10-how-would-i-know-if-someone-tried-to-break-in.md"
+    },
+    {
+      "title": "What can other people see on the chain?",
+      "description": "How Signer keeps your account private, what the chain does show, and why.",
+      "url": "what-is-traderswift/11-what-can-other-people-see-on-the-chain.html",
+      "markdown": "what-is-traderswift/11-what-can-other-people-see-on-the-chain.md"
+    },
+    {
+      "title": "How do agents talk to each other safely?",
+      "description": "The channel your agents talk on, and why it needs the same care as the key.",
+      "url": "what-is-traderswift/12-how-do-agents-talk-to-each-other-safely.html",
+      "markdown": "what-is-traderswift/12-how-do-agents-talk-to-each-other-safely.md"
+    },
+    {
+      "title": "Where do my trade logs, notes and files live?",
+      "description": "Your files are encrypted on your phone, and the people who store them can only see scrambled data.",
+      "url": "what-is-traderswift/13-where-do-my-trade-logs-notes-and-files-live.html",
+      "markdown": "what-is-traderswift/13-where-do-my-trade-logs-notes-and-files-live.md"
+    },
+    {
+      "title": "How can I check market data?",
+      "description": "Our market data node, its daily fingerprint, and how you can compare it with a copy of your own.",
+      "url": "what-is-traderswift/14-how-can-i-check-market-data.html",
+      "markdown": "what-is-traderswift/14-how-can-i-check-market-data.md"
+    },
+    {
+      "title": "How does a signal provider build a track record?",
+      "description": "Why a trade idea should be fixed before the outcome, and how anyone can check it afterwards.",
+      "url": "what-is-traderswift/15-how-does-a-signal-provider-build-a-track-record.html",
+      "markdown": "what-is-traderswift/15-how-does-a-signal-provider-build-a-track-record.md"
+    },
+    {
+      "title": "What are Ledger and Vault?",
+      "description": "Your own tasks, decisions, notes and files, kept encrypted on your phone, with no company holding them.",
+      "url": "what-is-traderswift/16-what-are-ledger-and-vault.html",
+      "markdown": "what-is-traderswift/16-what-are-ledger-and-vault.md"
+    },
+    {
+      "title": "Why not just use the tools I have today?",
+      "description": "Task apps, note apps and file stores already exist. Here is what they cost you, and what changes when no company holds your data.",
+      "url": "what-is-traderswift/17-why-not-just-use-the-tools-i-have-today.html",
+      "markdown": "what-is-traderswift/17-why-not-just-use-the-tools-i-have-today.md"
+    },
+    {
+      "title": "Where is my data kept, and who can read it?",
+      "description": "Your choices for where your data lives, how you let an app or an agent read it, and what happens if you lose your phone.",
+      "url": "what-is-traderswift/18-where-is-my-data-kept-and-who-can-read-it.html",
+      "markdown": "what-is-traderswift/18-where-is-my-data-kept-and-who-can-read-it.md"
+    },
+    {
+      "title": "How do I sign in without a seed phrase?",
+      "description": "The TraderSwift wallet uses the passkey on your phone, not a list of words you must write down and hide.",
+      "url": "what-is-traderswift/19-how-do-i-sign-in-without-a-seed-phrase.html",
+      "markdown": "what-is-traderswift/19-how-do-i-sign-in-without-a-seed-phrase.md"
+    },
+    {
+      "title": "What is the marketplace, and how do builders get paid?",
+      "description": "Where front ends and apps are listed, how a builder sets a price, and how the money reaches them.",
+      "url": "what-is-traderswift/20-what-is-the-marketplace-and-how-do-builders-get-paid.html",
+      "markdown": "what-is-traderswift/20-what-is-the-marketplace-and-how-do-builders-get-paid.md"
+    },
+    {
+      "title": "How does an agent prove it is any good?",
+      "description": "Why a review of an agent should rest on what it actually did, not on what it claims.",
+      "url": "what-is-traderswift/21-how-does-an-agent-prove-it-is-any-good.html",
+      "markdown": "what-is-traderswift/21-how-does-an-agent-prove-it-is-any-good.md"
+    },
+    {
+      "title": "What is TraderSwift AI?",
+      "description": "An AI that gets to know you through the tools you use, and only through what you let it read.",
+      "url": "what-is-traderswift/22-what-is-traderswift-ai.html",
+      "markdown": "what-is-traderswift/22-what-is-traderswift-ai.md"
+    },
+    {
+      "title": "What does TraderSwift AI run on?",
+      "description": "The computers that will run TraderSwift AI, where they start, and where they are meant to go.",
+      "url": "what-is-traderswift/23-what-does-traderswift-ai-run-on.html",
+      "markdown": "what-is-traderswift/23-what-does-traderswift-ai-run-on.md"
+    },
+    {
+      "title": "How does the network fit together?",
+      "description": "One shared chain at the centre, a separate chain for each job, and the people who run them.",
+      "url": "what-is-traderswift/24-how-does-the-network-fit-together.html",
+      "markdown": "what-is-traderswift/24-how-does-the-network-fit-together.md"
+    },
+    {
+      "title": "Can I build a subnet of my own?",
+      "description": "For founders who want to build and run a new part of the TraderSwift network.",
+      "url": "what-is-traderswift/25-can-i-build-a-subnet-of-my-own.html",
+      "markdown": "what-is-traderswift/25-can-i-build-a-subnet-of-my-own.md"
+    },
+    {
+      "title": "What is running today, and what is coming?",
+      "description": "Every part of TraderSwift, what state it is in, and the date or the step each one waits on.",
+      "url": "what-is-traderswift/26-what-is-running-today-and-what-is-coming.html",
+      "markdown": "what-is-traderswift/26-what-is-running-today-and-what-is-coming.md"
+    },
+    {
+      "title": "Why shouldn't I use TraderSwift yet?",
+      "description": "The honest reasons to wait, and who should wait for what.",
+      "url": "what-is-traderswift/27-why-shouldnt-i-use-traderswift-yet.html",
+      "markdown": "what-is-traderswift/27-why-shouldnt-i-use-traderswift-yet.md"
     },
     {
       "title": "Final thoughts",
-      "description": "What TraderSwift is for, and what to read next.",
-      "url": "what-is-traderswift/10-final-thoughts.html",
-      "markdown": "what-is-traderswift/10-final-thoughts.md"
+      "description": "What TraderSwift is for, and where to go next.",
+      "url": "what-is-traderswift/28-final-thoughts.html",
+      "markdown": "what-is-traderswift/28-final-thoughts.md"
     },
     {
-      "title": "What Is TraderSwift?",
+      "title": "What is TraderSwift?",
       "description": "What TraderSwift is, who it is for, what is running today, and what is in the pipeline.",
       "url": "what-is-traderswift/index.html",
       "markdown": "what-is-traderswift/index.md"
@@ -88,10 +196,10 @@
       "markdown": "since-lockbox/02-what-is-signer-1-and-what-did-it-do-this-week.md"
     },
     {
-      "title": "What is the hub, traderswift-1?",
-      "description": "The chain at the centre of TraderSwift, and its validator rotation.",
-      "url": "since-lockbox/03-what-is-the-hub-traderswift-1.html",
-      "markdown": "since-lockbox/03-what-is-the-hub-traderswift-1.md"
+      "title": "What is traderswift-1, the chain at the centre?",
+      "description": "The chain at the centre of TraderSwift, and its move to new machines.",
+      "url": "since-lockbox/03-what-is-traderswift-1-the-chain-at-the-centre.html",
+      "markdown": "since-lockbox/03-what-is-traderswift-1-the-chain-at-the-centre.md"
     },
     {
       "title": "How did Codex become our main builder?",
@@ -118,34 +226,52 @@
       "markdown": "since-lockbox/07-what-are-signals-and-the-desk.md"
     },
     {
-      "title": "What else did we start? Storage, the Bus, payments and more",
-      "description": "Storage-1, the Bus, payments on Base, Goose and our own DNS.",
-      "url": "since-lockbox/08-what-else-did-we-start-storage-the-bus-payments.html",
-      "markdown": "since-lockbox/08-what-else-did-we-start-storage-the-bus-payments.md"
+      "title": "What is Storage?",
+      "description": "Where your files will live, with providers who cannot read them.",
+      "url": "since-lockbox/08-what-is-storage.html",
+      "markdown": "since-lockbox/08-what-is-storage.md"
+    },
+    {
+      "title": "What is the TraderSwift Bus?",
+      "description": "The channel our agents and machines will talk on, and why orders never use it.",
+      "url": "since-lockbox/09-what-is-the-traderswift-bus.html",
+      "markdown": "since-lockbox/09-what-is-the-traderswift-bus.md"
+    },
+    {
+      "title": "How will builders be paid on Base?",
+      "description": "The payment part of the wallet, and where it stands.",
+      "url": "since-lockbox/10-how-will-builders-be-paid-on-base.html",
+      "markdown": "since-lockbox/10-how-will-builders-be-paid-on-base.md"
+    },
+    {
+      "title": "What are Goose and our own DNS?",
+      "description": "An open agent we plan to host, and a plan to run our own DNS.",
+      "url": "since-lockbox/11-what-are-goose-and-our-own-dns.html",
+      "markdown": "since-lockbox/11-what-are-goose-and-our-own-dns.md"
     },
     {
       "title": "What did we move onto our own servers?",
-      "description": "Our own rack servers, Proxmox, and a reboot that tested the hub.",
-      "url": "since-lockbox/09-what-did-we-move-onto-our-own-servers.html",
-      "markdown": "since-lockbox/09-what-did-we-move-onto-our-own-servers.md"
+      "description": "Our own rack servers, and a reboot that tested the network.",
+      "url": "since-lockbox/12-what-did-we-move-onto-our-own-servers.html",
+      "markdown": "since-lockbox/12-what-did-we-move-onto-our-own-servers.md"
     },
     {
       "title": "What went wrong, and what did we change?",
       "description": "The faults we found this week, and the rules we changed.",
-      "url": "since-lockbox/10-what-went-wrong-and-what-did-we-change.html",
-      "markdown": "since-lockbox/10-what-went-wrong-and-what-did-we-change.md"
+      "url": "since-lockbox/13-what-went-wrong-and-what-did-we-change.html",
+      "markdown": "since-lockbox/13-what-went-wrong-and-what-did-we-change.md"
     },
     {
       "title": "What is next?",
-      "description": "What each part of the system needs next.",
-      "url": "since-lockbox/11-what-is-next.html",
-      "markdown": "since-lockbox/11-what-is-next.md"
+      "description": "What each part of the system needs next, with dates where we have them.",
+      "url": "since-lockbox/14-what-is-next.html",
+      "markdown": "since-lockbox/14-what-is-next.md"
     },
     {
       "title": "Final thoughts",
       "description": "What the week adds up to.",
-      "url": "since-lockbox/12-final-thoughts.html",
-      "markdown": "since-lockbox/12-final-thoughts.md"
+      "url": "since-lockbox/15-final-thoughts.html",
+      "markdown": "since-lockbox/15-final-thoughts.md"
     },
     {
       "title": "Since Lockbox \u2013 A Week of Building Signer and TraderSwift",
@@ -167,13 +293,13 @@
     },
     {
       "title": "How were the new machines prepared?",
-      "description": "Synced from the first block, sealed, and no backups.",
+      "description": "Built from the first block, locked shut, and never backed up.",
       "url": "trading-key-rotation/03-how-were-the-new-machines-prepared.html",
       "markdown": "trading-key-rotation/03-how-were-the-new-machines-prepared.md"
     },
     {
       "title": "How was the new key made?",
-      "description": "Four machines make one key that never exists whole.",
+      "description": "Four machines make one key together, in four steps.",
       "url": "trading-key-rotation/04-how-was-the-new-key-made.html",
       "markdown": "trading-key-rotation/04-how-was-the-new-key-made.md"
     },
@@ -203,7 +329,7 @@
     },
     {
       "title": "What is next?",
-      "description": "Fixes, Policy v2 and outside signers.",
+      "description": "The next rotation on Fri 20 Nov 2026, new order limits, and more signers.",
       "url": "trading-key-rotation/09-what-is-next.html",
       "markdown": "trading-key-rotation/09-what-is-next.md"
     },
@@ -221,73 +347,73 @@
     },
     {
       "title": "What is Signer, and who is it for?",
-      "description": "Signer lets an agent trade from a key that no one holds whole, under a policy the owner writes on a chain.",
+      "description": "Signer lets a trading agent place orders without holding the key to the account, inside limits the owner sets.",
       "url": "signer-guides/01-what-is-signer.html",
       "markdown": "signer-guides/01-what-is-signer.md"
     },
     {
       "title": "How does an order get signed?",
-      "description": "The path of one order from an agent's request to the venue, and the decision record it leaves on the chain.",
+      "description": "The path of one order from your agent's request to the exchange, and the record it leaves behind.",
       "url": "signer-guides/02-how-does-an-order-get-signed.html",
       "markdown": "signer-guides/02-how-does-an-order-get-signed.md"
     },
     {
       "title": "How do I try Signer on my own computer?",
-      "description": "Build the chain and the signer node on your own machine and start a throwaway local network, with no venue and no real key.",
+      "description": "Build Signer on your own machine and start a small throwaway network, with no exchange and no real key.",
       "url": "signer-guides/03-how-do-i-try-signer-on-my-own-computer.html",
       "markdown": "signer-guides/03-how-do-i-try-signer-on-my-own-computer.md"
     },
     {
       "title": "How do I write a trading policy?",
-      "description": "The fields a Signer policy has today, what Policy v2 plans to add, what stays with you, and a prompt to draft one from your own history.",
+      "description": "The limits you can set on your agent today, what the next version adds, what stays with you, and a prompt to draft your own.",
       "url": "signer-guides/04-how-do-i-write-a-trading-policy.html",
       "markdown": "signer-guides/04-how-do-i-write-a-trading-policy.md"
     },
     {
       "title": "How do I stop an agent fast?",
-      "description": "Revoke the policy on the Signer chain and every later order from that delegate is refused.",
+      "description": "One message signed in your wallet stops your agent from placing anything new.",
       "url": "signer-guides/05-how-do-i-stop-an-agent-fast.html",
       "markdown": "signer-guides/05-how-do-i-stop-an-agent-fast.md"
     },
     {
       "title": "How do I read Signer's record?",
-      "description": "Run a read-only node from the public genesis file and look at policies and decision records, signed and refused.",
+      "description": "Run your own copy of the Signer chain, without joining it, and see every order it signed or refused.",
       "url": "signer-guides/06-how-do-i-read-signers-record.html",
       "markdown": "signer-guides/06-how-do-i-read-signers-record.md"
     },
     {
       "title": "How do I run a Signer validator?",
-      "description": "Build the chain binary, sync a node and join the validator set by rule, yourself or with your own agent following SKILL.md.",
+      "description": "Run a machine that helps keep the Signer chain going, and join without asking anyone, yourself or with your own agent.",
       "url": "signer-guides/07-how-do-i-run-a-signer-validator.html",
       "markdown": "signer-guides/07-how-do-i-run-a-signer-validator.md"
     },
     {
       "title": "How do I launch a node with one link?",
-      "description": "Give your own agent one link, say \"Go\" once, and it launches, seals and leaves. Planned.",
+      "description": "Give your own agent one link, say \"Go\" once, and it sets up a machine for you, locks itself out and leaves. Planned.",
       "url": "signer-guides/08-how-do-i-launch-a-node-with-one-link.html",
       "markdown": "signer-guides/08-how-do-i-launch-a-node-with-one-link.md"
     },
     {
       "title": "How do I run my own Signer chain?",
-      "description": "Build the Signer chain from the public code and run your own network, with your own admin. Anchoring to the hub is planned.",
+      "description": "Signer is open source, so you can run your own copy of it, with your own machines and your own rules, without connecting to us.",
       "url": "signer-guides/09-how-do-i-run-my-own-signer-chain.html",
       "markdown": "signer-guides/09-how-do-i-run-my-own-signer-chain.md"
     },
     {
       "title": "How do I get a Signer key for my own account?",
-      "description": "Keys for your own account aren't open yet. What it will take, and the milestones to get there. Planned.",
+      "description": "Your own Hyperliquid account has a target date of Saturday 21 November 2026. What it waits on, what you will do, and what you can prepare now. Planned.",
       "url": "signer-guides/10-how-do-i-get-a-signer-key-for-my-own-account.html",
       "markdown": "signer-guides/10-how-do-i-get-a-signer-key-for-my-own-account.md"
     },
     {
       "title": "How do I hold my own key shares?",
-      "description": "Two shares on your machines, one on the network, so the network alone can never sign. Planned.",
+      "description": "Any two of three pieces of your key can sign: two on your own machines, one on the network, so the network alone never can. Planned.",
       "url": "signer-guides/11-how-do-i-hold-my-own-key-shares.html",
       "markdown": "signer-guides/11-how-do-i-hold-my-own-key-shares.md"
     },
     {
       "title": "How do I run a private Signer network on ESP32s?",
-      "description": "A household quorum: ESP32s approve each order, two Raspberry Pis hold the shares. Planned.",
+      "description": "A few cheap devices at home that must agree before your trading key signs: small boards approve each order, two Raspberry Pis sign. Planned.",
       "url": "signer-guides/12-how-do-i-run-a-private-signer-network-on-esp32s.html",
       "markdown": "signer-guides/12-how-do-i-run-a-private-signer-network-on-esp32s.md"
     },
@@ -296,6 +422,102 @@
       "description": "Twelve how-tos for people interested in Signer, each with steps and prompts for your own agent. Some are planned, and say so.",
       "url": "signer-guides/index.html",
       "markdown": "signer-guides/index.md"
+    },
+    {
+      "title": "What do we need to know before starting?",
+      "description": "The properties, building blocks, small mathematics and attacker model that every later chapter uses.",
+      "url": "cryptography/01-what-do-we-need-to-know-before-starting.html",
+      "markdown": "cryptography/01-what-do-we-need-to-know-before-starting.md"
+    },
+    {
+      "title": "Shannon: what does ciphertext reveal?",
+      "description": "Perfect secrecy, why key length matters, and what reusing a key gives away.",
+      "url": "cryptography/02-shannon-what-does-ciphertext-reveal.html",
+      "markdown": "cryptography/02-shannon-what-does-ciphertext-reveal.md"
+    },
+    {
+      "title": "Turing: how is the system operated?",
+      "description": "How routine, repeated structure and everyday operation make an attack easier, and how far one break spreads.",
+      "url": "cryptography/03-turing-how-is-the-system-operated.html",
+      "markdown": "cryptography/03-turing-how-is-the-system-operated.md"
+    },
+    {
+      "title": "Diffie: who owns the public key?",
+      "description": "How two parties agree a secret in public, and why each public value must be tied to the right name.",
+      "url": "cryptography/04-diffie-who-owns-the-public-key.html",
+      "markdown": "cryptography/04-diffie-who-owns-the-public-key.md"
+    },
+    {
+      "title": "Hellman: what makes the problem hard?",
+      "description": "Which mathematical problem an attacker must solve, and why the exact numbers chosen matter.",
+      "url": "cryptography/05-hellman-what-makes-the-problem-hard.html",
+      "markdown": "cryptography/05-hellman-what-makes-the-problem-hard.md"
+    },
+    {
+      "title": "Merkle: what does a hash actually prove?",
+      "description": "What a fingerprint of data really proves, and why it matters who gave you the value you check against.",
+      "url": "cryptography/06-merkle-what-does-a-hash-actually-prove.html",
+      "markdown": "cryptography/06-merkle-what-does-a-hash-actually-prove.md"
+    },
+    {
+      "title": "Rivest: why is raw RSA not a scheme?",
+      "description": "Why the bare RSA formula is not enough to encrypt or sign, and what to use instead.",
+      "url": "cryptography/07-rivest-why-is-raw-rsa-not-a-scheme.html",
+      "markdown": "cryptography/07-rivest-why-is-raw-rsa-not-a-scheme.md"
+    },
+    {
+      "title": "Shamir: which threshold really applies?",
+      "description": "How a secret is split into pieces, and how to count the people an attacker really needs to reach.",
+      "url": "cryptography/08-shamir-which-threshold-really-applies.html",
+      "markdown": "cryptography/08-shamir-which-threshold-really-applies.md"
+    },
+    {
+      "title": "Adleman: how do we check the arithmetic?",
+      "description": "How an RSA key is built, why a faster shortcut needs a check, and what one bad output gives away.",
+      "url": "cryptography/09-adleman-how-do-we-check-the-arithmetic.html",
+      "markdown": "cryptography/09-adleman-how-do-we-check-the-arithmetic.md"
+    },
+    {
+      "title": "Schneier: what is the system around the algorithm?",
+      "description": "How an attacker reaches a secret without breaking the mathematics, and how to check the parts around it.",
+      "url": "cryptography/10-schneier-what-is-the-system-around-the-algorithm.html",
+      "markdown": "cryptography/10-schneier-what-is-the-system-around-the-algorithm.md"
+    },
+    {
+      "title": "What does a complete review look like?",
+      "description": "A practice review of a made-up signing service with nine flaws, then what we should find.",
+      "url": "cryptography/11-what-does-a-complete-review-look-like.html",
+      "markdown": "cryptography/11-what-does-a-complete-review-look-like.md"
+    },
+    {
+      "title": "What goes on a review worksheet?",
+      "description": "A table to copy and fill in for each operation you review, with the tests to run against it.",
+      "url": "cryptography/12-what-goes-on-a-review-worksheet.html",
+      "markdown": "cryptography/12-what-goes-on-a-review-worksheet.md"
+    },
+    {
+      "title": "What are the exercises and answers?",
+      "description": "Answers to each chapter's Try it question, six more calculations, and what each Python lab shows.",
+      "url": "cryptography/13-what-are-the-exercises-and-answers.html",
+      "markdown": "cryptography/13-what-are-the-exercises-and-answers.md"
+    },
+    {
+      "title": "How do I keep learning?",
+      "description": "Five steps, from explaining the ideas without notes to writing a review someone else can repeat.",
+      "url": "cryptography/14-how-do-i-keep-learning.html",
+      "markdown": "cryptography/14-how-do-i-keep-learning.md"
+    },
+    {
+      "title": "Sources",
+      "description": "The papers, standards and documentation behind every chapter, with links.",
+      "url": "cryptography/15-sources.html",
+      "markdown": "cryptography/15-sources.md"
+    },
+    {
+      "title": "Cryptography \u2013 How to Understand and Review Cryptographic Systems",
+      "description": "How to check whether a system really protects a secret, with small worked examples you can run yourself.",
+      "url": "cryptography/index.html",
+      "markdown": "cryptography/index.md"
     },
     {
       "title": "What happened?",
@@ -322,20 +544,20 @@
       "markdown": "lighter-api-key-drain/04-what-would-the-attacker-try-next.md"
     },
     {
-      "title": "What policy would this market maker have set?",
-      "description": "Two delegate keys, and what two AI models set blind.",
-      "url": "lighter-api-key-drain/05-what-policy-would-this-market-maker-have-set.html",
-      "markdown": "lighter-api-key-drain/05-what-policy-would-this-market-maker-have-set.md"
+      "title": "What limits would this market maker have set?",
+      "description": "Two keys, and what two AI models chose without knowing about the incident.",
+      "url": "lighter-api-key-drain/05-what-limits-would-this-market-maker-have-set.html",
+      "markdown": "lighter-api-key-drain/05-what-limits-would-this-market-maker-have-set.md"
     },
     {
       "title": "How far would the attacker have got?",
-      "description": "A replay of the attacker against each policy, and the gap it found.",
+      "description": "We replayed the attack against each of the four sets of limits.",
       "url": "lighter-api-key-drain/06-how-far-would-the-attacker-have-got.html",
       "markdown": "lighter-api-key-drain/06-how-far-would-the-attacker-have-got.md"
     },
     {
       "title": "Where does the key live?",
-      "description": "Nowhere, whole.",
+      "description": "How Signer makes a trading key, and who holds it.",
       "url": "lighter-api-key-drain/07-where-does-the-key-live.html",
       "markdown": "lighter-api-key-drain/07-where-does-the-key-live.md"
     },
@@ -347,13 +569,13 @@
     },
     {
       "title": "Final thoughts",
-      "description": "A defined policy around every trading key.",
+      "description": "Written limits around every trading key.",
       "url": "lighter-api-key-drain/09-final-thoughts.html",
       "markdown": "lighter-api-key-drain/09-final-thoughts.md"
     },
     {
-      "title": "Defined Trading Policy \u2013 What the Lighter API-Key Drain Shows",
-      "description": "A leaked trading key took about $10.4 million from a market maker's account on Lighter. What a defined policy at the key would have stopped.",
+      "title": "What Would Written Limits on One Key Have Stopped at Lighter?",
+      "description": "A leaked trading key took about $10.4 million from a market maker's account on Lighter. What written limits on that key would have stopped.",
       "url": "lighter-api-key-drain/index.html",
       "markdown": "lighter-api-key-drain/index.md"
     }

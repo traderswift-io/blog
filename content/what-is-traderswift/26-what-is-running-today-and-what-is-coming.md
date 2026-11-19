@@ -72,7 +72,7 @@ Signer for your own account waits on four steps:
 
 | Part | Status | Date, or what it waits on |
 | :--- | :--- | :--- |
-| Ledger and Vault chains, `ledger-1` and `vault-1` | **Built, not live** | Round trip on one test machine passed 18 Nov 2026; not on a public network |
+| Ledger and Vault chains, `ledger-1` and `vault-1` | **Live** | Since Thu 19 Nov 2026. Nothing writes to them yet |
 | The encrypted store on your phone, and the choice screen | **Built, not live** | Merged 18 Nov 2026; not yet used on a real phone |
 | Recovery after a lost phone | **Planned** | A printed recovery code and a spare device. Until it is built, losing the phone loses the saved items |
 | Phone + Base, and Phone + TraderSwift Storage | **Planned** | Shown as "Coming soon" on the choice screen |

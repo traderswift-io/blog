@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en" data-skin="control" data-page="reading">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Perfect secrecy, why key length matters, and what reusing a key gives away.">
+<meta name="color-scheme" content="light dark">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; script-src 'self'; img-src 'self'; font-src 'self'; base-uri 'none'; form-action 'none'">
+<title>Shannon: what does ciphertext reveal? · TraderSwift</title>
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/style.css">
+<script src="../assets/reading.js" blocking="render"></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><a class="wordmark" href="../index.html" aria-label="TraderSwift home">TraderSwift</a><nav aria-label="Site"><a href="../index.html#updates">Updates</a><a href="../index.html#guides">Guides</a><a href="../index.html#case-studies">Case studies</a><a class="source-link" href="../llms.txt">For agents ↗</a><button class="theme-switch" type="button" aria-label="Switch to dark mode" hidden><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><g class="theme-sun"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></g><path class="theme-moon" d="M20 15.5A9 9 0 0 1 8.5 4 9 9 0 1 0 20 15.5Z"/></svg></button></nav></header>
+<main id="main"><div class="reading-layout"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="../index.html">Home</a><span aria-hidden="true">/</span><a href="index.html">Cryptography – How to Understand and Review Cryptographic Systems</a></nav>
+<div class="reading-topline"><p class="eyebrow">Chapter 02 <span>/ 15</span></p><nav class="chapter-progress" aria-label="Chapters"><a href="01-what-do-we-need-to-know-before-starting.html" aria-label="Chapter 1: What do we need to know before starting?">01</a><a href="02-shannon-what-does-ciphertext-reveal.html" aria-label="Chapter 2: Shannon: what does ciphertext reveal?" aria-current="page">02</a><a href="03-turing-how-is-the-system-operated.html" aria-label="Chapter 3: Turing: how is the system operated?">03</a><a href="04-diffie-who-owns-the-public-key.html" aria-label="Chapter 4: Diffie: who owns the public key?">04</a><a href="05-hellman-what-makes-the-problem-hard.html" aria-label="Chapter 5: Hellman: what makes the problem hard?">05</a><a href="06-merkle-what-does-a-hash-actually-prove.html" aria-label="Chapter 6: Merkle: what does a hash actually prove?">06</a><a href="07-rivest-why-is-raw-rsa-not-a-scheme.html" aria-label="Chapter 7: Rivest: why is raw RSA not a scheme?">07</a><a href="08-shamir-which-threshold-really-applies.html" aria-label="Chapter 8: Shamir: which threshold really applies?">08</a><a href="09-adleman-how-do-we-check-the-arithmetic.html" aria-label="Chapter 9: Adleman: how do we check the arithmetic?">09</a><a href="10-schneier-what-is-the-system-around-the-algorithm.html" aria-label="Chapter 10: Schneier: what is the system around the algorithm?">10</a><a href="11-what-does-a-complete-review-look-like.html" aria-label="Chapter 11: What does a complete review look like?">11</a><a href="12-what-goes-on-a-review-worksheet.html" aria-label="Chapter 12: What goes on a review worksheet?">12</a><a href="13-what-are-the-exercises-and-answers.html" aria-label="Chapter 13: What are the exercises and answers?">13</a><a href="14-how-do-i-keep-learning.html" aria-label="Chapter 14: How do I keep learning?">14</a><a href="15-sources.html" aria-label="Chapter 15: Sources">15</a></nav></div>
+<article><header class="article-header"><h1>Shannon: what does ciphertext reveal?</h1><p class="standfirst">Perfect secrecy, why key length matters, and what reusing a key gives away.</p><div class="article-meta"><span>TraderSwift guide</span><span>6 min read</span><a href="02-shannon-what-does-ciphertext-reveal.md">Read Markdown ↗</a></div></header><div class="prose"><p><strong>The question:</strong> What does observing the ciphertext tell an attacker, even if computation is unlimited?</p>
+<h2 id="what-is-perfect-secrecy">What is perfect secrecy?</h2>
+<p>Perfect secrecy means that seeing the ciphertext does not change the probability of any possible plaintext.</p>
+<p>If the attacker thought a message was 70% likely before interception, the ciphertext does not move that probability. This is stronger than making recovery expensive. [1]</p>
+<p>For plaintext M and ciphertext C, the condition is:</p>
+<p><code>P(M = m | C = c) = P(M = m)</code></p>
+<p>for every applicable message and ciphertext with nonzero ciphertext probability.</p>
+<p>Let&#x27;s take a two-bit message and a uniformly random two-bit key. Encrypt by XOR.</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Scrollable table"><table><thead><tr><th class="align-left" scope="col">Possible message</th><th class="align-left" scope="col">Key that produces ciphertext 10</th></tr></thead><tbody><tr><td class="align-left">00</td><td class="align-left">10</td></tr><tr><td class="align-left">01</td><td class="align-left">11</td></tr><tr><td class="align-left">10</td><td class="align-left">00</td></tr><tr><td class="align-left">11</td><td class="align-left">01</td></tr></tbody></table></div>
+<p>Every message has exactly one equally likely key that could have produced <code>10</code>.</p>
+<p>The ciphertext gives us no reason to prefer one message over another.</p>
+<p>Notice what the table does not say. It does not make the messages equally likely if they were not equally likely before.</p>
+<p>It preserves the attacker&#x27;s prior uncertainty.</p>
+<h2 id="why-does-key-length-matter">Why does key length matter?</h2>
+<p>For perfectly secret, correctly decryptable encryption, key entropy must be at least message entropy.</p>
+<p>To encrypt arbitrary n-bit messages with a one-time pad, we need n independent, uniformly random secret key bits, used once. A short seed expanded into a long stream does not meet that requirement. [1, 2]</p>
+<p>Suppose we use a 128-bit seed to generate a one-megabyte stream. The stream occupies far more than 128 bits, but there are at most <code>2^128</code> possible streams.</p>
+<p>A longer representation has not created more uncertainty about which stream was chosen.</p>
+<p>This can still be useful computational security.</p>
+<p>The claim is now that a feasible attacker cannot distinguish or recover the stream under the generator&#x27;s assumptions. It is not perfect secrecy. [2]</p>
+<p>A similar issue appears with passwords. Padding a six-digit PIN to 32 bytes does not give it 256 bits of entropy.</p>
+<p>There are only one million possible PINs if all six-digit values are allowed.</p>
+<p>Their maximum entropy is approximately <code>log2(1,000,000) = 19.93</code> bits, before accounting for human selection bias.</p>
+<h2 id="what-does-depth-mean-here">What does depth mean here?</h2>
+<p>Depth refers to messages encrypted with the same or related cipher state in a way that lets an attacker compare them.</p>
+<p>For a reused XOR pad S:</p>
+<p><code>C1 = M1 XOR S</code></p>
+<p><code>C2 = M2 XOR S</code></p>
+<p>Therefore:</p>
+<p><code>C1 XOR C2 = M1 XOR M2</code></p>
+<p>The secret stream cancels. We have learned a relationship between messages without finding the key.</p>
+<p>Use a one-byte example:</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Scrollable table"><table><thead><tr><th class="align-left" scope="col">Item</th><th class="align-left" scope="col">Hexadecimal value</th></tr></thead><tbody><tr><td class="align-left">First plaintext, A</td><td class="align-left">41</td></tr><tr><td class="align-left">Second plaintext, B</td><td class="align-left">42</td></tr><tr><td class="align-left">Shared pad</td><td class="align-left">AA</td></tr><tr><td class="align-left">First ciphertext</td><td class="align-left">EB</td></tr><tr><td class="align-left">Second ciphertext</td><td class="align-left">E8</td></tr><tr><td class="align-left">Ciphertext XOR</td><td class="align-left">03</td></tr></tbody></table></div>
+<p>If we know the first plaintext was <code>41</code>, we recover the second as <code>03 XOR 41 = 42</code>.</p>
+<p>This recovers the overlapping reused stream, not every unrelated key in the system.</p>
+<p>Here is the lab. It is also in <a href="../assets/cryptography/Cryptography_Practical_Labs.py">the labs file</a>, so you can run it on your own computer.</p>
+<figure class="code-block"><figcaption>python</figcaption><pre tabindex="0"><code class="language-python">def check(condition: bool, description: str) -&gt; None:
+    if not condition:
+        raise AssertionError(description)
+
+
+def xor_equal(left: bytes, right: bytes) -&gt; bytes:
+    if len(left) != len(right):
+        raise ValueError(&quot;This lab requires equal lengths&quot;)
+    return bytes(a ^ b for a, b in zip(left, right))
+
+
+# Fixed public toy data. Never use this pad to protect a real secret.
+m1, m2, pad = b&quot;A&quot;, b&quot;B&quot;, bytes.fromhex(&quot;aa&quot;)
+c1, c2 = xor_equal(m1, pad), xor_equal(m2, pad)
+recovered = xor_equal(xor_equal(c1, c2), m1)
+check(recovered == m2, &quot;Known plaintext must reveal the reused byte&quot;)
+check((c1.hex(), c2.hex()) == (&quot;eb&quot;, &quot;e8&quot;), &quot;Guide values&quot;)
+print(&quot;1 XOR reuse: ciphertexts eb/e8; recovered B&quot;)</code></pre></figure>
+<p>Modern stream ciphers can be used securely for many messages with one key when their nonce and usage requirements are satisfied. Reusing the same key-and-nonce combination can recreate the relevant stream.</p>
+<p>“One-time” describes the pad or stream position, not a blanket rule to discard every modern key after one message.</p>
+<h2 id="what-is-unicity-distance">What is unicity distance?</h2>
+<p>Unicity distance estimates how much ciphertext is needed before language redundancy may leave roughly one plausible key under a model.</p>
+<p>A common approximation is <code>U ≈ H(K) / D</code>, where H(K) is key entropy in bits and D is plaintext redundancy in bits per symbol. It is a model-dependent estimate, not an algorithm or a runtime prediction. [1]</p>
+<p>Suppose a toy cipher has 40 bits of key entropy and its messages have an assumed redundancy of 2 bits per character. The estimate is 20 characters.</p>
+<p>It does not mean that a 20-character ciphertext can be broken quickly, that every message becomes unique at character 20, or that the model applies to an arbitrary modern construction.</p>
+<p>This is why “Shannon ignores runtime” is useful for this review perspective.</p>
+<p>First ask whether the information identifies the answer. Then ask whether anyone can calculate it.</p>
+<h2 id="what-should-i-check">What should I check?</h2>
+<p>Ask where uncertainty comes from, how it is measured, and whether the same secret state is reused.</p>
+<p>Separate the content claim from metadata: an encrypted message may still reveal its length, timing and destination.</p>
+<p><strong>Try it:</strong> A product describes a deterministic 32-byte expansion of a four-digit PIN as a 256-bit key. Explain the gap between output length and search space.</p>
+<p>The answer is in <a href="13-what-are-the-exercises-and-answers.html">chapter 13</a>.</p></div></article>
+<nav class="chapter-navigation" aria-label="Chapter navigation"><a rel="prev" href="01-what-do-we-need-to-know-before-starting.html"><span>← Previous chapter</span><strong>What do we need to know before starting?</strong></a><a rel="next" href="03-turing-how-is-the-system-operated.html"><span>Next chapter →</span><strong>Turing: how is the system operated?</strong></a></nav><p class="reading-hint">One chapter at a time. Use the links to keep reading, or swipe on touch screens.</p></div></main>
+<footer class="site-footer"><span>TraderSwift</span><nav aria-label="Resources"><a href="../index.json">Index</a><a href="../llms.txt">Plain text</a><a href="../sitemap.xml">Sitemap</a></nav></footer>
+</body>
+</html>

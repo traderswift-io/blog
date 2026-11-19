@@ -12,4 +12,4 @@ The cause was simple: the new signers had no accounts on the chain, so they had 
 
 Each kept its records in a local outbox and waited. Once the accounts were created, the backlog went on chain together, at height 353,836.
 
-That is the lesson for the next rotation: its checklist will check for a decision record on chain from each new signer before the old set is removed.
+That is the lesson for the next rotation, on Fri 20 Nov 2026: its checklist will check for a decision record on chain from each new signer before the old set is removed.

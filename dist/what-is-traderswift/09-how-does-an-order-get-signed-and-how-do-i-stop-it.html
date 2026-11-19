@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en" data-skin="control" data-page="reading">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="The limits you write, how each order is checked and signed, and the one message that stops your agent.">
+<meta name="color-scheme" content="light dark">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; script-src 'self'; img-src 'self'; font-src 'self'; base-uri 'none'; form-action 'none'">
+<title>How does an order get signed, and how do I stop it? · TraderSwift</title>
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/style.css">
+<script src="../assets/reading.js" blocking="render"></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><a class="wordmark" href="../index.html" aria-label="TraderSwift home">TraderSwift</a><nav aria-label="Site"><a href="../index.html#updates">Updates</a><a href="../index.html#guides">Guides</a><a href="../index.html#case-studies">Case studies</a><a class="source-link" href="../llms.txt">For agents ↗</a><button class="theme-switch" type="button" aria-label="Switch to dark mode" hidden><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><g class="theme-sun"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></g><path class="theme-moon" d="M20 15.5A9 9 0 0 1 8.5 4 9 9 0 1 0 20 15.5Z"/></svg></button></nav></header>
+<main id="main"><div class="reading-layout"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="../index.html">Home</a><span aria-hidden="true">/</span><a href="index.html">What is TraderSwift?</a></nav>
+<div class="reading-topline"><p class="eyebrow">Chapter 09 <span>/ 28</span></p><nav class="chapter-progress" aria-label="Chapters"><a href="01-what-is-traderswift.html" aria-label="Chapter 1: What is TraderSwift?">01</a><a href="02-where-is-trust-not-required.html" aria-label="Chapter 2: Where is trust not required?">02</a><a href="03-why-is-traderswift-open-source.html" aria-label="Chapter 3: Why is TraderSwift open source?">03</a><a href="04-who-is-traderswift-for.html" aria-label="Chapter 4: Who is TraderSwift for?">04</a><a href="05-what-does-security-mean-for-a-trading-agent.html" aria-label="Chapter 5: What does security mean for a trading agent?">05</a><a href="06-how-are-trading-keys-held-today.html" aria-label="Chapter 6: How are trading keys held today?">06</a><a href="07-what-goes-wrong-with-keys-today.html" aria-label="Chapter 7: What goes wrong with keys today?">07</a><a href="08-how-does-signer-hold-a-key.html" aria-label="Chapter 8: How does Signer hold a key?">08</a><a href="09-how-does-an-order-get-signed-and-how-do-i-stop-it.html" aria-label="Chapter 9: How does an order get signed, and how do I stop it?" aria-current="page">09</a><a href="10-how-would-i-know-if-someone-tried-to-break-in.html" aria-label="Chapter 10: How would I know if someone tried to break in?">10</a><a href="11-what-can-other-people-see-on-the-chain.html" aria-label="Chapter 11: What can other people see on the chain?">11</a><a href="12-how-do-agents-talk-to-each-other-safely.html" aria-label="Chapter 12: How do agents talk to each other safely?">12</a><a href="13-where-do-my-trade-logs-notes-and-files-live.html" aria-label="Chapter 13: Where do my trade logs, notes and files live?">13</a><a href="14-how-can-i-check-market-data.html" aria-label="Chapter 14: How can I check market data?">14</a><a href="15-how-does-a-signal-provider-build-a-track-record.html" aria-label="Chapter 15: How does a signal provider build a track record?">15</a><a href="16-what-are-ledger-and-vault.html" aria-label="Chapter 16: What are Ledger and Vault?">16</a><a href="17-why-not-just-use-the-tools-i-have-today.html" aria-label="Chapter 17: Why not just use the tools I have today?">17</a><a href="18-where-is-my-data-kept-and-who-can-read-it.html" aria-label="Chapter 18: Where is my data kept, and who can read it?">18</a><a href="19-how-do-i-sign-in-without-a-seed-phrase.html" aria-label="Chapter 19: How do I sign in without a seed phrase?">19</a><a href="20-what-is-the-marketplace-and-how-do-builders-get-paid.html" aria-label="Chapter 20: What is the marketplace, and how do builders get paid?">20</a><a href="21-how-does-an-agent-prove-it-is-any-good.html" aria-label="Chapter 21: How does an agent prove it is any good?">21</a><a href="22-what-is-traderswift-ai.html" aria-label="Chapter 22: What is TraderSwift AI?">22</a><a href="23-what-does-traderswift-ai-run-on.html" aria-label="Chapter 23: What does TraderSwift AI run on?">23</a><a href="24-how-does-the-network-fit-together.html" aria-label="Chapter 24: How does the network fit together?">24</a><a href="25-can-i-build-a-subnet-of-my-own.html" aria-label="Chapter 25: Can I build a subnet of my own?">25</a><a href="26-what-is-running-today-and-what-is-coming.html" aria-label="Chapter 26: What is running today, and what is coming?">26</a><a href="27-why-shouldnt-i-use-traderswift-yet.html" aria-label="Chapter 27: Why shouldn&#x27;t I use TraderSwift yet?">27</a><a href="28-final-thoughts.html" aria-label="Chapter 28: Final thoughts">28</a></nav></div>
+<article><header class="article-header"><h1>How does an order get signed, and how do I stop it?</h1><p class="standfirst">The limits you write, how each order is checked and signed, and the one message that stops your agent.</p><div class="article-meta"><span>TraderSwift update</span><span>4 min read</span><a href="09-how-does-an-order-get-signed-and-how-do-i-stop-it.md">Read Markdown ↗</a></div></header><div class="prose"><p>You decide what your agent may trade, and Signer holds it to that.</p>
+<p>This chapter goes one step at a time: the limits, the signing, and the stop.</p>
+<h2 id="who-writes-the-limits">Who writes the limits?</h2>
+<p>You do. You write down what the agent may trade:</p>
+<ul><li><strong>Markets</strong> – which ones it may trade.</li><li><strong>Order size</strong> – how big one order may be.</li><li><strong>Daily size</strong> – how much it may trade in a day.</li><li><strong>Expiry</strong> – the date the limits stop working.</li></ul>
+<p>You sign these limits with your own wallet, so nobody else can change them. This set of limits is called a policy.</p>
+<h2 id="where-is-the-policy-kept">Where is the policy kept?</h2>
+<p>It is kept on <code>signer-1</code>, the blockchain Signer runs on. Nobody can change a past entry on it alone.</p>
+<p>That matters because the signers read your policy from there. Nobody can hand them a different one.</p>
+<h2 id="how-does-an-order-get-signed">How does an order get signed?</h2>
+<p>The agent sends an order request. It signs the request with its own small key, which cannot sign anything at the exchange, so it is worth little to a thief.</p>
+<p>Each signer reads the request and checks it against your policy on its own.</p>
+<p>If the order fits, the signer builds the exchange message itself and signs its part. It never signs a message someone else hands it.</p>
+<p>When three signers have signed their parts, the signature is complete. It goes to the exchange, and the order is placed.</p>
+<p>If the order does not fit, it is refused, and the refusal is recorded. <a href="10-how-would-i-know-if-someone-tried-to-break-in.html">Chapter 10</a> explains why that record helps you.</p>
+<h2 id="what-can-the-agent-never-do">What can the agent never do?</h2>
+<p>The agent can send trading requests only: orders, cancels, and a timed cancel-all that closes every order after a set time.</p>
+<p>Signer never signs a transfer or a withdrawal. Moving funds stays with your own wallet.</p>
+<h2 id="how-do-i-stop-the-agent">How do I stop the agent?</h2>
+<p>You sign one message that revokes the policy. The chain adds new entries in batches, called blocks.</p>
+<p>A revoke takes effect in the block it lands in. From then on the policy allows nothing new: no new orders, and no size increases.</p>
+<p>For 600 seconds after the revoke, the agent can still cancel orders and arm a timed cancel-all, so it can tidy up; after that, everything is refused.</p>
+<p>At launch, the next order after the revoke was refused, and the refusal was on chain three blocks later. <strong>Live</strong> since 14 Nov 2026.</p>
+<h2 id="what-limits-are-coming-next">What limits are coming next?</h2>
+<p>A second set of limits is in review, with a target of Fri 20 Nov 2026. The chain part is <strong>Built, not live</strong>, and the signer part is still being built.</p>
+<ul><li><strong>A price band</strong> – orders too far from the market price are refused.</li><li><strong>An order-rate cap</strong> – a limit on how many orders the agent may send in a given time.</li><li><strong>Post-only</strong> – orders may only rest on the book and wait, never take an existing price.</li><li><strong>Value caps</strong> – a limit on the total value of an order, not just its size.</li></ul>
+<p>Each one narrows what a taken-over agent could do.</p>
+<h2 id="where-do-i-learn-more">Where do I learn more?</h2>
+<p>The Signer how-tos show each step in detail:</p>
+<ul><li><a href="../signer-guides/04-how-do-i-write-a-trading-policy.html">How do I write a trading policy?</a></li><li><a href="../signer-guides/05-how-do-i-stop-an-agent-fast.html">How do I stop an agent fast?</a></li></ul>
+<p>To review the cryptography itself, start with <a href="../cryptography/index.html">how to understand and review cryptographic systems</a>.</p></div></article>
+<nav class="chapter-navigation" aria-label="Chapter navigation"><a rel="prev" href="08-how-does-signer-hold-a-key.html"><span>← Previous chapter</span><strong>How does Signer hold a key?</strong></a><a rel="next" href="10-how-would-i-know-if-someone-tried-to-break-in.html"><span>Next chapter →</span><strong>How would I know if someone tried to break in?</strong></a></nav><p class="reading-hint">One chapter at a time. Use the links to keep reading, or swipe on touch screens.</p></div></main>
+<footer class="site-footer"><span>TraderSwift</span><nav aria-label="Resources"><a href="../index.json">Index</a><a href="../llms.txt">Plain text</a><a href="../sitemap.xml">Sitemap</a></nav></footer>
+</body>
+</html>

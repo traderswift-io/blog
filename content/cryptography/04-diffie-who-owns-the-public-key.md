@@ -27,11 +27,11 @@ Why does that help? With large, appropriate parameters, calculating the public v
 
 With p = 23, we can simply try the possible exponents. These numbers illustrate equality, not security.
 
-Here is the lab. Press Run to try it in your browser.
+Here is the lab. It is also in [the labs file](../assets/cryptography/Cryptography_Practical_Labs.py), so you can run it on your own computer.
 
 Its last check uses the bad generator from [the next chapter](05-hellman-what-makes-the-problem-hard.html).
 
-```python run
+```python
 def check(condition: bool, description: str) -> None:
     if not condition:
         raise AssertionError(description)

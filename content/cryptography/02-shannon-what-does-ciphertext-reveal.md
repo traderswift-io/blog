@@ -86,9 +86,9 @@ If we know the first plaintext was `41`, we recover the second as `03 XOR 41 = 4
 
 This recovers the overlapping reused stream, not every unrelated key in the system.
 
-Here is the lab. Press Run to try it in your browser.
+Here is the lab. It is also in [the labs file](../assets/cryptography/Cryptography_Practical_Labs.py), so you can run it on your own computer.
 
-```python run
+```python
 def check(condition: bool, description: str) -> None:
     if not condition:
         raise AssertionError(description)

@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en" data-skin="control" data-page="reading">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Why the bare RSA formula is not enough to encrypt or sign, and what to use instead.">
+<meta name="color-scheme" content="light dark">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; script-src 'self'; img-src 'self'; font-src 'self'; base-uri 'none'; form-action 'none'">
+<title>Rivest: why is raw RSA not a scheme? · TraderSwift</title>
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/style.css">
+<script src="../assets/reading.js" blocking="render"></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><a class="wordmark" href="../index.html" aria-label="TraderSwift home">TraderSwift</a><nav aria-label="Site"><a href="../index.html#updates">Updates</a><a href="../index.html#guides">Guides</a><a href="../index.html#case-studies">Case studies</a><a class="source-link" href="../llms.txt">For agents ↗</a><button class="theme-switch" type="button" aria-label="Switch to dark mode" hidden><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><g class="theme-sun"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></g><path class="theme-moon" d="M20 15.5A9 9 0 0 1 8.5 4 9 9 0 1 0 20 15.5Z"/></svg></button></nav></header>
+<main id="main"><div class="reading-layout"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="../index.html">Home</a><span aria-hidden="true">/</span><a href="index.html">Cryptography – How to Understand and Review Cryptographic Systems</a></nav>
+<div class="reading-topline"><p class="eyebrow">Chapter 07 <span>/ 15</span></p><nav class="chapter-progress" aria-label="Chapters"><a href="01-what-do-we-need-to-know-before-starting.html" aria-label="Chapter 1: What do we need to know before starting?">01</a><a href="02-shannon-what-does-ciphertext-reveal.html" aria-label="Chapter 2: Shannon: what does ciphertext reveal?">02</a><a href="03-turing-how-is-the-system-operated.html" aria-label="Chapter 3: Turing: how is the system operated?">03</a><a href="04-diffie-who-owns-the-public-key.html" aria-label="Chapter 4: Diffie: who owns the public key?">04</a><a href="05-hellman-what-makes-the-problem-hard.html" aria-label="Chapter 5: Hellman: what makes the problem hard?">05</a><a href="06-merkle-what-does-a-hash-actually-prove.html" aria-label="Chapter 6: Merkle: what does a hash actually prove?">06</a><a href="07-rivest-why-is-raw-rsa-not-a-scheme.html" aria-label="Chapter 7: Rivest: why is raw RSA not a scheme?" aria-current="page">07</a><a href="08-shamir-which-threshold-really-applies.html" aria-label="Chapter 8: Shamir: which threshold really applies?">08</a><a href="09-adleman-how-do-we-check-the-arithmetic.html" aria-label="Chapter 9: Adleman: how do we check the arithmetic?">09</a><a href="10-schneier-what-is-the-system-around-the-algorithm.html" aria-label="Chapter 10: Schneier: what is the system around the algorithm?">10</a><a href="11-what-does-a-complete-review-look-like.html" aria-label="Chapter 11: What does a complete review look like?">11</a><a href="12-what-goes-on-a-review-worksheet.html" aria-label="Chapter 12: What goes on a review worksheet?">12</a><a href="13-what-are-the-exercises-and-answers.html" aria-label="Chapter 13: What are the exercises and answers?">13</a><a href="14-how-do-i-keep-learning.html" aria-label="Chapter 14: How do I keep learning?">14</a><a href="15-sources.html" aria-label="Chapter 15: Sources">15</a></nav></div>
+<article><header class="article-header"><h1>Rivest: why is raw RSA not a scheme?</h1><p class="standfirst">Why the bare RSA formula is not enough to encrypt or sign, and what to use instead.</p><div class="article-meta"><span>TraderSwift guide</span><span>5 min read</span><a href="07-rivest-why-is-raw-rsa-not-a-scheme.md">Read Markdown ↗</a></div></header><div class="prose"><p><strong>The question:</strong> Are we using a complete encryption or signature scheme, or only the underlying mathematical operation?</p>
+<h2 id="what-does-textbook-rsa-do">What does textbook RSA do?</h2>
+<p>At its core, RSA maps an integer m to <code>c = m^e mod n</code>.</p>
+<p>The private exponent reverses that operation for valid keys and representatives. The original RSA paper supplies the mathematical foundation.</p>
+<p>A real encryption scheme adds encoding and security rules; a signature scheme has its own encoding and verification rules. [32, 19]</p>
+<p>Use our toy key:</p>
+<ul><li>p = 61</li><li>q = 53</li><li>n = 3233</li><li>e = 17</li><li>d = 413</li></ul>
+<p>For m = 65:</p>
+<p><code>65^17 mod 3233 = 2790</code></p>
+<p><code>2790^413 mod 3233 = 65</code></p>
+<p>The round trip works. That is a correctness result.</p>
+<p>Now let&#x27;s see why it is not an adequate encryption design.</p>
+<h2 id="why-is-deterministic-encryption-a-problem">Why is deterministic encryption a problem?</h2>
+<p>Suppose the only possible messages are BUY and SELL, represented by known integers.</p>
+<p>Anyone with the public key can encrypt both and compare the results with the observed ciphertext.</p>
+<p>No private-key recovery is required. A successful round-trip test did not test confidentiality against this attack.</p>
+<p>Textbook RSA is also multiplicative. Starting with ciphertext c, an attacker can calculate:</p>
+<p><code>c_prime = c × r^e mod n</code></p>
+<p>The decrypted result is <code>m × r mod n</code>.</p>
+<p>With our numbers and r = 2, <code>c_prime = 3017</code>, which decrypts to 130. We changed the plaintext in a predictable way without knowing d.</p>
+<p>For raw signatures, selecting any number s and defining <code>m = s^e mod n</code> produces a pair that passes the bare verification equation.</p>
+<p>This is not necessarily a forgery of a meaningful, chosen application message, but it demonstrates why arbitrary representatives and a verification equation do not constitute a complete signature scheme.</p>
+<p>Here is the lab. It is also in <a href="../assets/cryptography/Cryptography_Practical_Labs.py">the labs file</a>, so you can run it on your own computer.</p>
+<p>Its last check is the shared-prime failure from <a href="09-adleman-how-do-we-check-the-arithmetic.html">chapter 9</a>.</p>
+<figure class="code-block"><figcaption>python</figcaption><pre tabindex="0"><code class="language-python">from math import gcd, lcm
+
+
+def check(condition: bool, description: str) -&gt; None:
+    if not condition:
+        raise AssertionError(description)
+
+
+p, q, e, message = 61, 53, 17, 65
+n = p * q
+lam = lcm(p - 1, q - 1)
+private_d = pow(e, -1, lam)
+ciphertext = pow(message, e, n)
+check((lam, private_d, ciphertext) == (780, 413, 2790), &quot;Guide RSA values&quot;)
+check(pow(ciphertext, private_d, n) == message, &quot;Round trip&quot;)
+changed = ciphertext * pow(2, e, n) % n
+check(changed == 3017, &quot;Changed ciphertext&quot;)
+check(pow(changed, private_d, n) == 130, &quot;Raw RSA is malleable&quot;)
+check(pow(message, e, n) == ciphertext, &quot;Raw RSA is deterministic&quot;)
+check(gcd(n, 61 * 47) == 61, &quot;Shared-prime failure&quot;)
+print(&quot;4 Raw RSA: 65 -&gt; 2790 -&gt; 65; modified ciphertext -&gt; 130&quot;)</code></pre></figure>
+<h2 id="what-should-we-use-instead">What should we use instead?</h2>
+<p>For RSA encryption, use a defined scheme such as RSA-OAEP through a maintained library. For new RSA signature applications, use an appropriate RSA-PSS profile.</p>
+<p>Specify the hash, mask-generation function and the applicable salt or label rules so implementations agree. These choices are part of the scheme, not cosmetic padding settings. [15, 19]</p>
+<p>RSA-OAEP has a message-size limit: <code>k - 2*hLen - 2</code> bytes, where k is modulus length in bytes and hLen is the hash output length. [15]</p>
+<p>For a 3,072-bit modulus and SHA-256, that is <code>384 - 64 - 2 = 318</code> bytes. It is not suitable for directly encrypting an arbitrary large file.</p>
+<p>A hybrid design can protect a small randomly generated data key with a public-key scheme and protect the file with AEAD.</p>
+<p>The full envelope still needs authenticated metadata, key identification and a specified format.</p>
+<p>An implementation must also avoid giving attackers distinguishable padding-error paths.</p>
+<p>A generic external error message alone is insufficient if timing or other behavior still distinguishes the internal failures. [15]</p>
+<h2 id="why-are-rc4-and-md5-retired">Why are RC4 and MD5 retired?</h2>
+<p>RC4 has exploitable statistical weaknesses; RFC 7465 prohibits negotiating RC4 cipher suites in TLS. Do not select it for a new design. [20]</p>
+<p>MD5&#x27;s collision resistance is broken. It is unsuitable for uses that require collision resistance, including ordinary signature hashing.</p>
+<p>This does not mean that every MD5 digest reveals its input or that an MD5 collision instantly recovers an HMAC key.</p>
+<p>RFC 6151 distinguishes these properties and advises against HMAC-MD5 in new protocol designs. [21]</p>
+<p>For a migration, identify the actual use.</p>
+<p>Replacing these may require four different changes:</p>
+<ul><li>a file identifier;</li><li>a signed digest;</li><li>a password hash;</li><li>a MAC.</li></ul>
+<p>Keep compatibility handling explicit so old formats cannot silently downgrade new operations.</p>
+<h2 id="how-can-i-test-a-real-scheme">How can I test a real scheme?</h2>
+<p>For randomized encryption, encrypt the same plaintext twice and check that both decrypt correctly. Then alter the ciphertext and require rejection.</p>
+<p>For a signature, alter the message, use the wrong public key and vary the declared parameters; each mismatch should fail under the chosen profile.</p>
+<p>These tests can find mistakes. They do not establish a security proof or show that the library is free of side channels.</p>
+<p><strong>Try it:</strong> An RSA implementation passes 10,000 encrypt-decrypt tests. Explain why that evidence does not rule out the BUY-versus-SELL attack.</p></div></article>
+<nav class="chapter-navigation" aria-label="Chapter navigation"><a rel="prev" href="06-merkle-what-does-a-hash-actually-prove.html"><span>← Previous chapter</span><strong>Merkle: what does a hash actually prove?</strong></a><a rel="next" href="08-shamir-which-threshold-really-applies.html"><span>Next chapter →</span><strong>Shamir: which threshold really applies?</strong></a></nav><p class="reading-hint">One chapter at a time. Use the links to keep reading, or swipe on touch screens.</p></div></main>
+<footer class="site-footer"><span>TraderSwift</span><nav aria-label="Resources"><a href="../index.json">Index</a><a href="../llms.txt">Plain text</a><a href="../sitemap.xml">Sitemap</a></nav></footer>
+</body>
+</html>

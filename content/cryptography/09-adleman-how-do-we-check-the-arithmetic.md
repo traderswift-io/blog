@@ -82,9 +82,9 @@ One defective output has exposed a factor.
 
 The lab uses modular exponentiation to keep the intermediate calculation small; subtracting m after reducing modulo n gives the same gcd with n.
 
-Here is the lab. Press Run to try it in your browser.
+Here is the lab. It is also in [the labs file](../assets/cryptography/Cryptography_Practical_Labs.py), so you can run it on your own computer.
 
-```python run
+```python
 from math import gcd, lcm
 
 

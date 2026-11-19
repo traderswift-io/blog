@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en" data-skin="control" data-page="reading">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="How an attacker reaches a secret without breaking the mathematics, and how to check the parts around it.">
+<meta name="color-scheme" content="light dark">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; script-src 'self'; img-src 'self'; font-src 'self'; base-uri 'none'; form-action 'none'">
+<title>Schneier: what is the system around the algorithm? · TraderSwift</title>
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/style.css">
+<script src="../assets/reading.js" blocking="render"></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><a class="wordmark" href="../index.html" aria-label="TraderSwift home">TraderSwift</a><nav aria-label="Site"><a href="../index.html#updates">Updates</a><a href="../index.html#guides">Guides</a><a href="../index.html#case-studies">Case studies</a><a class="source-link" href="../llms.txt">For agents ↗</a><button class="theme-switch" type="button" aria-label="Switch to dark mode" hidden><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><g class="theme-sun"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></g><path class="theme-moon" d="M20 15.5A9 9 0 0 1 8.5 4 9 9 0 1 0 20 15.5Z"/></svg></button></nav></header>
+<main id="main"><div class="reading-layout"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="../index.html">Home</a><span aria-hidden="true">/</span><a href="index.html">Cryptography – How to Understand and Review Cryptographic Systems</a></nav>
+<div class="reading-topline"><p class="eyebrow">Chapter 10 <span>/ 15</span></p><nav class="chapter-progress" aria-label="Chapters"><a href="01-what-do-we-need-to-know-before-starting.html" aria-label="Chapter 1: What do we need to know before starting?">01</a><a href="02-shannon-what-does-ciphertext-reveal.html" aria-label="Chapter 2: Shannon: what does ciphertext reveal?">02</a><a href="03-turing-how-is-the-system-operated.html" aria-label="Chapter 3: Turing: how is the system operated?">03</a><a href="04-diffie-who-owns-the-public-key.html" aria-label="Chapter 4: Diffie: who owns the public key?">04</a><a href="05-hellman-what-makes-the-problem-hard.html" aria-label="Chapter 5: Hellman: what makes the problem hard?">05</a><a href="06-merkle-what-does-a-hash-actually-prove.html" aria-label="Chapter 6: Merkle: what does a hash actually prove?">06</a><a href="07-rivest-why-is-raw-rsa-not-a-scheme.html" aria-label="Chapter 7: Rivest: why is raw RSA not a scheme?">07</a><a href="08-shamir-which-threshold-really-applies.html" aria-label="Chapter 8: Shamir: which threshold really applies?">08</a><a href="09-adleman-how-do-we-check-the-arithmetic.html" aria-label="Chapter 9: Adleman: how do we check the arithmetic?">09</a><a href="10-schneier-what-is-the-system-around-the-algorithm.html" aria-label="Chapter 10: Schneier: what is the system around the algorithm?" aria-current="page">10</a><a href="11-what-does-a-complete-review-look-like.html" aria-label="Chapter 11: What does a complete review look like?">11</a><a href="12-what-goes-on-a-review-worksheet.html" aria-label="Chapter 12: What goes on a review worksheet?">12</a><a href="13-what-are-the-exercises-and-answers.html" aria-label="Chapter 13: What are the exercises and answers?">13</a><a href="14-how-do-i-keep-learning.html" aria-label="Chapter 14: How do I keep learning?">14</a><a href="15-sources.html" aria-label="Chapter 15: Sources">15</a></nav></div>
+<article><header class="article-header"><h1>Schneier: what is the system around the algorithm?</h1><p class="standfirst">How an attacker reaches a secret without breaking the mathematics, and how to check the parts around it.</p><div class="article-meta"><span>TraderSwift guide</span><span>8 min read</span><a href="10-schneier-what-is-the-system-around-the-algorithm.md">Read Markdown ↗</a></div></header><div class="prose"><p><strong>The question:</strong> How can the attacker reach the asset without solving the mathematical problem?</p>
+<p>Schneier&#x27;s writing on security emphasizes the continuing operational process around protective products.</p>
+<p>For this guide, we turn that perspective into a concrete exercise: follow the key, the message and the permission check across the whole application. [30]</p>
+<h2 id="why-is-an-algorithm-name-insufficient">Why is an algorithm name insufficient?</h2>
+<p>“We use AES-256” leaves several questions unanswered:</p>
+<ul><li>Which mode?</li><li>How are nonces allocated?</li><li>Is the ciphertext authenticated?</li><li>Who has the key?</li><li>Can a caller ask the service to decrypt arbitrary data?</li><li>What becomes visible when authentication fails?</li></ul>
+<p>Prefer a complete authenticated-encryption interface for application data.</p>
+<p>AEAD takes a key, nonce, plaintext and associated data; authenticated decryption returns plaintext or failure. Associated data is protected against modification but remains visible. [23]</p>
+<p>For our order example, the encrypted body might hold order details while associated data binds a protocol version and account identifier.</p>
+<p>The receiver must check that the authenticated account is the intended account. Authenticating a field does not make its value authorized.</p>
+<h2 id="what-does-the-mode-change">What does the mode change?</h2>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Scrollable table"><table><thead><tr><th class="align-left" scope="col">Construction</th><th class="align-left" scope="col">What to understand before use</th></tr></thead><tbody><tr><td class="align-left">AES-ECB</td><td class="align-left">Equal plaintext blocks produce equal ciphertext blocks under one key; it is unsuitable for general message confidentiality</td></tr><tr><td class="align-left">AES-CBC without authentication</td><td class="align-left">Encryption alone does not detect malicious modification; IV and padding behavior also matter</td></tr><tr><td class="align-left">AES-CTR without authentication</td><td class="align-left">Repeated counter streams expose plaintext relationships; bit changes are malleable</td></tr><tr><td class="align-left">AES-GCM</td><td class="align-left">AEAD with strict nonce and usage requirements; nonce reuse can compromise confidentiality and authentication</td></tr><tr><td class="align-left">ChaCha20-Poly1305</td><td class="align-left">AEAD with a 96-bit nonce in the IETF construction; the nonce must not repeat for a key</td></tr></tbody></table></div>
+<p>The basic confidentiality modes are specified in SP 800-38A. GCM and ChaCha20-Poly1305 have their own bounds and nonce rules.</p>
+<p>Follow the selected protocol and library profile rather than treating “AEAD” as permission for unlimited use of a key. [27, 31, 35]</p>
+<h2 id="how-should-i-think-about-nonce-allocation">How should I think about nonce allocation?</h2>
+<p>A counter gives deterministic uniqueness only if its state and allocation rules are correct.</p>
+<p>Multiple workers need separate ranges or an allocation mechanism that prevents overlap. A restored backup must not resume an old counter under a key that has already used those values.</p>
+<p>RFC 5116 explicitly discusses multiple devices and state surviving restarts. [23]</p>
+<p>Random nonces give a probability of uniqueness. For q independent uniform 96-bit nonces, the small-probability approximation is:</p>
+<p><code>P(collision) ≈ q(q - 1) / 2^97</code></p>
+<p>At <code>q = 2^32</code>, that is about <code>2^-33</code>.</p>
+<p>This calculation is not a recommended invocation limit. These also matter:</p>
+<ul><li>message sizes;</li><li>forgery bounds;</li><li>the number of systems sharing a key;</li><li>the protocol profile.</li></ul>
+<p>A useful review asks for the nonce allocator&#x27;s behavior under concurrency and recovery, not a screenshot of two different values from a happy-path test.</p>
+<h2 id="what-does-constant-time-mean-for-a-tag">What does constant time mean for a tag?</h2>
+<p>An early-exit byte comparison can reveal how much of a proposed tag matches through timing.</p>
+<p>For a standalone HMAC in Python, use <code>hmac.compare_digest</code> on appropriately validated, fixed-format values.</p>
+<p>Its purpose is to avoid content-dependent short-circuiting; it does not promise to hide public input lengths or make the surrounding program constant-time. [33]</p>
+<p>Here is the lab. It is also in <a href="../assets/cryptography/Cryptography_Practical_Labs.py">the labs file</a>, so you can run it on your own computer.</p>
+<figure class="code-block"><figcaption>python</figcaption><pre tabindex="0"><code class="language-python">from hmac import compare_digest, digest
+from secrets import token_bytes
+
+
+def check(condition: bool, description: str) -&gt; None:
+    if not condition:
+        raise AssertionError(description)
+
+
+key = token_bytes(32)
+message = b&quot;guide-demo:v1:request=123:account=7:buy=10&quot;
+tag = digest(key, message, &quot;sha256&quot;)
+check(compare_digest(tag, digest(key, message, &quot;sha256&quot;)), &quot;HMAC matches&quot;)
+modified = b&quot;guide-demo:v1:request=123:account=7:buy=100&quot;
+check(not compare_digest(tag, digest(key, modified, &quot;sha256&quot;)), &quot;Changed message fails&quot;)
+print(&quot;8 HMAC: original verifies; changed message fails&quot;)</code></pre></figure>
+<p>For AEAD, let the cryptographic library verify its tag. Do not manually compare part of the tag or expose plaintext before verification succeeds.</p>
+<p>Use the specified tag length; truncation changes the security analysis.</p>
+<p>Also inspect the behavior around the check. A constant-time comparison followed by distinguishable error paths can still leak information.</p>
+<p>A quick local timing test is useful for finding gross mistakes, but does not prove resistance to side channels.</p>
+<h2 id="where-does-the-key-get-printed">Where does the key get printed?</h2>
+<p>Search the full lifecycle:</p>
+<ul><li>configuration dumps;</li><li>debug logs;</li><li>exception traces;</li><li>command-line arguments;</li><li>support bundles;</li><li>crash dumps;</li><li>telemetry;</li><li>backups.</li></ul>
+<p>An encrypted key file offers limited help if its unlocking credential is stored next to it and the same attacker can read both.</p>
+<p>For a test environment, use a deliberately generated canary secret and check whether it appears in those outputs.</p>
+<p>Do not copy a real production key into a search command or report. Redaction should prevent exposure at the source, not merely hide one field in the dashboard after it has already been collected.</p>
+<p>A hardware boundary or remote signer changes which actions are possible; it does not automatically constrain the use of the key.</p>
+<p>If an attacker can ask the signer to authorize arbitrary operations, preventing key export has not prevented misuse.</p>
+<h2 id="how-do-i-prevent-replay">How do I prevent replay?</h2>
+<p>An old valid ciphertext still has a valid tag.</p>
+<p>Add authenticated request identifiers and an application policy for freshness. Then enforce that policy where the action is committed.</p>
+<p>For an order service, the check and execution reservation need to handle concurrent delivery. Two workers can both see “request not used” before either records it.</p>
+<p>A durable, atomic reservation or a protocol-specific equivalent is necessary. Time windows also need clock and retry rules.</p>
+<h2 id="can-we-try-authenticated-encryption-in-python">Can we try authenticated encryption in Python?</h2>
+<p>The companion lab:</p>
+<ul><li>generates a fresh AES-GCM key;</li><li>encrypts one message;</li><li>decrypts it;</li><li>changes the ciphertext, nonce and associated data in separate tests.</li></ul>
+<p>Each altered input must fail authentication.</p>
+<p>It then decrypts the unchanged message again to demonstrate that AEAD alone does not reject replay. The library documents these inputs and its <code>InvalidTag</code> behavior. [34]</p>
+<p>Here is the lab. It is also in <a href="../assets/cryptography/Cryptography_Practical_Labs.py">the labs file</a>, so you can run it on your own computer.</p>
+<figure class="code-block"><figcaption>python</figcaption><pre tabindex="0"><code class="language-python">from secrets import token_bytes
+
+from cryptography.exceptions import InvalidTag
+from cryptography.hazmat.primitives.ciphers.aead import AESGCM
+
+
+def check(condition: bool, description: str) -&gt; None:
+    if not condition:
+        raise AssertionError(description)
+
+
+key = AESGCM.generate_key(bit_length=256)
+cipher = AESGCM(key)
+nonce = token_bytes(12)
+aad = b&quot;guide-demo:v1:account=7&quot;
+message = b&quot;buy 10 units&quot;
+# Only one encryption invocation under this fresh key.
+ciphertext = cipher.encrypt(nonce, message, aad)
+check(cipher.decrypt(nonce, ciphertext, aad) == message, &quot;AEAD round trip&quot;)
+altered = bytes([ciphertext[0] ^ 1]) + ciphertext[1:]
+wrong_nonce = bytes([nonce[0] ^ 1]) + nonce[1:]
+for label, candidate_nonce, candidate_ct, candidate_aad in (
+    (&quot;ciphertext&quot;, nonce, altered, aad),
+    (&quot;nonce&quot;, wrong_nonce, ciphertext, aad),
+    (&quot;associated data&quot;, nonce, ciphertext, b&quot;guide-demo:v1:account=8&quot;),
+):
+    try:
+        cipher.decrypt(candidate_nonce, candidate_ct, candidate_aad)
+    except InvalidTag:
+        pass
+    else:
+        raise AssertionError(f&quot;Altered {label} should be rejected&quot;)
+# Repeated DECRYPTION is intentional: AEAD itself has no replay state.
+check(cipher.decrypt(nonce, ciphertext, aad) == message, &quot;Replay still decrypts&quot;)
+print(&quot;7 AEAD: 3 alterations rejected; unchanged replay still decrypts&quot;)</code></pre></figure>
+<p>Run all the examples in a fresh virtual environment with Python 3.11 or later:</p>
+<figure class="code-block"><figcaption>bash</figcaption><pre tabindex="0"><code class="language-bash">python3 -m venv .venv
+.venv/bin/python -m pip install cryptography==50.0.0
+.venv/bin/python Cryptography_Practical_Labs.py</code></pre></figure>
+<p>On Windows, use <code>.venv\Scripts\python</code> for the last two commands.</p>
+<p>Version 50.0.0 is the version used to verify this tutorial; it is a reproducibility pin, not an instruction to keep a deployed service on that version indefinitely.</p>
+<p>The final output should be:</p>
+<figure class="code-block"><figcaption>text</figcaption><pre tabindex="0"><code class="language-text">8 labs passed</code></pre></figure>
+<p>The script makes no network calls and uses no account credentials.</p>
+<p>It deliberately prints toy mathematical values, but does not print the randomly generated AEAD or HMAC keys.</p>
+<p><strong>Try it:</strong> An encrypted request authenticates correctly twice. What additional state or protocol rule is needed to stop the second execution?</p></div></article>
+<nav class="chapter-navigation" aria-label="Chapter navigation"><a rel="prev" href="09-adleman-how-do-we-check-the-arithmetic.html"><span>← Previous chapter</span><strong>Adleman: how do we check the arithmetic?</strong></a><a rel="next" href="11-what-does-a-complete-review-look-like.html"><span>Next chapter →</span><strong>What does a complete review look like?</strong></a></nav><p class="reading-hint">One chapter at a time. Use the links to keep reading, or swipe on touch screens.</p></div></main>
+<footer class="site-footer"><span>TraderSwift</span><nav aria-label="Resources"><a href="../index.json">Index</a><a href="../llms.txt">Plain text</a><a href="../sitemap.xml">Sitemap</a></nav></footer>
+</body>
+</html>

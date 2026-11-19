@@ -1,40 +1,43 @@
 ---
 title: How do I get a Signer key for my own account?
-description: Keys for your own account aren't open yet. What it will take, and the milestones to get there. Planned.
+description: Your own Hyperliquid account has a target date of Saturday 21 November 2026. What it waits on, what you will do, and what you can prepare now. Planned.
 order: 10
 ---
 
-**Planned.**
+**Planned.** Our target is Saturday 21 November 2026, for your own Hyperliquid account.
 
-This page is half written on purpose. Today, Signer signs only for accounts we run.
+From that day, Signer can hold a trading key for your own exchange account, under a policy you write and sign yourself.
 
-The first half explains why. The second half is the milestones.
+You sign the setup in your own wallet. We never see or hold your keys.
 
-When keys for your own account open, this page will be updated with the full steps.
+When it opens, this page gets the exact steps.
 
-Once it opens, you will be able to have Signer hold a trading key for your own exchange account, under a policy you write and sign yourself.
+## What does Saturday 21 November wait on?
 
-## Can I get a key today?
+Four things come first:
 
-No. Signer is live, but only for our own accounts.
+- **The rotation of the signers**, target Friday 20 November 2026. It brings the new signer machines and Policy v2.
+- **Account privacy.** The release that keeps your trading account address and your orders out of readable form on the chain. [How do I read Signer's record?](06-how-do-i-read-signers-record.html) says what the chain shows.
+- **Our decision on the security audit.** We make it before your account opens.
+- **A live test done as a new user would.** We follow these steps ourselves, on a small account with real money, the way you will.
 
-Keys for other people's accounts open after the next rotation of the signers.
+If a date slips, the box on the [Signer index](index.html) changes the same day, with the new date and the reason.
 
-That is a choice, not a missing feature. The signers running today are sealed: no one can log in to them, including us.
+## What will I do?
 
-Fixes made after the seal can't be copied onto them. The next set carries those fixes and Policy v2, and that is the set we want holding other people's keys.
+The steps follow the same path Signer already uses for our own test account.
 
-You can still run a validator today. See [How do I run a Signer validator?](07-how-do-i-run-a-signer-validator.html).
-
-## What will it look like?
-
-The steps below are the plan. Each one is already how Signer works for our own account.
-
-1. **Your account, your wallet.** You bind your exchange account and the new key with your own wallet. Nobody else can do it for you.
-2. **A key no one holds.** The signers make the key together. It never exists whole, on any machine.
+1. **Your account, your wallet.** You bind your exchange account and the new key with your own wallet, and nobody else can do it for you.
+2. **A new key.** The signers make the key together, and it never exists whole on any machine.
 3. **You approve it on the exchange.** The key is added to your account as an agent that can trade, not withdraw.
-4. **You write the policy.** Which assets, how large an order, how much a day, and what leverage. See [How do I write a trading policy?](04-how-do-i-write-a-trading-policy.html).
-5. **You can stop it.** Revoking the policy on chain stops every order from the next block. See [How do I stop an agent fast?](05-how-do-i-stop-an-agent-fast.html).
+4. **You write the policy.** Which assets, how large an order and how much a day, as in [How do I write a trading policy?](04-how-do-i-write-a-trading-policy.html).
+5. **You can stop it.** A revoke takes effect in the block it lands in, as [How do I stop an agent fast?](05-how-do-i-stop-an-agent-fast.html) explains.
+
+## What will I sign?
+
+Each step you sign in your wallet has a short, plain text, so you can read what you approve.
+
+The exact texts you sign go on this page when the code that prints them is published.
 
 ## What can I prepare now?
 
@@ -48,16 +51,8 @@ Here is an anonymised history of my trades: [paste a CSV with time, asset, side,
 
 Keep the answer. It is the first draft of the policy you will sign.
 
-## What are the milestones?
-
-1. **The next signer set.** Live with Policy v2: a price band, an order-rate cap, notional caps and post-only.
-2. **Owner binding.** An owner binds their own account and key with their own wallet.
-3. **Owner policy.** The owner writes and signs a policy with caps.
-4. **A gated live test.** On a small account with real money, the same refusal, entry and close we ran for our own key.
-5. **Open to your account.** This page gets the full steps.
-
 ## Final thoughts
 
-The honest answer today is "not yet". We would rather open Signer to other people's money on the set that carries Policy v2 than on the one that doesn't.
+Your own account has a date: Saturday 21 November 2026, on the new signers with Policy v2.
 
-Write your policy now. It is the part that takes the most thought, and it is ready when we are.
+Write your policy now. It is the part that takes the most thought, and it will be ready when your account opens.

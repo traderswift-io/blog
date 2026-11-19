@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Build the Signer chain from the public code and run your own network, with your own admin. Anchoring to the hub is planned.">
+<meta name="description" content="Signer is open source, so you can run your own copy of it, with your own machines and your own rules, without connecting to us.">
 <meta name="color-scheme" content="light dark">
 <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; script-src 'self'; img-src 'self'; font-src 'self'; base-uri 'none'; form-action 'none'">
 <title>How do I run my own Signer chain? · TraderSwift</title>
@@ -16,44 +16,30 @@
 <header class="site-header"><a class="wordmark" href="../index.html" aria-label="TraderSwift home">TraderSwift</a><nav aria-label="Site"><a href="../index.html#updates">Updates</a><a href="../index.html#guides">Guides</a><a href="../index.html#case-studies">Case studies</a><a class="source-link" href="../llms.txt">For agents ↗</a><button class="theme-switch" type="button" aria-label="Switch to dark mode" hidden><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><g class="theme-sun"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></g><path class="theme-moon" d="M20 15.5A9 9 0 0 1 8.5 4 9 9 0 1 0 20 15.5Z"/></svg></button></nav></header>
 <main id="main"><div class="reading-layout"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="../index.html">Home</a><span aria-hidden="true">/</span><a href="index.html">Signer – How to Run, Test and Trade with It</a></nav>
 <div class="reading-topline"><p class="eyebrow">Chapter 09 <span>/ 12</span></p><nav class="chapter-progress" aria-label="Chapters"><a href="01-what-is-signer.html" aria-label="Chapter 1: What is Signer, and who is it for?">01</a><a href="02-how-does-an-order-get-signed.html" aria-label="Chapter 2: How does an order get signed?">02</a><a href="03-how-do-i-try-signer-on-my-own-computer.html" aria-label="Chapter 3: How do I try Signer on my own computer?">03</a><a href="04-how-do-i-write-a-trading-policy.html" aria-label="Chapter 4: How do I write a trading policy?">04</a><a href="05-how-do-i-stop-an-agent-fast.html" aria-label="Chapter 5: How do I stop an agent fast?">05</a><a href="06-how-do-i-read-signers-record.html" aria-label="Chapter 6: How do I read Signer&#x27;s record?">06</a><a href="07-how-do-i-run-a-signer-validator.html" aria-label="Chapter 7: How do I run a Signer validator?">07</a><a href="08-how-do-i-launch-a-node-with-one-link.html" aria-label="Chapter 8: How do I launch a node with one link?">08</a><a href="09-how-do-i-run-my-own-signer-chain.html" aria-label="Chapter 9: How do I run my own Signer chain?" aria-current="page">09</a><a href="10-how-do-i-get-a-signer-key-for-my-own-account.html" aria-label="Chapter 10: How do I get a Signer key for my own account?">10</a><a href="11-how-do-i-hold-my-own-key-shares.html" aria-label="Chapter 11: How do I hold my own key shares?">11</a><a href="12-how-do-i-run-a-private-signer-network-on-esp32s.html" aria-label="Chapter 12: How do I run a private Signer network on ESP32s?">12</a></nav></div>
-<article><header class="article-header"><h1>How do I run my own Signer chain?</h1><p class="standfirst">Build the Signer chain from the public code and run your own network, with your own admin. Anchoring to the hub is planned.</p><div class="article-meta"><span>TraderSwift guide</span><span>4 min read</span><a href="09-how-do-i-run-my-own-signer-chain.md">Read Markdown ↗</a></div></header><div class="prose"><p>By the end of this guide, you will be able to build the Signer chain from the public code and run your own network of it on one computer.</p>
-<p>You choose the validators, and you hold the admin.</p>
-<p>Signer is open source under the Apache License 2.0. The public README says it plainly: you can run it as your own chain with your own signers.</p>
-<p>TraderSwift runs it as one of its subnets.</p>
+<article><header class="article-header"><h1>How do I run my own Signer chain?</h1><p class="standfirst">Signer is open source, so you can run your own copy of it, with your own machines and your own rules, without connecting to us.</p><div class="article-meta"><span>TraderSwift guide</span><span>4 min read</span><a href="09-how-do-i-run-my-own-signer-chain.md">Read Markdown ↗</a></div></header><div class="prose"><p>Signer is open source, so you can run your own Signer chain, on its own, without connecting to us.</p>
+<p>You choose the machines that run it, and you hold the admin, the right to change who takes part.</p>
+<p>The licence is the Apache License 2.0. The public README says it plainly: you can run it as your own chain with your own signers.</p>
+<p>TraderSwift runs it as one of its subnets, the small chains that each do one job for the network.</p>
 <h2 id="why-run-my-own-chain">Why run my own chain?</h2>
-<ul><li><strong>You hold the admin.</strong> On your own chain, the validator set and its admin are yours. Nobody else decides who joins.</li><li><strong>You keep your record.</strong> Every policy and every decision is on a chain you run.</li><li><strong>You can test freely.</strong> A local network with throwaway keys is the safest place to learn how policies, refusals and revokes behave.</li></ul>
-<h2 id="what-do-i-need">What do I need?</h2>
-<ul><li><strong>A Linux or macOS computer</strong> with Git and Go installed.</li><li><strong>The Signer code.</strong> <code>git clone https://github.com/traderswift-io/signer</code></li><li><strong>Rust</strong>, if you also want to build the signer node. Its build needs <code>m4</code> on your PATH.</li></ul>
-<h2 id="how-do-i-build-it">How do I build it?</h2>
-<p>From the <code>chain</code> folder of the repository, build the chain&#x27;s program:</p>
-<figure class="code-block"><figcaption>Code</figcaption><pre tabindex="0"><code class="language-text">go build -o build/signerd .</code></pre></figure>
-<p>&lt;!-- source: chain/README.md:49 --&gt;</p>
-<p>If you also want the signer node, build it from the <code>signer</code> folder:</p>
-<figure class="code-block"><figcaption>Code</figcaption><pre tabindex="0"><code class="language-text">cargo build --release</code></pre></figure>
-<p>&lt;!-- source: signer/README.md, Build --&gt;</p>
-<h2 id="how-do-i-start-a-local-network">How do I start a local network?</h2>
-<p>The repository has a script that starts a network of as many validators as you ask for. This starts four:</p>
-<figure class="code-block"><figcaption>Code</figcaption><pre tabindex="0"><code class="language-text">./run_local_network.sh up 4</code></pre></figure>
-<p>&lt;!-- source: chain/README.md:50 --&gt;</p>
-<p>Check that it&#x27;s running, and stop or start one validator to see the chain keep going without it:</p>
-<figure class="code-block"><figcaption>Code</figcaption><pre tabindex="0"><code class="language-text">./run_local_network.sh status
-./run_local_network.sh stop 2
-./run_local_network.sh start 2</code></pre></figure>
-<p>&lt;!-- source: chain/README.md:51-53 --&gt;</p>
-<p>When you&#x27;re done, take it down. <code>wipe</code> removes its data as well:</p>
-<figure class="code-block"><figcaption>Code</figcaption><pre tabindex="0"><code class="language-text">./run_local_network.sh down
-./run_local_network.sh wipe</code></pre></figure>
-<p>&lt;!-- source: chain/README.md:54-55 --&gt;</p>
+<ul><li><strong>You hold the admin.</strong> On your own chain, the validators and their admin are yours. Nobody else decides who joins.</li><li><strong>You choose your signers.</strong> The machines that hold your key shares are machines you pick.</li><li><strong>You keep your record.</strong> Every policy and every decision is on a chain you run.</li><li><strong>You can test freely.</strong> A local network with throwaway keys is the safest place to learn how policies, refusals and revokes behave.</li></ul>
+<h2 id="how-do-i-build-it-and-start-a-local-network">How do I build it and start a local network?</h2>
+<p>The build and the local network are the same as on your own computer.</p>
+<p>Follow <a href="03-how-do-i-try-signer-on-my-own-computer.html">How do I try Signer on my own computer?</a>. It builds the chain and the signer node, starts four validators, and shows how to stop one and watch the chain keep going.</p>
 <p>The keys the script makes are throwaway keys for testing. Never use them for anything real.</p>
+<h2 id="what-is-different-on-my-own-chain">What is different on my own chain?</h2>
+<p>On your own chain, three things are yours to set.</p>
+<ul><li><strong>The admin.</strong> Your chain&#x27;s admin decides how the validator set changes. On <code>signer-1</code> that is not you; on your chain it is.</li><li><strong>The validators.</strong> You decide which machines make blocks, and how many.</li><li><strong>The signers.</strong> You decide which machines hold the key shares, and how many must agree.</li></ul>
 <h2 id="what-can-i-try-on-it">What can I try on it?</h2>
-<p>The chain&#x27;s README lists the texts an owner&#x27;s wallet signs, for example to set or revoke a policy, and the queries you can run against your own node. Ask your agent to walk you through them:</p>
-<figure class="prompt"><figcaption><span>Try this prompt</span><a href="09-how-do-i-run-my-own-signer-chain-prompt-1.txt" aria-label="Open plain prompt text to copy">Open text to copy ↗</a></figcaption><blockquote><p>I have the Signer repository at https://github.com/traderswift-io/signer cloned, and a local network running with `chain/run_local_network.sh up 4`. Read chain/README.md. Then walk me through, one step at a time: checking the validator set, writing a policy for a test delegate with one asset and small caps, querying that policy from my node, and revoking it. Use only the throwaway keys the script made. Tell me what each step should show before I run it.</p></blockquote></figure>
+<p>The chain&#x27;s README lists the texts an owner&#x27;s wallet signs, for example to set or revoke a policy. It also lists the queries you can run against your own node.</p>
+<p>Ask your agent to walk you through them:</p>
+<figure class="prompt"><figcaption><span>Try this prompt</span><button class="prompt-copy" type="button" aria-label="Copy prompt" hidden>Copy</button><a href="09-how-do-i-run-my-own-signer-chain-prompt-1.txt" aria-label="Open plain prompt text to copy">Open text to copy ↗</a><span class="prompt-status" role="status" aria-live="polite" aria-atomic="true"></span></figcaption><blockquote><p>I have the Signer repository at https://github.com/traderswift-io/signer cloned, and a local network running with `chain/run_local_network.sh up 4`. Read chain/README.md. Then walk me through, one step at a time: checking the validator set, writing a policy for a test delegate with one asset and small caps, querying that policy from my node, and revoking it. Use only the throwaway keys the script made. Tell me what each step should show before I run it.</p></blockquote></figure>
 <h2 id="can-my-chain-join-the-traderswift-network">Can my chain join the TraderSwift network?</h2>
-<p><strong>Planned.</strong> In TraderSwift, each subnet registers on the hub chain and posts a daily anchor of its state to it.</p>
+<p><strong>Planned.</strong> There is no date yet.</p>
+<p>In TraderSwift, each subnet registers on the hub, the chain that links our other chains. It then posts a daily anchor to the hub: a short fingerprint of its state.</p>
 <p>That is how the network can check a subnet&#x27;s record.</p>
-<p>For an outside chain, that step isn&#x27;t open yet: the hub doesn&#x27;t yet accept registrations from outside providers. When it does, this section will be updated with the steps.</p>
+<p>A subnet enters the hub only when the hub&#x27;s admin approves its charter, the record that registers it. The validators of a subnet run by someone else join under the same open-join rule as anyone.</p>
 <p>Milestones:</p>
-<ol><li><strong>The hub&#x27;s admin handover.</strong> The hub&#x27;s admin moves to the owner&#x27;s own wallet.</li><li><strong>Charters for outside providers.</strong> The hub accepts registrations from providers outside TraderSwift.</li><li><strong>Your anchor.</strong> Your chain registers and posts its first daily anchor.</li></ol>
+<ol><li><strong>The hub&#x27;s admin handover.</strong> Done on 18 November 2026: the hub&#x27;s admin is now a wallet that needs any two of three signatures.</li><li><strong>Charters for other providers.</strong> <strong>Planned</strong>, no date: the hub accepts registrations from providers other than TraderSwift.</li><li><strong>Your anchor.</strong> <strong>Planned.</strong> Your chain registers and posts its first daily anchor.</li></ol>
 <h2 id="final-thoughts">Final thoughts</h2>
 <p>Running your own Signer chain takes a clone, a build and one script. It is the best way to see how policies and refusals work before you trust any signer with a real key.</p>
 <p>Joining your chain to the TraderSwift hub is the part still to come.</p></div></article>

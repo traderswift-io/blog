@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en" data-skin="control" data-page="reading">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="How a secret is split into pieces, and how to count the people an attacker really needs to reach.">
+<meta name="color-scheme" content="light dark">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; script-src 'self'; img-src 'self'; font-src 'self'; base-uri 'none'; form-action 'none'">
+<title>Shamir: which threshold really applies? · TraderSwift</title>
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/style.css">
+<script src="../assets/reading.js" blocking="render"></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><a class="wordmark" href="../index.html" aria-label="TraderSwift home">TraderSwift</a><nav aria-label="Site"><a href="../index.html#updates">Updates</a><a href="../index.html#guides">Guides</a><a href="../index.html#case-studies">Case studies</a><a class="source-link" href="../llms.txt">For agents ↗</a><button class="theme-switch" type="button" aria-label="Switch to dark mode" hidden><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><g class="theme-sun"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></g><path class="theme-moon" d="M20 15.5A9 9 0 0 1 8.5 4 9 9 0 1 0 20 15.5Z"/></svg></button></nav></header>
+<main id="main"><div class="reading-layout"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="../index.html">Home</a><span aria-hidden="true">/</span><a href="index.html">Cryptography – How to Understand and Review Cryptographic Systems</a></nav>
+<div class="reading-topline"><p class="eyebrow">Chapter 08 <span>/ 15</span></p><nav class="chapter-progress" aria-label="Chapters"><a href="01-what-do-we-need-to-know-before-starting.html" aria-label="Chapter 1: What do we need to know before starting?">01</a><a href="02-shannon-what-does-ciphertext-reveal.html" aria-label="Chapter 2: Shannon: what does ciphertext reveal?">02</a><a href="03-turing-how-is-the-system-operated.html" aria-label="Chapter 3: Turing: how is the system operated?">03</a><a href="04-diffie-who-owns-the-public-key.html" aria-label="Chapter 4: Diffie: who owns the public key?">04</a><a href="05-hellman-what-makes-the-problem-hard.html" aria-label="Chapter 5: Hellman: what makes the problem hard?">05</a><a href="06-merkle-what-does-a-hash-actually-prove.html" aria-label="Chapter 6: Merkle: what does a hash actually prove?">06</a><a href="07-rivest-why-is-raw-rsa-not-a-scheme.html" aria-label="Chapter 7: Rivest: why is raw RSA not a scheme?">07</a><a href="08-shamir-which-threshold-really-applies.html" aria-label="Chapter 8: Shamir: which threshold really applies?" aria-current="page">08</a><a href="09-adleman-how-do-we-check-the-arithmetic.html" aria-label="Chapter 9: Adleman: how do we check the arithmetic?">09</a><a href="10-schneier-what-is-the-system-around-the-algorithm.html" aria-label="Chapter 10: Schneier: what is the system around the algorithm?">10</a><a href="11-what-does-a-complete-review-look-like.html" aria-label="Chapter 11: What does a complete review look like?">11</a><a href="12-what-goes-on-a-review-worksheet.html" aria-label="Chapter 12: What goes on a review worksheet?">12</a><a href="13-what-are-the-exercises-and-answers.html" aria-label="Chapter 13: What are the exercises and answers?">13</a><a href="14-how-do-i-keep-learning.html" aria-label="Chapter 14: How do I keep learning?">14</a><a href="15-sources.html" aria-label="Chapter 15: Sources">15</a></nav></div>
+<article><header class="article-header"><h1>Shamir: which threshold really applies?</h1><p class="standfirst">How a secret is split into pieces, and how to count the people an attacker really needs to reach.</p><div class="article-meta"><span>TraderSwift guide</span><span>7 min read</span><a href="08-shamir-which-threshold-really-applies.md">Read Markdown ↗</a></div></header><div class="prose"><p><strong>The question:</strong> How many independently controlled pieces are actually necessary to recover the secret or produce an accepted signature?</p>
+<h2 id="how-does-secret-sharing-work">How does secret sharing work?</h2>
+<p>In a t-of-n Shamir scheme, put the secret at the constant term of a polynomial with t coefficients over a finite field.</p>
+<p>Choose the remaining coefficients independently and uniformly at random. Give each participant the polynomial value at a different, nonzero x-coordinate.</p>
+<p>Any t shares reconstruct the secret; fewer than t disclose no information about it under the scheme&#x27;s assumptions. [22]</p>
+<p>Let&#x27;s create a 3-of-5 example over the prime field modulo 257:</p>
+<p><code>f(x) = 42 + 17x + 9x^2 mod 257</code></p>
+<p>The secret is <code>f(0) = 42</code>.</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Scrollable table"><table><thead><tr><th class="align-left" scope="col">Participant coordinate</th><th class="align-left" scope="col">Share value</th></tr></thead><tbody><tr><td class="align-left">1</td><td class="align-left">68</td></tr><tr><td class="align-left">2</td><td class="align-left">112</td></tr><tr><td class="align-left">3</td><td class="align-left">174</td></tr><tr><td class="align-left">4</td><td class="align-left">254</td></tr><tr><td class="align-left">5</td><td class="align-left">95</td></tr></tbody></table></div>
+<p>These coefficients are fixed only so the example is reproducible. Real sharing requires the specified secure randomness.</p>
+<p>Using the first three shares, the interpolation weights at zero are 3, -3 and 1:</p>
+<p><code>secret = (3 × 68 - 3 × 112 + 174) mod 257 = 42</code></p>
+<p>This is Lagrange interpolation. The companion lab reconstructs from every three-share combination, not only this convenient one.</p>
+<h2 id="why-do-two-shares-not-identify-the-secret">Why do two shares not identify the secret?</h2>
+<p>Keep only <code>(1,68)</code> and <code>(2,112)</code>. Both of these polynomials match them:</p>
+<p><code>42 + 17x + 9x^2 mod 257</code></p>
+<p><code>99 + 60x + 166x^2 mod 257</code></p>
+<p>The first has secret 42. The second has secret 99.</p>
+<p>We can do the same for every candidate constant in the field. With uniform random coefficients, these observations do not favor one candidate secret over another.</p>
+<p>This is a statement about the shares.</p>
+<p>It does not erase information from:</p>
+<ul><li>an external checksum;</li><li>a public key;</li><li>a leaked coefficient;</li><li>a predictable secret.</li></ul>
+<p>If somebody publishes a way to test guesses of a low-entropy secret, examine that separate leakage channel.</p>
+<p>Here is the lab. It is also in <a href="../assets/cryptography/Cryptography_Practical_Labs.py">the labs file</a>, so you can run it on your own computer.</p>
+<figure class="code-block"><figcaption>python</figcaption><pre tabindex="0"><code class="language-python">from itertools import combinations
+from typing import TypeAlias
+
+Share: TypeAlias = tuple[int, int]
+
+
+def check(condition: bool, description: str) -&gt; None:
+    if not condition:
+        raise AssertionError(description)
+
+
+def interpolate_zero(shares: tuple[Share, ...], prime: int) -&gt; int:
+    # Generic interpolation only. Does not know or enforce a threshold.
+    # This deliberately makes the difference from an API refusal visible.
+    xs = [x for x, _ in shares]
+    if not shares or len(set(xs)) != len(xs):
+        raise ValueError(&quot;Shares must have distinct coordinates&quot;)
+    if any(not 0 &lt; x &lt; prime or not 0 &lt;= y &lt; prime for x, y in shares):
+        raise ValueError(&quot;Invalid coordinate or value&quot;)
+    result = 0
+    for i, (xi, yi) in enumerate(shares):
+        weight = 1
+        for j, (xj, _) in enumerate(shares):
+            if i != j:
+                weight = weight * (-xj) * pow((xi - xj) % prime, -1, prime) % prime
+        result = (result + yi * weight) % prime
+    return result
+
+
+prime, secret = 257, 42
+# Fixed coefficients for explanation only, not random secret sharing.
+shares: tuple[Share, ...] = tuple(
+    (x, (secret + 17 * x + 9 * x * x) % prime) for x in range(1, 6)
+)
+check(shares == ((1, 68), (2, 112), (3, 174), (4, 254), (5, 95)),
+      &quot;Guide share values&quot;)
+triples = list(combinations(shares, 3))
+check(len(triples) == 10, &quot;All triples counted&quot;)
+for triple in triples:
+    check(interpolate_zero(triple, prime) == secret, &quot;Each triple reconstructs&quot;)
+# For the selected pair, construct a quadratic for EVERY candidate secret.
+# This is stronger evidence than a library merely refusing two shares.
+for candidate in range(prime):
+    a2 = ((112 - candidate) - 2 * (68 - candidate)) * pow(2, -1, prime) % prime
+    a1 = (68 - candidate - a2) % prime
+    check((candidate + a1 + a2) % prime == 68, &quot;First observed share&quot;)
+    check((candidate + 2 * a1 + 4 * a2) % prime == 112, &quot;Second observed share&quot;)
+try:
+    interpolate_zero((shares[0], shares[0], shares[2]), prime)
+except ValueError:
+    pass
+else:
+    raise AssertionError(&quot;Duplicate coordinates must be rejected&quot;)
+print(&quot;5 Shamir: 10 triples recover 42; 257 secrets fit the selected pair&quot;)</code></pre></figure>
+<h2 id="does-secret-sharing-give-us-threshold-signing">Does secret sharing give us threshold signing?</h2>
+<p>Not automatically.</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Scrollable table"><table><thead><tr><th class="align-left" scope="col">Design</th><th class="align-left" scope="col">What happens during use</th><th class="align-left" scope="col">Trust consequence</th></tr></thead><tbody><tr><td class="align-left">Secret sharing with reconstruction</td><td class="align-left">Enough shares are combined into a full key</td><td class="align-left">The reconstruction environment can access the key</td></tr><tr><td class="align-left">Threshold signing</td><td class="align-left">Participants jointly produce a signature from shares</td><td class="align-left">Security depends on the exact distributed protocol and its assumptions</td></tr><tr><td class="align-left">Multisignature</td><td class="align-left">A verifier requires several signatures from separate keys</td><td class="align-left">The verification policy must enforce the intended combination</td></tr><tr><td class="align-left">Approval workflow</td><td class="align-left">A service checks approval records before using a full key</td><td class="align-left">The service holding the key may remain able to bypass approvals</td></tr></tbody></table></div>
+<p>FROST is an example of a specified threshold Schnorr protocol.</p>
+<p>Its participants must manage one-time signing nonces, authenticate protocol communication and follow the selected ciphersuite. Its key-generation assumptions also matter.</p>
+<p>FROST is not a generic threshold ECDSA implementation that can be substituted into any signature interface. [24]</p>
+<h2 id="how-does-a-claimed-threshold-become-misleading">How does a claimed threshold become misleading?</h2>
+<p>Imagine a 2-of-3 service with shares on three machines. One cloud administrator can snapshot all three.</p>
+<p>There are three stored shares, but only one administrative compromise may be needed to collect them.</p>
+<p>Or the online path needs two participants, while a recovery endpoint can reconstruct the full key using one operator&#x27;s credential.</p>
+<p>The smallest sufficient recovery path determines the effective security boundary.</p>
+<p>For every route to an accepted signature, count the independent authorities an attacker must compromise.</p>
+<p>Include:</p>
+<ul><li>deployment credentials;</li><li>backups;</li><li>recovery material;</li><li>permissions to change the policy.</li></ul>
+<p>A software process is not necessarily an independent authority.</p>
+<h2 id="how-can-i-check-the-implementation">How can I check the implementation?</h2>
+<p>For a t-of-n reconstruction scheme, verify:</p>
+<ul><li>the intended coefficient count;</li><li>field arithmetic;</li><li>unique nonzero coordinates;</li><li>share validation.</li></ul>
+<p>A constant polynomial exposes the secret in every share. A linear polynomial gives a two-share reconstruction threshold regardless of a configuration label saying three.</p>
+<p>For a purported 2-of-3 service, test each pair, each singleton and duplicate use of one participant. Then repeat through recovery and maintenance routes.</p>
+<p>If the service reconstructs the key, inspect where it exists afterward and whether logs, crash dumps or caches retain it.</p>
+<p>Merely returning an error when fewer than t shares are supplied does not demonstrate secrecy: an implementation can refuse while the provided data already reveals the secret.</p>
+<p>The underlying mathematics and generated shares must support the claim.</p>
+<p>Incorrect or malicious shares require additional handling.</p>
+<p>Basic secret sharing alone does not authenticate participants or guarantee consistent shares; verifiable sharing and protocol-specific checks address those problems.</p>
+<p>Availability is another question: a threshold can prevent unauthorized signing while still allowing participants to halt progress. [22, 24]</p>
+<p><strong>Try it:</strong> A dashboard requires two approvals, but the signing process holds the complete private key.</p>
+<p>What exactly is being enforced by the dashboard, and what can a compromised signing process bypass?</p></div></article>
+<nav class="chapter-navigation" aria-label="Chapter navigation"><a rel="prev" href="07-rivest-why-is-raw-rsa-not-a-scheme.html"><span>← Previous chapter</span><strong>Rivest: why is raw RSA not a scheme?</strong></a><a rel="next" href="09-adleman-how-do-we-check-the-arithmetic.html"><span>Next chapter →</span><strong>Adleman: how do we check the arithmetic?</strong></a></nav><p class="reading-hint">One chapter at a time. Use the links to keep reading, or swipe on touch screens.</p></div></main>
+<footer class="site-footer"><span>TraderSwift</span><nav aria-label="Resources"><a href="../index.json">Index</a><a href="../llms.txt">Plain text</a><a href="../sitemap.xml">Sitemap</a></nav></footer>
+</body>
+</html>

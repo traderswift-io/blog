@@ -6,7 +6,7 @@ kind: update
 
 On 17 November Signer moved to a new set of machines while it was live on a real account.
 
-The trading key did not move. The new machines made a new key together, so it never existed whole anywhere.
+The trading key did not move. The new machines made a new key together.
 
 The old set was then removed from the chain, and the old signer machines were destroyed.
 

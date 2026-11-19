@@ -1,6 +1,6 @@
 ---
 title: How do I launch a node with one link?
-description: Give your own agent one link, say "Go" once, and it launches, seals and leaves. Planned.
+description: Give your own agent one link, say "Go" once, and it sets up a machine for you, locks itself out and leaves. Planned.
 order: 8
 ---
 
@@ -10,7 +10,7 @@ This page is half written on purpose. The first half explains what the launcher 
 
 The second half is the milestones. When the launcher is ready, this page will be updated with the full steps.
 
-Once it is built, you will be able to give your own AI agent one link and have it launch a TraderSwift node on your own cloud account, with you saying "Go" only once.
+Once it is built, you will be able to give your own AI agent one link and have it launch a TraderSwift node on your own cloud account. You say "Go" only once.
 
 ## What is the launcher?
 
@@ -22,23 +22,34 @@ Small scripts do the steps. Your agent runs them with your own cloud token.
 
 The token never reaches us.
 
-The first path launches a TraderSwift hub validator. A Signer node comes second.
+The first path launches a validator for the TraderSwift hub, the chain that links our other chains. A Signer node comes second.
 
 ## How does it work?
 
 Your agent follows five steps:
 
-1. **Before.** You create a cloud token that can only create machines and firewalls, with the shortest expiry your provider offers. You give it to your own agent.
-2. **Tell.** The agent shows you one message: what it will create, what it costs each month, which emails your provider will send, and what stays open afterwards. Then it asks one question: "Go?"
-3. **Do.** It creates the firewall first, so the machine is never born open. It creates the machine, installs a release whose checksum matches, makes the node's keys on the node, and waits for it to sync.
+1. **Before.** You create a cloud token that can only create machines and firewalls, with the shortest expiry your provider offers, and give it to your own agent.
+2. **Tell.** The agent shows you one message with the plan, then asks one question: "Go?"
+3. **Do.** It creates the firewall first, so the machine is never born open, then creates the machine and installs the node.
 4. **Done.** It tells you the node is running and shows how to check it.
-5. **Leave.** It removes its own access, closes the firewall back down, and revokes the token. If you need to do this again, you create a new token.
+5. **Leave.** It removes its own access, closes the firewall back down, and revokes the token.
+
+The message in step 2 tells you:
+
+- what it will create;
+- what it costs each month;
+- which emails your provider will send;
+- what stays open afterwards.
+
+In step 3 the agent installs only a release whose checksum matches. It makes the node's keys on the node itself, and waits for it to sync.
+
+In step 5 the token is revoked for good. If you need to do this again, you create a new token.
 
 ## Why does the agent remove itself?
 
 Because a node you can't log in to is a node no one else can log in to either.
 
-Before a node holds anything worth taking, the agent that built it is locked out.
+Before a node holds anything worth taking, the agent that built it is locked out. We call that sealing the node.
 
 That is the same rule we follow on our own machines.
 
@@ -60,7 +71,7 @@ Until then, the link will not work. The manual guide for running a Signer valida
 2. **The validator path.** The launcher's validator steps in `traderswift-io/launch`.
 3. **One real run.** Launch, sync, seal, a check from outside, and the token revoked, on a real cloud account.
 4. **Public.** The repository goes public.
-5. **The Signer node path.** After the next Signer rotation.
+5. **The Signer node path.** A Signer validator waits on the launcher itself. A signer that holds part of a key waits on signers from other operators being able to join, which is not yet scheduled.
 6. **A second provider.** A DigitalOcean path.
 
 The first provider is Linode. Others can be added through a pull request.

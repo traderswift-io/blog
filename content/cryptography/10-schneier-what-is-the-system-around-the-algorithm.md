@@ -74,9 +74,9 @@ For a standalone HMAC in Python, use `hmac.compare_digest` on appropriately vali
 
 Its purpose is to avoid content-dependent short-circuiting; it does not promise to hide public input lengths or make the surrounding program constant-time. [33]
 
-Here is the lab. Press Run to try it in your browser.
+Here is the lab. It is also in [the labs file](../assets/cryptography/Cryptography_Practical_Labs.py), so you can run it on your own computer.
 
-```python run
+```python
 from hmac import compare_digest, digest
 from secrets import token_bytes
 
@@ -149,9 +149,9 @@ Each altered input must fail authentication.
 
 It then decrypts the unchanged message again to demonstrate that AEAD alone does not reject replay. The library documents these inputs and its `InvalidTag` behavior. [34]
 
-Here is the lab. Press Run to try it in your browser.
+Here is the lab. It is also in [the labs file](../assets/cryptography/Cryptography_Practical_Labs.py), so you can run it on your own computer.
 
-```python run
+```python
 from secrets import token_bytes
 
 from cryptography.exceptions import InvalidTag
