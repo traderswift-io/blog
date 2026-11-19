@@ -57,7 +57,7 @@ No, not from the chain.
 
 If you choose, a short fingerprint of your encrypted data can go on the chain, at most once a day. It proves your data has not been changed behind your back.
 
-These fingerprints are padded and sent in batches, so their timing does not show when you were editing.
+The chain takes one fingerprint per person per day, so it does not show when in the day you were editing. Padding and batching those sends is **Planned**.
 
 ## What if I lose my phone?
 

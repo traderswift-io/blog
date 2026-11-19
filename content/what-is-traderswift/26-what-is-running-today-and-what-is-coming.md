@@ -29,7 +29,8 @@ Where we have a date, we give it. Where we do not, we say what the part waits on
 | :--- | :--- | :--- |
 | Signer on Hyperliquid, for TraderSwift's own account | **Live** | Since 14 Nov 2026. This test account is public by choice |
 | Stopping an agent with one signed message | **Live** | Since 14 Nov 2026 |
-| Signer on Aster, and on Base through Avantis | **Built, not live** | Target Fri 20 Nov 2026 |
+| Signer on Aster | **Built, not live** | Target Fri 20 Nov 2026 |
+| Signer on Base, through Avantis | **Built, not live** | No date yet |
 | New limits: a price band, a cap on how often orders go out, and caps on order value | **Built, not live** for the chain part; the signer part is still in build | Target Fri 20 Nov 2026 |
 | A cap on leverage | **Built, not live** | Switches on by itself at a set block, about Thu 26 Nov 2026 |
 | Signer for your own Hyperliquid account | **Built, not live** | Target Sat 21 Nov 2026 |
@@ -52,7 +53,7 @@ Signer for your own account waits on four steps:
 | :--- | :--- | :--- |
 | The hub, `traderswift-1` | **Live** | Since 14 Nov 2026 |
 | The hub's admin held by a multisig, so several keys must agree | **Live** | Since 18 Nov 2026 |
-| The first subnet charters on the hub | **Planned** | No date. Waits on one security review this week, then final approval |
+| The first subnet charters on the hub | **Planned** | No date. Waits on one security review, then final approval |
 | Subnets started by founders | **Planned** | The hub does not yet take charters from other teams |
 
 ## Data and signals

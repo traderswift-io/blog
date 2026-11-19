@@ -19,9 +19,9 @@ Maybe you know a kind of market data we don't carry. Maybe you have an idea for 
 
 ## How do I start?
 
-Tell us what you want to build. [CHECK: where founders reach us]
+Start with the hub's code. [traderswift-io/traderswift-chain](https://github.com/traderswift-io/traderswift-chain) shows how a chain's entry, its charter, is added to the hub.
 
-You don't need a finished plan, or a team. An idea and the reason it matters is enough to start the conversation.
+You don't need a finished plan, or a team. An idea and the reason it matters is enough to start.
 
 We will tell you honestly what the network can and cannot do for it today.
 

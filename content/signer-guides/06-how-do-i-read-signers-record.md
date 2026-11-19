@@ -12,7 +12,7 @@ You do not join the group of machines that make blocks, and you do not hold any 
 
 Signer keeps its rules and its decisions on one small chain.
 
-Anyone can read them, because every node, every copy of the chain, holds all of it.
+That helps you, because you can check every limit and every decision yourself, without asking us. Every node, every copy of the chain, holds all of it.
 
 - **Policies.** An owner writes which venues a key may trade, which assets, and the size caps. The owner signs the policy with a wallet.
 - **Decisions.** Every request a signer sees is recorded, signed or refused. The record has a block height, a request id, the signer, the decision, the reason and a fingerprint of the order.

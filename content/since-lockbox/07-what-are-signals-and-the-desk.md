@@ -6,9 +6,7 @@ order: 7
 
 Signals is how a published trade idea becomes an executed trade.
 
-The publisher dictates or types a signal, it is shaped into a clear trade, and it goes into a private store.
-
-If an idea is missing its invalidation, its confidence or its expiry, Signals asks for it instead of guessing.
+The publisher dictates or types a signal, it is shaped into a clear trade, and it goes into a private store. If an idea is missing its invalidation, its confidence or its expiry, Signals asks for it instead of guessing.
 
 ## Who can read a signal?
 
@@ -20,7 +18,7 @@ Fingerprinting is **Built, not live**, and kept off the chain for now. No real s
 
 Early in the week, one route was briefly public when it should not have been. It never held a signal.
 
-We closed it and disabled the publisher. Every read now needs access.
+We closed it and disabled the publisher. Every read now needs an authorised token.
 
 ## What is the desk?
 

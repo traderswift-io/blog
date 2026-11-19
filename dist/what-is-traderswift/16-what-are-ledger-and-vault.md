@@ -56,7 +56,7 @@ The links are kept inside your encrypted data, so they stay as private as the re
 ## Why does having them on TraderSwift help me?
 
 - **Your data is private by default** – it is encrypted on your phone, and nothing leaves the device unless you choose.
-- **No company holds your data** – that includes us, so nobody can read it, lock you out or close it down.
+- **No company holds your data** – that includes us, so we can't read it, lock you out or close it down.
 - **Agents read only what you grant** – you can let one agent read your trading notes, and not your personal tasks.
 - **You choose the screen** – if you stop liking one app, you switch to another, and your data stays where it is.
 - **One home for all your work** – your tasks, notes and trade ideas all sit on TraderSwift, so the tools can work together.

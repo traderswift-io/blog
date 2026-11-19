@@ -32,11 +32,9 @@ The key is split into shares, and each share sits on a different signer machine.
 
 Since 17 November 2026 there are four signers, and any three can sign together. Two cannot.
 
-At launch the setup was two of three.
+At launch the setup was two of three, and that first key was split into shares from a key the owner had already approved at the venue.
 
-When the signers generate a key together, it never exists whole on any machine. That is not true of our live key.
-
-It existed whole once, because it was a key the owner had already approved at the venue to trade the account. We then split it into shares.
+Since the rotation on 17 November 2026, our live key was made by the signers together. It has never existed whole on any machine, at any point.
 
 ## Why would I use Signer?
 
@@ -69,11 +67,11 @@ Be honest with yourself on this one. Signer is in development, and these limits 
 
 - **In development.** The chain started on 12 November 2026 and the first live orders were on 14 November. That is a short record.
 - **Your own account is not open yet.** Our target is Saturday 21 November 2026. The [Signer index](index.html) says what it waits on.
-- **One venue live.** Hyperliquid is the only venue live today. Aster and Base (Avantis) have a target of Friday 20 November 2026.
+- **One venue live.** Hyperliquid is the only venue live today. Aster has a target of Friday 20 November 2026, and Base (Avantis) has no date yet.
 - **No price limit yet.** Today the policy bounds sizes per market, not prices. Policy v2 adds a price band, and we explain it in the [policy article](04-how-do-i-write-a-trading-policy.html).
 - **Interactive signing.** Each order needs several signers online at the same time.
 
-If you need a key for your own account this week, wait for Saturday. If you want to read the code and the record, it is ready now.
+If you need a key for your own account, our target is Sat 21 Nov 2026. If you want to read the code and the record, it is ready now.
 
 ## What has Signer done so far?
 

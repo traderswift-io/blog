@@ -19,9 +19,7 @@ It speaks Nostr, an open messaging standard, so Nostr tools can connect to it.
 
 ## What never travels on it?
 
-Orders never go over the Bus.
-
-That is a fixed rule: orders go only through Signer.
+Orders never go over the Bus. That is a fixed rule: orders go only through Signer.
 
 ## Where does it stand?
 

@@ -8,9 +8,7 @@ On 17 November Signer moved to a new set of machines while it was live on a real
 
 The trading key did not move. The new machines made a new key together.
 
-The old set was then removed from the chain, and the old signer machines were destroyed.
-
-This update explains how a rotation like that works, step by step, what went wrong on the day, and what we changed because of it.
+The old set was then removed from the chain, and the old signer machines were destroyed. This update explains how a rotation like that works, step by step, what went wrong on the day, and what we changed because of it.
 
 
 ## Chapters

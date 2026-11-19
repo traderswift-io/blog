@@ -22,7 +22,7 @@ These are our target dates. If a date slips, this box changes the same day, with
 
 - **Rotation of the signers**, with Policy v2: target Friday 20 November 2026. Waits on the new build passing its review and its tests, then a live test on a small real account.
 - **Aster**: target Friday 20 November 2026, in the same session. Waits on a new key from the signers, approved and funded on Aster, and a live test.
-- **Base (Avantis)**: target Friday 20 November 2026, in the same session. Waits on a new key from the signers, approved on Avantis, and a live test.
+- **Base (Avantis)**: no date yet. Waits on a new key from the signers, approved on Avantis, and a live test.
 - **Your own Hyperliquid account**: target Saturday 21 November 2026. You sign the setup in your own wallet, and we never see or hold your keys.
 
 Your own account on Saturday 21 November waits on four things:

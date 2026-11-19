@@ -12,9 +12,7 @@ Storage is its own subnet chain, `storage-1`. The files stay outside the chain.
 
 ## How do we know a provider still has the file?
 
-The chain holds commitments, small fingerprints of each file, and sends challenges.
-
-A provider proves it still holds a file by answering those challenges.
+The chain holds commitments, small fingerprints of each file, and sends challenges. A provider proves it still holds a file by answering those challenges.
 
 Why this helps you: you do not have to trust a provider's word that your data is safe, because the chain keeps asking.
 

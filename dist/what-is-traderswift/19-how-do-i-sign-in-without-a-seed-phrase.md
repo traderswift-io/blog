@@ -41,7 +41,7 @@ You are inside the wallet before any setup.
 
 Looking around needs nothing. A key is made only at the first action that needs one.
 
-One wallet works across many chains. Addresses stay out of the way unless you ask to see them.
+One wallet works across the TraderSwift chains, Hyperliquid and payments on Base. You see an address in full where you approve something, and otherwise only when you ask to see it.
 
 ## Can a nice-looking skin trick me?
 
@@ -51,7 +51,7 @@ The wallet is one shared core with skins on top. A skin is the look: colours, la
 
 The core owns every approval screen and the text you approve. So a skin can change how the wallet looks, but never what you are agreeing to.
 
-We have three skins today: Glass, Orbit and Night Key.
+We have three skins today: Glass, Orbit and Night Key. Anyone can propose a skin, and we review it before it ships.
 
 ## What if I lose my device?
 
@@ -77,4 +77,5 @@ The story of why is in [Why did we build our own sign-in?](../since-lockbox/06-w
 
 - **Built, not live** – the passkey unlocking the payment key, with no seed words.
 - **Built, not live** – the sign-in gate.
+- **Built, not live** – one wallet across the chains, and the shared core with its three skins.
 - **Planned** – the device ring and its recovery times.

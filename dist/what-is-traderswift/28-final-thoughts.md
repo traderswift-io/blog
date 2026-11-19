@@ -15,7 +15,7 @@ It gives you your own tools, which no company holds, and an AI that can learn fr
 
 ## What is running today?
 
-Signer, the hub, our charts data node and Signals Desk are **Live**.
+Signer, the hub and Signals Desk are **Live**.
 
 Everything else is built or planned, and [chapter 26](26-what-is-running-today-and-what-is-coming.html) says which, with dates.
 

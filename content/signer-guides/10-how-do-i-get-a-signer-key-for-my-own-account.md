@@ -4,7 +4,7 @@ description: Your own Hyperliquid account has a target date of Saturday 21 Novem
 order: 10
 ---
 
-**Planned.** Our target is Saturday 21 November 2026, for your own Hyperliquid account.
+**Built, not live.** Our target is Saturday 21 November 2026, for your own Hyperliquid account.
 
 From that day, Signer can hold a trading key for your own exchange account, under a policy you write and sign yourself.
 

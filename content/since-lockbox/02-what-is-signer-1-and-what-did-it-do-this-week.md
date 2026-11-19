@@ -37,9 +37,7 @@ Keys made jointly by the signers, which never exist whole, were proven on the sa
 
 ## What happened in the rotation on 17 November?
 
-A rotation moves Signer to a new set of machines with a new key.
-
-On 17 November we did our first one, and signing moved from the old key to the new one with no stop.
+A rotation moves Signer to a new set of machines with a new key. On 17 November we did our first one, and signing moved from the old key to the new one with no stop.
 
 The new set passed the same live gate: a refusal, an entry and a close.
 

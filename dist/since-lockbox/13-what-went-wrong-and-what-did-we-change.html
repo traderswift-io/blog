@@ -20,23 +20,17 @@
 <h2 id="why-were-agents-waiting-on-each-other">Why were agents waiting on each other?</h2>
 <p>An audit of our fault log found 59 entries:</p>
 <ul><li>work with no owner;</li><li>replies that never reached the asker;</li><li>wake-ups that failed;</li><li>health checks that measured activity instead of progress.</li></ul>
-<p>We fixed the wake path and the readers.</p>
-<p>We also changed the rules: agents now resume work that is already authorized instead of waiting for a fresh go.</p>
+<p>We fixed the wake path and the readers. We also changed the rules: agents now resume work that is already authorized instead of waiting for a fresh go.</p>
 <h2 id="why-did-some-checks-pass-when-they-shouldn-t-have">Why did some checks pass when they shouldn&#x27;t have?</h2>
-<p>An audit of 29 jobs found two checks that reported a pass while hiding a failure.</p>
-<p>The runner now records the raw exit status of one check command.</p>
+<p>An audit of 29 jobs found two checks that reported a pass while hiding a failure. The runner now records the raw exit status of one check command.</p>
 <h2 id="how-could-an-answer-attach-to-the-wrong-question">How could an answer attach to the wrong question?</h2>
-<p>An approval could attach to the wrong question, or survive a retry it should not have.</p>
-<p>Answers are now bound to exactly what was offered, and answered questions are frozen.</p>
+<p>An approval could attach to the wrong question, or survive a retry it should not have. Answers are now bound to exactly what was offered, and answered questions are frozen.</p>
 <h2 id="what-leaked-into-a-job-s-checkout">What leaked into a job&#x27;s checkout?</h2>
-<p>Broad staging let excluded files reach a job&#x27;s working copy.</p>
-<p>Jobs are now staged file by file, from the permitted copy only.</p>
+<p>Broad staging let excluded files reach a job&#x27;s working copy. Jobs are now staged file by file, from the permitted copy only.</p>
 <h2 id="why-did-we-say-a-thing-landed-before-checking">Why did we say a thing landed before checking?</h2>
-<p>Twice, a result was reported before anyone read what the code actually did.</p>
-<p>The rule now: read the implemented requirement before saying it landed.</p>
+<p>Twice, a result was reported before anyone read what the code actually did. The rule now: read the implemented requirement before saying it landed.</p>
 <h2 id="what-did-review-find-in-signer-s-next-release">What did review find in Signer&#x27;s next release?</h2>
-<p>Review of the next Signer changes found more defects.</p>
-<p>We keep a clear line between the release that is running and the next one under review.</p></div></article>
+<p>Review of the next Signer changes found more defects. We keep a clear line between the release that is running and the next one under review.</p></div></article>
 <nav class="chapter-navigation" aria-label="Chapter navigation"><a rel="prev" href="12-what-did-we-move-onto-our-own-servers.html"><span>← Previous chapter</span><strong>What did we move onto our own servers?</strong></a><a rel="next" href="14-what-is-next.html"><span>Next chapter →</span><strong>What is next?</strong></a></nav><p class="reading-hint">One chapter at a time. Use the links to keep reading, or swipe on touch screens.</p></div></main>
 <footer class="site-footer"><span>TraderSwift</span><nav aria-label="Resources"><a href="../index.json">Index</a><a href="../llms.txt">Plain text</a><a href="../sitemap.xml">Sitemap</a></nav></footer>
 </body>

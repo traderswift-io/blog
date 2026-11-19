@@ -50,7 +50,7 @@ For your own Hyperliquid account, it is **Built, not live**. The target is Sat 2
 - a decision on a security audit;
 - a live test with a new user.
 
-Aster, and Base through Avantis, are **Built, not live**, with a target of Fri 20 Nov 2026.
+Aster and Base, through Avantis, are **Built, not live**. Aster has a target of Fri 20 Nov 2026, and Base has no date yet.
 
 Holding your own key shares, on a few cheap devices at home, is **Planned**. It has no date yet.
 

@@ -27,12 +27,8 @@ On 17 November we moved its validators onto new machines. The result is four val
 
 ## Who controls the hub?
 
-On 18 November we handed over the hub's admin.
-
-The admin is now a multisig: a wallet that needs two of three signatures before it can act.
+On 18 November we handed over the hub's admin. The admin is now a multisig: a wallet that needs two of three signatures before it can act.
 
 ## When do the first charters arrive?
 
-There is no date yet.
-
-The first charters wait on one security step, then on the owner's approval.
+There is no date yet. The first charters wait on one security step, then on the owner's approval.

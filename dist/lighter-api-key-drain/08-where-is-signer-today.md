@@ -27,7 +27,7 @@ These are target dates. If one slips, the [Signer how-tos](../signer-guides/inde
 
 - **Rotation of the signers, with Policy v2**: target Friday 20 November 2026.
 - **Aster**: target Friday 20 November 2026.
-- **Base (Avantis)**: target Friday 20 November 2026.
+- **Base (Avantis)**: no date yet.
 - **Your own Hyperliquid account**: target Saturday 21 November 2026. You sign the setup in your own wallet, and we never see or hold your keys.
 
 ## How does Signer keep your account private?

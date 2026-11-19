@@ -12,4 +12,4 @@ The owner started the test with one tap, and the exchange connection was switche
 - **Entry.** A small buy filled immediately.
 - **Close.** A close-only sell closed it.
 
-All three were signed by the new key. The account was flat afterwards.
+All three were signed by the new key.

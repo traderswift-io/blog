@@ -22,9 +22,7 @@ A passkey unlocks the payment key, so there are no seed words to write down.
 
 ## What is the device ring?
 
-Instead of a seed phrase, your account is owned by your own devices, any two of three.
-
-One phone alone is never enough.
+Instead of a seed phrase, your account is owned by your own devices, any two of three. One phone alone is never enough.
 
 If you lose everything, recovery takes seven days by default, never less than three. Any of your enrolled devices can cancel it.
 

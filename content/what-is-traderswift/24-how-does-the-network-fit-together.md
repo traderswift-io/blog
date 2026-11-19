@@ -28,17 +28,13 @@ It holds:
 - each subnet's charter;
 - each subnet's anchors.
 
-The hub holds no token and no balances, and it charges no fees.
-
-So there is nothing to buy before you can use it.
+The hub holds no token and no balances, and it charges no fees. So there is nothing to buy before you can use it.
 
 **Live** since 14 Nov 2026.
 
 ## What is a subnet?
 
-A subnet is a chain with one job, run by its own validators.
-
-It has its own vote, and its vote binds.
+A subnet is a chain with one job, run by its own validators. It has its own vote, and its vote binds.
 
 Each subnet runs on its own. If the hub stops, the subnet keeps working.
 
@@ -46,16 +42,16 @@ Each subnet runs on its own. If the hub stops, the subnet keeps working.
 | :--- | :--- | :--- |
 | `signer-1` | Holds trading limits, and signs orders inside them | **Live** on Hyperliquid |
 | `storage-1` | Checks that storage providers still hold your scrambled files | **Built, not live** |
-| `ledger-1` | Where your tasks are kept, and who may read them | **Built, not live** |
-| `vault-1` | Where your notes and files are kept, and who may read them | **Built, not live** |
+| `ledger-1` | Where your tasks are kept, and who may read them | **Live** since Thu 19 Nov 2026; nothing writes to it yet |
+| `vault-1` | Where your notes and files are kept, and who may read them | **Live** since Thu 19 Nov 2026; nothing writes to it yet |
 | Market data | Daily fingerprints of market candles | **Built, not live** |
 | Signals | A private record of signal fingerprints | **Planned** |
 
 ## What is a charter?
 
-A charter is a subnet's entry on the hub.
+A charter is a subnet's entry on the hub. It is how the hub knows a subnet exists and is part of TraderSwift.
 
-It is how the hub knows a subnet exists and is part of TraderSwift. Only the hub's admin can add one.
+Only the hub's admin can add one.
 
 ## What is an anchor?
 
@@ -73,9 +69,7 @@ So no single key can add a subnet, or change one.
 
 ## When do the first charters go on?
 
-There is no date yet.
-
-They wait on one security review this week, and then on final approval.
+There is no date yet. They wait on one security review, and then on final approval.
 
 ## Who are network participants?
 
@@ -87,8 +81,6 @@ Ways to take part:
 - **Run a charts data node,** and compare its fingerprints with ours. [Chapter 14](14-how-can-i-check-market-data.html) shows how.
 - **Pay to use what others run,** such as data or front ends. [Chapter 20](20-what-is-the-marketplace-and-how-do-builders-get-paid.html) explains payment.
 
-A launcher that starts a node from one link is **Planned**.
-
-[How do I launch a node with one link?](../signer-guides/08-how-do-i-launch-a-node-with-one-link.html) describes it.
+A launcher that starts a node from one link is **Planned**. [How do I launch a node with one link?](../signer-guides/08-how-do-i-launch-a-node-with-one-link.html) describes it.
 
 If you want to build a whole new subnet, read [chapter 25](25-can-i-build-a-subnet-of-my-own.html).

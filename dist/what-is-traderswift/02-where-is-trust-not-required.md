@@ -65,7 +65,7 @@ A charts data node makes a fingerprint of each day's market data. Anyone can run
 
 This helps you because a feed that changes its history can be caught.
 
-[Chapter 14](14-how-can-i-check-market-data.html) explains. **Live** on our own node.
+[Chapter 14](14-how-can-i-check-market-data.html) explains. **Built, not live** for you to read: our node serves candles, but behind a login.
 
 ### Is a signal seller's track record real?
 
@@ -117,4 +117,4 @@ When the record can be checked, a good agent, a good signal provider or an hones
 
 Not yet.
 
-Signer, the hub and the charts data node are live today. The rest is being built, and [chapter 26](26-what-is-running-today-and-what-is-coming.html) says exactly where each part stands.
+Signer and the hub are live today. The rest is being built, and [chapter 26](26-what-is-running-today-and-what-is-coming.html) says exactly where each part stands.

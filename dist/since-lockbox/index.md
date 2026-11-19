@@ -27,9 +27,7 @@ Each part carries one of three labels: **Live** (running for real), **Built, not
 
 Across all our repositories there are 729 commit records between 11 and 18 November. The busiest day was 15 November, with 138.
 
-These are commit records, not features: one fix can take several commits.
-
-The last day is also partial.
+These are commit records, not features: one fix can take several commits. The last day is also partial.
 
 We share the counts so you can judge the pace of the work for yourself, not take our word for it.
 
