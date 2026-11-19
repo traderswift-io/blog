@@ -1,19 +1,19 @@
 ---
 title: Where does the key live?
-description: Nowhere, whole.
+description: How Signer makes a trading key, and who holds it.
 order: 7
 ---
 
 Nowhere, whole.
 
-Signer generates venue keys jointly across its signers, so the key never exists in one place.
+Signer's signers make each venue key together. Each one keeps only its own part of the key, called a share.
 
-Nobody creates it, nobody stores it, and no third-party cloud holds a copy. Every key on signer-1 except the launch key was made that way, including the one it trades with today.
+Nobody creates it, nobody stores it, and no third-party cloud holds a copy.
 
-Each signer holds a share. Since 17 November there are four signers, and any three must agree to sign.
+Every key on signer-1 was made that way except the launch key, including the one it trades with today. The Hyperliquid launch key was imported, because it was an agent the owner had already approved.
+
+Since 17 November there are four signers, and any three must agree to sign.
 
 Each one checks every request against the policy on the chain before it signs.
-
-There is no whole key to leak the way this one leaked.
 
 An attacker would need enough signers to agree, or a delegate key, and a delegate key only reaches as far as its policy.

@@ -1,6 +1,6 @@
 ---
 title: How do I run a private Signer network on ESP32s?
-description: A household quorum: ESP32s approve each order, two Raspberry Pis hold the shares. Planned.
+description: A few cheap devices at home that must agree before your trading key signs: small boards approve each order, two Raspberry Pis sign. Planned.
 order: 12
 ---
 
@@ -12,19 +12,23 @@ The second half is the milestones, starting with a bench test. When the bench pa
 
 Once it is built, you will be able to run a small Signer network in your own home, where nothing signs for you unless your own devices agree.
 
-## What is a household quorum?
+## What does the home network look like?
 
-A few cheap devices in your home that must agree before your trading key signs. We call it a household quorum.
+It is a few cheap devices at home that must agree before your trading key signs.
 
 Each device has a different job:
 
-- **Two Raspberry Pis hold the shares.** They hold two of the three shares of your key, and together they can sign.
-- **Three ESP32s approve.** Each one checks the exact order, then approves it with its own device key. It does not hold a share of your trading key.
-- **The network holds one share.** On its own it can never sign. It is your backup.
+- **Two Raspberry Pis hold the shares.** They hold two of the three pieces, called shares, of your key, and together they can sign.
+- **Three ESP32s approve.** An ESP32 is a small, cheap computer board. Each one checks the exact order and approves it with its own device key, never a share of your trading key.
+- **The network holds one share.** On its own it can never sign, and it is your backup.
+
+We call this group a household quorum. A quorum is the number of members who must agree before something can happen.
 
 ## Why can't an ESP32 hold a share?
 
-Because of the kind of key exchanges need. Hyperliquid uses the same signature type as Ethereum.
+Splitting the jobs lets each device do what it is good at, so the cheapest boards can still guard your key.
+
+The reason is the kind of key exchanges need. Hyperliquid uses the same signature type as Ethereum.
 
 Splitting that kind of key takes heavy maths in every signing round, which a Pi can do and an ESP32 can't do in reasonable time.
 
@@ -32,7 +36,7 @@ So the ESP32s approve and the Pis sign. Each Pi refuses to take part in signing 
 
 ## Does it remove trust in the network?
 
-Yes, in this form. The network holds one share and it takes two to sign, so the network can never sign alone.
+Yes, in this form. The network holds one share and it takes any two of three to sign, so the network can never sign alone.
 
 Your approvals are checked by your own Pis, not by us.
 
@@ -44,7 +48,9 @@ They talk over Bluetooth, but Bluetooth can be relayed, so it doesn't prove dist
 
 What the design checks is that the devices taking part have recently heard each other, with authentication. We make no claim about where they are.
 
-If a device stops hearing the others, it suspends itself. It takes two of your enrolled devices to bring it back.
+If a device stops hearing the others, it suspends itself.
+
+It takes two of your enrolled devices to bring it back.
 
 ## What can I do now?
 
@@ -69,7 +75,7 @@ Bigger groups, such as 8 of 13 or 13 of 21, come later, once we can show the dev
 
 ## Final thoughts
 
-A household quorum puts the final say on your trades in your own home, on hardware that costs very little.
+A few devices at home put the final say on your trades in your own hands, on hardware that costs very little.
 
 The design is set: ESP32s approve, Pis sign, and the network is the backup.
 

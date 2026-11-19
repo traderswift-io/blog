@@ -1,6 +1,6 @@
 ---
 title: What is Signer, and who is it for?
-description: Signer lets an agent trade from a key that no one holds whole, under a policy the owner writes on a chain.
+description: Signer lets a trading agent place orders without holding the key to the account, inside limits the owner sets.
 order: 1
 ---
 
@@ -16,13 +16,17 @@ With Signer, the key is cut into pieces, called shares. Each share sits on a dif
 
 Enough of the signers must agree before an order is signed. This is called threshold signing.
 
+To see the mathematics behind it with small numbers, read [Shamir: which threshold really applies?](../cryptography/08-shamir-which-threshold-really-applies.html) in our cryptography guide.
+
 Each signer first checks the order against limits the owner writes down, called a policy.
 
 The policy is kept on a small public blockchain called `signer-1`. Every decision, signed or refused, is recorded there too.
 
-Signer is open source under the Apache License 2.0 at github.com/traderswift-io/signer. It is one part of TraderSwift, which we describe as a blockchain infra layer for agentic and hybrid trading.
+Signer is open source under the Apache License 2.0 at github.com/traderswift-io/signer.
 
-## How does a key that nobody holds work?
+It is one part of TraderSwift, the infrastructure layer for agentic trading.
+
+## How does a split key work?
 
 The key is split into shares, and each share sits on a different signer machine.
 
@@ -32,7 +36,7 @@ At launch the setup was two of three.
 
 When the signers generate a key together, it never exists whole on any machine. That is not true of our live key.
 
-It existed whole once, because it was an exchange agent the owner had already approved. We then split it into shares.
+It existed whole once, because it was a key the owner had already approved at the venue to trade the account. We then split it into shares.
 
 ## Why would I use Signer?
 
@@ -42,32 +46,34 @@ Signer changes what the bot holds.
 
 - **No key in the bot.** The agent sends an order request and never holds the venue key.
 - **Limits at the key.** The policy bounds which markets, how big and for how long, before anything reaches the venue.
-- **A hard stop.** The owner can revoke the policy on chain, and later orders are refused.
-- **A public record.** Every decision is on the chain, so you can read what was signed and what was refused.
+- **A hard stop.** The owner can revoke the policy on the chain, and later orders are refused.
+- **A public record.** Every decision is on the chain, so you can see what was signed and what was refused. A refused order tells you someone tried something your policy does not allow.
 
-Each signer also builds the venue message itself from the order request. It never signs a hash someone hands it.
+Each signer also builds the venue message itself from the order request. It never signs a hash, a short fingerprint of a message, that someone hands it.
 
 Transfers and withdrawals are always refused, whatever the policy says.
 
 ## Who is Signer for?
 
-Signer is for someone who runs an agent or a bot with real money behind it. It suits an owner who wants to say, in writing and on chain, what that agent may do.
+Signer is for someone who runs an agent or a bot with real money behind it.
+
+It suits an owner who wants to say, in writing, what that agent may do, and have every machine that signs check it.
 
 It is also for people who build trading software and want a signing layer that is open to read.
 
-You can run it as your own chain with your own signers, or follow the guide to run a validator.
+You can run it as your own chain with your own signers, or help run ours as a validator.
 
 ## Why shouldn't I use Signer?
 
 Be honest with yourself on this one. Signer is in development, and these limits are real today.
 
 - **In development.** The chain started on 12 November 2026 and the first live orders were on 14 November. That is a short record.
-- **No key for your own account yet.** Other people's accounts open after the next rotation of the signers. Another rotation comes before signers we do not run can join.
-- **One venue live.** Hyperliquid is the only venue live today. The code also has Aster and Base, but neither is live.
-- **Fewer rules than you may want.** The policy bounds sizes per market. It has no price band yet. Policy v2 plans one, and we explain it in the policy article.
-- **Interactive signing.** Signing is interactive today, so each order needs several signers online.
+- **Your own account is not open yet.** Our target is Saturday 21 November 2026. The [Signer index](index.html) says what it waits on.
+- **One venue live.** Hyperliquid is the only venue live today. Aster and Base (Avantis) have a target of Friday 20 November 2026.
+- **No price limit yet.** Today the policy bounds sizes per market, not prices. Policy v2 adds a price band, and we explain it in the [policy article](04-how-do-i-write-a-trading-policy.html).
+- **Interactive signing.** Each order needs several signers online at the same time.
 
-If you need a key for your own account this week, Signer is not ready for you. If you want to read the code and the record, it is.
+If you need a key for your own account this week, wait for Saturday. If you want to read the code and the record, it is ready now.
 
 ## What has Signer done so far?
 
@@ -77,7 +83,7 @@ The record is public in the `signer-1-launch` release of the repository.
 
 - **Fills.** A buy filled and a close-only sell closed it.
 - **Refusal.** A buy at twice the order cap was refused before it reached the venue.
-- **Revoke.** We revoked the policy at height 161,327. The next order was refused at height 161,330.
+- **Revoke.** We revoked the policy in block 161,327. The next order was refused in block 161,330.
 - **Transfers.** Every transfer and withdrawal request was refused, and the refusal was logged.
 
 On 17 November we moved Signer to a new set of machines and a new key.
@@ -88,12 +94,12 @@ The new set passed the same live gate: a refusal, an entry and a close.
 
 Read the next articles in this order. They are short.
 
-1. **How does an order get signed?** The path from your agent's request to the venue.
-2. **How do I write a trading policy?** The fields you set, and what stays with you.
-3. **How do I stop an agent fast?** The on-chain revoke.
+1. **[How does an order get signed?](02-how-does-an-order-get-signed.html)** The path from your agent's request to the venue.
+2. **[How do I write a trading policy?](04-how-do-i-write-a-trading-policy.html)** The fields you set, and what stays with you.
+3. **[How do I stop an agent fast?](05-how-do-i-stop-an-agent-fast.html)** The revoke.
 
 ## Final thoughts
 
-Signer takes the venue key out of the agent's hands and puts a written policy in front of it. It is early, it is open, and we say plainly where it stops.
+Signer takes the venue key out of the agent's hands and puts a written policy in front of it.
 
-Start with the article on how an order gets signed. If you run a validator or read the chain, you can check our claims yourself.
+It is early, it is open, and we say plainly where it stops. If you run a validator or read the chain, you can check our claims yourself.

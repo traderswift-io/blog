@@ -1,39 +1,75 @@
 ---
 title: What is TraderSwift?
-description: What a trading agent needs, and the open-source parts TraderSwift provides for it.
+description: The whole platform in two minutes: what a trading agent needs, the parts TraderSwift provides, and where each one stands.
 order: 1
+part: The whole picture
 ---
 
-TraderSwift is a blockchain infrastructure layer for agentic and hybrid trading.
+TraderSwift is the infrastructure layer for agentic trading.
 
-Agentic means software agents place the trades.
+It is a set of open-source blockchains and services. Traders, their agents and the people who build for them can work on it together.
 
-Hybrid means a person and an agent trade together.
+In agentic trading, software agents place the trades. In hybrid trading, a person and an agent trade together.
 
 Either way, the agent needs the same things.
 
 ## What does a trading agent need?
 
-At the top level, it needs three things.
+At the top level, it needs four things.
 
-- **Security.** A way to place orders without holding the key to the account, and limits it cannot break.
-- **Data.** Market data it can check, not just take on trust.
-- **Tools.** Ways to pay and get paid, to keep its notes and files, and to show a record of what it did.
+- **Security** – it must be able to trade without putting your account, your plans or your records at risk.
+- **Data** – market data and signals it can check, not just take on trust.
+- **Tools** – places to keep tasks, notes and files, and ways to pay and get paid.
+- **An AI that knows its owner** – the more it knows about how you work, the better it can serve you.
 
 TraderSwift provides each of these as open-source parts.
 
-## Which part does what?
+## Is security just about the key?
 
-- **Security is Signer.** It signs orders for an agent without the agent ever holding the key. It is live today.
-- **Data is the charts data node.** It serves market candles and publishes a daily hash that anyone can check. It is live today.
-- **Tools are payments, Ledger, Vault, Storage and the marketplace.** These are being built.
+No. The key matters, but three things must be secure: the key, the channel your agents talk on, and your trade logs.
 
-Each part is explained in its own chapter of this update.
+[Chapter 05](05-what-does-security-mean-for-a-trading-agent.html) explains why each one matters.
+
+## What makes it different?
+
+TraderSwift creates an environment where trust is not required.
+
+You don't have to trust the bot, the data seller, the signal seller or the app that holds your notes. Where something can be checked, you check it.
+
+[Chapter 02](02-where-is-trust-not-required.html) goes through each one.
+
+Signer, the part that signs orders, was the first part to go live. It is one part of TraderSwift, not the whole of it.
+
+## Which parts are running today?
+
+Here is the short map.
+
+A chain is a blockchain: a shared record that many machines keep together. The hub is the chain at the centre, which links the others.
+
+A node is one machine that runs a part of the network.
+
+| Part | What it does | Status |
+| :--- | :--- | :--- |
+| Signer, on our own Hyperliquid account | Signs orders for an agent without the agent holding the key | **Live** since 14 Nov 2026 |
+| Signer on Aster, and on Base through Avantis | The same, on two more venues | **Built, not live**. Target Fri 20 Nov 2026 |
+| Signer for your own Hyperliquid account | The same, for your account | **Built, not live**. Target Sat 21 Nov 2026 |
+| The hub | Links the chains and holds each one's identity | **Live** since 14 Nov 2026 |
+| Charts data node | Serves market data you can check | **Built, not live** for you to read. Our node serves candles, but its public address is still behind a login |
+| Signals | A track record for signal providers | **Built, not live** |
+| Ledger and Vault | Your tasks, notes and files, encrypted on your phone | **Built, not live** |
+| Storage | Holds encrypted files and logs | **Built, not live**. Waits on its first providers and an outside review of its encryption |
+| TraderSwift Bus | A safe channel for agents to talk on | **Planned**. First piece of code built |
+| Wallet and sign-in | A wallet with no seed phrase | **Built, not live** |
+| Marketplace and payments | Builders list apps and are paid directly | **Built, not live**. No real payment made yet |
+| TraderSwift AI, and its compute | An AI that knows you, on compute beside our nodes | **Planned** |
+| Subnets of your own | Founders build and run their own chain | **Planned**. The hub does not yet take chains from other teams |
+
+The full table, with what each part waits on, is in [chapter 26](26-what-is-running-today-and-what-is-coming.html).
+
+We update these pages in real time, as we bring each part live.
 
 ## Can I build on it, or run my own?
 
-Yes, both.
+Yes, both. Anyone can read the code, take part in the network, or build on top of it.
 
-Anyone can read the code, take part in the network, or build on top of it.
-
-You can also fork the code and run your own private network, without connecting to us.
+Anyone can also fork the code to run their own private network, without connecting to us. [Chapter 03](03-why-is-traderswift-open-source.html) explains why we built it that way.

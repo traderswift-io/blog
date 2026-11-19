@@ -13,22 +13,33 @@ To sign an order, most of those machines must agree. Before they do, each one ch
 
 Those limits are called a policy. We explain each of these words as we go.
 
+Signer is open source. You can launch your own Signer chain, on its own, without connecting to us.
+
 ::: notice
-**Signer is live on Hyperliquid today, trading TraderSwift's own account.**
+**Signer is live on Hyperliquid today, trading TraderSwift's own test account.**
 
-These are our target dates, each with what it waits on. If a step slips, this box changes the same day, with the new date and the reason.
+These are our target dates. If a date slips, this box changes the same day, with the new date and the reason.
 
-- **Next rotation of the signers**, with the next version of the policy: target Friday 20 November 2026. Waits on the new build passing its second review and its tests, then a live test on a small real account.
+- **Rotation of the signers**, with Policy v2: target Friday 20 November 2026. Waits on the new build passing its review and its tests, then a live test on a small real account.
 - **Aster**: target Friday 20 November 2026, in the same session. Waits on a new key from the signers, approved and funded on Aster, and a live test.
 - **Base (Avantis)**: target Friday 20 November 2026, in the same session. Waits on a new key from the signers, approved on Avantis, and a live test.
-- **Your own Hyperliquid account**: target Saturday 21 November 2026. Waits on the rotation, a final security decision, then a live test done the way a new user would do it. You sign the setup in your own wallet; we never see or hold your keys.
+- **Your own Hyperliquid account**: target Saturday 21 November 2026. You sign the setup in your own wallet, and we never see or hold your keys.
+
+Your own account on Saturday 21 November waits on four things:
+
+- the rotation of Friday 20 November;
+- the release that keeps your account private;
+- our decision on the security audit;
+- a live test done the way a new user would do it.
+
+From Saturday 21 November, your trading account address and your orders never appear on `signer-1` in readable form. The chain shows only that your policy exists, its markets, size limits and expiry, and when each request was signed or refused.
+
+Our own test account is public by choice.
 
 Follow the planned venues on [GitHub](https://github.com/traderswift-io/signer/issues?q=is%3Aissue+label%3Avenue).
 :::
 
-Signer is open source. You can launch your own Signer chain, on its own, without connecting to us.
-
-These pages show you how. You can run a validator, run your own chain, and learn every part of it today.
+These pages show you how to use it. You can run a validator, run your own chain, and learn every part of it today.
 
 Every page has steps you can follow and a prompt you can give your own AI agent.
 

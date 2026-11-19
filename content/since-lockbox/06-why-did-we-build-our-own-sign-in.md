@@ -10,14 +10,16 @@ Our charts sat behind a third-party sign-in page that could not show inside a ph
 
 We fixed that chart directly, and then took the bigger step: our own sign-in for all of TraderSwift.
 
-Sign-in is a passkey or a wallet. It replaces the old sign-in one app at a time, charts first and Solve last, each only after it works on a phone.
+Sign-in is a passkey or a wallet. Apps will move onto it one at a time, each only after it works on a phone.
 
-The gate in front of our apps is now ours. It checks each signed session, and each app still checks every request on its own.
+The gate will sit in front of our apps. It checks each signed session, and each app still checks every request on its own.
 
-New sign-ups pay a small proof of work, and limits are per identity.
+New sign-ups pay a small proof of work: a short puzzle the device solves, cheap for one person but costly for a bot making thousands of accounts.
+
+Limits are per identity.
 
 The network protection in front of it stays where it is.
 
 Owning the gate means owning who gets in, not leaving our network provider.
 
-The gate is merged. The move of every app onto it is still in progress.
+The gate is **Built, not live**: its code is merged, and it is not deployed yet.

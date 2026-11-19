@@ -4,7 +4,11 @@ description: The timeline of 16 November 2026, from Lighter's public data.
 order: 1
 ---
 
-All times are UTC on 16 November. The pool and withdrawal times come from Lighter's public account data and the Ethereum chain.
+All times are UTC on 16 November.
+
+The pool and withdrawal times come from Lighter's public account data and the Ethereum chain. A pool on Lighter is an account that other traders can buy shares in.
+
+Here is the day, hour by hour.
 
 | Time | Event |
 |---|---|
@@ -16,6 +20,10 @@ All times are UTC on 16 November. The pool and withdrawal times come from Lighte
 
 Lighter's public account data showed two withdrawals requested to the attacker: 10,393,056.79 and 5,096,588.02 USDC, about $15.5 million ([crypto.news](https://crypto.news/lighter-suspends-withdrawals-after-suspected-15-5-million-exploit/)).
 
-The first was paid out on Ethereum. The second was held. Lighter said its priority was to recover the funds in that "additional withdrawal attempt", and its Security Council later returned about $5 million to the trader ([Lighter](https://x.com/Lighter_xyz/status/2122311006604984497), [Crypto Briefing](https://cryptobriefing.com/lighter-api-key-security-exploit/)).
+The first was paid out on Ethereum. The second was held.
+
+Lighter said its priority was to recover the funds in that "additional withdrawal attempt" ([Lighter](https://x.com/Lighter_xyz/status/2122311006604984497)).
+
+Its Security Council later returned about $5 million to the trader ([Crypto Briefing](https://cryptobriefing.com/lighter-api-key-security-exploit/)).
 
 Lighter has not confirmed a total.

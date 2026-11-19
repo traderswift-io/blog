@@ -1,6 +1,6 @@
 ---
 title: How do I hold my own key shares?
-description: Two shares on your machines, one on the network, so the network alone can never sign. Planned.
+description: Any two of three pieces of your key can sign: two on your own machines, one on the network, so the network alone never can. Planned.
 order: 11
 ---
 
@@ -14,7 +14,7 @@ Once it is built, you will be able to keep most of your own trading key on your 
 
 ## Why hold your own shares?
 
-With Signer today, the network's signers hold every share of a key. They check your policy before signing, and every decision goes on the chain.
+With Signer today, the network's signers hold every share, every piece, of a key. They check your policy before signing, and every decision goes on the chain.
 
 But you are still trusting them not to work together against you.
 
@@ -22,25 +22,29 @@ Holding your own shares removes that trust.
 
 ## How does it work?
 
-The key is split 2-of-3:
+The key is split so that any two of three shares can sign. This is called 2-of-3.
 
 - **Two shares on your machines.** For example, two small computers at home. Together they can sign without the network.
 - **One share on the network.** On its own it can never sign. It is your backup if one of your machines is lost, and it is how your key joins the network.
 
-This works because of one rule: the network must hold fewer shares than it takes to sign. With 2-of-3 and one network share, it does.
+This works because of one rule: the network must hold fewer shares than it takes to sign.
+
+With any two of three, and one share on the network, it does.
 
 ## How is that different from approving on my phone?
 
-There is a lighter option: your devices approve each order, while the network holds the shares. That protects you against a stolen agent key, because nothing signs without your approval.
+There is a lighter option: your devices approve each order, while the network holds the shares.
+
+That protects you against a stolen agent key, because nothing signs without your approval.
 
 But it still trusts the network signers. If they worked together, they could sign without you.
 
-Only shares on your own machines remove that trust. We describe the two options that way everywhere, and we never say approvals alone remove trust.
+Only shares on your own machines remove that trust.
 
 ## What will it ask of me?
 
 - **Two machines you control.** They must be sealed before they take part in making the key: no remote login, not even for you.
-- **A recovery plan.** What happens if you travel, lose a device, or lose everything. This is specified before anyone uses it with real money.
+- **A recovery plan.** What happens if you travel, lose a device, or lose everything. We write this down before anyone uses it with real money.
 
 ## What can I do now?
 
@@ -53,7 +57,7 @@ I plan to hold two of three shares of a trading key on two small computers at ho
 ## What are the milestones?
 
 1. **Recovery spec.** Travel, a lost device, total loss, and a malicious recovery attempt.
-2. **The 2-of-3.** Two shares on your machines and one network share, so the network alone can never sign.
+2. **Any two of three.** Two shares on your machines and one network share, so the network alone can never sign.
 3. **Sealed or refused.** The signer software refuses to make a key unless your node is sealed.
 4. **Your node, launched for you.** Your share node launched by the [one-link launcher](08-how-do-i-launch-a-node-with-one-link.html).
 5. **A gated test.** With a throwaway key.
@@ -61,6 +65,8 @@ I plan to hold two of three shares of a trading key on two small computers at ho
 
 ## Final thoughts
 
-This is the version of Signer where the network can't sign for you at all. It needs two machines of yours and a recovery plan you have thought through.
+This is the version of Signer where the network can't sign for you at all.
+
+It needs two machines of yours and a recovery plan you have thought through.
 
 The design is set. The milestones above are what stands between it and your account.
