@@ -15,7 +15,7 @@ Encrypted means scrambled with a key, so that it reads as noise to anyone withou
 
 The key comes from your passkey, the sign-in your phone already uses. [Chapter 19](19-how-do-i-sign-in-without-a-seed-phrase.html) explains passkeys.
 
-That key is separate from the one your wallet uses for payments. So approving a payment and opening your notes never rely on the same key.
+That key is separate from the one Solve, your wallet, uses for payments. So approving a payment and opening your notes never rely on the same key.
 
 ## What are my choices?
 

@@ -1,6 +1,6 @@
 ---
 title: How do I sign in without a seed phrase?
-description: The TraderSwift wallet uses the passkey on your phone, not a list of words you must write down and hide.
+description: Solve, by TraderSwift, uses the passkey on your phone, not a list of words you must write down and hide.
 order: 19
 part: Tools for a person
 ---
@@ -11,7 +11,7 @@ That list is called a seed phrase. You are told to write it down, hide it and ne
 
 Anyone who finds it owns your money. If you lose it, the money may be gone for good.
 
-The TraderSwift wallet has no seed phrase.
+Our wallet, Solve, by TraderSwift, has no seed phrase.
 
 ## What is a passkey?
 
@@ -19,9 +19,9 @@ A passkey is a sign-in your phone or computer already knows how to make.
 
 You unlock it with your face, your fingerprint or your screen lock. Its secret stays on your device.
 
-## What does the passkey do in the wallet?
+## What does the passkey do in Solve?
 
-It unlocks the wallet's payment key.
+It unlocks Solve's payment key.
 
 That is the key that approves payments, such as paying a builder for a front end. [Chapter 20](20-what-is-the-marketplace-and-how-do-builders-get-paid.html) explains payments.
 
@@ -37,21 +37,21 @@ Today the passkey unlocks the payment key. Signing in to TraderSwift apps is a s
 
 ## What is it like to use?
 
-You are inside the wallet before any setup.
+You are inside Solve before any setup.
 
 Looking around needs nothing. A key is made only at the first action that needs one.
 
-One wallet works across the TraderSwift chains, Hyperliquid and payments on Base. You see an address in full where you approve something, and otherwise only when you ask to see it.
+Solve works across the TraderSwift chains, Hyperliquid and payments on Base. You see an address in full where you approve something, and otherwise only when you ask to see it.
 
 ## Can a nice-looking skin trick me?
 
 No.
 
-The wallet is one shared core with skins on top. A skin is the look: colours, layout and style.
+Solve has one look of its own. Underneath, it is one shared core, and a skin is just the look on top: colours, layout and style.
 
-The core owns every approval screen and the text you approve. So a skin can change how the wallet looks, but never what you are agreeing to.
+The core owns every approval screen and the text you approve. So a skin can change how Solve looks, but never what you are agreeing to.
 
-We have three skins today: Glass, Orbit and Night Key. Anyone can propose a skin, and we review it before it ships.
+Three more skins, Glass, Orbit and Night Key, are under Look. Anyone can propose a skin, and we review it before it ships.
 
 ## What if I lose my device?
 
@@ -77,5 +77,5 @@ The story of why is in [Why did we build our own sign-in?](../since-lockbox/06-w
 
 - **Built, not live** – the passkey unlocking the payment key, with no seed words.
 - **Built, not live** – the sign-in gate.
-- **Built, not live** – one wallet across the chains, and the shared core with its three skins.
+- **Built, not live** – Solve across the chains, with its own look, and the shared core with three more skins under Look.
 - **Planned** – the device ring and its recovery times.

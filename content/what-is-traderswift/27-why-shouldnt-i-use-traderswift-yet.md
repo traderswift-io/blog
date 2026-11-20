@@ -33,7 +33,7 @@ If you trade elsewhere, there is nothing for you to connect yet.
 
 ## Are the other tools live?
 
-Ledger, Vault, Storage, the marketplace and the wallet are **Built, not live**.
+Ledger, Vault, Storage, the marketplace and Solve, our wallet, are **Built, not live**.
 
 The Bus, TraderSwift AI, its compute and founder subnets are **Planned**. [Chapter 26](26-what-is-running-today-and-what-is-coming.html) lists every part with its status.
 

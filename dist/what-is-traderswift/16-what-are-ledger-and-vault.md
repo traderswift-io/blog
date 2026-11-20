@@ -67,7 +67,7 @@ That last point matters for TraderSwift AI. The more TraderSwift tools you use, 
 
 We build what sits underneath: the place your data is kept, and the rules for who may read it.
 
-The screens you look at are called front ends, and anyone can build one. You choose the front end you want inside your TraderSwift wallet.
+The screens you look at are called front ends, and anyone can build one. You choose the front end you want inside Solve, your TraderSwift wallet.
 
 If a builder charges for their front end, you pay them directly. [Chapter 20](20-what-is-the-marketplace-and-how-do-builders-get-paid.html) explains how.
 

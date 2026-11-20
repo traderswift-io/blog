@@ -79,7 +79,7 @@ Signer for your own account waits on three steps:
 | Storage, `storage-1` | **Built, not live** | Test round passed 18 Nov 2026; waits on first providers and an outside review of its encryption |
 | The TraderSwift Bus | **Planned** | The first piece of code is built |
 
-## Wallet and sign-in
+## Solve, our wallet, and sign-in
 
 | Part | Status | Date, or what it waits on |
 | :--- | :--- | :--- |
