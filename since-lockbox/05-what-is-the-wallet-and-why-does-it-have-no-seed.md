@@ -6,6 +6,8 @@ order: 5
 
 The TraderSwift wallet is one shared core with interchangeable skins.
 
+Since this update, it has a name: Solve, by TraderSwift. It now has one look of its own, and the skins below are under Look.
+
 The core owns every signing screen and the approval text. A skin can change how it looks, but never what you approve.
 
 We have three skins: Glass, Orbit and Night Key.

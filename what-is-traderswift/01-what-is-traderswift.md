@@ -59,7 +59,7 @@ A node is one machine that runs a part of the network.
 | Ledger and Vault | Keeps your tasks, notes and files encrypted on your phone | **Built, not live** for you. The chains, ledger-1 and vault-1, have run since Thu 19 Nov 2026; nothing writes to them yet |
 | Storage, storage-1 | Holds encrypted files and logs | **Built, not live**. Waits on its first providers and an outside review of its encryption |
 | The TraderSwift Bus | Gives agents a safe channel to talk on | **Planned**. First piece of code built |
-| Wallet and sign-in | Unlocks your payment key with no seed phrase | **Built, not live** |
+| Solve, our wallet, and sign-in | Unlocks your payment key with no seed phrase | **Built, not live** |
 | Marketplace and payments | Lets builders list apps and get paid directly | **Built, not live**. No real payment made yet |
 | TraderSwift AI, and its compute | Learns how you work, on machines beside our nodes | **Planned** |
 | Subnets of your own | Lets founders build and run their own chain | **Planned**. The hub does not yet take chains from other teams |

@@ -17,7 +17,7 @@ There are seven parts.
 - **The whole picture** – what TraderSwift is, why it is open source, and who it is for.
 - **Security, which is more than the key** – the key, the channel your agents talk on, and your trade logs.
 - **Data you can check** – market data and signals with a record behind them.
-- **Tools for a person** – Ledger for tasks, Vault for notes and files, and a wallet with no seed phrase.
+- **Tools for a person** – Ledger for tasks, Vault for notes and files, and Solve, a wallet with no seed phrase.
 - **The marketplace and builders** – where builders list what they make, and how they get paid.
 - **TraderSwift AI and compute** – the AI that gets to know you, and the machines it runs on.
 - **The network, and where it stands** – how the parts fit together, how to build your own, and what is running today.

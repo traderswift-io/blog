@@ -33,7 +33,7 @@ Because the front ends are open source, the listing points at code anyone can re
 
 You pay per use, from your wallet.
 
-Your passkey unlocks the payment key, so there are no seed words involved. [Chapter 19](19-how-do-i-sign-in-without-a-seed-phrase.html) explains the wallet.
+Your passkey unlocks the payment key, so there are no seed words involved. [Chapter 19](19-how-do-i-sign-in-without-a-seed-phrase.html) explains Solve, our wallet.
 
 The payment uses a method called x402. It's a way to pay inside a web request:
 
@@ -75,7 +75,7 @@ That matters most when an app touches your data or your trading. You, or your ow
 The marketplace is **Built, not live**.
 
 - The catalog is built and checked offline. No listing is live yet.
-- The wallet's payment part is built, and checked against test cases.
+- Solve's payment part is built, and checked against test cases.
 - Live use waits on the last pieces it needs.
 - No real payment has been made yet.
 
