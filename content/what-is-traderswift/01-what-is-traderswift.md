@@ -7,7 +7,7 @@ part: The whole picture
 
 TraderSwift is the infrastructure layer for agentic trading.
 
-It is a set of open-source blockchains and services. Traders, their agents and the people who build for them can work on it together.
+It is a set of open-source blockchains and services where traders, their agents and builders work together without having to trust each other.
 
 In agentic trading, software agents place the trades. In hybrid trading, a person and an agent trade together.
 
@@ -15,7 +15,7 @@ Either way, the agent needs the same things.
 
 ## What does a trading agent need?
 
-At the top level, it needs four things.
+An agent needs four things to trade safely and well.
 
 - **Security** – it must be able to trade without putting your account, your plans or your records at risk.
 - **Data** – market data and signals it can check, not just take on trust.
@@ -42,7 +42,7 @@ Signer, the part that signs orders, was the first part to go live. It is one par
 
 ## Which parts are running today?
 
-Here is the short map.
+The table below shows each part of TraderSwift and its current status.
 
 A chain is a blockchain: a shared record that many machines keep together. The hub is the chain at the centre, which links the others.
 
@@ -50,19 +50,19 @@ A node is one machine that runs a part of the network.
 
 | Part | What it does | Status |
 | :--- | :--- | :--- |
-| Signer, on our own Hyperliquid account | Signs orders for an agent without the agent holding the key | **Live** since 14 Nov 2026 |
-| Signer on Aster, and on Base through Avantis | The same, on two more venues | **Built, not live**. Aster has no date yet, and waits on its test account being funded; Base has no date yet |
-| Signer for your own Hyperliquid account | The same, for your account | **Built, not live**. No earlier than Sun 22 Nov 2026 |
-| The hub | Links the chains and holds each one's identity | **Live** since 14 Nov 2026 |
+| Signer, on our own Hyperliquid account | Signs orders for an agent without the agent holding the key | **Live** since Sat 14 Nov 2026 |
+| Signer on Aster, and on Base through Avantis | Signs orders on two more venues | **Built, not live**. Aster has no date yet, and waits on its test account being funded; Base has no date yet |
+| Signer for your own Hyperliquid account | Signs orders for your account | **Built, not live**. No earlier than Sun 22 Nov 2026 |
+| The hub, traderswift-1 | Links the chains and holds each one's identity | **Live** since Sat 14 Nov 2026 |
 | Charts data node | Serves market data you can check | **Built, not live** for you to read. Our node serves candles, but its public address is still behind a login |
 | Signals | A track record for signal providers | **Built, not live** |
-| Ledger and Vault | Your tasks, notes and files, encrypted on your phone | **Built, not live** |
-| Storage | Holds encrypted files and logs | **Built, not live**. Waits on its first providers and an outside review of its encryption |
-| TraderSwift Bus | A safe channel for agents to talk on | **Planned**. First piece of code built |
-| Wallet and sign-in | A wallet with no seed phrase | **Built, not live** |
-| Marketplace and payments | Builders list apps and are paid directly | **Built, not live**. No real payment made yet |
-| TraderSwift AI, and its compute | An AI that knows you, on compute beside our nodes | **Planned** |
-| Subnets of your own | Founders build and run their own chain | **Planned**. The hub does not yet take chains from other teams |
+| Ledger and Vault | Keeps your tasks, notes and files encrypted on your phone | **Built, not live** |
+| Storage, storage-1 | Holds encrypted files and logs | **Built, not live**. Waits on its first providers and an outside review of its encryption |
+| The TraderSwift Bus | Gives agents a safe channel to talk on | **Planned**. First piece of code built |
+| Wallet and sign-in | Unlocks your payment key with no seed phrase | **Built, not live** |
+| Marketplace and payments | Lets builders list apps and get paid directly | **Built, not live**. No real payment made yet |
+| TraderSwift AI, and its compute | Learns how you work, on machines beside our nodes | **Planned** |
+| Subnets of your own | Lets founders build and run their own chain | **Planned**. The hub does not yet take chains from other teams |
 
 The full table, with what each part waits on, is in [chapter 26](26-what-is-running-today-and-what-is-coming.html).
 
