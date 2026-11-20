@@ -33,15 +33,15 @@ Today there are four shares, on four signers. Any three of them can sign togethe
 
 So one signer can be down, or broken into, and your orders still get signed safely.
 
-At launch on 14 November 2026 there were three signers, and any two could sign.
+At launch on Sat 14 Nov 2026 there were three signers, and any two could sign.
 
-On 17 November we moved to four new signers on new machines, and they made a new key together. The old key was never moved, and trading did not stop.
+On Tue 17 Nov 2026 we moved to four new signers on new machines, and they made a new key together. The old key was never moved, and trading did not stop.
 
 The [rotation update](../trading-key-rotation/index.html) explains how.
 
 ## Is it running?
 
-Signer has signed live orders on Hyperliquid since 14 November 2026, on our own account with real money. **Live.**
+Signer has signed live orders on Hyperliquid since Sat 14 Nov 2026, on our own account with real money. **Live.**
 
 For your own Hyperliquid account, it is **Built, not live**. The target is no earlier than Sun 22 Nov 2026, and it waits on three things:
 

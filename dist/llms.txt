@@ -65,7 +65,7 @@ Static HTML and Markdown.
 - [Who approves each step?](trading-key-rotation/08-who-approves-each-step.html) | Markdown: trading-key-rotation/08-who-approves-each-step.md | The owner signs every change to who signs.
 - [What is next?](trading-key-rotation/09-what-is-next.html) | Markdown: trading-key-rotation/09-what-is-next.md | The next rotation, target Sat 21 Nov 2026, new order limits, and more signers.
 - [Final thoughts](trading-key-rotation/10-final-thoughts.html) | Markdown: trading-key-rotation/10-final-thoughts.md | What the rotation proved.
-- [Signer’s First Rotation – What Happened on 17 November](trading-key-rotation/index.html) | Markdown: trading-key-rotation/index.md | Signer moved to new machines on 17 November 2026. The old key did not move with it. We made a new one.
+- [Signer’s first rotation: what happened on Tue 17 Nov 2026](trading-key-rotation/index.html) | Markdown: trading-key-rotation/index.md | Signer moved to new machines on 17 November 2026. The old key did not move with it. We made a new one.
 
 ## Guides
 
@@ -81,7 +81,7 @@ Static HTML and Markdown.
 - [How do I get a Signer key for my own account?](signer-guides/10-how-do-i-get-a-signer-key-for-my-own-account.html) | Markdown: signer-guides/10-how-do-i-get-a-signer-key-for-my-own-account.md | Your own Hyperliquid account is planned for no earlier than Sunday 22 November 2026. What it waits on, what you will do, and what you can prepare now. Planned.
 - [How do I hold my own key shares?](signer-guides/11-how-do-i-hold-my-own-key-shares.html) | Markdown: signer-guides/11-how-do-i-hold-my-own-key-shares.md | Any two of three pieces of your key can sign: two on your own machines, one on the network, so the network alone never can. Planned.
 - [How do I run a private Signer network on ESP32s?](signer-guides/12-how-do-i-run-a-private-signer-network-on-esp32s.html) | Markdown: signer-guides/12-how-do-i-run-a-private-signer-network-on-esp32s.md | A few cheap devices at home that must agree before your trading key signs: small boards approve each order, two Raspberry Pis sign. Planned.
-- [Signer – How to Run, Test and Trade with It](signer-guides/index.html) | Markdown: signer-guides/index.md | Twelve how-tos for people interested in Signer, each with steps and prompts for your own agent. Some are planned, and say so.
+- [How do I run, test and trade with Signer?](signer-guides/index.html) | Markdown: signer-guides/index.md | Twelve how-tos for people interested in Signer, each with steps and prompts for your own agent. Some are planned, and say so.
 - [What do we need to know before starting?](cryptography/01-what-do-we-need-to-know-before-starting.html) | Markdown: cryptography/01-what-do-we-need-to-know-before-starting.md | The properties, building blocks, small mathematics and attacker model that every later chapter uses.
 - [Shannon: what does ciphertext reveal?](cryptography/02-shannon-what-does-ciphertext-reveal.html) | Markdown: cryptography/02-shannon-what-does-ciphertext-reveal.md | Perfect secrecy, why key length matters, and what reusing a key gives away.
 - [Turing: how is the system operated?](cryptography/03-turing-how-is-the-system-operated.html) | Markdown: cryptography/03-turing-how-is-the-system-operated.md | How routine, repeated structure and everyday operation make an attack easier, and how far one break spreads.
@@ -97,7 +97,7 @@ Static HTML and Markdown.
 - [What are the exercises and answers?](cryptography/13-what-are-the-exercises-and-answers.html) | Markdown: cryptography/13-what-are-the-exercises-and-answers.md | Answers to each chapter's Try it question, six more calculations, and what each Python lab shows.
 - [How do I keep learning?](cryptography/14-how-do-i-keep-learning.html) | Markdown: cryptography/14-how-do-i-keep-learning.md | Five steps, from explaining the ideas without notes to writing a review someone else can repeat.
 - [Sources](cryptography/15-sources.html) | Markdown: cryptography/15-sources.md | The papers, standards and documentation behind every chapter, with links.
-- [Cryptography – How to Understand and Review Cryptographic Systems](cryptography/index.html) | Markdown: cryptography/index.md | How to check whether a system really protects a secret, with small worked examples you can run yourself.
+- [How do we understand and review cryptographic systems?](cryptography/index.html) | Markdown: cryptography/index.md | How to check whether a system really protects a secret, with small worked examples you can run yourself.
 
 ## Case studies
 

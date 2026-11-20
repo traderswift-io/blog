@@ -19,15 +19,15 @@ It holds no token and no balances. [How does the network fit together?](../what-
 
 ![The hub and its subnets](../assets/since-lockbox/hub-and-subnets.svg)
 
-The hub went live on 14 November; its first block was signed at 14:13 UTC. It is **Live**.
+The hub went live on Sat 14 Nov 2026; its first block was signed at 14:13 UTC. It is **Live**.
 
-On 17 November we moved its validators onto new machines. The result is four validators with equal power, and block 40,631 was signed by all four.
+On Tue 17 Nov 2026 we moved its validators onto new machines. The result is four validators with equal power, and block 40,631 was signed by all four.
 
 ![traderswift-1 heights recorded this week](../assets/since-lockbox/hub_heights.svg)
 
 ## Who controls the hub?
 
-On 18 November we handed over the hub's admin. The admin is now a multisig: a wallet that needs two of three signatures before it can act.
+On Wed 18 Nov 2026 we handed over the hub's admin. The admin is now a multisig: a wallet that needs two of three signatures before it can act.
 
 ## When do the first charters arrive?
 

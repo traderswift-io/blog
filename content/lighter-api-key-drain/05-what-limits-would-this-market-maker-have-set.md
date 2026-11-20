@@ -31,7 +31,7 @@ Four terms in the table, in plain words:
 - **Mark price**: the exchange's own fair price for a market, the one it uses for margin.
 - **Basis points (bps)**: hundredths of a percent. 100 bps is 1%.
 
-The fields marked with a date are in Policy v2, which is built and in review. Its target is Saturday 21 November 2026.
+The fields marked with a date are in Policy v2, which is **Built, not live** and in review, with a target of Sat 21 Nov 2026.
 
 | Policy field | Maker key | Taker key | Status |
 |---|---|---|---|

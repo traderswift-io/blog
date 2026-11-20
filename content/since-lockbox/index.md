@@ -5,7 +5,7 @@ kind: update
 order: 2
 ---
 
-On 11 November we halted our first chain, Lockbox, and archived it.
+On Wed 11 Nov 2026 we halted our first chain, Lockbox, and archived it.
 
 Seven days later, we had:
 

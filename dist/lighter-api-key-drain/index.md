@@ -4,12 +4,12 @@ description: A leaked trading key took about $10.4 million from a market maker's
 kind: case-study
 ---
 
-On 16 November 2026, a leaked API key let an attacker take about $10.4 million in USDC out of a trader's account on Lighter, a perpetuals exchange.
+On Mon 16 Nov 2026, a leaked API key let an attacker take about $10.4 million in USDC out of a trader's account on Lighter, a perpetuals exchange.
 
 Outlets and on-chain analysts describe the accounts as a market maker's ([crypto.news](https://crypto.news/lighter-suspends-withdrawals-after-suspected-15-5-million-exploit/), [0xTria](https://x.com/0xTria/status/2122280548047671629)). Lighter said its contracts were not affected ([Lighter](https://x.com/Lighter_xyz/status/2122311006604984497)).
 
 ::: notice
-The facts here are as of 16 November 2026, checked again on 18 November.
+The facts here are as of Mon 16 Nov 2026, checked again on Wed 18 Nov 2026.
 
 Since then, Lighter has resumed withdrawals and returned about $5 million to the trader ([Crypto Briefing](https://cryptobriefing.com/lighter-api-key-security-exploit/), [CoinMarketCap](https://coinmarketcap.com/academy/article/lighter-withdrawals-resume-leaked-api-keys)).
 

@@ -4,7 +4,7 @@ description: Live on Hyperliquid since 14 November 2026, on a small live account
 order: 8
 ---
 
-Signer has been live since 14 November 2026.
+Signer has been **Live** since Sat 14 Nov 2026.
 
 It signs real orders with real money on Hyperliquid mainnet, on a small live account, and the launch test showed it works:
 

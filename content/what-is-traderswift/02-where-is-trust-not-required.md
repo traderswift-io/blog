@@ -5,7 +5,7 @@ order: 2
 part: The whole picture
 ---
 
-This is what makes TraderSwift different.
+On TraderSwift, you check what most trading tools ask you to take on trust.
 
 Most trading today runs on trust. When you trade with a bot or an agent, you trust a long list of people and machines:
 
@@ -21,11 +21,11 @@ Most trading today runs on trust. When you trade with a bot or an agent, you tru
 
 Each of these can go wrong, and most of the time you would never know.
 
-On TraderSwift, the aim is simple. Where something can be checked, you check it, instead of taking anyone's word for it.
+Where something can be checked, TraderSwift lets you check it instead of taking anyone's word for it.
 
 ## What can you check?
 
-Each item below has its own chapter. Here is the short version.
+Each item below has its own chapter.
 
 ### Can my agent break its limits?
 
@@ -33,13 +33,13 @@ You write down what your agent may trade, and every order is checked against tho
 
 This helps you because a bot that is broken into can still trade only inside your limits. Signer never signs a transfer or a withdrawal.
 
-[Chapter 09](09-how-does-an-order-get-signed-and-how-do-i-stop-it.html) explains how. **Live** on our own account since 14 Nov 2026.
+[Chapter 09](09-how-does-an-order-get-signed-and-how-do-i-stop-it.html) explains how. **Live** on our own account since Sat 14 Nov 2026.
 
 ### Would I know if someone tried to break in?
 
 Every order request is recorded, signed or refused. A refused order is your alarm.
 
-[Chapter 10](10-how-would-i-know-if-someone-tried-to-break-in.html) explains. **Live.**
+[Chapter 10](10-how-would-i-know-if-someone-tried-to-break-in.html) explains. **Live** since Sat 14 Nov 2026.
 
 ### Can someone read what my agents say?
 
@@ -93,9 +93,7 @@ This helps builders because nobody sits between them and their pay.
 
 ### Is an agent I hire any good?
 
-Signer creates a verification layer for our agentic review system, used in our planned marketplace.
-
-A review of an agent can rest on what it actually did, not on what it claims.
+Signer records every order request an agent sends, so reviews in our planned marketplace can rest on what the agent actually did instead of what its maker claims.
 
 [Chapter 21](21-how-does-an-agent-prove-it-is-any-good.html) explains. **Planned.**
 
@@ -109,10 +107,10 @@ Signer, the hub chain and Signals Desk are public on GitHub today. [Chapter 03](
 
 A promise costs nothing. A record you can check is worth more.
 
-When the record can be checked, a good agent, a good signal provider or an honest data node can prove it. That is the reward for doing honest work, and it is what makes TraderSwift unique.
+When the record can be checked, a good agent, a good signal provider or an honest data node can prove it. That is the reward for doing honest work.
 
 ## Is all of it live?
 
 Not yet.
 
-Signer and the hub are live today. The rest is being built, and [chapter 26](26-what-is-running-today-and-what-is-coming.html) says exactly where each part stands.
+Signer, the hub and Signals Desk are **Live** today. The rest is being built, and [chapter 26](26-what-is-running-today-and-what-is-coming.html) says exactly where each part stands.

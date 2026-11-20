@@ -10,9 +10,11 @@ These words are often used as though they mean the same thing.
 
 ## What is cryptography supposed to do?
 
+The table below lists the six core security properties and what does not establish them on its own.
+
 | Property | What we want | What does not establish it by itself |
 | --- | --- | --- |
-| Confidentiality | An outsider cannot learn protected message contents | A hash or a signature |
+| Confidentiality | An outside party cannot learn protected message contents | A hash or a signature |
 | Integrity | Unauthorized changes are detected | Encryption without authentication |
 | Authentication | Evidence that a message or peer is associated with a particular key or identity | An unverified public key |
 | Authorization | The authenticated party is allowed to perform this action | A valid signature alone |

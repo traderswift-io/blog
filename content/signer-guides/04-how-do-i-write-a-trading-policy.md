@@ -24,7 +24,7 @@ These fields are **Live**, taken from the chain code:
 - **`expires_at`**: when the policy ends, in unix seconds.
 - **`revoked`**: set when the owner revokes it.
 
-**Built, not live: max leverage.** It is in the code, and it switches on by itself at a set block of the chain, about Thursday 26 November 2026.
+**Built, not live: max leverage.** It is in the code, and it switches on by itself at a set block of the chain, about Thu 26 Nov 2026.
 
 The chain refuses a policy where `max_order_size` is above `max_daily_size`. It also refuses an empty list and a repeated asset.
 

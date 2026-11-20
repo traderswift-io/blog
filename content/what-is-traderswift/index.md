@@ -8,11 +8,11 @@ logo: assets/what-is-traderswift/traderswift-wordmark-500.png
 
 TraderSwift is the infrastructure layer for agentic trading.
 
-It is a set of open-source blockchains and services. Traders, their agents and the people who build for them can work together on it, without having to trust each other.
+It is a set of open-source blockchains and services where traders, their agents and builders work together without having to trust each other.
 
-This update explains the whole of it, one question per chapter.
+This guide explains the whole of it, one question per chapter.
 
-## How is this update laid out?
+## How is this guide laid out?
 
 There are seven parts.
 

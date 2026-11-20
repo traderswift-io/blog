@@ -54,6 +54,8 @@ Each cost above has an answer.
 
 ## How do they compare?
 
+The table below compares today's centralized tools with their equivalents on TraderSwift.
+
 | Tool today | TraderSwift part | Who holds your data today | Who holds it on TraderSwift | Status |
 | :--- | :--- | :--- | :--- | :--- |
 | Task manager | Ledger | The app's company | You, encrypted on your phone | **Built, not live** |

@@ -19,13 +19,15 @@ That key is separate from the one Solve, your wallet, uses for payments. So appr
 
 ## What are my choices?
 
+The table below shows the three storage options on the choice screen.
+
 | Choice | What it means | Status |
 | :--- | :--- | :--- |
 | Encrypted on my phone only | The default. Nothing leaves the device | **Built, not live** |
 | Phone + Base | A copy kept with the help of Base, a public blockchain | **Planned** |
 | Phone + TraderSwift Storage | A scrambled copy held by storage providers, who cannot read it | **Planned** |
 
-On the choice screen, the two later choices are shown greyed out, marked "Coming soon".
+On the choice screen, the two later choices are shown greyed out until they are built.
 
 Phone + TraderSwift Storage waits on Storage's first providers, and on an outside review of its encryption. [Chapter 13](13-where-do-my-trade-logs-notes-and-files-live.html) explains Storage.
 

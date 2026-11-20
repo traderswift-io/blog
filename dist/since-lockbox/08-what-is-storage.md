@@ -20,6 +20,6 @@ Why this helps you: you do not have to trust a provider's word that your data is
 
 Storage is **Built, not live**.
 
-On 18 November a test chain passed a full round: a real challenge, an accepted proof, and four refusals that left the state untouched.
+On Wed 18 Nov 2026 a test chain passed a full round: a real challenge, an accepted proof, and four refusals that left the state untouched.
 
 It is not a public network yet. It waits on the founding providers and on an outside review of the encryption.

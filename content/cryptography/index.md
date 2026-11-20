@@ -1,5 +1,5 @@
 ---
-title: Cryptography – How to Understand and Review Cryptographic Systems
+title: How do we understand and review cryptographic systems?
 description: How to check whether a system really protects a secret, with small worked examples you can run yourself.
 order: 2
 kind: guide

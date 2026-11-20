@@ -1,5 +1,5 @@
 ---
-title: Signer – How to Run, Test and Trade with It
+title: How do I run, test and trade with Signer?
 description: Twelve how-tos for people interested in Signer, each with steps and prompts for your own agent. Some are planned, and say so.
 kind: guide
 ---

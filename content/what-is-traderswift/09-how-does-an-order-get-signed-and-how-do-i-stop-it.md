@@ -52,7 +52,7 @@ A revoke takes effect in the block it lands in. From then on the policy allows n
 
 For 600 seconds after the revoke, the agent can still cancel orders and arm a timed cancel-all, so it can tidy up; after that, everything is refused.
 
-At launch, the next order after the revoke was refused, and the refusal was on chain three blocks later. **Live** since 14 Nov 2026.
+At launch, the next order after the revoke was refused, and the refusal was on chain three blocks later. **Live** since Sat 14 Nov 2026.
 
 ## What limits are coming next?
 

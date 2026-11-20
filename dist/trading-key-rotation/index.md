@@ -1,10 +1,10 @@
 ---
-title: Signer’s First Rotation – What Happened on 17 November
+title: Signer’s first rotation: what happened on Tue 17 Nov 2026
 description: Signer moved to new machines on 17 November 2026. The old key did not move with it. We made a new one.
 kind: update
 ---
 
-On 17 November Signer moved to a new set of machines while it was live on a real account.
+On Tue 17 Nov 2026 Signer moved to a new set of machines while it was live on a real account.
 
 The trading key did not move. The new machines made a new key together.
 

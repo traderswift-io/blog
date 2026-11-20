@@ -63,7 +63,7 @@ If you lose everything, recovery would take seven days by default, and never les
 
 During that time, any of your enrolled devices could cancel it. So if a thief started a recovery, you would see it, and stop it.
 
-The device ring is a design, accepted on 16 Nov 2026. Its screens are not built yet.
+The device ring is a design, accepted on Mon 16 Nov 2026. Its screens are not built yet.
 
 ## How do I sign in to TraderSwift apps?
 

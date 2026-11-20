@@ -59,7 +59,7 @@ Signing uses a number that must be used only once, called a nonce. If the code r
 
 ## What does a leak look like?
 
-On 16 November 2026, a leaked trading key let an attacker take about $10.4 million out of a trader's account on Lighter, a perpetuals exchange, and try for $5.1 million more.
+On Mon 16 Nov 2026, a leaked trading key let an attacker take about $10.4 million out of a trader's account on Lighter, a perpetuals exchange, and try for $5.1 million more.
 
 The key did exactly what it was allowed to do.
 

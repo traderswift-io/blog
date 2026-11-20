@@ -7,10 +7,12 @@ part: The network, and where it stands
 
 This page is the honest list of what runs today, and what does not yet.
 
-It is updated in real time, as we bring each part live. Checking a part's status here before you connect anything shows you what works now, and what is still waiting.
+We update this page as we bring each part live. Checking a part's status here before you connect anything shows you what works now, and what is still waiting.
 
 ::: notice
-Last checked: Thu 19 Nov 2026. Every future date below is a target, and each one waits on its final checks.
+Last checked: Thu 19 Nov 2026.
+
+Every future date below is a target, and each one waits on its final checks.
 :::
 
 ## What do the status words mean?
@@ -25,10 +27,12 @@ Where we have a date, we give it. Where we do not, we say what the part waits on
 
 ## Signer
 
+The table below shows the status of Signer and its planned limits.
+
 | Part | Status | Date, or what it waits on |
 | :--- | :--- | :--- |
-| Signer on Hyperliquid, for TraderSwift's own account | **Live** | Since 14 Nov 2026. This test account is public by choice |
-| Stopping an agent with one signed message | **Live** | Since 14 Nov 2026 |
+| Signer on Hyperliquid, for TraderSwift's own account | **Live** | Since Sat 14 Nov 2026. This test account is public by choice |
+| Stopping an agent with one signed message | **Live** | Since Sat 14 Nov 2026 |
 | Signer on Aster | **Built, not live** | No date yet. It waits on its test account being funded, then a sitting after that |
 | Signer on Base, through Avantis | **Built, not live** | No date yet |
 | New limits: a price band, a cap on how often orders go out, and caps on order value | **Built, not live** for the chain part; the signer part is still in build | Target Sat 21 Nov 2026 |

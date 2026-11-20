@@ -34,6 +34,6 @@ Signals Desk is our fork of [galleonlabs/hypergrok-trading-desk](https://github.
 
 Both are under the MIT licence. What we added are the Signer and TraderSwift branches.
 
-We made our fork of Signals Desk public on 15 November, and our fork of Pathiel on 16 November.
+We made our fork of Signals Desk public on Sun 15 Nov 2026 (**Live**), and our fork of Pathiel on Mon 16 Nov 2026 (**Built, not live**).
 
-On 17 November the desk ran Signer's rotation gate on a small live account with real money: one refusal, one entry and one close.
+On Tue 17 Nov 2026 Signals Desk ran Signer's rotation gate on a small live account with real money: one refusal, one entry and one close.

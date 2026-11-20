@@ -340,7 +340,7 @@
       "markdown": "trading-key-rotation/10-final-thoughts.md"
     },
     {
-      "title": "Signer\u2019s First Rotation \u2013 What Happened on 17 November",
+      "title": "Signer\u2019s first rotation: what happened on Tue 17 Nov 2026",
       "description": "Signer moved to new machines on 17 November 2026. The old key did not move with it. We made a new one.",
       "url": "trading-key-rotation/index.html",
       "markdown": "trading-key-rotation/index.md"
@@ -418,7 +418,7 @@
       "markdown": "signer-guides/12-how-do-i-run-a-private-signer-network-on-esp32s.md"
     },
     {
-      "title": "Signer \u2013 How to Run, Test and Trade with It",
+      "title": "How do I run, test and trade with Signer?",
       "description": "Twelve how-tos for people interested in Signer, each with steps and prompts for your own agent. Some are planned, and say so.",
       "url": "signer-guides/index.html",
       "markdown": "signer-guides/index.md"
@@ -514,7 +514,7 @@
       "markdown": "cryptography/15-sources.md"
     },
     {
-      "title": "Cryptography \u2013 How to Understand and Review Cryptographic Systems",
+      "title": "How do we understand and review cryptographic systems?",
       "description": "How to check whether a system really protects a secret, with small worked examples you can run yourself.",
       "url": "cryptography/index.html",
       "markdown": "cryptography/index.md"

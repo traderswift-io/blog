@@ -30,7 +30,7 @@ It holds:
 
 The hub holds no token and no balances, and it charges no fees. So there is nothing to buy before you can use it.
 
-**Live** since 14 Nov 2026.
+**Live** since Sat 14 Nov 2026.
 
 ## What is a subnet?
 
@@ -38,9 +38,11 @@ A subnet is a chain with one job, run by its own validators. It has its own vote
 
 Each subnet runs on its own. If the hub stops, the subnet keeps working.
 
+The table below lists each subnet and its current status.
+
 | Subnet | Its job | Status |
 | :--- | :--- | :--- |
-| `signer-1` | Holds trading limits, and signs orders inside them | **Live** on Hyperliquid |
+| `signer-1` | Holds trading limits, and signs orders inside them | **Live** on Hyperliquid since Sat 14 Nov 2026 |
 | `storage-1` | Checks that storage providers still hold your scrambled files | **Built, not live** |
 | `ledger-1` | Where your tasks are kept, and who may read them | **Live** since Thu 19 Nov 2026; nothing writes to it yet |
 | `vault-1` | Where your notes and files are kept, and who may read them | **Live** since Thu 19 Nov 2026; nothing writes to it yet |

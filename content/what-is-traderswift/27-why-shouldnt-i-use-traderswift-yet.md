@@ -11,7 +11,7 @@ These are the reasons to wait.
 
 ## How long has it been running?
 
-Signer has signed live orders since 14 Nov 2026.
+Signer has signed live orders since Sat 14 Nov 2026.
 
 That is days, not years. A system that handles money earns trust over time, and ours has not had that time yet.
 

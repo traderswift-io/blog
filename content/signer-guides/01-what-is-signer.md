@@ -30,11 +30,11 @@ It is one part of TraderSwift, the infrastructure layer for agentic trading.
 
 The key is split into shares, and each share sits on a different signer machine.
 
-Since 17 November 2026 there are four signers, and any three can sign together. Two cannot.
+Since Tue 17 Nov 2026 there are four signers, and any three can sign together. Two cannot.
 
 At launch the setup was two of three, and that first key was split into shares from a key the owner had already approved at the venue.
 
-Since the rotation on 17 November 2026, our live key was made by the signers together. It has never existed whole on any machine, at any point.
+Since the rotation on Tue 17 Nov 2026, our live key was made by the signers together. It has never existed whole on any machine, at any point.
 
 ## Why would I use Signer?
 

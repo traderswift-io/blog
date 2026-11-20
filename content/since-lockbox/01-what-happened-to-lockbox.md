@@ -6,7 +6,7 @@ order: 1
 
 Lockbox was our first test of the idea behind Signer: a trading key kept in pieces on separate machines.
 
-It ran as a test chain, `lockbox-milestone-a-1`, and halted on 11 November at height 196,500. The height is simply the number of the last block.
+It ran as a test chain, `lockbox-milestone-a-1`, and halted on Wed 11 Nov 2026 at height 196,500. The height is simply the number of the last block.
 
 Before we destroyed the old machines and their key shares, we kept a full reader copy of the chain.
 
