@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en" data-skin="control" data-page="reading">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="What each part of the system needs next, with dates where we have them.">
+<meta name="color-scheme" content="light dark">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; script-src 'self'; img-src 'self'; font-src 'self'; base-uri 'none'; form-action 'none'">
+<title>What is next? · TraderSwift</title>
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/style.css">
+<script src="../assets/reading.js" blocking="render"></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><a class="wordmark" href="../index.html" aria-label="TraderSwift home">TraderSwift</a><nav aria-label="Site"><a href="../index.html#updates">Updates</a><a href="../index.html#guides">Guides</a><a href="../index.html#case-studies">Case studies</a><a class="source-link" href="../llms.txt">For agents ↗</a><button class="theme-switch" type="button" aria-label="Switch to dark mode" hidden><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><g class="theme-sun"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></g><path class="theme-moon" d="M20 15.5A9 9 0 0 1 8.5 4 9 9 0 1 0 20 15.5Z"/></svg></button></nav></header>
+<main id="main"><div class="reading-layout"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="../index.html">Home</a><span aria-hidden="true">/</span><a href="index.html">Since Lockbox – A Week of Building Signer and TraderSwift</a></nav>
+<div class="reading-topline"><p class="eyebrow">Chapter 14 <span>/ 15</span></p><nav class="chapter-progress" aria-label="Chapters"><a href="01-what-happened-to-lockbox.html" aria-label="Chapter 1: What happened to Lockbox?">01</a><a href="02-what-is-signer-1-and-what-did-it-do-this-week.html" aria-label="Chapter 2: What is signer-1, and what did it do this week?">02</a><a href="03-what-is-traderswift-1-the-chain-at-the-centre.html" aria-label="Chapter 3: What is traderswift-1, the chain at the centre?">03</a><a href="04-how-did-codex-become-our-main-builder.html" aria-label="Chapter 4: How did Codex become our main builder?">04</a><a href="05-what-is-the-wallet-and-why-does-it-have-no-seed.html" aria-label="Chapter 5: What is the wallet, and why does it have no seed phrase?">05</a><a href="06-why-did-we-build-our-own-sign-in.html" aria-label="Chapter 6: Why did we build our own sign-in?">06</a><a href="07-what-are-signals-and-the-desk.html" aria-label="Chapter 7: What are Signals and the desk?">07</a><a href="08-what-is-storage.html" aria-label="Chapter 8: What is Storage?">08</a><a href="09-what-is-the-traderswift-bus.html" aria-label="Chapter 9: What is the TraderSwift Bus?">09</a><a href="10-how-will-builders-be-paid-on-base.html" aria-label="Chapter 10: How will builders be paid on Base?">10</a><a href="11-what-are-goose-and-our-own-dns.html" aria-label="Chapter 11: What are Goose and our own DNS?">11</a><a href="12-what-did-we-move-onto-our-own-servers.html" aria-label="Chapter 12: What did we move onto our own servers?">12</a><a href="13-what-went-wrong-and-what-did-we-change.html" aria-label="Chapter 13: What went wrong, and what did we change?">13</a><a href="14-what-is-next.html" aria-label="Chapter 14: What is next?" aria-current="page">14</a><a href="15-final-thoughts.html" aria-label="Chapter 15: Final thoughts">15</a></nav></div>
+<article><header class="article-header"><h1>What is next?</h1><p class="standfirst">What each part of the system needs next, with dates where we have them.</p><div class="article-meta"><span>TraderSwift update</span><span>2 min read</span><a href="14-what-is-next.md">Read Markdown ↗</a></div></header><div class="prose"><p>Each part has a next step, with a date where we have one.</p>
+<h2 id="what-is-next-for-signer">What is next for Signer?</h2>
+<ul><li><strong>Sat 21 Nov 2026 (planned).</strong> The next rotation, onto four machines of our own, with Policy v2. It waits on the seal of the four new machines and the sitting that runs it. Aster has no date yet: it waits on its test account being funded, then a sitting after that. Base has no date yet.</li><li><strong>Policy v2.</strong> New limits: a price band, so no order strays too far from the exchange&#x27;s reference price, and a cap on how many orders a key can sign per second. It is <strong>Built, not live</strong> and in review.</li><li><strong>No earlier than Sun 22 Nov 2026.</strong> Signer for your own Hyperliquid account. It waits on the rotation, a live test on a second account, and an audit decision by the owner.</li></ul>
+<h2 id="what-is-next-for-the-hub">What is next for the hub?</h2>
+<ul><li><strong>First charters.</strong> Register the first subnets, for front ends and Storage. There is no date: they wait on one security step, then the owner&#x27;s approval.</li></ul>
+<h2 id="what-is-next-for-storage">What is next for Storage?</h2>
+<ul><li><strong>Founding providers.</strong> Bring them up, then the outside review of the encryption, before any real data.</li></ul>
+<h2 id="what-is-next-for-the-wallet-and-payments">What is next for the wallet and payments?</h2>
+<ul><li><strong>Device ring.</strong> Build its screens.</li><li><strong>Payments.</strong> Take the payment part live once the pieces it waits on are ready.</li></ul>
+<h2 id="what-else-is-next">What else is next?</h2>
+<ul><li><strong>Bus.</strong> Build the parts that are designed, such as encrypted channels, then deploy it.</li><li><strong>Sign-in.</strong> Move apps onto the gate, then DNS.</li><li><strong>Servers.</strong> Finish the move to Proxmox, and prove the rollback before retiring the old setup.</li></ul></div></article>
+<nav class="chapter-navigation" aria-label="Chapter navigation"><a rel="prev" href="13-what-went-wrong-and-what-did-we-change.html"><span>← Previous chapter</span><strong>What went wrong, and what did we change?</strong></a><a rel="next" href="15-final-thoughts.html"><span>Next chapter →</span><strong>Final thoughts</strong></a></nav><p class="reading-hint">One chapter at a time. Use the links to keep reading, or swipe on touch screens.</p></div></main>
+<footer class="site-footer"><span>TraderSwift</span><nav aria-label="Resources"><a href="../index.json">Index</a><a href="../llms.txt">Plain text</a><a href="../sitemap.xml">Sitemap</a></nav></footer>
+</body>
+</html>

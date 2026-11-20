@@ -1,0 +1,1 @@
+I plan to hold two of three shares of a trading key on two small computers at home, with the third share held by a network as a backup. Walk me through what happens if: I travel for a month, one computer dies, both die, or someone steals one. For each case, tell me whether I can still trade, whether I can recover, and what I should set up now.

@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en" data-skin="control" data-page="reading">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="A few cheap devices at home that must agree before your trading key signs: small boards approve each order, two Raspberry Pis sign. Planned.">
+<meta name="color-scheme" content="light dark">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; script-src 'self'; img-src 'self'; font-src 'self'; base-uri 'none'; form-action 'none'">
+<title>How do I run a private Signer network on ESP32s? · TraderSwift</title>
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/style.css">
+<script src="../assets/reading.js" blocking="render"></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><a class="wordmark" href="../index.html" aria-label="TraderSwift home">TraderSwift</a><nav aria-label="Site"><a href="../index.html#updates">Updates</a><a href="../index.html#guides">Guides</a><a href="../index.html#case-studies">Case studies</a><a class="source-link" href="../llms.txt">For agents ↗</a><button class="theme-switch" type="button" aria-label="Switch to dark mode" hidden><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><g class="theme-sun"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></g><path class="theme-moon" d="M20 15.5A9 9 0 0 1 8.5 4 9 9 0 1 0 20 15.5Z"/></svg></button></nav></header>
+<main id="main"><div class="reading-layout"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="../index.html">Home</a><span aria-hidden="true">/</span><a href="index.html">Signer – How to Run, Test and Trade with It</a></nav>
+<div class="reading-topline"><p class="eyebrow">Chapter 12 <span>/ 12</span></p><nav class="chapter-progress" aria-label="Chapters"><a href="01-what-is-signer.html" aria-label="Chapter 1: What is Signer, and who is it for?">01</a><a href="02-how-does-an-order-get-signed.html" aria-label="Chapter 2: How does an order get signed?">02</a><a href="03-how-do-i-try-signer-on-my-own-computer.html" aria-label="Chapter 3: How do I try Signer on my own computer?">03</a><a href="04-how-do-i-write-a-trading-policy.html" aria-label="Chapter 4: How do I write a trading policy?">04</a><a href="05-how-do-i-stop-an-agent-fast.html" aria-label="Chapter 5: How do I stop an agent fast?">05</a><a href="06-how-do-i-read-signers-record.html" aria-label="Chapter 6: How do I read Signer&#x27;s record?">06</a><a href="07-how-do-i-run-a-signer-validator.html" aria-label="Chapter 7: How do I run a Signer validator?">07</a><a href="08-how-do-i-launch-a-node-with-one-link.html" aria-label="Chapter 8: How do I launch a node with one link?">08</a><a href="09-how-do-i-run-my-own-signer-chain.html" aria-label="Chapter 9: How do I run my own Signer chain?">09</a><a href="10-how-do-i-get-a-signer-key-for-my-own-account.html" aria-label="Chapter 10: How do I get a Signer key for my own account?">10</a><a href="11-how-do-i-hold-my-own-key-shares.html" aria-label="Chapter 11: How do I hold my own key shares?">11</a><a href="12-how-do-i-run-a-private-signer-network-on-esp32s.html" aria-label="Chapter 12: How do I run a private Signer network on ESP32s?" aria-current="page">12</a></nav></div>
+<article><header class="article-header"><h1>How do I run a private Signer network on ESP32s?</h1><p class="standfirst">A few cheap devices at home that must agree before your trading key signs: small boards approve each order, two Raspberry Pis sign. Planned.</p><div class="article-meta"><span>TraderSwift guide</span><span>5 min read</span><a href="12-how-do-i-run-a-private-signer-network-on-esp32s.md">Read Markdown ↗</a></div></header><div class="prose"><p><strong>Planned.</strong></p>
+<p>This page is half written on purpose. The first half explains the design and what each device does.</p>
+<p>The second half is the milestones, starting with a bench test. When the bench passes, this page will be updated with the full build.</p>
+<p>Once it is built, you will be able to run a small Signer network in your own home, where nothing signs for you unless your own devices agree.</p>
+<h2 id="what-does-the-home-network-look-like">What does the home network look like?</h2>
+<p>It is a few cheap devices at home that must agree before your trading key signs.</p>
+<p>Each device has a different job:</p>
+<ul><li><strong>Two Raspberry Pis hold the shares.</strong> They hold two of the three pieces, called shares, of your key, and together they can sign.</li><li><strong>Three ESP32s approve.</strong> An ESP32 is a small, cheap computer board. Each one checks the exact order and approves it with its own device key, never a share of your trading key.</li><li><strong>The network holds one share.</strong> On its own it can never sign, and it is your backup.</li></ul>
+<p>We call this group a household quorum. A quorum is the number of members who must agree before something can happen.</p>
+<h2 id="why-can-t-an-esp32-hold-a-share">Why can&#x27;t an ESP32 hold a share?</h2>
+<p>Splitting the jobs lets each device do what it is good at, so the cheapest boards can still guard your key.</p>
+<p>The reason is the kind of key exchanges need. Hyperliquid uses the same signature type as Ethereum.</p>
+<p>Splitting that kind of key takes heavy maths in every signing round, which a Pi can do and an ESP32 can&#x27;t do in reasonable time.</p>
+<p>So the ESP32s approve and the Pis sign. Each Pi refuses to take part in signing unless two of the three ESP32s have approved that exact order.</p>
+<h2 id="does-it-remove-trust-in-the-network">Does it remove trust in the network?</h2>
+<p>Yes, in this form. The network holds one share and it takes any two of three to sign, so the network can never sign alone.</p>
+<p>Your approvals are checked by your own Pis, not by us.</p>
+<p>That only holds because the shares are on your machines. If the network held the shares and your devices only approved, it would protect you against a stolen agent key, but you would still be trusting the network.</p>
+<h2 id="does-it-need-the-devices-to-be-near-each-other">Does it need the devices to be near each other?</h2>
+<p>They talk over Bluetooth, but Bluetooth can be relayed, so it doesn&#x27;t prove distance.</p>
+<p>What the design checks is that the devices taking part have recently heard each other, with authentication. We make no claim about where they are.</p>
+<p>If a device stops hearing the others, it suspends itself.</p>
+<p>It takes two of your enrolled devices to bring it back.</p>
+<h2 id="what-can-i-do-now">What can I do now?</h2>
+<p>If you have the parts, you can start on the device side.</p>
+<p>Every device should show the exact order it approves, and never sign blind.</p>
+<figure class="prompt"><figcaption><span>Try this prompt</span><button class="prompt-copy" type="button" aria-label="Copy prompt" hidden>Copy</button><a href="12-how-do-i-run-a-private-signer-network-on-esp32s-prompt-1.txt" aria-label="Open plain prompt text to copy">Open text to copy ↗</a><span class="prompt-status" role="status" aria-live="polite" aria-atomic="true"></span></figcaption><blockquote><p>I want to build an order approver on an ESP32. It should make its own signing key on the device with flash encryption on, show the order it is asked to approve, wait for a button press, then sign the order digest. List the ESP32 settings I need (secure boot, flash encryption, where the key is stored), the libraries to use for secp256k1 signing, and how to show the order on a small screen. Don&#x27;t write any network code yet.</p></blockquote></figure>
+<h2 id="what-are-the-milestones">What are the milestones?</h2>
+<ol><li><strong>Two Pis sign together.</strong> Timed over Bluetooth and over the network, 100 runs each.</li><li><strong>The household check.</strong> Each Pi refuses to sign without two of three ESP32 approvals of the exact order.</li><li><strong>The relay test.</strong> Prove what Bluetooth can and can&#x27;t show.</li><li><strong>Freshness.</strong> A spec for trusted time and when trust expires.</li><li><strong>Recovery.</strong> A spec for travel, a lost device and total loss.</li><li><strong>Real use.</strong> Only after the steps above, with a throwaway key first.</li></ol>
+<p>Bigger groups, such as 8 of 13 or 13 of 21, come later, once we can show the devices fail independently.</p>
+<h2 id="final-thoughts">Final thoughts</h2>
+<p>A few devices at home put the final say on your trades in your own hands, on hardware that costs very little.</p>
+<p>The design is set: ESP32s approve, Pis sign, and the network is the backup.</p>
+<p>The bench comes first. When it passes, this page gets the full build.</p></div></article>
+<nav class="chapter-navigation" aria-label="Chapter navigation"><a rel="prev" href="11-how-do-i-hold-my-own-key-shares.html"><span>← Previous chapter</span><strong>How do I hold my own key shares?</strong></a><a href="index.html"><span>Guide complete ✓</span><strong>Return to the contents</strong></a></nav><p class="reading-hint">One chapter at a time. Use the links to keep reading, or swipe on touch screens.</p></div></main>
+<footer class="site-footer"><span>TraderSwift</span><nav aria-label="Resources"><a href="../index.json">Index</a><a href="../llms.txt">Plain text</a><a href="../sitemap.xml">Sitemap</a></nav></footer>
+</body>
+</html>

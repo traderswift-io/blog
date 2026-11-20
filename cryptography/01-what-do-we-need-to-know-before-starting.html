@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en" data-skin="control" data-page="reading">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="The properties, building blocks, small mathematics and attacker model that every later chapter uses.">
+<meta name="color-scheme" content="light dark">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; script-src 'self'; img-src 'self'; font-src 'self'; base-uri 'none'; form-action 'none'">
+<title>What do we need to know before starting? · TraderSwift</title>
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/style.css">
+<script src="../assets/reading.js" blocking="render"></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><a class="wordmark" href="../index.html" aria-label="TraderSwift home">TraderSwift</a><nav aria-label="Site"><a href="../index.html#updates">Updates</a><a href="../index.html#guides">Guides</a><a href="../index.html#case-studies">Case studies</a><a class="source-link" href="../llms.txt">For agents ↗</a><button class="theme-switch" type="button" aria-label="Switch to dark mode" hidden><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><g class="theme-sun"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></g><path class="theme-moon" d="M20 15.5A9 9 0 0 1 8.5 4 9 9 0 1 0 20 15.5Z"/></svg></button></nav></header>
+<main id="main"><div class="reading-layout"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="../index.html">Home</a><span aria-hidden="true">/</span><a href="index.html">Cryptography – How to Understand and Review Cryptographic Systems</a></nav>
+<div class="reading-topline"><p class="eyebrow">Chapter 01 <span>/ 15</span></p><nav class="chapter-progress" aria-label="Chapters"><a href="01-what-do-we-need-to-know-before-starting.html" aria-label="Chapter 1: What do we need to know before starting?" aria-current="page">01</a><a href="02-shannon-what-does-ciphertext-reveal.html" aria-label="Chapter 2: Shannon: what does ciphertext reveal?">02</a><a href="03-turing-how-is-the-system-operated.html" aria-label="Chapter 3: Turing: how is the system operated?">03</a><a href="04-diffie-who-owns-the-public-key.html" aria-label="Chapter 4: Diffie: who owns the public key?">04</a><a href="05-hellman-what-makes-the-problem-hard.html" aria-label="Chapter 5: Hellman: what makes the problem hard?">05</a><a href="06-merkle-what-does-a-hash-actually-prove.html" aria-label="Chapter 6: Merkle: what does a hash actually prove?">06</a><a href="07-rivest-why-is-raw-rsa-not-a-scheme.html" aria-label="Chapter 7: Rivest: why is raw RSA not a scheme?">07</a><a href="08-shamir-which-threshold-really-applies.html" aria-label="Chapter 8: Shamir: which threshold really applies?">08</a><a href="09-adleman-how-do-we-check-the-arithmetic.html" aria-label="Chapter 9: Adleman: how do we check the arithmetic?">09</a><a href="10-schneier-what-is-the-system-around-the-algorithm.html" aria-label="Chapter 10: Schneier: what is the system around the algorithm?">10</a><a href="11-what-does-a-complete-review-look-like.html" aria-label="Chapter 11: What does a complete review look like?">11</a><a href="12-what-goes-on-a-review-worksheet.html" aria-label="Chapter 12: What goes on a review worksheet?">12</a><a href="13-what-are-the-exercises-and-answers.html" aria-label="Chapter 13: What are the exercises and answers?">13</a><a href="14-how-do-i-keep-learning.html" aria-label="Chapter 14: How do I keep learning?">14</a><a href="15-sources.html" aria-label="Chapter 15: Sources">15</a></nav></div>
+<article><header class="article-header"><h1>What do we need to know before starting?</h1><p class="standfirst">The properties, building blocks, small mathematics and attacker model that every later chapter uses.</p><div class="article-meta"><span>TraderSwift guide</span><span>4 min read</span><a href="01-what-do-we-need-to-know-before-starting.md">Read Markdown ↗</a></div></header><div class="prose"><p>Start with the property you want.</p>
+<p>These words are often used as though they mean the same thing.</p>
+<h2 id="what-is-cryptography-supposed-to-do">What is cryptography supposed to do?</h2>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Scrollable table"><table><thead><tr><th class="align-left" scope="col">Property</th><th class="align-left" scope="col">What we want</th><th class="align-left" scope="col">What does not establish it by itself</th></tr></thead><tbody><tr><td class="align-left">Confidentiality</td><td class="align-left">An outsider cannot learn protected message contents</td><td class="align-left">A hash or a signature</td></tr><tr><td class="align-left">Integrity</td><td class="align-left">Unauthorized changes are detected</td><td class="align-left">Encryption without authentication</td></tr><tr><td class="align-left">Authentication</td><td class="align-left">Evidence that a message or peer is associated with a particular key or identity</td><td class="align-left">An unverified public key</td></tr><tr><td class="align-left">Authorization</td><td class="align-left">The authenticated party is allowed to perform this action</td><td class="align-left">A valid signature alone</td></tr><tr><td class="align-left">Freshness</td><td class="align-left">A request is new enough and has not already been used</td><td class="align-left">A valid authentication tag</td></tr><tr><td class="align-left">Availability</td><td class="align-left">The service remains usable under its stated failure conditions</td><td class="align-left">Strong mathematics alone</td></tr></tbody></table></div>
+<p>Suppose an agent signs an order to buy 10 units. The signature may establish that a particular key authorized those bytes.</p>
+<p>We still need to decide whether that key may trade this account, whether 10 units exceeds its limit, and whether this exact order has already been executed.</p>
+<p>Those are separate checks. Write them down separately.</p>
+<h2 id="what-are-the-main-building-blocks">What are the main building blocks?</h2>
+<p><strong>Symmetric encryption</strong> uses a shared secret key.</p>
+<p>Anyone who has that key can usually decrypt, and with an authenticated-encryption scheme can also produce valid protected messages.</p>
+<p><strong>Public-key encryption</strong> has a public encryption key and a private decryption key. <strong>Digital signatures</strong> use a private signing key and a public verification key.</p>
+<p>Do not treat signing as a general operation called “encrypting with the private key.” The construction and security goal are different.</p>
+<p>A <strong>hash</strong> creates a digest from data. An ordinary hash is unkeyed: anyone can compute it.</p>
+<p>A <strong>message authentication code</strong>, or MAC, uses a secret key.</p>
+<p><strong>Authenticated encryption with associated data</strong>, or AEAD, protects the message and authenticates additional context that remains visible. [3, 14, 23]</p>
+<p>A <strong>nonce</strong> is a value whose required behavior depends on the scheme.</p>
+<p>For AES-GCM, the essential rule is that it must not repeat under the same key. It need not be secret.</p>
+<p>A password salt has another job. An RSA padding seed has another.</p>
+<p>Calling all three “random numbers” hides requirements we need to inspect.</p>
+<h2 id="how-much-mathematics-do-i-need">How much mathematics do I need?</h2>
+<p>We will use six operations.</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Scrollable table"><table><thead><tr><th class="align-left" scope="col">Notation</th><th class="align-left" scope="col">Meaning</th><th class="align-left" scope="col">Example</th></tr></thead><tbody><tr><td class="align-left"><code>a XOR b</code></td><td class="align-left">Compare corresponding bits; output 1 when they differ</td><td class="align-left"><code>1010 XOR 1100 = 0110</code></td></tr><tr><td class="align-left"><code>a mod p</code></td><td class="align-left">Remainder after dividing by p</td><td class="align-left"><code>29 mod 23 = 6</code></td></tr><tr><td class="align-left"><code>a^b mod p</code></td><td class="align-left">Exponentiation followed by a remainder</td><td class="align-left"><code>5^3 mod 23 = 10</code></td></tr><tr><td class="align-left"><code>gcd(a,b)</code></td><td class="align-left">Greatest common divisor</td><td class="align-left"><code>gcd(12,18) = 6</code></td></tr><tr><td class="align-left"><code>lcm(a,b)</code></td><td class="align-left">Least positive common multiple</td><td class="align-left"><code>lcm(12,18) = 36</code></td></tr><tr><td class="align-left"><code>a^-1 mod p</code></td><td class="align-left">A value that multiplies a to 1 modulo p</td><td class="align-left"><code>3^-1 mod 7 = 5</code></td></tr></tbody></table></div>
+<p>The inverse is not ordinary division.</p>
+<p>We use it because <code>3 × 5 = 15</code>, and <code>15 mod 7 = 1</code>. An inverse exists only when the number and modulus are coprime.</p>
+<p>In Python, <code>pow(a, b, p)</code> calculates modular exponentiation. For an invertible value, <code>pow(a, -1, p)</code> calculates the modular inverse.</p>
+<p>Python&#x27;s <code>^</code> means XOR, not exponentiation; <code>**</code> means exponentiation.</p>
+<p>This distinction matters when copying a formula into code.</p>
+<h2 id="what-does-an-attacker-get-to-do">What does an attacker get to do?</h2>
+<p>An attacker who only records traffic has less power than one who can:</p>
+<ul><li>modify messages;</li><li>submit chosen inputs;</li><li>inspect memory;</li><li>or control a signer.</li></ul>
+<p>Before examining an algorithm, complete this sentence:</p>
+<figure class="code-block"><figcaption>text</figcaption><pre tabindex="0"><code class="language-text">“We want to protect ___ from an attacker who can ___, for ___, assuming ___ remains trustworthy.”</code></pre></figure>
+<p>For example: “We want to protect archived trade instructions from someone who steals the storage database, for seven years, assuming they cannot also obtain the independent decryption key.”</p>
+<p>Now the review has a boundary.</p>
+<p>If the database backup contains that key, the example fails its own assumption.</p></div></article>
+<nav class="chapter-navigation" aria-label="Chapter navigation"><a rel="prev" href="index.html"><span>← Back to contents</span><strong>Table of contents</strong></a><a rel="next" href="02-shannon-what-does-ciphertext-reveal.html"><span>Next chapter →</span><strong>Shannon: what does ciphertext reveal?</strong></a></nav><p class="reading-hint">One chapter at a time. Use the links to keep reading, or swipe on touch screens.</p></div></main>
+<footer class="site-footer"><span>TraderSwift</span><nav aria-label="Resources"><a href="../index.json">Index</a><a href="../llms.txt">Plain text</a><a href="../sitemap.xml">Sitemap</a></nav></footer>
+</body>
+</html>

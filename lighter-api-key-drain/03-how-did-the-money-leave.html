@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en" data-skin="control" data-page="reading">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Five steps, with nothing but a trading key.">
+<meta name="color-scheme" content="light dark">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; script-src 'self'; img-src 'self'; font-src 'self'; base-uri 'none'; form-action 'none'">
+<title>How did the money leave? · TraderSwift</title>
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/style.css">
+<script src="../assets/reading.js" blocking="render"></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><a class="wordmark" href="../index.html" aria-label="TraderSwift home">TraderSwift</a><nav aria-label="Site"><a href="../index.html#updates">Updates</a><a href="../index.html#guides">Guides</a><a href="../index.html#case-studies">Case studies</a><a class="source-link" href="../llms.txt">For agents ↗</a><button class="theme-switch" type="button" aria-label="Switch to dark mode" hidden><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><g class="theme-sun"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></g><path class="theme-moon" d="M20 15.5A9 9 0 0 1 8.5 4 9 9 0 1 0 20 15.5Z"/></svg></button></nav></header>
+<main id="main"><div class="reading-layout"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="../index.html">Home</a><span aria-hidden="true">/</span><a href="index.html">What Would Written Limits on One Key Have Stopped at Lighter?</a></nav>
+<div class="reading-topline"><p class="eyebrow">Chapter 03 <span>/ 09</span></p><nav class="chapter-progress" aria-label="Chapters"><a href="01-what-happened.html" aria-label="Chapter 1: What happened?">01</a><a href="02-who-else-paid-for-it.html" aria-label="Chapter 2: Who else paid for it?">02</a><a href="03-how-did-the-money-leave.html" aria-label="Chapter 3: How did the money leave?" aria-current="page">03</a><a href="04-what-would-the-attacker-try-next.html" aria-label="Chapter 4: What would the attacker try next?">04</a><a href="05-what-limits-would-this-market-maker-have-set.html" aria-label="Chapter 5: What limits would this market maker have set?">05</a><a href="06-how-far-would-the-attacker-have-got.html" aria-label="Chapter 6: How far would the attacker have got?">06</a><a href="07-where-does-the-key-live.html" aria-label="Chapter 7: Where does the key live?">07</a><a href="08-where-is-signer-today.html" aria-label="Chapter 8: Where is Signer today?">08</a><a href="09-final-thoughts.html" aria-label="Chapter 9: Final thoughts">09</a></nav></div>
+<article><header class="article-header"><h1>How did the money leave?</h1><p class="standfirst">Five steps, with nothing but a trading key.</p><div class="article-meta"><span>TraderSwift case study</span><span>3 min read</span><a href="03-how-did-the-money-leave.md">Read Markdown ↗</a></div></header><div class="prose"><p>A Lighter API key can trade.</p>
+<p>It can also create pools, move funds between accounts with the same owner, and withdraw to the owner&#x27;s own wallet (<a href="https://docs.lighter.xyz/developers/integration-guides/api-keys">Lighter docs</a>).</p>
+<p>Lighter&#x27;s public account data and an on-chain analyst&#x27;s breakdown show the attacker used exactly that, with nothing but the victims&#x27; trading key (<a href="https://x.com/0xTria/status/2122280548047671629">0xTria</a>).</p>
+<p>In step 1, a reduce-only order, also called close-only, is one that can only shrink a position, never grow it.</p>
+<ol><li><strong>Close the positions.</strong> Reduce-only orders closed both accounts&#x27; open positions.</li><li><strong>Open a pool in the victim&#x27;s name.</strong> A pool with a 0% fee and no minimum operator share, created inside each victim account.</li><li><strong>Buy the pool.</strong> From their own account, the attacker bought 99.99% of each pool&#x27;s shares, for about 9,999 USDC.</li><li><strong>Fill it from the victim.</strong> Same-owner transfers moved 10.38 million and 5.09 million USDC into the pools, with no wallet signature needed between same-owner accounts at the time (<a href="https://docs.lighter.xyz/developers/integration-guides/deposits-transfers-and-withdrawals">Lighter docs</a>).</li><li><strong>Cash out.</strong> The attacker burned the shares, handing them back to the pool for its cash, and requested withdrawals of 10,393,056.79 and 5,096,588.02 USDC to their own wallet; the first was paid out.</li></ol>
+<p>The share burn is the step that crosses owners.</p>
+<p>A key that &quot;can only withdraw to its owner&quot; still moved about $10.4 million to someone else, and tried for $5.1 million more, without a single wallet signature.</p>
+<h2 id="what-would-signer-have-refused">What would Signer have refused?</h2>
+<p>Signer is our signing network. Its signers are machines that each hold a part of a trading key, and they sign only what a written set of limits, the policy, allows.</p>
+<p>The policy sits on Signer&#x27;s chain, a shared record that every signer reads and anyone can check. When we say &quot;on chain&quot;, we mean on that record.</p>
+<p>Under Signer, the key could only ever be used to trade.</p>
+<p>The trading key the owner hands out is called a delegate. A delegate may send three kinds of request: orders, cancels and the timed cancel-all.</p>
+<p>Anything else is refused by its request type, before any policy field is read. So pool creation, transfers and share operations (steps 2 and 4) are never signed.</p>
+<p>Step 1 is a trading request, and it is the one place the policy has to do the work.</p>
+<p>Close-only orders reduce risk, so they are not size-capped. They are still limited to the markets the policy allows.</p>
+<p>Signer never signs a transfer or a withdrawal. Moving funds stays with the owner&#x27;s own wallet.</p>
+<p>Lighter has since closed this route on its side: transfers into public pools now need a wallet signature (<a href="https://coinmarketcap.com/academy/article/lighter-withdrawals-resume-leaked-api-keys">CoinMarketCap</a>).</p>
+<p>So the pool route closes. A real attacker would not stop there.</p></div></article>
+<nav class="chapter-navigation" aria-label="Chapter navigation"><a rel="prev" href="02-who-else-paid-for-it.html"><span>← Previous chapter</span><strong>Who else paid for it?</strong></a><a rel="next" href="04-what-would-the-attacker-try-next.html"><span>Next chapter →</span><strong>What would the attacker try next?</strong></a></nav><p class="reading-hint">One chapter at a time. Use the links to keep reading, or swipe on touch screens.</p></div></main>
+<footer class="site-footer"><span>TraderSwift</span><nav aria-label="Resources"><a href="../index.json">Index</a><a href="../llms.txt">Plain text</a><a href="../sitemap.xml">Sitemap</a></nav></footer>
+</body>
+</html>

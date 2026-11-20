@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en" data-skin="control" data-page="reading">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="One message signed in your wallet stops your agent from placing anything new.">
+<meta name="color-scheme" content="light dark">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; script-src 'self'; img-src 'self'; font-src 'self'; base-uri 'none'; form-action 'none'">
+<title>How do I stop an agent fast? · TraderSwift</title>
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/style.css">
+<script src="../assets/reading.js" blocking="render"></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><a class="wordmark" href="../index.html" aria-label="TraderSwift home">TraderSwift</a><nav aria-label="Site"><a href="../index.html#updates">Updates</a><a href="../index.html#guides">Guides</a><a href="../index.html#case-studies">Case studies</a><a class="source-link" href="../llms.txt">For agents ↗</a><button class="theme-switch" type="button" aria-label="Switch to dark mode" hidden><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><g class="theme-sun"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></g><path class="theme-moon" d="M20 15.5A9 9 0 0 1 8.5 4 9 9 0 1 0 20 15.5Z"/></svg></button></nav></header>
+<main id="main"><div class="reading-layout"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="../index.html">Home</a><span aria-hidden="true">/</span><a href="index.html">Signer – How to Run, Test and Trade with It</a></nav>
+<div class="reading-topline"><p class="eyebrow">Chapter 05 <span>/ 12</span></p><nav class="chapter-progress" aria-label="Chapters"><a href="01-what-is-signer.html" aria-label="Chapter 1: What is Signer, and who is it for?">01</a><a href="02-how-does-an-order-get-signed.html" aria-label="Chapter 2: How does an order get signed?">02</a><a href="03-how-do-i-try-signer-on-my-own-computer.html" aria-label="Chapter 3: How do I try Signer on my own computer?">03</a><a href="04-how-do-i-write-a-trading-policy.html" aria-label="Chapter 4: How do I write a trading policy?">04</a><a href="05-how-do-i-stop-an-agent-fast.html" aria-label="Chapter 5: How do I stop an agent fast?" aria-current="page">05</a><a href="06-how-do-i-read-signers-record.html" aria-label="Chapter 6: How do I read Signer&#x27;s record?">06</a><a href="07-how-do-i-run-a-signer-validator.html" aria-label="Chapter 7: How do I run a Signer validator?">07</a><a href="08-how-do-i-launch-a-node-with-one-link.html" aria-label="Chapter 8: How do I launch a node with one link?">08</a><a href="09-how-do-i-run-my-own-signer-chain.html" aria-label="Chapter 9: How do I run my own Signer chain?">09</a><a href="10-how-do-i-get-a-signer-key-for-my-own-account.html" aria-label="Chapter 10: How do I get a Signer key for my own account?">10</a><a href="11-how-do-i-hold-my-own-key-shares.html" aria-label="Chapter 11: How do I hold my own key shares?">11</a><a href="12-how-do-i-run-a-private-signer-network-on-esp32s.html" aria-label="Chapter 12: How do I run a private Signer network on ESP32s?">12</a></nav></div>
+<article><header class="article-header"><h1>How do I stop an agent fast?</h1><p class="standfirst">One message signed in your wallet stops your agent from placing anything new.</p><div class="article-meta"><span>TraderSwift guide</span><span>4 min read</span><a href="05-how-do-i-stop-an-agent-fast.md">Read Markdown ↗</a></div></header><div class="prose"><p>After this page you will know how to stop an agent&#x27;s trading with one signed message, and what still works after you do.</p>
+<h2 id="what-does-a-revoke-do">What does a revoke do?</h2>
+<p>A revoke marks the agent&#x27;s policy as revoked on the <code>signer-1</code> chain. We call the agent the delegate.</p>
+<p>A revoke takes effect in the block it lands in.</p>
+<p>From then on the policy allows nothing new: no new orders, and no size increases.</p>
+<p>For 600 seconds after the revoke, the agent can still cancel orders and arm a timed cancel-all, so it can tidy up; after that, everything is refused.</p>
+<p>At launch, the next order after the revoke was refused, and the refusal was on chain three blocks later.</p>
+<p>Each signer does this on its own. Nobody has to call the venue.</p>
+<h2 id="who-can-send-it">Who can send it?</h2>
+<p>Only the owner. The owner signs the revoke with the wallet that claimed the account.</p>
+<p>A copied revoke cannot be sent twice, because of a counter called the epoch.</p>
+<h2 id="what-is-the-epoch">What is the epoch?</h2>
+<p>The epoch is one counter per key. Every policy change and every revoke must carry the counter plus one.</p>
+<p>So an old signed message carries an old number, and the chain refuses it.</p>
+<h2 id="what-do-i-need-to-send-it">What do I need to send it?</h2>
+<p>You need the owner wallet and the next epoch for the key.</p>
+<p>The next value is shown as <code>policy_epoch</code> when you read the key on the chain:</p>
+<figure class="code-block"><figcaption>Code</figcaption><pre tabindex="0"><code class="language-text">GET /signer/policy/v1/keyref/{key_ref}</code></pre></figure>
+<p>&lt;!-- source: chain/README.md:138 --&gt;</p>
+<p>The <code>key_ref</code> is the key&#x27;s name on the chain.</p>
+<p>The owner signs a short text, and that text is in the public repository:</p>
+<figure class="code-block"><figcaption>Code</figcaption><pre tabindex="0"><code class="language-text">signer revoke policy
+chain id: &lt;chain id&gt;
+key ref: &lt;key_ref&gt;
+delegate key: &lt;hex&gt;
+epoch: &lt;n&gt;</code></pre></figure>
+<p>&lt;!-- source: chain/README.md:127 --&gt;</p>
+<p>This is the text your wallet signs. It goes to the chain as a <code>RevokePolicy</code> message.</p>
+<p>There is no one-line command for it in the public code yet.</p>
+<h2 id="how-do-i-see-that-it-worked">How do I see that it worked?</h2>
+<p>Read the policy back from the chain. The <code>revoked</code> field is true, and <code>revoked_at</code> holds the block time.</p>
+<figure class="code-block"><figcaption>Code</figcaption><pre tabindex="0"><code class="language-text">GET /signer/policy/v1/policy/{key_ref}/{delegate_key}</code></pre></figure>
+<p>&lt;!-- source: chain/README.md:138 --&gt;</p>
+<p>Then look at the decision records for the next order. It should be refused with a reason, and the refusal is public.</p>
+<h2 id="what-else-should-i-know">What else should I know?</h2>
+<ul><li><strong>Repeat revokes.</strong> A second revoke does not move <code>revoked_at</code>. The first one holds.</li><li><strong>A new policy clears the revoke.</strong> If you want the delegate gone for good, do not set one.</li></ul>
+<h2 id="who-should-send-the-revoke">Who should send the revoke?</h2>
+<p>You can send it yourself. You can also hand the job to your own risk monitor.</p>
+<p>A signer sees only orders, never fills, so it cannot track your position or loss. Your monitor can.</p>
+<p>Write the rule in the open: when position or daily loss passes your limit, revoke.</p>
+<p>Position and drawdown limits stay with you by design, and the revoke is what makes them hard.</p>
+<figure class="prompt"><figcaption><span>Try this prompt</span><button class="prompt-copy" type="button" aria-label="Copy prompt" hidden>Copy</button><a href="05-how-do-i-stop-an-agent-fast-prompt-1.txt" aria-label="Open plain prompt text to copy">Open text to copy ↗</a><span class="prompt-status" role="status" aria-live="polite" aria-atomic="true"></span></figcaption><blockquote><p>I run a trading agent that signs through Signer. Help me write a risk rule that decides when to revoke the agent&#x27;s policy on chain. The rule should name my position limit per market, my daily loss limit, and what happens after a revoke: who is told, and how I check that the next order was refused. Ask me for the numbers one at a time. Do not guess them. Do not write code that holds my wallet key.</p></blockquote></figure>
+<h2 id="what-stops-without-a-revoke">What stops without a revoke?</h2>
+<p>A policy has an <code>expires_at</code>. After it, the delegate is refused, again after the same 600-second window for cancels.</p>
+<p>Transfers and withdrawals are always refused, whatever the policy says.</p>
+<h2 id="final-thoughts">Final thoughts</h2>
+<p>The revoke is one signed message. It stops anything new, and it leaves cancels so you can clear the book.</p>
+<p>It is the hard stop behind every limit you keep yourself. Next, go back to the <a href="04-how-do-i-write-a-trading-policy.html">policy article</a> and decide which limits those are.</p></div></article>
+<nav class="chapter-navigation" aria-label="Chapter navigation"><a rel="prev" href="04-how-do-i-write-a-trading-policy.html"><span>← Previous chapter</span><strong>How do I write a trading policy?</strong></a><a rel="next" href="06-how-do-i-read-signers-record.html"><span>Next chapter →</span><strong>How do I read Signer&#x27;s record?</strong></a></nav><p class="reading-hint">One chapter at a time. Use the links to keep reading, or swipe on touch screens.</p></div></main>
+<footer class="site-footer"><span>TraderSwift</span><nav aria-label="Resources"><a href="../index.json">Index</a><a href="../llms.txt">Plain text</a><a href="../sitemap.xml">Sitemap</a></nav></footer>
+</body>
+</html>

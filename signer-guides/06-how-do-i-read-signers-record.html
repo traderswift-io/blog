@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en" data-skin="control" data-page="reading">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Run your own copy of the Signer chain, without joining it, and see every order it signed or refused.">
+<meta name="color-scheme" content="light dark">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; script-src 'self'; img-src 'self'; font-src 'self'; base-uri 'none'; form-action 'none'">
+<title>How do I read Signer&#x27;s record? · TraderSwift</title>
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/style.css">
+<script src="../assets/reading.js" blocking="render"></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><a class="wordmark" href="../index.html" aria-label="TraderSwift home">TraderSwift</a><nav aria-label="Site"><a href="../index.html#updates">Updates</a><a href="../index.html#guides">Guides</a><a href="../index.html#case-studies">Case studies</a><a class="source-link" href="../llms.txt">For agents ↗</a><button class="theme-switch" type="button" aria-label="Switch to dark mode" hidden><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><g class="theme-sun"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></g><path class="theme-moon" d="M20 15.5A9 9 0 0 1 8.5 4 9 9 0 1 0 20 15.5Z"/></svg></button></nav></header>
+<main id="main"><div class="reading-layout"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="../index.html">Home</a><span aria-hidden="true">/</span><a href="index.html">Signer – How to Run, Test and Trade with It</a></nav>
+<div class="reading-topline"><p class="eyebrow">Chapter 06 <span>/ 12</span></p><nav class="chapter-progress" aria-label="Chapters"><a href="01-what-is-signer.html" aria-label="Chapter 1: What is Signer, and who is it for?">01</a><a href="02-how-does-an-order-get-signed.html" aria-label="Chapter 2: How does an order get signed?">02</a><a href="03-how-do-i-try-signer-on-my-own-computer.html" aria-label="Chapter 3: How do I try Signer on my own computer?">03</a><a href="04-how-do-i-write-a-trading-policy.html" aria-label="Chapter 4: How do I write a trading policy?">04</a><a href="05-how-do-i-stop-an-agent-fast.html" aria-label="Chapter 5: How do I stop an agent fast?">05</a><a href="06-how-do-i-read-signers-record.html" aria-label="Chapter 6: How do I read Signer&#x27;s record?" aria-current="page">06</a><a href="07-how-do-i-run-a-signer-validator.html" aria-label="Chapter 7: How do I run a Signer validator?">07</a><a href="08-how-do-i-launch-a-node-with-one-link.html" aria-label="Chapter 8: How do I launch a node with one link?">08</a><a href="09-how-do-i-run-my-own-signer-chain.html" aria-label="Chapter 9: How do I run my own Signer chain?">09</a><a href="10-how-do-i-get-a-signer-key-for-my-own-account.html" aria-label="Chapter 10: How do I get a Signer key for my own account?">10</a><a href="11-how-do-i-hold-my-own-key-shares.html" aria-label="Chapter 11: How do I hold my own key shares?">11</a><a href="12-how-do-i-run-a-private-signer-network-on-esp32s.html" aria-label="Chapter 12: How do I run a private Signer network on ESP32s?">12</a></nav></div>
+<article><header class="article-header"><h1>How do I read Signer&#x27;s record?</h1><p class="standfirst">Run your own copy of the Signer chain, without joining it, and see every order it signed or refused.</p><div class="article-meta"><span>TraderSwift guide</span><span>8 min read</span><a href="06-how-do-i-read-signers-record.md">Read Markdown ↗</a></div></header><div class="prose"><p>By the end of this page you will be able to run your own read-only copy of the Signer chain, <code>signer-1</code>, and look at what it recorded.</p>
+<p>You do not join the group of machines that make blocks, and you do not hold any key.</p>
+<h2 id="what-does-the-chain-record">What does the chain record?</h2>
+<p>Signer keeps its rules and its decisions on one small chain.</p>
+<p>That helps you, because you can check every limit and every decision yourself, without asking us. Every node, every copy of the chain, holds all of it.</p>
+<ul><li><strong>Policies.</strong> An owner writes which venues a key may trade, which assets, and the size caps. The owner signs the policy with a wallet.</li><li><strong>Decisions.</strong> Every request a signer sees is recorded, signed or refused. The record has a block height, a request id, the signer, the decision, the reason and a fingerprint of the order.</li></ul>
+<p>The decision record is the part most people want. It is how you check that a refusal really happened.</p>
+<p>&lt;!-- source: docs/INTERFACES.md:7-16 --&gt;</p>
+<h2 id="why-does-the-record-help-me">Why does the record help me?</h2>
+<p>A refused order shows you that someone tried to trade outside your policy.</p>
+<p>Normally, whoever had your key would either drain the account, or you would never know they had been in. With Signer, the attempt is refused and the refusal is on the record.</p>
+<h2 id="how-does-signer-keep-my-account-private">How does Signer keep my account private?</h2>
+<p>Your trading account address and the contents of your orders never appear on <code>signer-1</code> in readable form.</p>
+<p>The chain holds only fingerprints of them, which the signers check, and only the signers can open the details.</p>
+<p>What the chain does show is that a policy exists, its markets, size limits and expiry, and when each request was signed or refused, so anyone can confirm the rules were followed.</p>
+<p>In the next release, your markets and limits are kept private the same way.</p>
+<p>This applies to user accounts, from the rotation, target Saturday 21 November 2026. Our own test account is public by choice.</p>
+<p>The exchange is a separate matter. Hyperliquid shows every account&#x27;s orders and positions publicly once someone knows the address, and Signer doesn&#x27;t add or change that.</p>
+<h2 id="is-there-a-public-page-or-endpoint-to-read-it">Is there a public page or endpoint to read it?</h2>
+<p>No. There is no public read endpoint today.</p>
+<p>The only way to read the record is your own node.</p>
+<p>So you sync a node from the chain&#x27;s public start file and peer list in <code>networks/signer-1/</code>, then ask it on your own machine.</p>
+<h2 id="what-do-i-need">What do I need?</h2>
+<ul><li><strong>A Linux machine.</strong> One CPU, 2 GB of memory and 20 GB of disk is enough today.</li><li><strong>Go 1.26.5.</strong> The public guide pins this exact version. A newer Go prints a warning on every command.</li><li><strong>`jq` and `curl`.</strong> The checks below use both.</li><li><strong>Outgoing access to the peers.</strong> The node needs outgoing connections on port 26656. An open incoming port is better but not required.</li></ul>
+<p>&lt;!-- source: SKILL.md:27 --&gt;</p>
+<h2 id="how-do-i-get-a-read-only-node">How do I get a read-only node?</h2>
+<p>A node that has not joined is a full node. It follows the chain and signs nothing.</p>
+<p>So you follow the validator steps up to the wait, and you skip the join. <a href="07-how-do-i-run-a-signer-validator.html">How do I run a Signer validator?</a> starts from here.</p>
+<p>The first step is the build.</p>
+<figure class="code-block"><figcaption>Code</figcaption><pre tabindex="0"><code class="language-text">git clone https://github.com/traderswift-io/signer.git signer
+cd signer/chain
+GOTOOLCHAIN=go1.26.5 go build -trimpath -o signerd .
+sha256sum signerd</code></pre></figure>
+<p>&lt;!-- source: docs/VALIDATOR_JOIN.md:42-45 --&gt;</p>
+<p>There is no published binary yet, so you build from source. The checksum only names the file you built; there is no published value to compare it with.</p>
+<p>Next, make the node&#x27;s own keys. Pick a short public nickname for <code>&lt;your moniker&gt;</code>, and keep secrets and account names out of it.</p>
+<figure class="code-block"><figcaption>Code</figcaption><pre tabindex="0"><code class="language-text">sudo -u signer /opt/signer/bin/signerd init &lt;your moniker&gt; --chain-id signer-1 --home /var/lib/signer/chain</code></pre></figure>
+<p>&lt;!-- source: docs/VALIDATOR_JOIN.md:61 --&gt;</p>
+<p>Never share the two key files this writes, and never send <code>priv_validator_key.json</code> to anyone, us included.</p>
+<p>That line assumes the system layout from the operator guide. If you build as an ordinary user, the agent guide has the same step with a folder of your own, and it needs no sudo.</p>
+<h2 id="how-do-i-check-the-genesis-file">How do I check the genesis file?</h2>
+<p>The genesis file is the chain&#x27;s start file: its first rules. The repository ships it with a hash, a fingerprint of the file, beside it.</p>
+<p>Stop if the check does not print <code>OK</code>.</p>
+<figure class="code-block"><figcaption>Code</figcaption><pre tabindex="0"><code class="language-text">cd signer/networks/signer-1
+sha256sum -c genesis.sha256                     # must print: genesis.json: OK
+sudo -u signer cp genesis.json /var/lib/signer/chain/config/genesis.json
+paste -sd, peers.txt                            # your persistent_peers value</code></pre></figure>
+<p>&lt;!-- source: docs/VALIDATOR_JOIN.md:80-83 --&gt;</p>
+<p>Put the peer list in <code>persistent_peers</code> in <code>config.toml</code>. The operator guide shows the exact lines.</p>
+<p>The hash and the file come from the same place, the repository. So the check proves your copy is intact, not that the source is right.</p>
+<p>Today the repository is the only published source for the hash.</p>
+<h2 id="how-do-i-start-it-and-wait-for-it-to-catch-up">How do I start it and wait for it to catch up?</h2>
+<p>The operator guide runs the node under cosmovisor. Follow that section, then check the status.</p>
+<figure class="code-block"><figcaption>Code</figcaption><pre tabindex="0"><code class="language-text">curl -s http://127.0.0.1:26657/status | jq .result.sync_info</code></pre></figure>
+<p>&lt;!-- source: docs/VALIDATOR_JOIN.md:154 --&gt;</p>
+<p>You can also check height and peers. Wait until <code>catching_up</code> is <code>false</code> and <code>n_peers</code> is at least 1.</p>
+<figure class="code-block"><figcaption>Code</figcaption><pre tabindex="0"><code class="language-text">curl -s 127.0.0.1:26657/status | jq &#x27;.result.sync_info | {latest_block_height, catching_up}&#x27;
+curl -s 127.0.0.1:26657/net_info | jq .result.n_peers</code></pre></figure>
+<p>&lt;!-- source: SKILL.md:79-80 --&gt;</p>
+<p>A first sync replays every block from block 1, so it takes several hours. State sync is not offered yet.</p>
+<h2 id="how-do-i-look-at-the-policies">How do I look at the policies?</h2>
+<p>Every key Signer holds has a <strong>key ref</strong>: its name on the chain.</p>
+<p>The key ref records which signers hold the shares, how many must agree, and the policy epoch, a counter that goes up with every policy change.</p>
+<p>Find a key ref in the decision log below, then look it up:</p>
+<figure class="code-block"><figcaption>Code</figcaption><pre tabindex="0"><code class="language-text">signerd query policy key-ref --key-ref &lt;key ref&gt; --node tcp://127.0.0.1:26657 -o json</code></pre></figure>
+<p>&lt;!-- source: signer, checked on the live chain 18 Nov; the flag is required, a positional argument is refused --&gt;</p>
+<p>The chain also serves the same data on REST, if you turn it on.</p>
+<p>In your node&#x27;s <code>config/app.toml</code>, under <code>[api]</code>, set <code>enable = true</code> and keep the address on your own machine, as the operator guide says. Then:</p>
+<ul><li><strong>One key ref:</strong> <code>GET /signer/policy/v1/keyref/{key_ref}</code>. The reply also shows the next epoch.</li></ul>
+<p>A missing item returns 404.</p>
+<p>&lt;!-- source: docs/INTERFACES.md:49 --&gt;</p>
+<h2 id="how-do-i-look-at-the-decisions">How do I look at the decisions?</h2>
+<p>Decisions are read with the command line. The record is a list, and you read it in pages.</p>
+<figure class="code-block"><figcaption>Code</figcaption><pre tabindex="0"><code class="language-text">signerd query policy --node tcp://127.0.0.1:26657</code></pre></figure>
+<p>&lt;!-- source: chain/README.md:44,138 --&gt;</p>
+<p>That command lists the policy queries. The decision log is <code>log-entries</code>, read in pages from a first sequence number:</p>
+<figure class="code-block"><figcaption>Code</figcaption><pre tabindex="0"><code class="language-text">signerd query policy log-entries --first-sequence 1 --limit 20 --node tcp://127.0.0.1:26657 -o json</code></pre></figure>
+<p>&lt;!-- source: signer, run against the live chain 18 Nov --&gt;</p>
+<p>The answer carries <code>next_sequence</code>. Use it as the next <code>--first-sequence</code> to read the following page.</p>
+<p>The page size stops at 1000.</p>
+<h2 id="how-do-i-read-one-decision">How do I read one decision?</h2>
+<p>Each entry holds a height, a request id, a key ref, a signer id, a decision, a reason and an intent hash, the fingerprint of the order request.</p>
+<p>&lt;!-- source: docs/INTERFACES.md:15 --&gt;</p>
+<p>A normal order on <code>signer-1</code> leaves four lines. Three signers say <code>signed</code>.</p>
+<p>The fourth says <code>refused</code> with the reason <code>quorum_met_without_this_signer</code>, because three of four were enough. That line is not a rejection of the order.</p>
+<p>Real refusals carry other reasons. <code>vault_mismatch</code>, <code>asset_not_allowed</code> and <code>policy_closed</code> are three of them.</p>
+<p>A request refused by the first signer before it proposes leaves one line.</p>
+<p>&lt;!-- source: docs/INTERFACES.md:105-119 --&gt;</p>
+<h2 id="how-do-i-let-my-agent-read-it-for-me">How do I let my agent read it for me?</h2>
+<figure class="prompt"><figcaption><span>Try this prompt</span><button class="prompt-copy" type="button" aria-label="Copy prompt" hidden>Copy</button><a href="06-how-do-i-read-signers-record-prompt-1.txt" aria-label="Open plain prompt text to copy">Open text to copy ↗</a><span class="prompt-status" role="status" aria-live="polite" aria-atomic="true"></span></figcaption><blockquote><p>Follow the steps for a node that does not join in docs/VALIDATOR_JOIN.md of github.com/traderswift-io/signer. Build signerd with the exact Go version it names, check the genesis hash, start the node and wait until catching_up is false. Do not run the join step. Never print the two key files in the node&#x27;s config folder. Then list the decision records and tell me, in plain words, how many were signed and how many were refused, and the most common refusal reason. If a step fails, stop and show me the last 30 lines of the log.</p></blockquote></figure>
+<h2 id="final-thoughts">Final thoughts</h2>
+<p>You can now read the same record we read. Nobody has to tell you what a signer did, because the chain says so.</p>
+<p>If you want your node to help make blocks as well, read <a href="07-how-do-i-run-a-signer-validator.html">How do I run a Signer validator?</a>.</p></div></article>
+<nav class="chapter-navigation" aria-label="Chapter navigation"><a rel="prev" href="05-how-do-i-stop-an-agent-fast.html"><span>← Previous chapter</span><strong>How do I stop an agent fast?</strong></a><a rel="next" href="07-how-do-i-run-a-signer-validator.html"><span>Next chapter →</span><strong>How do I run a Signer validator?</strong></a></nav><p class="reading-hint">One chapter at a time. Use the links to keep reading, or swipe on touch screens.</p></div></main>
+<footer class="site-footer"><span>TraderSwift</span><nav aria-label="Resources"><a href="../index.json">Index</a><a href="../llms.txt">Plain text</a><a href="../sitemap.xml">Sitemap</a></nav></footer>
+</body>
+</html>

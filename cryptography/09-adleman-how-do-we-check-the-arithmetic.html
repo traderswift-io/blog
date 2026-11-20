@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en" data-skin="control" data-page="reading">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="How an RSA key is built, why a faster shortcut needs a check, and what one bad output gives away.">
+<meta name="color-scheme" content="light dark">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; script-src 'self'; img-src 'self'; font-src 'self'; base-uri 'none'; form-action 'none'">
+<title>Adleman: how do we check the arithmetic? · TraderSwift</title>
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/style.css">
+<script src="../assets/reading.js" blocking="render"></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><a class="wordmark" href="../index.html" aria-label="TraderSwift home">TraderSwift</a><nav aria-label="Site"><a href="../index.html#updates">Updates</a><a href="../index.html#guides">Guides</a><a href="../index.html#case-studies">Case studies</a><a class="source-link" href="../llms.txt">For agents ↗</a><button class="theme-switch" type="button" aria-label="Switch to dark mode" hidden><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><g class="theme-sun"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></g><path class="theme-moon" d="M20 15.5A9 9 0 0 1 8.5 4 9 9 0 1 0 20 15.5Z"/></svg></button></nav></header>
+<main id="main"><div class="reading-layout"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="../index.html">Home</a><span aria-hidden="true">/</span><a href="index.html">Cryptography – How to Understand and Review Cryptographic Systems</a></nav>
+<div class="reading-topline"><p class="eyebrow">Chapter 09 <span>/ 15</span></p><nav class="chapter-progress" aria-label="Chapters"><a href="01-what-do-we-need-to-know-before-starting.html" aria-label="Chapter 1: What do we need to know before starting?">01</a><a href="02-shannon-what-does-ciphertext-reveal.html" aria-label="Chapter 2: Shannon: what does ciphertext reveal?">02</a><a href="03-turing-how-is-the-system-operated.html" aria-label="Chapter 3: Turing: how is the system operated?">03</a><a href="04-diffie-who-owns-the-public-key.html" aria-label="Chapter 4: Diffie: who owns the public key?">04</a><a href="05-hellman-what-makes-the-problem-hard.html" aria-label="Chapter 5: Hellman: what makes the problem hard?">05</a><a href="06-merkle-what-does-a-hash-actually-prove.html" aria-label="Chapter 6: Merkle: what does a hash actually prove?">06</a><a href="07-rivest-why-is-raw-rsa-not-a-scheme.html" aria-label="Chapter 7: Rivest: why is raw RSA not a scheme?">07</a><a href="08-shamir-which-threshold-really-applies.html" aria-label="Chapter 8: Shamir: which threshold really applies?">08</a><a href="09-adleman-how-do-we-check-the-arithmetic.html" aria-label="Chapter 9: Adleman: how do we check the arithmetic?" aria-current="page">09</a><a href="10-schneier-what-is-the-system-around-the-algorithm.html" aria-label="Chapter 10: Schneier: what is the system around the algorithm?">10</a><a href="11-what-does-a-complete-review-look-like.html" aria-label="Chapter 11: What does a complete review look like?">11</a><a href="12-what-goes-on-a-review-worksheet.html" aria-label="Chapter 12: What goes on a review worksheet?">12</a><a href="13-what-are-the-exercises-and-answers.html" aria-label="Chapter 13: What are the exercises and answers?">13</a><a href="14-how-do-i-keep-learning.html" aria-label="Chapter 14: How do I keep learning?">14</a><a href="15-sources.html" aria-label="Chapter 15: Sources">15</a></nav></div>
+<article><header class="article-header"><h1>Adleman: how do we check the arithmetic?</h1><p class="standfirst">How an RSA key is built, why a faster shortcut needs a check, and what one bad output gives away.</p><div class="article-meta"><span>TraderSwift guide</span><span>5 min read</span><a href="09-adleman-how-do-we-check-the-arithmetic.md">Read Markdown ↗</a></div></header><div class="prose"><p><strong>The question:</strong> Were the key&#x27;s mathematical conditions satisfied, and can a faulty result leave the signer?</p>
+<h2 id="where-do-primes-and-lambda-enter-rsa">Where do primes and lambda enter RSA?</h2>
+<p>For two-prime RSA, start with distinct suitable primes p and q.</p>
+<p>Set <code>n = p × q</code> and <code>lambda(n) = lcm(p - 1, q - 1)</code>. Choose e coprime to lambda(n), then choose d so <code>e × d = 1 mod lambda(n)</code>.</p>
+<p>RFC 8017 gives these key conditions. [15]</p>
+<p>For our example:</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Scrollable table"><table><thead><tr><th class="align-left" scope="col">Quantity</th><th class="align-left" scope="col">Value</th></tr></thead><tbody><tr><td class="align-left">p and q</td><td class="align-left">61 and 53</td></tr><tr><td class="align-left">n</td><td class="align-left">3233</td></tr><tr><td class="align-left">phi(n)</td><td class="align-left">60 × 52 = 3120</td></tr><tr><td class="align-left">lambda(n)</td><td class="align-left">lcm(60,52) = 780</td></tr><tr><td class="align-left">e</td><td class="align-left">17</td></tr><tr><td class="align-left">d</td><td class="align-left">413</td></tr><tr><td class="align-left">Check</td><td class="align-left">17 × 413 = 7021 = 1 mod 780</td></tr></tbody></table></div>
+<p>You may have seen d = 2753 for the same p, q and e. That value is the inverse modulo phi(n) and is also congruent to 413 modulo lambda(n).</p>
+<p>Both satisfy the required relationship. The displayed private exponent is not necessarily unique across equivalent representations.</p>
+<p>Prime generation is an implementation task with specified randomness, size, testing and acceptance conditions.</p>
+<p>Use a vetted key-generation implementation and the relevant profile; FIPS 186-5 describes RSA signature key-generation requirements and has published errata to consult. [25]</p>
+<p>Choosing distinct primes is essential. If two public moduli share a prime, their greatest common divisor can reveal it.</p>
+<p>For example, <code>n1 = 61 × 53</code> and <code>n2 = 61 × 47</code> have gcd 61. A shared generation failure can therefore compromise more than one key.</p>
+<h2 id="why-use-the-chinese-remainder-theorem">Why use the Chinese remainder theorem?</h2>
+<p>CRT computes the private operation modulo p and modulo q separately, then recombines the results.</p>
+<p>Working with smaller numbers is faster.</p>
+<p>For a signature operation on an encoded representative m:</p>
+<p><code>dP = d mod (p - 1)</code></p>
+<p><code>dQ = d mod (q - 1)</code></p>
+<p><code>sP = m^dP mod p</code></p>
+<p><code>sQ = m^dQ mod q</code></p>
+<p>With <code>qInv = q^-1 mod p</code>, recombine:</p>
+<p><code>h = qInv × (sP - sQ) mod p</code></p>
+<p><code>s = sQ + q × h</code></p>
+<p>The result has the required residue modulo each prime.</p>
+<p>In a real RSA signature, m is the scheme&#x27;s encoded representative, not an arbitrary message integer.</p>
+<h2 id="why-check-the-result-before-release">Why check the result before release?</h2>
+<p>Suppose one branch is faulty. The output may remain correct modulo q but become wrong modulo p.</p>
+<p>Under the relevant conditions, a faulty signature and the known representative allow an attacker to recover a factor using <code>gcd(s_fault^e - m, n)</code>.</p>
+<p>Fault attacks against CRT RSA are established in the work of Boneh, DeMillo and Lipton. [26]</p>
+<p>Our example makes this visible. With m = 65, the correct signature representative is 588.</p>
+<p>Change the p-branch residue from 39 to 40 before recombination. The faulty result is 2602.</p>
+<p><code>gcd(2602^17 - 65, 3233) = 53</code></p>
+<p>One defective output has exposed a factor.</p>
+<p>The lab uses modular exponentiation to keep the intermediate calculation small; subtracting m after reducing modulo n gives the same gcd with n.</p>
+<p>Here is the lab. It is also in <a href="../assets/cryptography/Cryptography_Practical_Labs.py">the labs file</a>, so you can run it on your own computer.</p>
+<figure class="code-block"><figcaption>python</figcaption><pre tabindex="0"><code class="language-python">from math import gcd, lcm
+
+
+def check(condition: bool, description: str) -&gt; None:
+    if not condition:
+        raise AssertionError(description)
+
+
+p, q, e, representative = 61, 53, 17, 65
+n = p * q
+private_d = pow(e, -1, lcm(p - 1, q - 1))
+sp = pow(representative, private_d % (p - 1), p)
+sq = pow(representative, private_d % (q - 1), q)
+qinv = pow(q, -1, p)
+signature = sq + q * ((qinv * (sp - sq)) % p)
+faulty = sq + q * ((qinv * ((sp + 1) - sq)) % p)
+check(signature == 588 and faulty == 2602, &quot;Guide CRT values&quot;)
+check(pow(signature, e, n) == representative, &quot;Good result verifies&quot;)
+check(pow(faulty, e, n) != representative, &quot;Faulty result must not be released&quot;)
+factor = gcd(pow(faulty, e, n) - representative, n)
+check(factor == 53, &quot;Fault reveals a prime factor&quot;)
+print(&quot;6 CRT fault: bad result 2602 reveals factor 53; verification rejects&quot;)</code></pre></figure>
+<p>Before releasing s, check <code>s^e mod n == m</code>.</p>
+<p>For decryption, the corresponding check compares re-encryption of the recovered representative with the input ciphertext before releasing the decoded plaintext. The implementation must place checks at the right boundary and fail closed. [26]</p>
+<p>This check is a defense against a defined fault model. It is not a complete answer to every physical attack: a stronger attacker might fault the check itself.</p>
+<p>Blinding, constant-time arithmetic and fault defenses address different issues and need separate evaluation.</p>
+<h2 id="what-should-i-look-for-in-code">What should I look for in code?</h2>
+<p>Trace private-key use through the actual library or hardware boundary.</p>
+<p>Determine whether output verification occurs there and whether an error can still return partial or stale output.</p>
+<p>An application-level successful round trip does not establish that the private operation has this defense internally.</p>
+<p><strong>Try it:</strong> A signer notices that a CRT result is inconsistent, writes a warning, and returns the result anyway. Explain why the warning does not contain the failure.</p></div></article>
+<nav class="chapter-navigation" aria-label="Chapter navigation"><a rel="prev" href="08-shamir-which-threshold-really-applies.html"><span>← Previous chapter</span><strong>Shamir: which threshold really applies?</strong></a><a rel="next" href="10-schneier-what-is-the-system-around-the-algorithm.html"><span>Next chapter →</span><strong>Schneier: what is the system around the algorithm?</strong></a></nav><p class="reading-hint">One chapter at a time. Use the links to keep reading, or swipe on touch screens.</p></div></main>
+<footer class="site-footer"><span>TraderSwift</span><nav aria-label="Resources"><a href="../index.json">Index</a><a href="../llms.txt">Plain text</a><a href="../sitemap.xml">Sitemap</a></nav></footer>
+</body>
+</html>

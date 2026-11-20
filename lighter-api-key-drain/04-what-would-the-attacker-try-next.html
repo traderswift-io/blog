@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en" data-skin="control" data-page="reading">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="With only a trading key, the attacker has to move value by trading.">
+<meta name="color-scheme" content="light dark">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; script-src 'self'; img-src 'self'; font-src 'self'; base-uri 'none'; form-action 'none'">
+<title>What would the attacker try next? · TraderSwift</title>
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/style.css">
+<script src="../assets/reading.js" blocking="render"></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><a class="wordmark" href="../index.html" aria-label="TraderSwift home">TraderSwift</a><nav aria-label="Site"><a href="../index.html#updates">Updates</a><a href="../index.html#guides">Guides</a><a href="../index.html#case-studies">Case studies</a><a class="source-link" href="../llms.txt">For agents ↗</a><button class="theme-switch" type="button" aria-label="Switch to dark mode" hidden><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><g class="theme-sun"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></g><path class="theme-moon" d="M20 15.5A9 9 0 0 1 8.5 4 9 9 0 1 0 20 15.5Z"/></svg></button></nav></header>
+<main id="main"><div class="reading-layout"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="../index.html">Home</a><span aria-hidden="true">/</span><a href="index.html">What Would Written Limits on One Key Have Stopped at Lighter?</a></nav>
+<div class="reading-topline"><p class="eyebrow">Chapter 04 <span>/ 09</span></p><nav class="chapter-progress" aria-label="Chapters"><a href="01-what-happened.html" aria-label="Chapter 1: What happened?">01</a><a href="02-who-else-paid-for-it.html" aria-label="Chapter 2: Who else paid for it?">02</a><a href="03-how-did-the-money-leave.html" aria-label="Chapter 3: How did the money leave?">03</a><a href="04-what-would-the-attacker-try-next.html" aria-label="Chapter 4: What would the attacker try next?" aria-current="page">04</a><a href="05-what-limits-would-this-market-maker-have-set.html" aria-label="Chapter 5: What limits would this market maker have set?">05</a><a href="06-how-far-would-the-attacker-have-got.html" aria-label="Chapter 6: How far would the attacker have got?">06</a><a href="07-where-does-the-key-live.html" aria-label="Chapter 7: Where does the key live?">07</a><a href="08-where-is-signer-today.html" aria-label="Chapter 8: Where is Signer today?">08</a><a href="09-final-thoughts.html" aria-label="Chapter 9: Final thoughts">09</a></nav></div>
+<article><header class="article-header"><h1>What would the attacker try next?</h1><p class="standfirst">With only a trading key, the attacker has to move value by trading.</p><div class="article-meta"><span>TraderSwift case study</span><span>1 min read</span><a href="04-what-would-the-attacker-try-next.md">Read Markdown ↗</a></div></header><div class="prose"><p>With only a trading key, the attacker has to move value by trading.</p>
+<p>The plausible route is to trade the victim&#x27;s account against the attacker&#x27;s own:</p>
+<ul><li><strong>Pick a thin market.</strong> An instrument with little depth, where the attacker can rest orders at bad prices.</li><li><strong>Cross the spread from the victim&#x27;s account.</strong> Either one large market order into the attacker&#x27;s resting orders, or many small ones to stay under any single-order limit.</li><li><strong>Repeat until stopped.</strong> Each fill moves a little value from the victim to the attacker.</li></ul>
+<p>This is the attack a policy has to stop. A market maker&#x27;s own trading history says a lot about what that policy should be.</p></div></article>
+<nav class="chapter-navigation" aria-label="Chapter navigation"><a rel="prev" href="03-how-did-the-money-leave.html"><span>← Previous chapter</span><strong>How did the money leave?</strong></a><a rel="next" href="05-what-limits-would-this-market-maker-have-set.html"><span>Next chapter →</span><strong>What limits would this market maker have set?</strong></a></nav><p class="reading-hint">One chapter at a time. Use the links to keep reading, or swipe on touch screens.</p></div></main>
+<footer class="site-footer"><span>TraderSwift</span><nav aria-label="Resources"><a href="../index.json">Index</a><a href="../llms.txt">Plain text</a><a href="../sitemap.xml">Sitemap</a></nav></footer>
+</body>
+</html>

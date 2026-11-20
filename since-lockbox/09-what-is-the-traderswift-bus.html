@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en" data-skin="control" data-page="reading">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="The channel our agents and machines will talk on, and why orders never use it.">
+<meta name="color-scheme" content="light dark">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; script-src 'self'; img-src 'self'; font-src 'self'; base-uri 'none'; form-action 'none'">
+<title>What is the TraderSwift Bus? · TraderSwift</title>
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/style.css">
+<script src="../assets/reading.js" blocking="render"></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><a class="wordmark" href="../index.html" aria-label="TraderSwift home">TraderSwift</a><nav aria-label="Site"><a href="../index.html#updates">Updates</a><a href="../index.html#guides">Guides</a><a href="../index.html#case-studies">Case studies</a><a class="source-link" href="../llms.txt">For agents ↗</a><button class="theme-switch" type="button" aria-label="Switch to dark mode" hidden><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><g class="theme-sun"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></g><path class="theme-moon" d="M20 15.5A9 9 0 0 1 8.5 4 9 9 0 1 0 20 15.5Z"/></svg></button></nav></header>
+<main id="main"><div class="reading-layout"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="../index.html">Home</a><span aria-hidden="true">/</span><a href="index.html">Since Lockbox – A Week of Building Signer and TraderSwift</a></nav>
+<div class="reading-topline"><p class="eyebrow">Chapter 09 <span>/ 15</span></p><nav class="chapter-progress" aria-label="Chapters"><a href="01-what-happened-to-lockbox.html" aria-label="Chapter 1: What happened to Lockbox?">01</a><a href="02-what-is-signer-1-and-what-did-it-do-this-week.html" aria-label="Chapter 2: What is signer-1, and what did it do this week?">02</a><a href="03-what-is-traderswift-1-the-chain-at-the-centre.html" aria-label="Chapter 3: What is traderswift-1, the chain at the centre?">03</a><a href="04-how-did-codex-become-our-main-builder.html" aria-label="Chapter 4: How did Codex become our main builder?">04</a><a href="05-what-is-the-wallet-and-why-does-it-have-no-seed.html" aria-label="Chapter 5: What is the wallet, and why does it have no seed phrase?">05</a><a href="06-why-did-we-build-our-own-sign-in.html" aria-label="Chapter 6: Why did we build our own sign-in?">06</a><a href="07-what-are-signals-and-the-desk.html" aria-label="Chapter 7: What are Signals and the desk?">07</a><a href="08-what-is-storage.html" aria-label="Chapter 8: What is Storage?">08</a><a href="09-what-is-the-traderswift-bus.html" aria-label="Chapter 9: What is the TraderSwift Bus?" aria-current="page">09</a><a href="10-how-will-builders-be-paid-on-base.html" aria-label="Chapter 10: How will builders be paid on Base?">10</a><a href="11-what-are-goose-and-our-own-dns.html" aria-label="Chapter 11: What are Goose and our own DNS?">11</a><a href="12-what-did-we-move-onto-our-own-servers.html" aria-label="Chapter 12: What did we move onto our own servers?">12</a><a href="13-what-went-wrong-and-what-did-we-change.html" aria-label="Chapter 13: What went wrong, and what did we change?">13</a><a href="14-what-is-next.html" aria-label="Chapter 14: What is next?">14</a><a href="15-final-thoughts.html" aria-label="Chapter 15: Final thoughts">15</a></nav></div>
+<article><header class="article-header"><h1>What is the TraderSwift Bus?</h1><p class="standfirst">The channel our agents and machines will talk on, and why orders never use it.</p><div class="article-meta"><span>TraderSwift update</span><span>1 min read</span><a href="09-what-is-the-traderswift-bus.md">Read Markdown ↗</a></div></header><div class="prose"><p>The TraderSwift Bus is the channel our agents and machines will use to talk to each other.</p>
+<p>A trading agent&#x27;s messages matter as much as its key. If someone can read or change them, they can learn or steer what the agent does.</p>
+<h2 id="what-is-it-designed-to-do">What is it designed to do?</h2>
+<ul><li><strong>Encrypted channels</strong> between agents and machines.</li><li><strong>A policy per channel</strong>, setting who may write what.</li><li><strong>Channels, threads and direct messages.</strong></li><li><strong>An audit record</strong> that is anchored, so it can be checked later.</li></ul>
+<p>It speaks Nostr, an open messaging standard, so Nostr tools can connect to it.</p>
+<h2 id="what-never-travels-on-it">What never travels on it?</h2>
+<p>Orders never go over the Bus. That is a fixed rule: orders go only through Signer.</p>
+<h2 id="where-does-it-stand">Where does it stand?</h2>
+<p>The Bus is <strong>Planned</strong>.</p>
+<p>The design is accepted, and the first piece of code is built and checked: the part that applies the write policy. It is not deployed.</p></div></article>
+<nav class="chapter-navigation" aria-label="Chapter navigation"><a rel="prev" href="08-what-is-storage.html"><span>← Previous chapter</span><strong>What is Storage?</strong></a><a rel="next" href="10-how-will-builders-be-paid-on-base.html"><span>Next chapter →</span><strong>How will builders be paid on Base?</strong></a></nav><p class="reading-hint">One chapter at a time. Use the links to keep reading, or swipe on touch screens.</p></div></main>
+<footer class="site-footer"><span>TraderSwift</span><nav aria-label="Resources"><a href="../index.json">Index</a><a href="../llms.txt">Plain text</a><a href="../sitemap.xml">Sitemap</a></nav></footer>
+</body>
+</html>

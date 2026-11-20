@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en" data-skin="control" data-page="reading">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="The limits you can set on your agent today, what the next version adds, what stays with you, and a prompt to draft your own.">
+<meta name="color-scheme" content="light dark">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; script-src 'self'; img-src 'self'; font-src 'self'; base-uri 'none'; form-action 'none'">
+<title>How do I write a trading policy? · TraderSwift</title>
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/style.css">
+<script src="../assets/reading.js" blocking="render"></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><a class="wordmark" href="../index.html" aria-label="TraderSwift home">TraderSwift</a><nav aria-label="Site"><a href="../index.html#updates">Updates</a><a href="../index.html#guides">Guides</a><a href="../index.html#case-studies">Case studies</a><a class="source-link" href="../llms.txt">For agents ↗</a><button class="theme-switch" type="button" aria-label="Switch to dark mode" hidden><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><g class="theme-sun"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></g><path class="theme-moon" d="M20 15.5A9 9 0 0 1 8.5 4 9 9 0 1 0 20 15.5Z"/></svg></button></nav></header>
+<main id="main"><div class="reading-layout"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="../index.html">Home</a><span aria-hidden="true">/</span><a href="index.html">Signer – How to Run, Test and Trade with It</a></nav>
+<div class="reading-topline"><p class="eyebrow">Chapter 04 <span>/ 12</span></p><nav class="chapter-progress" aria-label="Chapters"><a href="01-what-is-signer.html" aria-label="Chapter 1: What is Signer, and who is it for?">01</a><a href="02-how-does-an-order-get-signed.html" aria-label="Chapter 2: How does an order get signed?">02</a><a href="03-how-do-i-try-signer-on-my-own-computer.html" aria-label="Chapter 3: How do I try Signer on my own computer?">03</a><a href="04-how-do-i-write-a-trading-policy.html" aria-label="Chapter 4: How do I write a trading policy?" aria-current="page">04</a><a href="05-how-do-i-stop-an-agent-fast.html" aria-label="Chapter 5: How do I stop an agent fast?">05</a><a href="06-how-do-i-read-signers-record.html" aria-label="Chapter 6: How do I read Signer&#x27;s record?">06</a><a href="07-how-do-i-run-a-signer-validator.html" aria-label="Chapter 7: How do I run a Signer validator?">07</a><a href="08-how-do-i-launch-a-node-with-one-link.html" aria-label="Chapter 8: How do I launch a node with one link?">08</a><a href="09-how-do-i-run-my-own-signer-chain.html" aria-label="Chapter 9: How do I run my own Signer chain?">09</a><a href="10-how-do-i-get-a-signer-key-for-my-own-account.html" aria-label="Chapter 10: How do I get a Signer key for my own account?">10</a><a href="11-how-do-i-hold-my-own-key-shares.html" aria-label="Chapter 11: How do I hold my own key shares?">11</a><a href="12-how-do-i-run-a-private-signer-network-on-esp32s.html" aria-label="Chapter 12: How do I run a private Signer network on ESP32s?">12</a></nav></div>
+<article><header class="article-header"><h1>How do I write a trading policy?</h1><p class="standfirst">The limits you can set on your agent today, what the next version adds, what stays with you, and a prompt to draft your own.</p><div class="article-meta"><span>TraderSwift guide</span><span>6 min read</span><a href="04-how-do-i-write-a-trading-policy.md">Read Markdown ↗</a></div></header><div class="prose"><p>After this page you will be able to read a Signer policy, say what each field limits, and draft one for your own agent with an AI model.</p>
+<h2 id="what-is-a-policy">What is a policy?</h2>
+<p>A policy is the owner&#x27;s written limit on what one agent key may trade. We call that agent the delegate, and its key the delegate key.</p>
+<p>The owner signs the policy with their wallet and writes it to the <code>signer-1</code> chain. Each signer reads it before signing.</p>
+<p>One policy covers one delegate on one key. You can give two delegates two policies, and each gets its own caps.</p>
+<h2 id="what-fields-does-a-policy-have-today">What fields does a policy have today?</h2>
+<p>These fields are <strong>Live</strong>, taken from the chain code:</p>
+<ul><li><strong>`venues`</strong>: which venues the delegate may trade. It cannot be empty.</li><li><strong>`vault_address`</strong>: the sub-account the policy is pinned to, and a signer refuses an order for any other. &quot;Vault address&quot; is Hyperliquid&#x27;s name for a sub-account, not TraderSwift Vault.</li><li><strong>`asset_caps`</strong>: the assets the delegate may trade, each with a <code>max_order_size</code> and a <code>max_daily_size</code>. It cannot be empty.</li><li><strong>`expires_at`</strong>: when the policy ends, in unix seconds.</li><li><strong>`revoked`</strong>: set when the owner revokes it.</li></ul>
+<p><strong>Built, not live: max leverage.</strong> It is in the code, and it switches on by itself at a set block of the chain, about Thursday 26 November 2026.</p>
+<p>The chain refuses a policy where <code>max_order_size</code> is above <code>max_daily_size</code>. It also refuses an empty list and a repeated asset.</p>
+<h2 id="how-do-the-size-caps-work">How do the size caps work?</h2>
+<p>Caps are sizes, per asset, per delegate, per UTC day. They bound how much, not at what price.</p>
+<ul><li><strong>Asset list.</strong> An asset that is not listed cannot be traded, reduce-only included.</li><li><strong>Order cap.</strong> A single order may not be above <code>max_order_size</code>.</li><li><strong>Daily cap.</strong> Today&#x27;s signed size for that delegate and asset, plus the new order, may not pass <code>max_daily_size</code>.</li></ul>
+<p>The daily cap counts signed size, not fills, and a failed round counts too.</p>
+<p>It is per delegate, so two delegates on one key each have their own daily cap.</p>
+<h2 id="what-is-exempt-from-the-size-caps">What is exempt from the size caps?</h2>
+<p>Reduce-only orders can only make a position smaller. They have no size caps and are not counted, because a trader must always be able to get out.</p>
+<p>The asset still has to be on the list.</p>
+<p>That exemption is also the weak spot. The signer has no market price, so a sell at a low limit, or a buy-back at a high one, is still signed if it fits the caps.</p>
+<p>Policy v2 is meant to close that.</p>
+<h2 id="what-does-policy-v2-add">What does Policy v2 add?</h2>
+<p>Policy v2 is <strong>Built, not live</strong>: it is built and in review. Our target is Saturday 21 November 2026, with the rotation of the signers that day.</p>
+<p>Two terms first:</p>
+<ul><li><strong>Mark price</strong> is the venue&#x27;s own fair price for a market.</li><li><strong>A basis point</strong> is one hundredth of one percent, so 50 basis points is 0.5%.</li></ul>
+<p>What Policy v2 adds:</p>
+<ul><li><strong>Price band.</strong> A maximum distance of the limit price from the mark price, in basis points. It applies to every order with a price, close-only included, and each signer reads the mark itself.</li><li><strong>Order rate cap.</strong> A maximum number of orders signed per second, per key.</li><li><strong>Post-only per delegate.</strong> A post-only delegate can only rest orders on the book and never trade against an order already there.</li><li><strong>Notional caps.</strong> Notional is the value of an order: size times its own limit price. A notional cap limits that value, as a second check beside the size caps.</li></ul>
+<h2 id="what-stays-on-your-side">What stays on your side?</h2>
+<p>A signer sees only the orders it signs. It never sees fills, so it cannot know your position or your loss.</p>
+<p>Two limits therefore stay with you.</p>
+<ul><li><strong>Position limits.</strong> Your own risk monitor tracks your position per market.</li><li><strong>Drawdown limits.</strong> Your own monitor tracks your loss for the day.</li></ul>
+<p>When a limit is hit, your monitor revokes the policy on the chain. The revoke is the hard stop.</p>
+<p>The <a href="05-how-do-i-stop-an-agent-fast.html">next article</a> shows how it works.</p>
+<h2 id="how-can-an-ai-model-help-me-draft-one">How can an AI model help me draft one?</h2>
+<p>Give your own AI model an anonymised summary of your trading.</p>
+<p>Strip the venue, the dates and any account number. Keep these:</p>
+<ul><li>markets and order sizes;</li><li>daily volume;</li><li>maker and taker share;</li><li>order types.</li></ul>
+<p>We used this blind-test method on a case study. We gave AI models only an account&#x27;s trade history, with no venue and no name, and asked what policy they would set.</p>
+<p>The models disagreed in useful ways, so ask for reasons, not just numbers.</p>
+<figure class="prompt"><figcaption><span>Try this prompt</span><button class="prompt-copy" type="button" aria-label="Copy prompt" hidden>Copy</button><a href="04-how-do-i-write-a-trading-policy-prompt-1.txt" aria-label="Open plain prompt text to copy">Open text to copy ↗</a><span class="prompt-status" role="status" aria-live="polite" aria-atomic="true"></span></figcaption><blockquote><p>You are helping me write a trading policy for an agent that trades from a key it cannot hold. Below is an anonymised summary of my past trading: markets, order sizes, daily volume, maker and taker share, and order types. It has no venue, no dates and no account details.
+
+The policy has these live fields per delegate: the list of allowed markets; a maximum order size per market; a maximum daily size per market; an expiry. Reduce-only orders are exempt from the size caps. Position limits and a daily loss limit are checked by me outside the policy. Policy v2 adds a price band from the mark price, an order rate cap, post-only per delegate and notional caps: propose values for those too, marked as v2.
+
+For each field, propose a value taken from my history, and say which part of the history supports it. Say whether I should use one delegate key or two, for example one that only posts orders and one that takes liquidity. Tell me which of my limits you would put on the owner side, and how fast my revoke should react. List what the history cannot tell you.
+
+My history:
+[paste your anonymised summary here]</p></blockquote></figure>
+<p>Check what comes back against your own numbers. The model proposes.</p>
+<p>You decide, and you sign.</p>
+<h2 id="final-thoughts">Final thoughts</h2>
+<p>A policy is short on purpose. It bounds markets and sizes, and the owner holds the rest.</p>
+<p>Today it limits how much, not at what price. Policy v2 adds the price band, with a target of Saturday 21 November 2026.</p></div></article>
+<nav class="chapter-navigation" aria-label="Chapter navigation"><a rel="prev" href="03-how-do-i-try-signer-on-my-own-computer.html"><span>← Previous chapter</span><strong>How do I try Signer on my own computer?</strong></a><a rel="next" href="05-how-do-i-stop-an-agent-fast.html"><span>Next chapter →</span><strong>How do I stop an agent fast?</strong></a></nav><p class="reading-hint">One chapter at a time. Use the links to keep reading, or swipe on touch screens.</p></div></main>
+<footer class="site-footer"><span>TraderSwift</span><nav aria-label="Resources"><a href="../index.json">Index</a><a href="../llms.txt">Plain text</a><a href="../sitemap.xml">Sitemap</a></nav></footer>
+</body>
+</html>
