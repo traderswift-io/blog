@@ -4,7 +4,7 @@ description: What we built between 11 and 18 November 2026, what broke, and what
 kind: update
 ---
 
-On 11 November we halted our first chain, Lockbox, and archived it.
+On Wed 11 Nov 2026 we halted our first chain, Lockbox, and archived it.
 
 Seven days later, we had:
 

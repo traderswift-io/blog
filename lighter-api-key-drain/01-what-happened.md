@@ -8,7 +8,7 @@ All times are UTC on 16 November.
 
 The pool and withdrawal times come from Lighter's public account data and the Ethereum chain. A pool on Lighter is an account that other traders can buy shares in.
 
-Here is the day, hour by hour.
+The table below shows the sequence of events on Mon 16 Nov 2026 (UTC).
 
 | Time | Event |
 |---|---|

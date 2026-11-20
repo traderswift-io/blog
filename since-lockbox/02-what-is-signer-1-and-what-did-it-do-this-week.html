@@ -20,9 +20,9 @@
 <p>Signer keeps a trading key as shares on separate machines, called signers, and signs an order only if it fits the owner&#x27;s written limits. <a href="../what-is-traderswift/08-how-does-signer-hold-a-key.html">How does Signer hold a key?</a> explains it in full.</p>
 <figure class="illustration"><img src="../assets/since-lockbox/signer-request-flow.svg" alt="How a Signer request flows" width="390" height="1208" loading="lazy" decoding="async"></figure>
 <figure class="illustration"><img src="../assets/since-lockbox/signer-repo-390-light.png" alt="The public Signer repository, on a phone" width="780" height="1688" loading="lazy" decoding="async"><figcaption>Signer is open source: github.com/traderswift-io/signer.</figcaption></figure>
-<p><code>signer-1</code> started on 12 November.</p>
+<p><code>signer-1</code> started on Thu 12 Nov 2026.</p>
 <figure class="illustration"><img src="../assets/since-lockbox/signer_heights.svg" alt="signer-1 heights recorded this week" width="390" height="690" loading="lazy" decoding="async"></figure>
-<h2 id="what-happened-at-the-live-launch-on-14-november">What happened at the live launch on 14 November?</h2>
+<h2 id="what-happened-at-the-live-launch-on-sat-14-nov-2026">What happened at the live launch on Sat 14 Nov 2026?</h2>
 <p>The chain admin, the wallet that can change who signs, moved to the owner&#x27;s own wallet at height 160,839.</p>
 <p>Then we traded, on a small live account with real money, BTC only:</p>
 <ul><li><strong>Fills.</strong> An immediate-or-cancel buy filled, and a close-only sell closed it.</li><li><strong>Over-cap refusal.</strong> A buy at twice the order cap was refused before it reached the exchange.</li><li><strong>Revoke.</strong> We cancelled the owner&#x27;s limits on the chain at height 161,327. The next order was refused at 161,330.</li><li><strong>Transfers and withdrawals.</strong> Every one of these requests was refused, and the refusal logged.</li></ul>

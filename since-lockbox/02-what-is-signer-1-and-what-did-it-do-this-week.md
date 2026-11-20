@@ -12,11 +12,11 @@ Signer keeps a trading key as shares on separate machines, called signers, and s
 
 ![The public Signer repository, on a phone](../assets/since-lockbox/signer-repo-390-light.png "Signer is open source: github.com/traderswift-io/signer.")
 
-`signer-1` started on 12 November.
+`signer-1` started on Thu 12 Nov 2026.
 
 ![signer-1 heights recorded this week](../assets/since-lockbox/signer_heights.svg)
 
-## What happened at the live launch on 14 November?
+## What happened at the live launch on Sat 14 Nov 2026?
 
 The chain admin, the wallet that can change who signs, moved to the owner's own wallet at height 160,839.
 

@@ -55,7 +55,7 @@ A node is one machine that runs a part of the network.
 | Signer for your own Hyperliquid account | Signs orders for your account | **Built, not live**. No earlier than Sun 22 Nov 2026 |
 | The hub, traderswift-1 | Links the chains and holds each one's identity | **Live** since Sat 14 Nov 2026 |
 | Charts data node | Serves market data you can check | **Built, not live** for you to read. Our node serves candles, but its public address is still behind a login |
-| Signals | A track record for signal providers | **Built, not live** |
+| Signals | Gives signal providers a record they cannot edit | **Built, not live** |
 | Ledger and Vault | Keeps your tasks, notes and files encrypted on your phone | **Built, not live** for you. The chains, ledger-1 and vault-1, have run since Thu 19 Nov 2026; nothing writes to them yet |
 | Storage, storage-1 | Holds encrypted files and logs | **Built, not live**. Waits on its first providers and an outside review of its encryption |
 | The TraderSwift Bus | Gives agents a safe channel to talk on | **Planned**. First piece of code built |
@@ -66,7 +66,7 @@ A node is one machine that runs a part of the network.
 
 The full table, with what each part waits on, is in [chapter 26](26-what-is-running-today-and-what-is-coming.html).
 
-We update these pages in real time, as we bring each part live.
+We update these pages as we bring each part live.
 
 ## Can I build on it, or run my own?
 
