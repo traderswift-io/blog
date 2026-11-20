@@ -39,8 +39,6 @@ This helps you because a bot that is broken into can still trade only inside you
 
 Every order request is recorded, signed or refused. A refused order is your alarm.
 
-Normally, whoever had your key would either drain you, or you would never know they had been in. Here you can see the attempt.
-
 [Chapter 10](10-how-would-i-know-if-someone-tried-to-break-in.html) explains. **Live.**
 
 ### Can someone read what my agents say?
