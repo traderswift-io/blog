@@ -20,19 +20,18 @@ Signer is open source. You can launch your own Signer chain, on its own, without
 
 These are our target dates. If a date slips, this box changes the same day, with the new date and the reason.
 
-- **Rotation of the signers**, with Policy v2: target Friday 20 November 2026. Waits on the new build passing its review and its tests, then a live test on a small real account.
-- **Aster**: target Friday 20 November 2026, in the same session. Waits on a new key from the signers, approved and funded on Aster, and a live test.
-- **Base (Avantis)**: no date yet. Waits on a new key from the signers, approved on Avantis, and a live test.
-- **Your own Hyperliquid account**: target Saturday 21 November 2026. You sign the setup in your own wallet, and we never see or hold your keys.
+- **Rotation of the signers**, with Policy v2: target Saturday 21 November 2026. Waits on the seal of the four new machines, and on the sitting that runs the rotation.
+- **Aster**: no date yet. Waits on its test account being funded, then a sitting after that.
+- **Base (Avantis)**: no date yet. Waits on its code passing its checks, on confirming the venue's minimum order size, and on funding.
+- **Your own Hyperliquid account**: no earlier than Sunday 22 November 2026. You sign the setup in your own wallet, and we never see or hold your keys.
 
-Your own account on Saturday 21 November waits on four things:
+Your own account waits on three things:
 
-- the rotation of Friday 20 November;
-- the release that keeps your account private;
-- our decision on the security audit;
-- a live test done the way a new user would do it.
+- the rotation;
+- a live test on a second account;
+- our decision on the security audit.
 
-From Saturday 21 November, your trading account address and your orders never appear on `signer-1` in readable form. The chain shows only that your policy exists, its markets, size limits and expiry, and when each request was signed or refused.
+From the rotation, target Saturday 21 November 2026, your trading account address and your orders never appear on `signer-1` in readable form. The chain shows only that your policy exists, its markets, size limits and expiry, and when each request was signed or refused.
 
 Our own test account is public by choice.
 

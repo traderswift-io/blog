@@ -51,8 +51,8 @@ A node is one machine that runs a part of the network.
 | Part | What it does | Status |
 | :--- | :--- | :--- |
 | Signer, on our own Hyperliquid account | Signs orders for an agent without the agent holding the key | **Live** since 14 Nov 2026 |
-| Signer on Aster, and on Base through Avantis | The same, on two more venues | **Built, not live**. Aster's target is Fri 20 Nov 2026; Base has no date yet |
-| Signer for your own Hyperliquid account | The same, for your account | **Built, not live**. Target Sat 21 Nov 2026 |
+| Signer on Aster, and on Base through Avantis | The same, on two more venues | **Built, not live**. Aster has no date yet, and waits on its test account being funded; Base has no date yet |
+| Signer for your own Hyperliquid account | The same, for your account | **Built, not live**. No earlier than Sun 22 Nov 2026 |
 | The hub | Links the chains and holds each one's identity | **Live** since 14 Nov 2026 |
 | Charts data node | Serves market data you can check | **Built, not live** for you to read. Our node serves candles, but its public address is still behind a login |
 | Signals | A track record for signal providers | **Built, not live** |

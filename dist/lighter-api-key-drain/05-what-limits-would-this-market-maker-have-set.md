@@ -31,20 +31,20 @@ Four terms in the table, in plain words:
 - **Mark price**: the exchange's own fair price for a market, the one it uses for margin.
 - **Basis points (bps)**: hundredths of a percent. 100 bps is 1%.
 
-The fields marked with a date are in Policy v2, which is built and in review. Its target is Friday 20 November 2026.
+The fields marked with a date are in Policy v2, which is built and in review. Its target is Saturday 21 November 2026.
 
 | Policy field | Maker key | Taker key | Status |
 |---|---|---|---|
 | Markets allowed | The markets it actually trades | Fewer, the most liquid | Live |
 | Max order size, per market | From its history | Lower | Live |
 | Max daily size, per market | From its history | Lower | Live |
-| Post-only | Yes | No | Target Fri 20 Nov 2026 |
-| Max notional per order and per day, at the order's own limit price (new risk only; close-only exempt) | From its history | Low | Target Fri 20 Nov 2026 |
+| Post-only | Yes | No | Target Sat 21 Nov 2026 |
+| Max notional per order and per day, at the order's own limit price (new risk only; close-only exempt) | From its history | Low | Target Sat 21 Nov 2026 |
 | Max position per market | From its history | Low | Owner's risk monitor; the revoke is the hard stop |
 | Daily drawdown limit | Set | Set | Owner's risk monitor; the revoke is the hard stop |
 | Max leverage | Set | Set | From about Thu 26 Nov 2026 |
-| Price band: how far the limit price may sit from the mark price, in bps, on every order, close-only included | Just above its own historical crossing | Just above its own historical crossing | Target Fri 20 Nov 2026 |
-| Max orders signed per second | From its peak | From its peak | Target Fri 20 Nov 2026 |
+| Price band: how far the limit price may sit from the mark price, in bps, on every order, close-only included | Just above its own historical crossing | Just above its own historical crossing | Target Sat 21 Nov 2026 |
+| Max orders signed per second | From its peak | From its peak | Target Sat 21 Nov 2026 |
 
 ## What did two AI models choose?
 

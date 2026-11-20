@@ -56,7 +56,7 @@ At launch, the next order after the revoke was refused, and the refusal was on c
 
 ## What limits are coming next?
 
-A second set of limits is in review, with a target of Fri 20 Nov 2026. The chain part is **Built, not live**, and the signer part is still being built.
+A second set of limits is in review, with a target of Sat 21 Nov 2026. The chain part is **Built, not live**, and the signer part is still being built.
 
 - **A price band** – orders too far from the market price are refused.
 - **An order-rate cap** – a limit on how many orders the agent may send in a given time.

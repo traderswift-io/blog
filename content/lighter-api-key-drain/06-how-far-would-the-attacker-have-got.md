@@ -54,4 +54,4 @@ The band costs the trader almost nothing. Fitted to their own history, it would 
 
 The price band and the rate limit came out of this test.
 
-Both are in Policy v2, built and in review, with a target of Friday 20 November 2026.
+Both are in Policy v2, built and in review, with a target of Saturday 21 November 2026.

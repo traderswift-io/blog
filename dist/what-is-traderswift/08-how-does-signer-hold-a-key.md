@@ -43,14 +43,13 @@ The [rotation update](../trading-key-rotation/index.html) explains how.
 
 Signer has signed live orders on Hyperliquid since 14 November 2026, on our own account with real money. **Live.**
 
-For your own Hyperliquid account, it is **Built, not live**. The target is Sat 21 Nov 2026, and it waits on four things:
+For your own Hyperliquid account, it is **Built, not live**. The target is no earlier than Sun 22 Nov 2026, and it waits on three things:
 
-- the change of signers on Fri 20 Nov 2026;
-- account privacy for user accounts, which [chapter 11](11-what-can-other-people-see-on-the-chain.html) explains;
-- a decision on a security audit;
-- a live test with a new user.
+- the change of signers, target Sat 21 Nov 2026, which also brings account privacy for user accounts, as [chapter 11](11-what-can-other-people-see-on-the-chain.html) explains;
+- a live test on a second account;
+- a decision on a security audit.
 
-Aster and Base, through Avantis, are **Built, not live**. Aster has a target of Fri 20 Nov 2026, and Base has no date yet.
+Aster and Base, through Avantis, are **Built, not live**. Aster has no date yet, and Base has no date yet.
 
 Holding your own key shares, on a few cheap devices at home, is **Planned**. It has no date yet.
 

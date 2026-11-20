@@ -51,4 +51,4 @@ So their decision records piled up in a local outbox, a queue on each machine. T
 
 Once the accounts existed, 22 records went on chain at height 353,836.
 
-The checklist for the next rotation, on Fri 20 Nov 2026, checks for a decision record from each new signer before the old set is removed.
+The checklist for the next rotation, target Sat 21 Nov 2026, checks for a decision record from each new signer before the old set is removed.

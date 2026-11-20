@@ -25,14 +25,14 @@ The record is public in the [`signer-1-launch`](https://github.com/traderswift-i
 
 These are target dates. If one slips, the [Signer how-tos](../signer-guides/index.html) say so the same day, with the new date and the reason.
 
-- **Rotation of the signers, with Policy v2**: target Friday 20 November 2026.
-- **Aster**: target Friday 20 November 2026.
+- **Rotation of the signers, with Policy v2**: target Saturday 21 November 2026.
+- **Aster**: no date yet. It waits on its test account being funded, then a sitting after that.
 - **Base (Avantis)**: no date yet.
-- **Your own Hyperliquid account**: target Saturday 21 November 2026. You sign the setup in your own wallet, and we never see or hold your keys.
+- **Your own Hyperliquid account**: no earlier than Sunday 22 November 2026. You sign the setup in your own wallet, and we never see or hold your keys.
 
 ## How does Signer keep your account private?
 
-This is how your own account works on Signer, from Saturday 21 November.
+This is how your own account works on Signer, from the rotation, target Saturday 21 November 2026.
 
 Your trading account address and the contents of your orders never appear on signer-1 in readable form. The chain holds only fingerprints of them, which the signers check, and only the signers can open the details.
 

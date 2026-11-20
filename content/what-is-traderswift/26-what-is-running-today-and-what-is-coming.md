@@ -29,21 +29,20 @@ Where we have a date, we give it. Where we do not, we say what the part waits on
 | :--- | :--- | :--- |
 | Signer on Hyperliquid, for TraderSwift's own account | **Live** | Since 14 Nov 2026. This test account is public by choice |
 | Stopping an agent with one signed message | **Live** | Since 14 Nov 2026 |
-| Signer on Aster | **Built, not live** | Target Fri 20 Nov 2026 |
+| Signer on Aster | **Built, not live** | No date yet. It waits on its test account being funded, then a sitting after that |
 | Signer on Base, through Avantis | **Built, not live** | No date yet |
-| New limits: a price band, a cap on how often orders go out, and caps on order value | **Built, not live** for the chain part; the signer part is still in build | Target Fri 20 Nov 2026 |
+| New limits: a price band, a cap on how often orders go out, and caps on order value | **Built, not live** for the chain part; the signer part is still in build | Target Sat 21 Nov 2026 |
 | A cap on leverage | **Built, not live** | Switches on by itself at a set block, about Thu 26 Nov 2026 |
-| Signer for your own Hyperliquid account | **Built, not live** | Target Sat 21 Nov 2026 |
+| Signer for your own Hyperliquid account | **Built, not live** | No earlier than Sun 22 Nov 2026 |
 | Your markets and limits kept private, the same way as your account and orders | **Planned** | The next release |
 | Holding your own key shares, and a private network on devices at home | **Planned** | |
 | Starting a node from one link | **Planned** | |
 
-Signer for your own account waits on four steps:
+Signer for your own account waits on three steps:
 
-- the rotation on Fri 20 Nov 2026, when a new set of signers takes over;
-- privacy for user accounts, so your trading account address and your orders never appear on the chain in readable form;
-- our decision on an outside audit;
-- a live test with a new user.
+- the rotation, target Sat 21 Nov 2026, when a new set of signers takes over and privacy for user accounts comes with it, so your trading account address and your orders never appear on the chain in readable form;
+- a live test on a second account;
+- our decision on an outside audit.
 
 [Chapter 11](11-what-can-other-people-see-on-the-chain.html) explains what the chain shows, and what it never shows.
 

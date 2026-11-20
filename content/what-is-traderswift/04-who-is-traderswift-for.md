@@ -22,7 +22,7 @@ The agent trades through Signer, which never signs a transfer or a withdrawal. Y
 
 You also get your own tools: Ledger for your tasks and decisions, Vault for your notes and files. You can use them with an agent, or on your own.
 
-Signer is **Live** on our own account. For your own Hyperliquid account it is **Built, not live**, with a target of Sat 21 Nov 2026.
+Signer is **Live** on our own account. For your own Hyperliquid account it is **Built, not live**, with a target of no earlier than Sun 22 Nov 2026.
 
 Ledger and Vault are **Built, not live**. [Chapter 08](08-how-does-signer-hold-a-key.html) explains the key, and [chapter 16](16-what-are-ledger-and-vault.html) explains the tools.
 

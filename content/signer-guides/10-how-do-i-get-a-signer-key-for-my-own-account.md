@@ -1,10 +1,10 @@
 ---
 title: How do I get a Signer key for my own account?
-description: Your own Hyperliquid account has a target date of Saturday 21 November 2026. What it waits on, what you will do, and what you can prepare now. Planned.
+description: Your own Hyperliquid account is planned for no earlier than Sunday 22 November 2026. What it waits on, what you will do, and what you can prepare now. Planned.
 order: 10
 ---
 
-**Built, not live.** Our target is Saturday 21 November 2026, for your own Hyperliquid account.
+**Built, not live.** Our target is no earlier than Sunday 22 November 2026, for your own Hyperliquid account.
 
 From that day, Signer can hold a trading key for your own exchange account, under a policy you write and sign yourself.
 
@@ -12,11 +12,11 @@ You sign the setup in your own wallet. We never see or hold your keys.
 
 When it opens, this page gets the exact steps.
 
-## What does Saturday 21 November wait on?
+## What does Sunday 22 November wait on?
 
 Four things come first:
 
-- **The rotation of the signers**, target Friday 20 November 2026. It brings the new signer machines and Policy v2.
+- **The rotation of the signers**, target Saturday 21 November 2026. It brings the new signer machines and Policy v2.
 - **Account privacy.** The release that keeps your trading account address and your orders out of readable form on the chain. [How do I read Signer's record?](06-how-do-i-read-signers-record.html) says what the chain shows.
 - **Our decision on the security audit.** We make it before your account opens.
 - **A live test done as a new user would.** We follow these steps ourselves, on a small account with real money, the way you will.
@@ -53,6 +53,6 @@ Keep the answer. It is the first draft of the policy you will sign.
 
 ## Final thoughts
 
-Your own account has a date: Saturday 21 November 2026, on the new signers with Policy v2.
+Your own account has a date: no earlier than Sunday 22 November 2026, on the new signers with Policy v2.
 
 Write your policy now. It is the part that takes the most thought, and it will be ready when your account opens.

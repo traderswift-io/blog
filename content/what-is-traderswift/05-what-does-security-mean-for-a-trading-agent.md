@@ -37,7 +37,7 @@ Here is each risk, and the TraderSwift part that covers it.
 
 | What leaks | What an attacker gains | Which part covers it | Status |
 | :--- | :--- | :--- | :--- |
-| The key | Control of your account | [Signer](08-how-does-signer-hold-a-key.html) | **Live** on our own account since 14 Nov 2026. For your own account, **Built, not live**, target Sat 21 Nov 2026 |
+| The key | Control of your account | [Signer](08-how-does-signer-hold-a-key.html) | **Live** on our own account since 14 Nov 2026. For your own account, **Built, not live**, no earlier than Sun 22 Nov 2026 |
 | The channel your agents talk on | Your plan, and a way to give your agents orders | [The TraderSwift Bus](12-how-do-agents-talk-to-each-other-safely.html) | **Planned**, first piece of code built |
 | Your trade logs | Your strategy, and a way to trade against it | [Storage](13-where-do-my-trade-logs-notes-and-files-live.html) | **Built, not live**. Test passed 18 Nov 2026 |
 | Your signals | Your edge, before the market moves | [Signals](15-how-does-a-signal-provider-build-a-track-record.html) | **Built, not live** |

@@ -8,9 +8,9 @@ Each part has a next step, with a date where we have one.
 
 ## What is next for Signer?
 
-- **Fri 20 Nov 2026 (planned).** The next rotation, onto four machines of our own, with Policy v2. Aster is planned for the same day if its test account is ready, and Base has no date yet.
+- **Sat 21 Nov 2026 (planned).** The next rotation, onto four machines of our own, with Policy v2. It waits on the seal of the four new machines and the sitting that runs it. Aster has no date yet: it waits on its test account being funded, then a sitting after that. Base has no date yet.
 - **Policy v2.** New limits: a price band, so no order strays too far from the exchange's reference price, and a cap on how many orders a key can sign per second. It is **Built, not live** and in review.
-- **Sat 21 Nov 2026.** Signer for your own Hyperliquid account. It waits on the rotation, privacy for user accounts, an audit decision by the owner, and a live test with a new user.
+- **No earlier than Sun 22 Nov 2026.** Signer for your own Hyperliquid account. It waits on the rotation, a live test on a second account, and an audit decision by the owner.
 
 ## What is next for the hub?
 
