@@ -14,7 +14,7 @@ Once it is built, you will be able to give your own AI agent one link and have i
 
 ## What is the launcher?
 
-The launcher is a public repository, `traderswift-io/launch`. Its `AGENTS.md` file is a manual written for agents.
+The launcher will be a public repository with an `AGENTS.md` file, a manual written for agents. **Planned.**
 
 Any agent that can read a file and run Python can follow it top to bottom.
 
@@ -57,18 +57,16 @@ Every Signer machine we run is sealed before it holds a share.
 
 ## What will the prompt look like?
 
-When the repository is public, this is all you will give your agent:
+When the launcher is public, you'll give your agent one short prompt. It will point at the launcher's manual and ask your agent to launch a TraderSwift validator on your cloud account.
 
-::: prompt
-Read https://github.com/traderswift-io/launch/blob/main/AGENTS.md and follow it to launch a TraderSwift validator on my cloud account. Show me the plan and the monthly cost, and ask me "Go?" before you create anything. When you're done, remove your own access and revoke the token.
-:::
+Your agent will show you the plan and the monthly cost, and ask "Go?" before it creates anything. When it's done, it removes its own access.
 
-Until then, the link will not work. The manual guide for running a Signer validator by hand is in [How do I run a Signer validator?](07-how-do-i-run-a-signer-validator.html).
+We'll put the exact prompt here once the launcher exists. The manual guide for running a Signer validator by hand is in [How do I run a Signer validator?](07-how-do-i-run-a-signer-validator.html).
 
 ## What are the milestones?
 
 1. **Signed releases.** Chain releases published with their checksums, and the node updater added to the release rules.
-2. **The validator path.** The launcher's validator steps in `traderswift-io/launch`.
+2. **The validator path.** The launcher's validator steps.
 3. **One real run.** Launch, sync, seal, a check from outside, and the token revoked, on a real cloud account.
 4. **Public.** The repository goes public.
 5. **The Signer node path.** A Signer validator waits on the launcher itself. A signer that holds part of a key waits on signers from other operators being able to join, which is not yet scheduled.

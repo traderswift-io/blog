@@ -132,7 +132,7 @@ Read SKILL.md at the root of github.com/traderswift-io/signer and follow it in o
 
 The stopping point is the join. After that you own the machine: keep it up, keep the clock right and watch the height.
 
-**Planned.** A one-link launcher, `traderswift-io/launch`, so your agent can set up a node on your own cloud account. See [How do I launch a node with one link?](08-how-do-i-launch-a-node-with-one-link.html).
+**Planned.** A one-link launcher, so your agent can set up a node on your own cloud account. See [How do I launch a node with one link?](08-how-do-i-launch-a-node-with-one-link.html).
 
 ## Final thoughts
 

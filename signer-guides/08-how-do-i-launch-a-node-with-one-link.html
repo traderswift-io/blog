@@ -21,7 +21,7 @@
 <p>The second half is the milestones. When the launcher is ready, this page will be updated with the full steps.</p>
 <p>Once it is built, you will be able to give your own AI agent one link and have it launch a TraderSwift node on your own cloud account. You say &quot;Go&quot; only once.</p>
 <h2 id="what-is-the-launcher">What is the launcher?</h2>
-<p>The launcher is a public repository, <code>traderswift-io/launch</code>. Its <code>AGENTS.md</code> file is a manual written for agents.</p>
+<p>The launcher will be a public repository with an <code>AGENTS.md</code> file, a manual written for agents. <strong>Planned.</strong></p>
 <p>Any agent that can read a file and run Python can follow it top to bottom.</p>
 <p>Small scripts do the steps. Your agent runs them with your own cloud token.</p>
 <p>The token never reaches us.</p>
@@ -39,11 +39,11 @@
 <p>That is the same rule we follow on our own machines.</p>
 <p>Every Signer machine we run is sealed before it holds a share.</p>
 <h2 id="what-will-the-prompt-look-like">What will the prompt look like?</h2>
-<p>When the repository is public, this is all you will give your agent:</p>
-<figure class="prompt"><figcaption><span>Try this prompt</span><button class="prompt-copy" type="button" aria-label="Copy prompt" hidden>Copy</button><a href="08-how-do-i-launch-a-node-with-one-link-prompt-1.txt" aria-label="Open plain prompt text to copy">Open text to copy ↗</a><span class="prompt-status" role="status" aria-live="polite" aria-atomic="true"></span></figcaption><blockquote><p>Read https://github.com/traderswift-io/launch/blob/main/AGENTS.md and follow it to launch a TraderSwift validator on my cloud account. Show me the plan and the monthly cost, and ask me &quot;Go?&quot; before you create anything. When you&#x27;re done, remove your own access and revoke the token.</p></blockquote></figure>
-<p>Until then, the link will not work. The manual guide for running a Signer validator by hand is in <a href="07-how-do-i-run-a-signer-validator.html">How do I run a Signer validator?</a>.</p>
+<p>When the launcher is public, you&#x27;ll give your agent one short prompt. It will point at the launcher&#x27;s manual and ask your agent to launch a TraderSwift validator on your cloud account.</p>
+<p>Your agent will show you the plan and the monthly cost, and ask &quot;Go?&quot; before it creates anything. When it&#x27;s done, it removes its own access.</p>
+<p>We&#x27;ll put the exact prompt here once the launcher exists. The manual guide for running a Signer validator by hand is in <a href="07-how-do-i-run-a-signer-validator.html">How do I run a Signer validator?</a>.</p>
 <h2 id="what-are-the-milestones">What are the milestones?</h2>
-<ol><li><strong>Signed releases.</strong> Chain releases published with their checksums, and the node updater added to the release rules.</li><li><strong>The validator path.</strong> The launcher&#x27;s validator steps in <code>traderswift-io/launch</code>.</li><li><strong>One real run.</strong> Launch, sync, seal, a check from outside, and the token revoked, on a real cloud account.</li><li><strong>Public.</strong> The repository goes public.</li><li><strong>The Signer node path.</strong> A Signer validator waits on the launcher itself. A signer that holds part of a key waits on signers from other operators being able to join, which is not yet scheduled.</li><li><strong>A second provider.</strong> A DigitalOcean path.</li></ol>
+<ol><li><strong>Signed releases.</strong> Chain releases published with their checksums, and the node updater added to the release rules.</li><li><strong>The validator path.</strong> The launcher&#x27;s validator steps.</li><li><strong>One real run.</strong> Launch, sync, seal, a check from outside, and the token revoked, on a real cloud account.</li><li><strong>Public.</strong> The repository goes public.</li><li><strong>The Signer node path.</strong> A Signer validator waits on the launcher itself. A signer that holds part of a key waits on signers from other operators being able to join, which is not yet scheduled.</li><li><strong>A second provider.</strong> A DigitalOcean path.</li></ol>
 <p>The first provider is Linode. Others can be added through a pull request.</p>
 <h2 id="final-thoughts">Final thoughts</h2>
 <p>The launcher turns &quot;run a node&quot; into one link and one &quot;Go&quot;.</p>
