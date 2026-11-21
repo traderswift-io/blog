@@ -67,7 +67,7 @@ Be honest with yourself on this one. Signer is in development, and these limits 
 
 - **In development.** The chain started on 12 November 2026 and the first live orders were on 14 November. That is a short record.
 - **Your own account is not open yet.** Our target is no earlier than Sunday 22 November 2026. The [Signer index](index.html) says what it waits on.
-- **One venue live.** Hyperliquid is the only venue live today. Aster has no date yet, and Base (Avantis) has no date yet.
+- **One venue live.** Hyperliquid is the only venue live today. Aster had a proof run on Sat 21 Nov 2026 and is not yet live, and Base (Avantis) has no date yet.
 - **No price limit yet.** Today the policy bounds sizes per market, not prices. Policy v2 adds a price band, and we explain it in the [policy article](04-how-do-i-write-a-trading-policy.html).
 - **Interactive signing.** Each order needs several signers online at the same time.
 
