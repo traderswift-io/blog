@@ -49,7 +49,7 @@ For your own Hyperliquid account, it is **Built, not live**. The target is no ea
 - a live test on a second account;
 - a decision on a security audit.
 
-Aster and Base, through Avantis, are **Built, not live**. Aster has no date yet, and Base has no date yet.
+Aster and Base, through Avantis, are **Built, not live**. Aster had a proof run on Sat 21 Nov 2026 and is not yet live; Base has no date yet.
 
 Holding your own key shares, on a few cheap devices at home, is **Planned**. It has no date yet.
 

@@ -26,7 +26,7 @@ The record is public in the [`signer-1-launch`](https://github.com/traderswift-i
 These are target dates. If one slips, the [Signer how-tos](../signer-guides/index.html) say so the same day, with the new date and the reason.
 
 - **Rotation of the signers, with Policy v2**: target Saturday 21 November 2026.
-- **Aster**: no date yet. It waits on its test account being funded, then a sitting after that.
+- **Aster**: a proof run through Signer on Sat 21 Nov 2026, on a test account. Not yet live: it waits on the new signer set and a standing policy.
 - **Base (Avantis)**: no date yet.
 - **Your own Hyperliquid account**: no earlier than Sunday 22 November 2026. You sign the setup in your own wallet, and we never see or hold your keys.
 

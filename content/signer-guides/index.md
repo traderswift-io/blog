@@ -21,7 +21,7 @@ Signer is open source. You can launch your own Signer chain, on its own, without
 These are our target dates. If a date slips, this box changes the same day, with the new date and the reason.
 
 - **Rotation of the signers**, with Policy v2: target Saturday 21 November 2026. Waits on the seal of the four new machines, and on the sitting that runs the rotation.
-- **Aster**: no date yet. Waits on its test account being funded, then a sitting after that.
+- **Aster**: proof run Sat 21 Nov 2026 through Signer on a test account (orders filled, closed and cancelled; one order over the cap refused). Not yet live: it waits on the new signer set and a standing policy.
 - **Base (Avantis)**: no date yet. Waits on its code passing its checks, on confirming the venue's minimum order size, and on funding.
 - **Your own Hyperliquid account**: no earlier than Sunday 22 November 2026. You sign the setup in your own wallet, and we never see or hold your keys.
 
