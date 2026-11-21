@@ -52,7 +52,7 @@ A node is one machine that runs a part of the network.
 | :--- | :--- | :--- |
 | Signer, on our own Hyperliquid account | Signs orders for an agent without the agent holding the key | **Live** since Sat 14 Nov 2026 |
 | Signer on Aster, and on Base through Avantis | Signs orders on two more venues | **Built, not live**. Aster had a proof run on Sat 21 Nov 2026 and waits on the new signer set and a standing policy; Base has no date yet |
-| Signer for your own Hyperliquid account | Signs orders for your account | **Built, not live**. No earlier than Sun 22 Nov 2026 |
+| Signer for your own Hyperliquid account | Signs orders for your account | **Built, not live**. After the signer rotation, no date set |
 | The hub, traderswift-1 | Links the chains and holds each one's identity | **Live** since Sat 14 Nov 2026 |
 | Charts data node | Serves market data you can check | **Built, not live** for you to read. Our node serves candles, but its public address is still behind a login |
 | Signals | Gives signal providers a record they cannot edit | **Built, not live** |

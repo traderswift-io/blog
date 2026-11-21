@@ -28,7 +28,7 @@ These are target dates. If one slips, the [Signer how-tos](../signer-guides/inde
 - **Rotation of the signers, with Policy v2**: built and tested; waits on one signing moment, no date set.
 - **Aster**: a proof run through Signer on Sat 21 Nov 2026, on a test account. Not yet live: it waits on the new signer set and a standing policy.
 - **Base (Avantis)**: no date yet.
-- **Your own Hyperliquid account**: no earlier than Sunday 22 November 2026. You sign the setup in your own wallet, and we never see or hold your keys.
+- **Your own Hyperliquid account**: after the signer rotation, no date set. You sign the setup in your own wallet, and we never see or hold your keys.
 
 ## How does Signer keep your account private?
 
