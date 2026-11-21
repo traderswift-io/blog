@@ -37,7 +37,7 @@ What the chain does show is that a policy exists, its markets, size limits and e
 
 In the next release, your markets and limits are kept private the same way.
 
-This applies to user accounts, from the rotation, target Saturday 21 November 2026. Our own test account is public by choice.
+This applies to user accounts, from the rotation, which has no date set yet. Our own test account is public by choice.
 
 The exchange is a separate matter. Hyperliquid shows every account's orders and positions publicly once someone knows the address, and Signer doesn't add or change that.
 

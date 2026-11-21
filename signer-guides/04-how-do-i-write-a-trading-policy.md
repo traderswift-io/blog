@@ -52,7 +52,7 @@ Policy v2 is meant to close that.
 
 ## What does Policy v2 add?
 
-Policy v2 is **Built, not live**: it is built and in review. Our target is Saturday 21 November 2026, with the rotation of the signers that day.
+Policy v2 is **Built, not live**. It switches on after the rotation of the signers, with no date set.
 
 Two terms first:
 
@@ -113,4 +113,4 @@ You decide, and you sign.
 
 A policy is short on purpose. It bounds markets and sizes, and the owner holds the rest.
 
-Today it limits how much, not at what price. Policy v2 adds the price band, with a target of Saturday 21 November 2026.
+Today it limits how much, not at what price. Policy v2 adds the price band. It switches on after the signer rotation, with no date set.
