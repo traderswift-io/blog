@@ -71,7 +71,7 @@ Be honest with yourself on this one. Signer is in development, and these limits 
 - **No price limit yet.** Today the policy bounds sizes per market, not prices. Policy v2 adds a price band, and we explain it in the [policy article](04-how-do-i-write-a-trading-policy.html).
 - **Interactive signing.** Each order needs several signers online at the same time.
 
-If you need a key for your own account, your account can join after the signer rotation, with no date set. If you want to read the code and the record, it is ready now.
+A key for your own account comes after the signer rotation, with no date set. If you want to read the code and the record, it is ready now.
 
 ## What has Signer done so far?
 
