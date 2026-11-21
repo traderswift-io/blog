@@ -22,7 +22,7 @@ These are our target dates. If a date slips, this box changes the same day, with
 - **Rotation of the signers**, with Policy v2: built and tested; waits on one signing moment, no date set.
 - **Aster**: proof run Sat 21 Nov 2026 through Signer on a test account (orders filled, closed and cancelled; one order over the cap refused). Not yet live: it waits on the new signer set and a standing policy.
 - **Base (Avantis)**: no date yet. Waits on its code passing its checks, on confirming the venue's minimum order size, and on funding.
-- **Your own Hyperliquid account**: no earlier than Sunday 22 November 2026. You sign the setup in your own wallet, and we never see or hold your keys.
+- **Your own Hyperliquid account**: after the signer rotation, no date set. You sign the setup in your own wallet, and we never see or hold your keys.
 
 Your own account waits on three things:
 

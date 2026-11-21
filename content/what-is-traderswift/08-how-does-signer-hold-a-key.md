@@ -43,7 +43,7 @@ The [rotation update](../trading-key-rotation/index.html) explains how.
 
 Signer has signed live orders on Hyperliquid since Sat 14 Nov 2026, on our own account with real money. **Live.**
 
-For your own Hyperliquid account, it is **Built, not live**. The target is no earlier than Sun 22 Nov 2026, and it waits on three things:
+For your own Hyperliquid account, it is **Built, not live**. It can join after the signer rotation, with no date set, and it waits on three things:
 
 - the change of signers, built and tested and waiting on one signing moment with no date set, which also brings account privacy for user accounts, as [chapter 11](11-what-can-other-people-see-on-the-chain.html) explains;
 - a live test on a second account;

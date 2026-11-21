@@ -401,7 +401,7 @@
     },
     {
       "title": "How do I get a Signer key for my own account?",
-      "description": "Your own Hyperliquid account is planned for no earlier than Sunday 22 November 2026. What it waits on, what you will do, and what you can prepare now. Planned.",
+      "description": "Your own Hyperliquid account can join after the signer rotation, with no date set. What it waits on, what you will do, and what you can prepare now. Planned.",
       "url": "signer-guides/10-how-do-i-get-a-signer-key-for-my-own-account.html",
       "markdown": "signer-guides/10-how-do-i-get-a-signer-key-for-my-own-account.md"
     },

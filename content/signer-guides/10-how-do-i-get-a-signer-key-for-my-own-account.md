@@ -1,10 +1,10 @@
 ---
 title: How do I get a Signer key for my own account?
-description: Your own Hyperliquid account is planned for no earlier than Sunday 22 November 2026. What it waits on, what you will do, and what you can prepare now. Planned.
+description: Your own Hyperliquid account can join after the signer rotation, with no date set. What it waits on, what you will do, and what you can prepare now. Planned.
 order: 10
 ---
 
-**Built, not live.** Our target is no earlier than Sunday 22 November 2026, for your own Hyperliquid account.
+**Built, not live.** Your own Hyperliquid account can join after the signer rotation, with no date set.
 
 From that day, Signer can hold a trading key for your own exchange account, under a policy you write and sign yourself.
 
@@ -12,7 +12,7 @@ You sign the setup in your own wallet. We never see or hold your keys.
 
 When it opens, this page gets the exact steps.
 
-## What does Sunday 22 November wait on?
+## What does it wait on?
 
 Four things come first:
 
@@ -53,6 +53,6 @@ Keep the answer. It is the first draft of the policy you will sign.
 
 ## Final thoughts
 
-Your own account has a date: no earlier than Sunday 22 November 2026, on the new signers with Policy v2.
+Your own account can join after the signer rotation, with no date set, on the new signers with Policy v2.
 
 Write your policy now. It is the part that takes the most thought, and it will be ready when your account opens.

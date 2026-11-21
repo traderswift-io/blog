@@ -37,7 +37,7 @@ The table below shows the status of Signer and its planned limits.
 | Signer on Base, through Avantis | **Built, not live** | No date yet |
 | New limits: a price band, a cap on how often orders go out, and caps on order value | **Built, not live** | Switches on after the signer rotation, no date set |
 | A cap on leverage | **Built, not live** | Switches on by itself at a set block, about Thu 26 Nov 2026 |
-| Signer for your own Hyperliquid account | **Built, not live** | No earlier than Sun 22 Nov 2026 |
+| Signer for your own Hyperliquid account | **Built, not live** | After the signer rotation, no date set |
 | Your markets and limits kept private, the same way as your account and orders | **Planned** | The next release |
 | Holding your own key shares, and a private network on devices at home | **Planned** | |
 | Starting a node from one link | **Planned** | |

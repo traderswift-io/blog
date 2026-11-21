@@ -17,7 +17,7 @@ What the chain does show is that a policy exists, its markets, size limits and e
 
 In the next release, your markets and limits are kept private the same way. Our own test account is public by choice.
 
-This is how Signer works for user accounts, with the rotation, which has no date set yet. Your own Hyperliquid account can join no earlier than Sun 22 Nov 2026.
+This is how Signer works for user accounts, with the rotation, which has no date set yet. Your own Hyperliquid account can join after the signer rotation; no date set.
 
 ## What else is never on the chain?
 
