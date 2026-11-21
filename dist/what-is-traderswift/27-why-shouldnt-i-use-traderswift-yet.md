@@ -25,7 +25,7 @@ If you need an outside review before you trust code with money, wait for one.
 
 ## Which venues are live?
 
-Today Signer is **Live** on Hyperliquid only, and only for TraderSwift's own account.
+Today Signer is **Live** on Hyperliquid only, and only for TraderSwift's own account. It pauses today, Sat 21 Nov, for the signer rotation.
 
 Signer for your own Hyperliquid account is planned for no earlier than Sun 22 Nov 2026. Aster had a proof run on Sat 21 Nov 2026 but is not yet live, and Base has no date yet.
 

@@ -63,7 +63,7 @@ Static HTML and Markdown.
 - [What went wrong?](trading-key-rotation/06-what-went-wrong.html) | Markdown: trading-key-rotation/06-what-went-wrong.md | Decision records that waited in an outbox.
 - [How did the old set leave?](trading-key-rotation/07-how-did-the-old-set-leave.html) | Markdown: trading-key-rotation/07-how-did-the-old-set-leave.md | Removing the old set, and revoking the old key.
 - [Who approves each step?](trading-key-rotation/08-who-approves-each-step.html) | Markdown: trading-key-rotation/08-who-approves-each-step.md | The owner signs every change to who signs.
-- [What is next?](trading-key-rotation/09-what-is-next.html) | Markdown: trading-key-rotation/09-what-is-next.md | The next rotation, target Sat 21 Nov 2026, new order limits, and more signers.
+- [What is next?](trading-key-rotation/09-what-is-next.html) | Markdown: trading-key-rotation/09-what-is-next.md | The next rotation, new order limits, and more signers.
 - [Final thoughts](trading-key-rotation/10-final-thoughts.html) | Markdown: trading-key-rotation/10-final-thoughts.md | What the rotation proved.
 - [Signer’s first rotation: what happened on Tue 17 Nov 2026](trading-key-rotation/index.html) | Markdown: trading-key-rotation/index.md | Signer moved to new machines on 17 November 2026. The old key did not move with it. We made a new one.
 

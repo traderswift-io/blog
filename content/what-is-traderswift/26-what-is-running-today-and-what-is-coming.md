@@ -31,11 +31,11 @@ The table below shows the status of Signer and its planned limits.
 
 | Part | Status | Date, or what it waits on |
 | :--- | :--- | :--- |
-| Signer on Hyperliquid, for TraderSwift's own account | **Live** | Since Sat 14 Nov 2026. This test account is public by choice |
+| Signer on Hyperliquid, for TraderSwift's own account | **Live** | Since Sat 14 Nov 2026; pauses today, Sat 21 Nov, for the signer rotation. This test account is public by choice |
 | Stopping an agent with one signed message | **Live** | Since Sat 14 Nov 2026 |
 | Signer on Aster | **Built, not live** | [Proof run](https://github.com/traderswift-io/signer/blob/main/docs/ASTER_PROOF.md) on Sat 21 Nov 2026 through Signer on a test account: orders filled, closed and cancelled, and one order over the cap refused. Waits on the new signer set and a standing policy |
 | Signer on Base, through Avantis | **Built, not live** | No date yet |
-| New limits: a price band, a cap on how often orders go out, and caps on order value | **Built, not live** for the chain part; the signer part is still in build | Target Sat 21 Nov 2026 |
+| New limits: a price band, a cap on how often orders go out, and caps on order value | **Built, not live** | Switches on after the signer rotation, no date set |
 | A cap on leverage | **Built, not live** | Switches on by itself at a set block, about Thu 26 Nov 2026 |
 | Signer for your own Hyperliquid account | **Built, not live** | No earlier than Sun 22 Nov 2026 |
 | Your markets and limits kept private, the same way as your account and orders | **Planned** | The next release |
@@ -44,7 +44,7 @@ The table below shows the status of Signer and its planned limits.
 
 Signer for your own account waits on three steps:
 
-- the rotation, target Sat 21 Nov 2026, when a new set of signers takes over and privacy for user accounts comes with it, so your trading account address and your orders never appear on the chain in readable form;
+- the rotation, built and tested and waiting on one signing moment with no date set, when a new set of signers takes over and privacy for user accounts comes with it, so your trading account address and your orders never appear on the chain in readable form;
 - a live test on a second account;
 - our decision on an outside audit.
 

@@ -45,7 +45,7 @@ Signer has signed live orders on Hyperliquid since Sat 14 Nov 2026, on our own a
 
 For your own Hyperliquid account, it is **Built, not live**. The target is no earlier than Sun 22 Nov 2026, and it waits on three things:
 
-- the change of signers, target Sat 21 Nov 2026, which also brings account privacy for user accounts, as [chapter 11](11-what-can-other-people-see-on-the-chain.html) explains;
+- the change of signers, built and tested and waiting on one signing moment with no date set, which also brings account privacy for user accounts, as [chapter 11](11-what-can-other-people-see-on-the-chain.html) explains;
 - a live test on a second account;
 - a decision on a security audit.
 

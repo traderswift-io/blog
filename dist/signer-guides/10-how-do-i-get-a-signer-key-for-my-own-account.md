@@ -16,7 +16,7 @@ When it opens, this page gets the exact steps.
 
 Four things come first:
 
-- **The rotation of the signers**, target Saturday 21 November 2026. It brings the new signer machines and Policy v2.
+- **The rotation of the signers**: built and tested; waits on one signing moment, no date set. It brings the new signer machines and Policy v2.
 - **Account privacy.** The release that keeps your trading account address and your orders out of readable form on the chain. [How do I read Signer's record?](06-how-do-i-read-signers-record.html) says what the chain shows.
 - **Our decision on the security audit.** We make it before your account opens.
 - **A live test done as a new user would.** We follow these steps ourselves, on a small account with real money, the way you will.
